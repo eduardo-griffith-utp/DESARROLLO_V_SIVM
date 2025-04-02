@@ -96,7 +96,7 @@ El desarrollo del SIVM está organizado en los siguientes equipos:
 #### Frontend
 ```bash
 # Clonar el repositorio
-git clone [URL_REPOSITORIO]
+git clone [URL_REPOSITORIO] sivm
 
 # Navegar al directorio frontend
 cd sivm/frontend
