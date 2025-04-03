@@ -57,7 +57,7 @@ La documentación debe actualizarse:
 
 ## Equipo de Arquitectura y Documentación
 
-- [Integrante 1]
+- Eduardo Griffith
 - [Integrante 2]
 - [Integrante 3]
 - [Integrante 4]
