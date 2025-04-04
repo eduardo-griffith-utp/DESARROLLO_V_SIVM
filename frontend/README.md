@@ -44,7 +44,7 @@ Esta carpeta contiene la aplicación frontend del proyecto SIVM, responsable de 
 - [Integrante 1]
 - [Integrante 2]
 - [Integrante 3]
-- [Integrante 4]
+- Jonathan Page
 
 ## Recursos Adicionales
 
