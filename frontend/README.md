@@ -42,9 +42,10 @@ Esta carpeta contiene la aplicación frontend del proyecto SIVM, responsable de 
 ## Equipo de Frontend
 
 - [Integrante 1]
-- Daniel Pimentel
+- [Integrante 2]
 - [Integrante 3]
 - Jonathan Page
+- Daniel Pimentel
 
 ## Recursos Adicionales
 
