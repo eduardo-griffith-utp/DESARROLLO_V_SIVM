@@ -66,7 +66,7 @@ El equipo de Contenido Multimedia será responsable de gestionar esta carpeta, q
 
 - [Integrante 1]
 - [Integrante 2]
-- jack Salazar
+- jack Salazar 3
 - [Integrante 4]
 
 ## Recursos Adicionales
