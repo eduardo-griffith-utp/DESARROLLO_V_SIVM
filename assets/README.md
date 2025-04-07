@@ -65,7 +65,7 @@ El equipo de Contenido Multimedia será responsable de gestionar esta carpeta, q
 ## Equipo de Contenido Multimedia
 
 - Carlos Marciscano
-- [Integrante 2]
+- [Jimmy Ye]
 - [Integrante 3]
 - [Integrante 4]
 
