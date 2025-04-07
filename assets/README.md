@@ -64,9 +64,10 @@ El equipo de Contenido Multimedia será responsable de gestionar esta carpeta, q
 
 ## Equipo de Contenido Multimedia
 
+- [Integrante 1]
+- Jack Salazar 
 - Carlos Marciscano
 - [Jimmy Ye]
-- [Integrante 3]
 - [Integrante 4]
 
 ## Recursos Adicionales
