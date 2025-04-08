@@ -39,6 +39,14 @@ Esta carpeta contiene la aplicación frontend del proyecto SIVM, responsable de 
 
 - [A completar por el equipo de Diseño UX/UI]
 
+## Equipo de Diseño UX/UI
+
+- [ Cristian Andrade ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+
 ## Equipo de Frontend
 
 - [Integrante 1]
