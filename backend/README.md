@@ -4,8 +4,8 @@ Esta carpeta contiene la API y servicios del servidor para el proyecto SIVM, res
 
 ## Tecnologías Utilizadas
 
-- **Framework:** [A completar por el equipo]
-- **Lenguaje:** [A completar por el equipo]
+- **Framework:** [Django]
+- **Lenguaje:** [Python]
 - **Base de Datos:** [A completar por el equipo]
 - **Autenticación:** [A completar por el equipo]
 - **Validación:** [A completar por el equipo]
@@ -61,7 +61,7 @@ La documentación completa de la API estará disponible en:
 
 ## Equipo de Backend
 
-- [Integrante 1]
+- [Jonathna cabrera 8-956-1592]
 - [Integrante 2]
 - [Integrante 3]
 - [Integrante 4]
