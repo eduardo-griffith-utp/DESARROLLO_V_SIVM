@@ -4,7 +4,7 @@ Esta carpeta contiene la aplicación frontend del proyecto SIVM, responsable de 
 
 ## Tecnologías Utilizadas
 
-- **Framework:** [A completar por el equipo]
+- **Framework:** [Ionic ]
 - **Biblioteca UI:** [A completar por el equipo]
 - **Gestión de Estado:** [A completar por el equipo]
 - **Routing:** [A completar por el equipo]
