@@ -40,11 +40,10 @@ Esta carpeta contiene la aplicación frontend del proyecto SIVM, responsable de 
 - [A completar por el equipo de Diseño UX/UI]
 
 ## Equipo de Frontend
-
-- [Integrante 1]
-- [Integrante 2]
-- [Integrante 3]
-- [Integrante 4]
+- [Arturo Phillips]
+- Jonathan Page
+- Daniel Pimentel
+- Isaac Pomares
 
 ## Recursos Adicionales
 
