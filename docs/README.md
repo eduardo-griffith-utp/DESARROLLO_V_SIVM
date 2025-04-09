@@ -59,7 +59,7 @@ La documentación debe actualizarse:
 
 - Manuel Rodriguez
 - [Integrante 2]
-- Arquimedes Garcia
+- Arquimedes Garcia Lorenzo
 - [Integrante 4]
 
 ## Recursos Adicionales
