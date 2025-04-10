@@ -61,7 +61,7 @@ La documentación completa de la API estará disponible en:
 
 ## Equipo de Backend
 
-- [Integrante 1]
+- Alexander Moreno
 - [Integrante 2]
 - [Integrante 3]
 - [Integrante 4]
