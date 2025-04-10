@@ -57,9 +57,9 @@ La documentación debe actualizarse:
 
 ## Equipo de Arquitectura y Documentación
 
-- [Integrante 1]
-- [Integrante 2]
-- [Integrante 3]
+- Manuel Rodriguez
+- Diego Caballero
+- Arquimedes Garcia Lorenzo
 - [Integrante 4]
 
 ## Recursos Adicionales
