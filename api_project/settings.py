@@ -3,7 +3,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'tu-clave-secreta-aqui'  # Cambia esto en producción
+SECRET_KEY = 'Desarrollosoft555' 
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
@@ -15,7 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'core',  # Tu aplicación
+    'core',  
 ]
 
 MIDDLEWARE = [
