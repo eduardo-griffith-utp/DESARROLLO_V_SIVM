@@ -61,20 +61,29 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
      ```
 
 ### Ejecución
-* Crear un nuevo proyecto Ionic con Angular(../frontend/)
+* Dirigirse a la carpeta frontend 
   ```bash
-  ionic start app sidemenu --type=angular
+     cd frontend 
      ```
 
 * Navegar al directorio del proyecto 
      ```bash
     cd app
      ```
+
+* Instalar los modulos node
+     ```bash
+     npm install
+     ```
 * Ejecutar la aplicacion localmente 
      ```bash
      ionic serve
      ```
-
+* Nota
+     Si el terminal no tiene los permisos asignados, debe ejecutar powershell como administrador Error SecurityError PSSecurityException
+     ```bash
+          Set-ExecutionPolicy Unrestricted
+     ```
 ## Convenciones de Código
 
 - **Componentes:** Los componentes deben ser modulares y reutilizables, y su lógica debe estar claramente separada de la interfaz.
