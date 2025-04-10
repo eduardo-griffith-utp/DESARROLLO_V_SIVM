@@ -100,6 +100,14 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
 
 - [A completar por el equipo de Diseño UX/UI]
 
+## Equipo de Diseño UX/UI
+
+- [ Cristian Andrade ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+
 ## Equipo de Frontend
 
 - Arturo Phillips
