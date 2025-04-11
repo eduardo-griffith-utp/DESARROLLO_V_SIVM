@@ -86,10 +86,9 @@ El pipeline de preprocesamiento incluye:
 ## Equipo de IA y Reconocimiento
 
 - JOSE ARIANO
-- ALVAN SAMUDIO
-- JOSE MONTENEGRO
-- ANGEL QUINN
-- ANTHONY PINEDA
+- [Integrante 2]
+- [Integrante 3]
+- [Integrante 4]
 
 ## Recursos Adicionales
 
