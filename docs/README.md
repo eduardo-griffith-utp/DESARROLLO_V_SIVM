@@ -57,8 +57,8 @@ La documentación debe actualizarse:
 
 ## Equipo de Arquitectura y Documentación
 
-- [Integrante 1]
-- [Integrante 2]
+- Manuel Rodriguez
+- Diego Caballero
 - [Integrante 3]
 - [Integrante 4]
 

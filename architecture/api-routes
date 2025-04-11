@@ -1,0 +1,78 @@
+## Identificacion de odas las rutas de APIs necesarias
+
+## /api/capture 
+
+**Descripción:** Recibe una imagen capturada directamente desde la cámara del dispositivo para ser procesada posteriormente.
+ 
+---
+ 
+## /api/analysis/{image_id}  
+
+**Descripción:** Devuelve el resultado del análisis de una imagen previamente subida o capturada, incluyendo etiquetas identificadas y descripciones relevantes.
+ 
+---
+ 
+## /api/multimedia/{tag}  
+
+**Descripción:** Devuelve recursos multimedia (texto, imágenes o audio) relacionados con la etiqueta proporcionada.
+ 
+---
+ 
+## /api/text  
+
+**Descripción:** Devuelve una descripción textual generada automáticamente para la última imagen enviada por el usuario.
+ 
+---
+ 
+## /api/audio  
+
+**Descripción:** Devuelve un archivo de audio que contiene la descripción hablada de la imagen capturada o enviada.
+ 
+---
+
+/api/history 
+
+**Descripción:** Devuelve el historial de imágenes reconocidas por el usuario actual.
+
+---
+
+/api/items 
+
+**Descripción:** Devuelve una lista de categorías o ítems disponibles para ser reconocidos por el sistema.
+
+---
+
+/api/items/{item_id} 
+
+**Descripción:** Devuelve información detallada sobre un ítem reconocido, como su descripción, características y ejemplos visuales.
+
+---
+
+## Consideraciones de Diseño
+ 
+- **Nomenclatura:**
+
+  - Todos los endpoints inician con el prefijo común `/api/` para mantener consistencia y claridad.
+  - Se utilizan nombres de rutas en minúsculas, descriptivos y específicos del recurso o funcionalidad.
+ 
+- **Estructura Jerárquica:**
+
+  - Las rutas reflejan una estructura lógica agrupada por funcionalidades (ej. `capture`, `analysis`, `multimedia`, `text`, `audio`).
+  - Las rutas con parámetros dinámicos están claramente identificadas (ej. `{image_id}`, `{tag}`).
+
+- **Principios de RESTful**
+
+  - Para los principios de RESTful se recomiendo utilizar los siguiente:
+    - GET: Se usa para leer
+    - POST: Se utiliza para crear
+  - Se anexa un ejemplo en caso tal los endpoint de text y audio esten fuertemente ligados a una imagen:
+    - GET /api/images/{image_id}/text
+    - GET /api/images/{image_id}/audio
+
+- **Versiones**
+
+  - Para las versiones de la api se recomienda utilizar v como la variable de version e ir incrementando en 1 para las difernetes versiones v1, v2, v3, v4, etc... un ejemplo seria: /api/v1//images
+
+para una opcion visual pueden verlo siguiendo el siguiente enlace a la imagen:
+
+![Diagram](Diagram.png)
