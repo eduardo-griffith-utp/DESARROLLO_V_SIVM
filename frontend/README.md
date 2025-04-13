@@ -46,6 +46,8 @@ Esta carpeta contiene la aplicación frontend del proyecto SIVM, responsable de 
 - [Integrante 3]
 - [Integrante 4]
 
+## Equipo de Diseño UX/UI
+-Alexis Jaen
 ## Recursos Adicionales
 
 - [A completar por el equipo]
