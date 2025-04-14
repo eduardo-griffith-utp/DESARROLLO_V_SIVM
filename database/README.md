@@ -93,7 +93,7 @@ Para cargar datos iniciales/prueba:
 
 ## Equipo de Base de Datos
 
-- [Integrante 1]
+- Cesar castillo
 - [Integrante 2]
 - [Integrante 3]
 - [Integrante 4]
