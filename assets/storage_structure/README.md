@@ -48,16 +48,16 @@ Este directorio será utilizado exclusivamente por el equipo de IA para entrenar
 
 - Directorio base: `training_data/` 
 
-- Subcarpetas para cada ítem, identificadas con un código único: 
+- Subcarpetas para un objeto o cosa, identificadas con un código único: 
 
-training_data/ ├── item001/ │ ├── image001.jpg │ ├── image002.jpg ├── item002/ ├── image001.jpg ├── image002.jpg 
+training_data/ ├── ejemplo_gato/ │ ├── image1.jpg │ ├── image2.jpg ├── ejemplo_perro/ ├── image1.jpg ├── image2.jpg 
 
 
 #### **Convenciones de Nomenclatura**: 
 
-- Carpetas: `itemXXX` (donde `XXX` es un número único de tres dígitos, por ejemplo, `item001`). 
+- Carpetas: `item` (item se refiere a cualquier objeto (animal, lugar, objeto, etc)y solo es una representacion, por ejemplo : mesa, gallo, perro, silla, entre otros). 
 
-- Archivos: `imageNNN.jpg` (donde `NNN` es un número incremental, por ejemplo, `image001.jpg`). 
+- Archivos: `image.jpg` (se refiere a las imagenes del objeto, animal o lugares). 
 
 
 ### **Recursos Multimedia Adicionales** 
@@ -70,31 +70,31 @@ Este directorio estará destinado a almacenar recursos adicionales relacionados 
 
 ├── training_data/ 
 
-│   ├── item001/ 
+│   ├── ejemplo-perro/ 
 
-│   │   ├── image001.jpg 
+│   │   ├── image1.jpg 
 
-│   │   ├── image002.jpg 
+│   │   ├── image2.jpg 
 
-│   ├── item002/ 
+│   ├── ejemplo2_gato/ 
 
-│       ├── image001.jpg 
+│       ├── image1.jpg 
 
-│       ├── image002.jpg 
+│       ├── image2.jpg 
 
 ├── multimedia_resources/ 
 
-    ├── item001/ 
+    ├── ejemplo_perro/ 
 
     │   ├── images/ 
 
-    │   │   ├── detail001.jpg 
+    │   │   ├── detail1.jpg 
 
-    │   │   ├── detail002.jpg 
+    │   │   ├── detail2.jpg 
 
     │   ├── videos/ 
 
-    │   │   ├── demo001.mp4 
+    │   │   ├── demo1.mp4 
 
     │   ├── audio/ 
 
@@ -106,7 +106,7 @@ Este directorio estará destinado a almacenar recursos adicionales relacionados 
 
     │       ├── details.md 
 
-    ├── item002/ 
+    ├── ejemplo_gato/ 
 
         ├── images/ 
 
@@ -131,114 +131,4 @@ Este directorio estará destinado a almacenar recursos adicionales relacionados 
 
 - Archivos: 
 
-- Nombres descriptivos con identificadores numéricos, por ejemplo, `detail001.jpg`, `demo001.mp4`, `description.txt`. 
-
-## **Guías de Uso** 
-
-### **Para el Equipo de IA**: 
-
-- Verificar que las imágenes estén correctamente etiquetadas según las convenciones antes de iniciar el entrenamiento. 
-
-- Mantener las imágenes dentro de la carpeta `training_data/`. 
-
-
-### **Para el Equipo API/Móvil**: 
-
-- Asegurarse de que la recuperación de datos desde el sistema API utilice los nombres y rutas definidos en esta estructura. 
-
-- Usar metadatos para describir los recursos, si es necesario. 
-
-
-## **Aspectos Clave** 
-
-
-1. **Escalabilidad**: 
-
- - Esta estructura es modular, por lo que pueden añadirse nuevos ítems creando más carpetas en `training_data/` y `multimedia_resources/`. 
-
- 
-
-2. **Uso de Metadatos**: 
-
- - Considerar un archivo JSON para describir los recursos asociados a cada ítem. Ejemplo: 
-
-   ```json 
-
-   { 
-
-       "item_id": "item001", 
-
-       "images": [ 
-
-           "training_data/item001/image001.jpg", 
-
-           "training_data/item001/image002.jpg" 
-
-       ], 
-
-       "multimedia": { 
-
-           "images": [ 
-
-               "multimedia_resources/item001/images/detail001.jpg", 
-
-               "multimedia_resources/item001/images/detail002.jpg" 
-
-           ], 
-
-           "videos": ["multimedia_resources/item001/videos/demo001.mp4"], 
-
-           "audio": ["multimedia_resources/item001/audio/description.mp3"], 
-
-           "text": ["multimedia_resources/item001/text/description.txt"] 
-
-       } 
-
-   } 
-
-   ``` 
-
- 
-
-3. **Optimización**: 
-
- - Comprimir archivos grandes (como videos o audios) para reducir el uso de almacenamiento y acelerar su recuperación. 
-
- 
-
-4. **Colaboración entre Equipos**: 
-
- - Mantener comunicación entre los equipos de IA y API para alinear necesidades y asegurar que la estructura cumple con los objetivos del sistema. 
-
-
-## **Diagramas de Referencia** 
-
-Para una mejor visualización de la estructura, aquí tienes un diagrama generado con Mermaid: 
-
- 
-
-```mermaid 
-
-graph TD 
-
-  root[storage-structure/] 
-
-  training[training_data/] 
-
-  multimedia[multimedia_resources/] 
-
-  root --> training 
-
-  root --> multimedia 
-
-  training --> item001[item001/] 
-
-  multimedia --> item001_multimedia[item001/] 
-
-  item001_multimedia --> images[images/] 
-
-  item001_multimedia --> videos[videos/] 
-
-  item001_multimedia --> audio[audio/] 
-
-  item001_multimedia --> text[text/] 
+- Nombres descriptivos con identificadores numéricos, por ejemplo, `detail001.jpg`, `demo001.mp4`, `description.txt`.
