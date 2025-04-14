@@ -75,4 +75,4 @@
 
 para una opcion visual pueden verlo siguiendo el siguiente enlace a la imagen:
 
-![Diagram](Diagram.png)
+![Diagram](api-flow-diagram.png)
