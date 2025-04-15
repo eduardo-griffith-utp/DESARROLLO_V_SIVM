@@ -102,6 +102,7 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
 
 ## Equipo de Frontend
 
+- Sharline Payne
 - Isaac Pomares
 
 ## Recursos Adicionales
