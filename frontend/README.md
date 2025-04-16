@@ -104,7 +104,6 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
 
 - Isaac Pomares
 - Arturo Pillips
-
 ## Recursos Adicionales
 
 - Documentación de Ionic: https://ionicframework.com/docs
