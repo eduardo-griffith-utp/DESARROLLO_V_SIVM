@@ -94,7 +94,7 @@ Para cargar datos iniciales/prueba:
 ## Equipo de Base de Datos
 
 - Cesar castillo
-- Javett Pineda
+- Javett Pineda C.
 - [Integrante 3]
 - [Integrante 4]
 
