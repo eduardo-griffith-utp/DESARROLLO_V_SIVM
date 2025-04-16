@@ -1,52 +1,209 @@
 ## Identificacion de odas las rutas de APIs necesarias
 
-## /api/capture 
-
-**Descripción:** Recibe una imagen capturada directamente desde la cámara del dispositivo para ser procesada posteriormente.
+## [POST] /api/v1/images/capture
+ - **Descripción:** Recibe una imagen capturada desde la cámara del dispositivo para ser procesada.
  
----
+ **Autenticación requerida:** Sí
+
+ **Cuerpo de la solicitud (Request body):**
+ {
+ }
+  "image": "base64 string de la imagen",
+  "user_id": "ID del usuario"
+ Respuesta exitosa: 200 OK
+ {
+ }
+  "status": "success",
+  "data": { ... },
+  "message": "opcional"
+  
+ **Posibles errores:** 
+ **- 400 Bad Request:** Solicitud mal formada
+ **- 404 Not Found:** Recurso no encontrado
+ **- 500 Internal Server Error:** Error del servidor
+
+----------------------
+
+## [GET] /api/v1/images/{image_id}/analysis
+ **Descripción:** Devuelve el análisis de una imagen específica.
  
-## /api/analysis/{image_id}  
+ **Autenticación requerida:** Sí
 
-**Descripción:** Devuelve el resultado del análisis de una imagen previamente subida o capturada, incluyendo etiquetas identificadas y descripciones relevantes.
+ **Parámetros de ruta:**
+ - image_id: ID de la imagen a analiza
+
+ **Respuesta exitosa:** 200 OK
+
+ Estructura de la API - Documentación Técnica
+ {
+ }
+  "status": "success",
+  "data": { ... },
+  "message": "opcional"
  
----
+ **Posibles errores:**
+ - 400 Bad Request: Solicitud mal formada
+ - 404 Not Found: Recurso no encontrado
+ - 500 Internal Server Error: Error del servido
+
+ ------------------
+
+## [GET] /api/v1/multimedia/by-tag/{tag}
+
+ **Descripción:** Devuelve recursos multimedia asociados a una etiqueta.
  
-## /api/multimedia/{tag}  
-
-**Descripción:** Devuelve recursos multimedia (texto, imágenes o audio) relacionados con la etiqueta proporcionada.
+ **Autenticación requerida:** No
  
----
+ **Parámetros de ruta:**
+ - tag: Nombre de la etiqueta
  
-## /api/text  
+ **Respuesta exitosa:** 200 OK
 
-**Descripción:** Devuelve una descripción textual generada automáticamente para la última imagen enviada por el usuario.
+ {
+ }
+  "status": "success",
+  "data": { ... },
+  "message": "opcional"
  
----
+ **Posibles errores:**
+ - 400 Bad Request: Solicitud mal formada
+ - 404 Not Found: Recurso no encontrado
+ - 500 Internal Server Error: Error del servido
+
+---------------
+
+ ## [GET] /api/v1/images/{image_id}/text
  
-## /api/audio  
-
-**Descripción:** Devuelve un archivo de audio que contiene la descripción hablada de la imagen capturada o enviada.
+ **Descripción:** Devuelve una descripción textual generada para la imagen.
  
----
+ **Autenticación requerida:* Sí
+ 
+ **Parámetros de ruta:**
+ - image_id: ID de la imagen
+ 
+ **Respuesta exitosa:** 200 OK
+ 
+ {
+ }
+  "status": "success",
+  "data": { ... },
+  "message": "opcional"
+ 
+ **Posibles errores:**
+ - 400 Bad Request: Solicitud mal formada
+ - 404 Not Found: Recurso no encontrado
+ - 500 Internal Server Error: Error del servidor
+ 
+ ---------
 
-/api/history 
+ ## [GET] /api/v1/images/{image_id}/audio
+ **Descripción:** Devuelve un archivo de audio con la descripción hablada de la imagen.
+ 
+ **Autenticación requerida:** Sí
+ **Parámetros de ruta:**
+ - image_id: ID de la imagen
+ 
+ **Respuesta exitosa:** 200 OK
+ {
+  "status": "success",
+  "data": { ... },
+  "message": "opcional
+ }
 
-**Descripción:** Devuelve el historial de imágenes reconocidas por el usuario actual.
+  **Posibles errores:**
+  - 400 Bad Request: Solicitud mal formada
+  - 404 Not Found: Recurso no encontrado
+  - 500 Internal Server Error: Error del servido
 
----
+## [GET] /api/v1/users/{user_id}/history
+ **Descripción:** Devuelve el historial de imágenes reconocidas por el usuario.
+ 
+ **Autenticación requerida:** Sí
+ 
+ **Parámetros de ruta:**
+ - user_id: ID del usuario
+ 
+ **Respuesta exitosa:** 200 OK
 
-/api/items 
+ {
+ }
+  "status": "success",
+  "data": { ... },
+  "message": "opcional"
+ 
+ **Posibles errores:**
+ - 400 Bad Request: Solicitud mal formada
+ - 404 Not Found: Recurso no encontrado
+ - 500 Internal Server Error: Error del servidor
 
-**Descripción:** Devuelve una lista de categorías o ítems disponibles para ser reconocidos por el sistema.
+-----------
 
----
+ ## [GET] /api/v1/items
+ 
+ **Descripción:** Devuelve una lista de categorías o ítems reconocibles.
+ 
+ **Autenticación requerida:** No
+ 
+ **Respuesta exitosa:** 200 Ok
 
-/api/items/{item_id} 
+{
+ Estructura de la API - Documentación Técnica
+  "status": "success",
+  "data": { ... },
+  "message": "opcional"
+ }
 
-**Descripción:** Devuelve información detallada sobre un ítem reconocido, como su descripción, características y ejemplos visuales.
+ **Posibles errores:**
+ - 400 Bad Request: Solicitud mal formada
+ - 404 Not Found: Recurso no encontrado
+ - 500 Internal Server Error: Error del servidor
 
----
+ ## [GET] /api/v1/items/{item_id}
+ **Descripción:** Devuelve información detallada sobre un ítem específico.
+ 
+ **Autenticación requerida:** No
+ 
+ **Parámetros de ruta:** 
+ 
+ - item_id: ID del ítem
+ **Respuesta exitosa:** 200 OK
+ 
+ {
+ }
+  "status": "success",
+  "data": { ... },
+  "message": "opcional"
+
+ **Posibles errores:**
+ - 400 Bad Request: Solicitud mal formada
+ - 404 Not Found: Recurso no encontrado
+ - 500 Internal Server Error: Error del servidor
+
+-------------------------------------
+
+ ## Ejemplo de respuesta estructurada con vínculos (Hypermedia)
+ 
+  **Este es un ejemplo de una respuesta enriquecida con vínculos a otros recursos relacionados:**
+ {
+  "id": 123,
+  "title": "What is REST",
+  "content": "REST is an architectural style for building web services...",
+  "published_at": "2023-11-04T14:30:00Z",
+  "author": {
+    "id": 456,
+    "name": "John Doe",
+    "profile_url": "https://example.com/authors/456"
+  },
+  "comments": {
+    "count": 5,
+    "comments_url": "https://example.com/posts/123/comments"
+  },
+  "self": {
+    "link": "https://example.com/posts/123"
+  }
+ }
+
+------------------
 
 ## Consideraciones de Diseño
  
