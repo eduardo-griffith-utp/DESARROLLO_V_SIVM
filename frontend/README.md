@@ -103,6 +103,7 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
 ## Equipo de Frontend
 
 - Isaac Pomares
+- Arturo Pillips
 
 ## Recursos Adicionales
 
