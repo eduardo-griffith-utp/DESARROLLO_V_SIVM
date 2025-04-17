@@ -20,32 +20,36 @@ Esta carpeta contiene los scripts, migraciones y documentación relacionada con 
 ### Entidades Principales
 
 #### Imágenes
-id_imagen (PK)
-ruta_imagen (texto o URL)
-fecha_subida (datetime)
+ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
+-Id_image , int , Primary key  
+- route_imagen , varchar ,   
+- date_uploaded , datetime ,   
 
 #### Resultados de Análisis
-- id_resultado (PK)
-- id_imagen (FK → Imágenes)
-- etiquetas_detectadas (texto o JSON)
-- fecha_analisis (datetime)
+ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
+- Id_image , int , Primary key  
+- route_imagen , varchar ,   
+- date_uploaded , datetime ,   
 
 #### Contenido Multimedia
-- id_contenido (PK)
-- tipo_contenido (audio, video, etc.)
-- descripcion
-- ruta_archivo
-- id_imagen (FK → Imágenes)
+ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
+- Id_multimedia , int , Primary key  
+- Imagen_ID , int , Foreing key  
+- type_content  , varchar ,   
+- description , varchar ,   
+- file_path , varchar ,   - id_contenido (PK)
 
-#### Usuarios (GENERICO)
-- id_usuario (PK) → e.g. 1
-- nombre_usuario → "anonimo"
+#### Usuarios 
+ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
+- Id_User , int , Primary key  
+- name_user , varchart ,   
 
 ### Historial de Consultas
-- id_consulta (PK)
-- id_imagen (FK → Imágenes)
-- fecha_consulta (datetime)
-- contador (int) → Representa cuántas veces se ha consultado esa imagen.
+ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
+- Id_querys , int , Primary key 
+- Image_ID , int , Foreing Key  
+- date_consultation , datetime ,   
+- counter , int ,   
 
 ### Relaciones
 
@@ -69,56 +73,57 @@ fecha_subida (datetime)
 ### Configuración Inicial
 
 ```bash
-# 1. Crear entorno virtual
-python -m venv venv
-source venv/bin/activate  # En Windows: venv\Scripts\activate
 
-# 2. Instalar dependencias necesarias
-pip install mysql-connector-python sqlalchemy python-dotenv
+-- desarrollov_app.usuario definition
 
-# 3. Crear archivo .env con tus credenciales (no subir a GitHub)
-touch .env
+CREATE TABLE `usuario` (
+  `id_user` int(11) NOT NULL,
+  `name_user` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_user`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
-```
+-- desarrollov_app.queryhistory definition
 
-## Migraciones
+CREATE TABLE `queryhistory` (
+  `id_querys` int(11) NOT NULL,
+  `imagen_id` int(11) NOT NULL,
+  `date_consultation` datetime NOT NULL,
+  `counter` int(11) NOT NULL,
+  PRIMARY KEY (`id_querys`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
-```bash 
-# Crear nuevo archivo SQL con la estructura de tablas
-nano crear_tablas.sql
+-- desarrollov_app.analisisresults definition
 
-#Este es un ejemplo del contenido de la tabla:
+CREATE TABLE `analisisresults` (
+  `id_results` int(11) NOT NULL,
+  `imagen_id` int(11) NOT NULL,
+  `detected_labels` varchar(50) NOT NULL,
+  `date_analisys` datetime NOT NULL,
+  PRIMARY KEY (`id_results`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
-CREATE TABLE imagenes (
-    id_imagen INT AUTO_INCREMENT PRIMARY KEY,
-    ruta_imagen TEXT NOT NULL,
-    fecha_subida DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+-- desarrollov_app.multimedia definition
 
-CREATE TABLE resultados (
-    id_resultado INT AUTO_INCREMENT PRIMARY KEY,
-    id_imagen INT,
-    etiquetas_detectadas TEXT,
-    fecha_analisis DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_imagen) REFERENCES imagenes(id_imagen)
-);
+CREATE TABLE `multimedia` (
+  `id_multimedia` int(11) NOT NULL,
+  `imagen_id` int(11) NOT NULL,
+  `type_content` varchar(30) NOT NULL,
+  `description` varchar(50) NOT NULL,
+  `file_path` varchar(64) NOT NULL,
+  PRIMARY KEY (`id_multimedia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
-CREATE TABLE contenido_multimedia (
-    id_contenido INT AUTO_INCREMENT PRIMARY KEY,
-    tipo_contenido VARCHAR(50),
-    descripcion TEXT,
-    ruta_archivo TEXT,
-    id_imagen INT,
-    FOREIGN KEY (id_imagen) REFERENCES imagenes(id_imagen)
-);
+-- desarrollov_app.images definition
 
-CREATE TABLE historial_consultas (
-    id_consulta INT AUTO_INCREMENT PRIMARY KEY,
-    id_imagen INT,
-    fecha_consulta DATETIME DEFAULT CURRENT_TIMESTAMP,
-    contador INT DEFAULT 1,
-    FOREIGN KEY (id_imagen) REFERENCES imagenes(id_imagen)
-);
+CREATE TABLE `images` (
+  `id_imagen` int(11) NOT NULL AUTO_INCREMENT,
+  `route_imagen` varchar(50) NOT NULL,
+  `date_uploaded` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_imagen`),
+  CONSTRAINT `images_analisisresults_FK` FOREIGN KEY (`id_imagen`) REFERENCES `analisisresults` (`id_results`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `images_multimedia_FK` FOREIGN KEY (`id_imagen`) REFERENCES `multimedia` (`id_multimedia`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `images_queryhistory_FK` FOREIGN KEY (`id_imagen`) REFERENCES `queryhistory` (`id_querys`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 ```
 
