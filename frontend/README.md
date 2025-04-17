@@ -102,7 +102,10 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
 
 ## Equipo de Frontend
 
+- Jonathan Page
+- Daniel Pimentel
 - Isaac Pomares
+- Arturo  Phillips
 
 ## Recursos Adicionales
 
