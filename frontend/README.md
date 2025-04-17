@@ -102,14 +102,16 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
 
 ## Equipo de Diseño UX/UI
 
-- [ Cristian Andrade ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- Cristian Andrade
+- Manuel Lopez
+- Ismael MCCLymont
+- Cesar Florez
+- Alexis Jaen
 
 ## Equipo de Frontend
-
+- Jonathan Page
+- Daniel Pimentel
+- Arturo Phillips
 - Isaac Pomares
 
 ## Recursos Adicionales
