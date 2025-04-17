@@ -74,8 +74,7 @@ Respuesta en Proceso – 202 Accepted
  
  **Descripción:** Devuelve recursos multimedia asociados a una etiqueta.
  
- 
- 
+
  **Parámetros de ruta:**
  - tag: Nombre de la etiqueta
  
