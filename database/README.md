@@ -15,15 +15,19 @@ Esta carpeta contiene los scripts, migraciones y documentación relacionada con 
 ### Entidades Principales
 
 #### Imágenes
+
 - [A completar por el equipo]
 
 #### Resultados de Análisis
+
 - [A completar por el equipo]
 
 #### Contenido Multimedia
+
 - [A completar por el equipo]
 
 #### Usuarios
+
 - [A completar por el equipo]
 
 ### Relaciones
@@ -33,6 +37,7 @@ Esta carpeta contiene los scripts, migraciones y documentación relacionada con 
 ## Configuración del Entorno
 
 ### Requisitos Previos
+
 - [A completar por el equipo]
 
 ### Configuración Inicial
@@ -97,6 +102,7 @@ Para cargar datos iniciales/prueba:
 - [Integrante 2]
 - [Integrante 3]
 - [Integrante 4]
+- [Enedina Ortega]
 
 ## Recursos Adicionales
 
