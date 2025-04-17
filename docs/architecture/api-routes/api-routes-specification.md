@@ -52,6 +52,17 @@
   "message": "Análisis completado"
 }
  
+Respuesta en Proceso – 202 Accepted
+
+{
+  "status": "processing",
+  "data": {
+    "image_id": "img_001"
+  },
+  "message": "El análisis de la imagen está en proceso. Intente nuevamente más tarde."
+}
+
+
  **Posibles errores:**
  - 400 Bad Request: Solicitud mal formada
  - 404 Not Found: Recurso no encontrado
@@ -100,21 +111,29 @@
  
  {
   "status": "success",
-  "data": [
-    {
-      "image_id": "img_001",
-      "timestamp": "2025-04-16T10:15:00Z",
-      "description": "Una banana amarilla sobre una mesa de madera."
-    },
-    {
-      "image_id": "img_002",
-      "timestamp": "2025-04-15T09:45:00Z",
-      "description": "Un televisor en una sala de estar."
-    }
-  ],
-  "message": "Historial del usuario recuperado"
+  "data": {
+    "Fruta": [
+      {
+        "image_id": "img_001",
+        "timestamp": "2025-04-16T10:15:00Z",
+        "description": "Una banana amarilla sobre una mesa de madera."
+      },
+      {
+        "image_id": "img_003",
+        "timestamp": "2025-04-14T14:20:00Z",
+        "description": "Una manzana roja."
+      }
+    ],
+    "Electrónica": [
+      {
+        "image_id": "img_002",
+        "timestamp": "2025-04-15T09:45:00Z",
+        "description": "Un televisor en una sala de estar."
+      }
+    ]
+  },
+  "message": "Historial del usuario agrupado por categoría"
 }
- 
  
  **Posibles errores:**
  - 400 Bad Request: Solicitud mal formada
