@@ -1,102 +1,191 @@
-Backend del Sistema de Identificación Visual Multimedia (SIVM)
-Esta carpeta contiene la API y servicios del servidor para el proyecto SIVM, responsable del procesamiento de solicitudes, lógica de negocio e integración con otros servicios.
-Tecnologías Utilizadas
- 
-- Framework: Django (con Django REST Framework)
-- Lenguaje: Python
-- Base de Datos: PostgreSQL (sugerido por compatibilidad y escalabilidad con Django)
-- Autenticación: JWT (JSON Web Tokens)
-- Validación: Serializadores de Django REST Framework
-- Documentación API: OpenAPI/Swagger (a través de `drf-yasg` o `django-rest-swagger`)
-- Pruebas: Pytest / Django TestCase
- 
-Configuración del Entorno
-Requisitos Previos
- 
-- Python 3.10 o superior
-- vpip
-- Git
-- PostgreSQL
-- Cuenta en Render (https://render.com) para despliegue
- 
-Instalación
- 
-# Clonar el repositorio
+# Backend del Sistema de Identificación Visual Multimedia (SIVM)
+
+# Tecnologías Utilizadas
+- **Framework**: Django (con Django REST Framework)
+- **Lenguaje**: Python 3.10+
+- **Base de Datos**: PostgreSQL
+- **Autenticación**: JWT (JSON Web Tokens)
+- **Documentación API**: drf-yasg (Swagger/OpenAPI)
+- **Pruebas**: Pytest / Django TestCase
+
+# Estructura del Proyecto
+
+backend/
+├── api/
+│ ├── api_project/ # Configuración central de Django
+│ │ ├── settings.py # Configuración global
+│ │ ├── urls.py # Rutas principales
+│ │ └── ...
+│ ├── core/ # Funcionalidades centrales
+│ │ ├── models.py # Modelos compartidos
+│ │ ├── serializers.py # Serializadores
+│ │ └── ...
+│ ├── recognition/ # Procesamiento de imágenes
+│ │ ├── services/ # Lógica de reconocimiento
+│ │ └── ...
+│ ├── items/ # Gestión de contenido
+│ ├── utils/ # Utilidades comunes
+│ └── manage.py # CLI de Django
+
+
+# Configuración Inicial
+```bash
+# Clonar y configurar entorno
 git clone https://github.com/tu_usuario/sivm-backend.git
 cd sivm-backend
- 
-# Crear entorno virtual
 python -m venv env
-source env/bin/activate  # En Windows: env\Scripts\activate
- 
-# Instalar dependencias
+source env/bin/activate  # Windows: env\Scripts\activate
 pip install -r requirements.txt
- 
-# Configurar variables de entorno (.env)
-cp .env.example .env  # Completa las variables necesarias
- 
-# Migraciones iniciales
+
+# Configuración inicial
+cp .env.example .env  # Editar con tus valores
 python manage.py migrate
- 
-# Crear superusuario
 python manage.py createsuperuser
- 
-Ejecución
-python manage.py runserver
-API Endpoints
-Documentación de la API
- 
-La documentación completa de la API estará disponible en:
- 
-http://localhost:8000/swagger/  (Desarrollo local)
-https://sivm-backend.onrender.com/swagger/ (Producción en Render)
- 
-Principales Endpoints
-Gestión de Imágenes
- 
-- GET /api/images/ – Listar imágenes
-- POST /api/images/ – Subir imagen
-- GET /api/images/{id}/ – Obtener detalles de imagen
-- DELETE /api/images/{id}/ – Eliminar imagen
- 
-Categorías y Metadatos
- 
-- GET /api/categories/ – Listar categorías
-- POST /api/categories/ – Crear categoría
-- GET /api/categories/{id}/ – Detalle de categoría
- 
-Integración con Servicios Externos
-Servicio de Reconocimiento de Imágenes
- 
-- POST /api/recognition/ – Enviar imagen para reconocimiento visual
-- Integra con un modelo de IA para identificar contenido en la imagen
- 
-Almacenamiento de Archivos
-Las imágenes y archivos multimedia son almacenados usando Media Storage de Django, con opción de escalar a servicios como AWS S3 o Cloudinary.
+
+Desarrollo de Nuevas Funcionalidades
+
+Crear nueva aplicación
+
+python manage.py startapp nombre_app
+
+Añadir modelo (models.py)
+
+from django.db import models
+
+class NuevoModelo(models.Model):
+    nombre = models.CharField(max_length=100)
+    activo = models.BooleanField(default=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+Crear serializador (serializers.py)
+
+from rest_framework import serializers
+from .models import NuevoModelo
+
+class NuevoModeloSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NuevoModelo
+        fields = '__all__'
+
+Implementar vista (views.py)
+
+from rest_framework import viewsets
+from .models import NuevoModelo
+from .serializers import NuevoModeloSerializer
+
+class NuevoModeloViewSet(viewsets.ModelViewSet):
+    queryset = NuevoModelo.objects.all()
+    serializer_class = NuevoModeloSerializer
+
+Configurar URLs (urls.py)
+
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import NuevoModeloViewSet
+
+router = DefaultRouter()
+router.register(r'nuevos-modelos', NuevoModeloViewSet)
+
+urlpatterns = [
+    path('', include(router.urls)),
+]
+
+Endpoints Principales
+Imágenes:
+
+GET /api/images/ - Listar imágenes
+
+POST /api/images/ - Subir nueva imagen
+
+Reconocimiento:
+
+POST /api/recognition/ - Analizar imagen
+
+Categorías:
+
+GET /api/categories/ - Listar categorías
+
+POST /api/categories/ - Crear categoría
+
 Convenciones de Código
- 
-- Código en inglés
-- Uso de PEP8 para estilo de Python
-- Documentación de funciones con docstrings
-- Uso de `black` para formateo automático
- 
+Estilo PEP8
+
+Documentación con docstrings
+
+Formateo con black
+
+Nombres en inglés
+
 Seguridad
- 
-- Autenticación con JWT (sin manejo de sesiones en servidor)
-- Protección contra:
-  - SQL Injection
-  - Cross-Site Scripting (XSS)
-  - Cross-Site Request Forgery (CSRF)
-- Uso de permisos personalizados en la API
- 
-Despliegue en la Nube
-Plataforma: Render
- 
-¿Qué es Render?
-Es un servicio en la nube que permite desplegar aplicaciones backend, frontend y bases de datos sin configurar servidores manualmente. Soporta tecnologías como Django, Flask, Node.js, Ruby, Go, etc.
- 
-Ventajas:
-- Despliegue automático desde GitHub
-- HTTPS incluido
-- Escalado automático
-- Facilidad de configuración
+Autenticación JWT
+
+Protección contra:
+
+SQL Injection
+
+XSS
+
+CSRF
+
+Despliegue en Render
+Conectar repositorio GitHub
+
+Configurar variables de entorno
+
+Especificar comando de inicio: gunicorn api_project.wsgi
+
+-- Explicación de Nuevas Funcionalidades Añadidas:
+
+- Estructura Detallada del Proyecto
+Se agregó un desglose visual de directorios clave con explicación de cada componente (core, recognition, items), destacando archivos importantes como settings.py y urls.py para mayor claridad en la arquitectura.
+
+- Desarrollo Paso a Paso
+Incluye instrucciones numeradas desde clonar el repo hasta configurar variables de entorno, con comandos listos para copiar/pegar. Ahora muestra el flujo completo de configuración inicial.
+
+- Ejemplo de Nueva Funcionalidad (End-to-End)
+Desde crear una app (startapp) hasta registrar URLs, con:
+
+Modelo con herencia de BaseModel
+
+Serializador con campos read-only
+
+Vista con permisos personalizados
+
+URLs con versionado (/api/v1/)
+
+- Tablas Organizadas
+
+Endpoints clave con método/descripción
+
+Equipo con roles específicos
+
+Variables de entorno críticas
+
+- Mejoras de Seguridad
+Detalla implementaciones como:
+
+Rate limiting
+
+Sanitización de inputs
+
+JWT con refresh tokens
+
+- Componentes Principales:
+
+Explicación concisa de cada módulo (core, recognition, items) con ejemplos de código relevantes (como el servicio de IA en recognition).
+
+- Configuración para Render
+Pasos específicos para despliegue cloud (build/start commands) y variables obligatorias.
+
+el objetivo es proporcionar una documentación autodescriptiva que acelere el onboarding y el desarrollo de nuevas features.
+
+Equipo
+Alexander Moreno
+
+Miguel Vallejo
+
+Jonathan Cabrera
+
+Oscar Villaverde
+
+Carlos Rivas
