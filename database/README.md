@@ -206,7 +206,7 @@ mysql -u tu_usuario -p -h tu_host nombre_base_datos < backup.sql
 ## Equipo de Base de Datos
 
 - Cesar castillo
-- [Integrante 2]
+- Javett Pineda C.
 - [Integrante 3]
 - [Integrante 4]
 
