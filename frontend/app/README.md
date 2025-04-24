@@ -122,6 +122,9 @@ frontend/
 4. **Configurar rutas**:
    - Para configurar rutas, abre el archivo `app-routing.module.ts` y añade la nueva ruta para la página o componente.
 
+5. **Declarar NgModule la pagina**:
+   - para declarar como dependiente de NgModule, abre el archivo `nombre.page.ts` y declara dentro del componente como dependiente `standalone: false`.
+   
 ### Para **Servicios**:
 
 1. **Crear un nuevo servicio**:
