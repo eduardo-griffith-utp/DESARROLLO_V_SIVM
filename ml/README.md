@@ -12,14 +12,19 @@ Esta carpeta contiene los modelos de aprendizaje automático, algoritmos y servi
 - **Herramientas de Experimentación:** [A completar por el equipo]
 
 ## Configuración del Entorno
+cp .env.example .env
 
 ### Requisitos Previos
-- Python version 3.10.11 or higher version
+- Python 3.x
+- TensorFlow
+- Pillow (para trabajar con imÃ¡genes)
+- Tkinter (incluido en la mayorÃ­a de instalaciones de Python)
+
 
 ### Instalación
 
 ```bash
-# A completar por el equipo
+pip install tensorflow pillow
 ```
 
 ### Ejecución del Servicio
