@@ -62,10 +62,6 @@ Crear serializador (serializers.py)
 from rest_framework import serializers
 from .models import NuevoModelo
 
-class NuevoModeloSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = NuevoModelo
-        fields = '__all__'
 
 Implementar vista (views.py)
 
@@ -73,15 +69,7 @@ from rest_framework import viewsets
 from .models import NuevoModelo
 from .serializers import NuevoModeloSerializer
 
-class NuevoModeloViewSet(viewsets.ModelViewSet):
-    queryset = NuevoModelo.objects.all()
-    serializer_class = NuevoModeloSerializer
 
-Configurar URLs (urls.py)
-
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import NuevoModeloViewSet
 
 router = DefaultRouter()
 router.register(r'nuevos-modelos', NuevoModeloViewSet)
