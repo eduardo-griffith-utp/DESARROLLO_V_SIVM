@@ -112,7 +112,7 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
 - Jonathan Page
 - Daniel Pimentel
 - Arturo Phillips
->>>>>>> 561605d5a978c23cf3f7d46adcf2494a0dede57f
+- Sharline Payne 
 - Isaac Pomares
 
 ## Recursos Adicionales
