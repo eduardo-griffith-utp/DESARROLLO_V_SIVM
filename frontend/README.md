@@ -100,9 +100,19 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
 
 - [A completar por el equipo de Diseño UX/UI]
 
-## Equipo de Frontend
+## Equipo de Diseño UX/UI
 
-- Sharline Payne
+- Cristian Andrade
+- Manuel Lopez
+- Ismael MCCLymont
+- Cesar Florez
+- Alexis Jaen
+
+## Equipo de Frontend
+- Jonathan Page
+- Daniel Pimentel
+- Arturo Phillips
+>>>>>>> 561605d5a978c23cf3f7d46adcf2494a0dede57f
 - Isaac Pomares
 
 ## Recursos Adicionales
