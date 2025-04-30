@@ -28,14 +28,6 @@ backend/
 │ └── manage.py # CLI de Django
 
 
-# Configuración Inicial
-```bash
-# Clonar y configurar entorno
-git clone https://github.com/tu_usuario/sivm-backend.git
-cd sivm-backend
-python -m venv env
-source env/bin/activate  # Windows: env\Scripts\activate
-pip install -r requirements.txt
 
 # Configuración inicial
 cp .env.example .env  # Editar con tus valores

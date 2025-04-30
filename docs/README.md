@@ -59,7 +59,11 @@ La documentación debe actualizarse:
 
 - Manuel Rodriguez
 - Diego Caballero
+<<<<<<< HEAD
 - [Integrante 3]
+=======
+- Arquimedes Garcia Lorenzo
+>>>>>>> 9e3aa2e6230bfe86cd6d712f0eb955e6d87694bb
 - [Integrante 4]
 
 ## Recursos Adicionales
