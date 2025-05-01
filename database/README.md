@@ -20,6 +20,22 @@ Esta carpeta contiene los scripts, migraciones y documentación relacionada con 
 ### Entidades Principales
 
 #### Imágenes
+
+
+- [A completar por el equipo]
+
+#### Resultados de Análisis
+
+- [A completar por el equipo]
+
+#### Contenido Multimedia
+
+- [A completar por el equipo]
+
+#### Usuarios
+
+- [A completar por el equipo]
+=======
 ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
 -Id_image , int , Primary key  
 - route_imagen , varchar ,   
@@ -51,6 +67,7 @@ ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE
 - date_consultation , datetime ,   
 - counter , int ,   
 
+
 ### Relaciones
 
 - Cada imagen puede tener varios resultados de análisis y consultas.
@@ -62,13 +79,16 @@ ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE
 ## Configuración del Entorno
 
 ### Requisitos Previos
+
+
+- [A completar por el equipo]
+=======
 - Python 3.10 o superior
 - MariaDB instalado localmente o acceso a instancia remota (por ejemplo, en Digital Ocean)
 - DBeaver (opcional, para diseño y ejecución visual de consultas SQL)
 - Entorno virtual Python (recomendado)
 - Conexión a la base de datos mediante mysql-connector-python o SQLAlchemy
 - Acceso a variables de entorno para proteger las credenciales de la base de datos
-
 
 ### Configuración Inicial
 
@@ -209,7 +229,12 @@ mysql -u tu_usuario -p -h tu_host nombre_base_datos < backup.sql
 - Javett Pineda C.
 - [Integrante 3]
 - [Integrante 4]
+- [Enedina Ortega]
 
 ## Recursos Adicionales
 
+
+- [A completar por el equipo]
+=======
 - Por el momento no tenemos recursos adicionales.
+
