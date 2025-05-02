@@ -97,6 +97,8 @@ Para cargar datos iniciales/prueba:
 - [Integrante 2]
 - [Integrante 3]
 - [Integrante 4]
+  Ricardo Abrego
+
 
 ## Recursos Adicionales
 
