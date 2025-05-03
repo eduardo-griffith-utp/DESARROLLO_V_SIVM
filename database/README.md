@@ -207,7 +207,7 @@ mysql -u tu_usuario -p -h tu_host nombre_base_datos < backup.sql
 
 - Cesar castillo
 - Javett Pineda C.
-- [Integrante 3]
+- Ricardo Copriz
 - [Integrante 4]
 
 ## Recursos Adicionales
