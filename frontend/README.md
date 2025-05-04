@@ -113,6 +113,7 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
 - Daniel Pimentel
 - Arturo Phillips
 - Isaac Pomares
+- Sharline Payne
 
 ## Recursos Adicionales
 
