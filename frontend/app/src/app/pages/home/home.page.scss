@@ -1,0 +1,69 @@
+ion-content {
+    --background: #f4f5f8; /* Un fondo gris claro */
+  }
+  
+  .logo-container {
+    margin-top: 60px;
+    margin-bottom: 40px;
+  
+    img {
+      max-width: 150px; /* Ajusta el tamaño del logo */
+      height: auto;
+      display: block; /* Para centrarlo correctamente */
+      margin: 0 auto 10px auto; /* Centrar horizontalmente y agregar margen inferior */
+    }
+  
+    h1 {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #383a3e; /* Un color de texto oscuro */
+      margin-bottom: 5px;
+    }
+  
+    p {
+      color: #717171; /* Un color de texto más claro */
+      font-size: 1.1em;
+    }
+  }
+  
+  .scan-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  
+    #scan-button {
+      --background: #ffffff; /* Fondo blanco para el botón */
+      --color: #383a3e; /* Color del icono */
+      width: 100px; /* Ajusta el tamaño del botón */
+      height: 100px;
+      border-radius: 50%; /* Para hacerlo circular */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+      margin-bottom: 10px;
+  
+      ion-icon {
+        font-size: 2.5em;
+      }
+    }
+  
+    .scan-text {
+      color: #383a3e;
+      font-size: 1.2em;
+    }
+  }
+  
+  .instruction-text {
+    color: #717171;
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin-bottom: 60px;
+  }
+  
+  #history-button {
+    --color: #1e88e5; /* Un color azul */
+    font-weight: bold;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }

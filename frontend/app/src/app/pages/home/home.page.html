@@ -1,13 +1,21 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding ion-text-center">
+  <div class="logo-container">
+    <img src="assets/visioai-logo.png" alt="VisioAI Logo">
+    <h1>VisioAI</h1>
+    <p>Scan Image</p>
+  </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="scan-button-container">
+    <ion-button id="scan-button" (click)="scanear()" [routerLink]="['/image-capture']">
+      <ion-icon slot="icon-only" name="camera-outline" size="large"></ion-icon>
+    </ion-button>
+    <p class="scan-text">Scan Image</p>
+  </div>
+
+  <p class="instruction-text">Point the camera at an object<br>to learn more about it.</p>
+
+  <ion-button id="history-button" fill="clear">
+    <ion-icon slot="start" name="time-outline"></ion-icon>
+    History
+  </ion-button>
 </ion-content>
