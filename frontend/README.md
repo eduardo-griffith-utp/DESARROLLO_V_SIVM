@@ -59,6 +59,10 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
      ```bash
      npm install -g @angular/cli@19.2.6
      ```
+5. **Camera Plugin** 
+     ```bash
+     npm install @capacitor/camera
+     ```
 
 ### Ejecución
 * Dirigirse a la carpeta frontend 
