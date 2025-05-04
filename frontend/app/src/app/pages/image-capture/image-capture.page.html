@@ -1,13 +1,23 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>image-capture</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>detector de imagenes</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" id="main">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">image-capture</ion-title>
+      <ion-title size="large">Captura de imagen</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-card id="camcont">  
+    <ion-card-title>VisioAI</ion-card-title>
+    <ion-card-content ></ion-card-content>
+  </ion-card>
 </ion-content>
+<div id="buttons"><ion-button shape="round" id="upload" href=""><ion-icon slot="icon-only" name="arrow-up-circle-outline"></ion-icon></ion-button>
+<ion-button shape="round" id="snap" href="../folder/folder.page.html"><ion-icon slot="icon-only" name="camera-outline"></ion-icon></ion-button>
+</div>
+

@@ -1,0 +1,28 @@
+#snap {
+    margin-left: 5%;
+    margin-right: auto;
+    width: 20%;
+    --background: #ff3c3c ;
+    --background-hover: #000000 ;
+
+}
+
+#upload{
+    margin-left: 11%;
+    margin-right: 5%;
+    width: 20%;
+    --background: #ff3c3c ;
+    --background-hover: #000000 ;   
+}
+
+#camcont{
+    border: 2px solid #1a1a1a ;
+    height: 89%;
+    width: auto;
+}
+#buttons{
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
