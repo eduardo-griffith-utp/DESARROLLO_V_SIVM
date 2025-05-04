@@ -45,7 +45,7 @@ La documentación debe actualizarse:
 
 ### Diagramas y Diseño
 
-- [Ver Diagrama General (PDF)](docs/architecture/api-routes/Diagrama%20General.pdf)
+- [Ver Diagrama General (PDF)](docs/architecture/api-routes/Diagrama General.pdf)
 
 
 ### Documentación de API
