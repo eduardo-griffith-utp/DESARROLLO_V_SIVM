@@ -19,45 +19,54 @@ Esta carpeta contiene los scripts, migraciones y documentación relacionada con 
 
 ### Entidades Principales
 
-#### Imágenes
+#### Sesion
 ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
--Id_image , int , Primary key  
-- route_imagen , varchar ,   
-- date_uploaded , datetime ,   
-
-#### Resultados de Análisis
-ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
-- Id_image , int , Primary key  
-- route_imagen , varchar ,   
-- date_uploaded , datetime ,   
+- Id_session , int , Primary key  
+- name_session , varchar   
 
 #### Contenido Multimedia
 ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
-- Id_multimedia , int , Primary key  
-- Imagen_ID , int , Foreing key  
-- type_content  , varchar ,   
-- description , varchar ,   
-- file_path , varchar ,   - id_contenido (PK)
+- Id_media, int, Primary key
+- session_id, int, Foreing key
+- route_path, varchar
+- type_content, varchar
+- description, varchar
+- date_uploaded, datetime
 
-#### Usuarios 
+#### Resultados Analisis
 ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
-- Id_User , int , Primary key  
-- name_user , varchart ,   
+- Id_results, int, Primary key
+- media_id, int, Foreing key
+- detected_labes, varchar
+- date_analysis, datetime
 
 ### Historial de Consultas
 ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
 - Id_querys , int , Primary key 
-- Image_ID , int , Foreing Key  
+- media_id , int , Foreing Key  
 - date_consultation , datetime ,   
 - counter , int ,   
 
+### Items
+ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE
+- Id_items, int, Primary key
+- media_id, int, Foreing key
+- name, varchar
+- description, text
+
+### Item Tags
+ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE
+- Id_tag, int, Primary key
+- items_id, int, Foreing key
+- tag_name, varchar
+
 ### Relaciones
 
-- Cada imagen puede tener varios resultados de análisis y consultas.
-- Cada consulta está asociada a una imagen.
-- El historial de consultas permite contar y registrar cuándo se hace cada consulta.
-- Cada contenido multimedia se asocia a una imagen o directo al resultado.
-- Todas las acciones podrían relacionarse con un usuario genérico.
+- Una sesión puede contener múltiples contenidos multimedia.
+- Un contenido multimedia puede tener múltiples resultados de análisis.
+- Un contenido multimedia puede ser consultado múltiples veces.
+- Un contenido multimedia puede contener múltiples ítems.
+- Un ítem puede tener múltiples etiquetas asociadas.
 
 ## Configuración del Entorno
 
@@ -73,76 +82,77 @@ ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE
 ### Configuración Inicial
 
 ```bash
-# primero debemos crear la base de datos
+# Creación de la base de datos
+CREATE DATABASE IF NOT EXISTS desarrollov_app;
+USE desarrollov_app;
 
-create database desarrollov_app;
-
-# una vez creada la base de datos procedemos a crear la estructura de las tablas
-
-create table if not exists Session(
-	id_session int primary key not null,
-	name_session varchar(20)
+# Tabla Session
+CREATE TABLE IF NOT EXISTS Session(
+    id_session INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    name_session VARCHAR(20) NOT NULL
 );
 
-
-create table if not exists MediaContent(
-	id_media int primary key not null,
-	user_id int not null,
-	route_path varchar(64),
-	type_content varchar(30),
-	description varchar(50),
-	date_uploaded datetime not null
+# Tabla MediaContent
+CREATE TABLE IF NOT EXISTS MediaContent(
+    id_media INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    session_id INT NOT NULL,
+    route_path VARCHAR(64) NOT NULL,
+    type_content VARCHAR(30) NOT NULL,
+    description VARCHAR(50),
+    date_uploaded DATETIME NOT NULL
 );
 
-create table if not exists AnalysisResult(
-	id_results int primary key not null,
-	media_is int not null,
-	detected_labes varchar(50),
-	date_analysis datetime not null
+# Tabla AnalysisResult
+CREATE TABLE IF NOT EXISTS AnalysisResult(
+    id_results INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    media_id INT NOT NULL,
+    detected_labels VARCHAR(50) NOT NULL,
+    date_analysis DATETIME NOT NULL
 );
 
-create table if not exists QueryHistory(
-	id_query int primary key not null,
-	media_id int not null,
-	date_consultation datetime not null,
-	counter int not null
+# Tabla QueryHistory
+CREATE TABLE IF NOT EXISTS QueryHistory(
+    id_query INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    media_id INT NOT NULL,
+    date_consultation DATETIME NOT NULL,
+    counter INT NOT NULL DEFAULT 1
 );
 
-create table if not exists Items(
-	id_items int primary key not null,
-	media_id int not null,
-	name varchar(30) not null,
-	description text not null
+# Tabla Items
+CREATE TABLE IF NOT EXISTS Items(
+    id_items INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    media_id INT NOT NULL,
+    name VARCHAR(30) NOT NULL,
+    description TEXT NOT NULL
 );
 
-create table if not exists ItemTags(
-	id_tag int primary key not null,
-	item_id int not null,
-	tag_name varchar(30) not null
+# Tabla ItemTags
+CREATE TABLE IF NOT EXISTS ItemTags(
+    id_tag INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    items_id INT NOT NULL,
+    tag_name VARCHAR(30) NOT NULL
 );
 
+# Llaves foráneas corregidas
+ALTER TABLE MediaContent 
+ADD CONSTRAINT fk_mediacontent_session
+FOREIGN KEY (session_id) REFERENCES Session(id_session);
 
-# una vez creada la estructura procedemos a crear las llaves foraneas
+ALTER TABLE AnalysisResult  
+ADD CONSTRAINT fk_analysisresult_mediacontent
+FOREIGN KEY (media_id) REFERENCES MediaContent(id_media);
 
-alter table mediacontent 
-add constraint fk_mediacontent_session
-foreign key (user_id) references Session(id_session); 
+ALTER TABLE QueryHistory  
+ADD CONSTRAINT fk_queryhistory_mediacontent
+FOREIGN KEY (media_id) REFERENCES MediaContent(id_media);
 
-alter table analysisresult  
-add constraint fk_analisysresults_mediacontent
-foreign key (media_is) references MediaContent(id_media); 
+ALTER TABLE Items 
+ADD CONSTRAINT fk_items_mediacontent
+FOREIGN KEY (media_id) REFERENCES MediaContent(id_media);
 
-alter table queryhistory  
-add constraint fk_queryhistory_mediacontent
-foreign key (media_id) references MediaContent(id_media) ;
-
-alter table items 
-add constraint fk_items_mediacontent
-foreign key (media_id) references MediaContent(id_media);
-
-alter table ItemTags 
-add constraint fk_itemtags_items
-foreign key (item_id) references items(id_items) ;
+ALTER TABLE ItemTags 
+ADD CONSTRAINT fk_itemtags_items
+FOREIGN KEY (items_id) REFERENCES Items(id_items);
 
 
 ```
@@ -225,10 +235,12 @@ mysql -u tu_usuario -p -h tu_host nombre_base_datos < backup.sql
 
 ## Equipo de Base de Datos
 
-- Cesar castillo
-- 
-- [Integrante 3]
-- [Integrante 4]
+- Cesar Castillo
+- Javett Pineda C.
+- Ricardo Copriz
+- Enedina Ortega
+- Ricardo Abrego
+- Luis Gómez
 
 ## Recursos Adicionales
 

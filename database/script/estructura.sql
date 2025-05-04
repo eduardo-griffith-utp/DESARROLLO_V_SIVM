@@ -1,41 +1,50 @@
-create table if not exists Session(
-	id_session int primary key not null,
-	name_session varchar(20)
+-- Creación de la base de datos
+CREATE DATABASE IF NOT EXISTS desarrollov_app;
+USE desarrollov_app;
+
+-- Tabla Session
+CREATE TABLE IF NOT EXISTS Session(
+    id_session INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    name_session VARCHAR(20) NOT NULL
 );
 
-
-create table if not exists MediaContent(
-	id_media int primary key not null,
-	user_id int not null,
-	route_path varchar(64),
-	type_content varchar(30),
-	description varchar(50),
-	date_uploaded datetime not null
+-- Tabla MediaContent
+CREATE TABLE IF NOT EXISTS MediaContent(
+    id_media INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    session_id INT NOT NULL,
+    route_path VARCHAR(64) NOT NULL,
+    type_content VARCHAR(30) NOT NULL,
+    description VARCHAR(50),
+    date_uploaded DATETIME NOT NULL
 );
 
-create table if not exists AnalysisResult(
-	id_results int primary key not null,
-	media_is int not null,
-	detected_labes varchar(50),
-	date_analysis datetime not null
+-- Tabla AnalysisResult
+CREATE TABLE IF NOT EXISTS AnalysisResult(
+    id_results INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    media_id INT NOT NULL,
+    detected_labels VARCHAR(50) NOT NULL,
+    date_analysis DATETIME NOT NULL
 );
 
-create table if not exists QueryHistory(
-	id_query int primary key not null,
-	media_id int not null,
-	date_consultation datetime not null,
-	counter int not null
+-- Tabla QueryHistory
+CREATE TABLE IF NOT EXISTS QueryHistory(
+    id_query INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    media_id INT NOT NULL,
+    date_consultation DATETIME NOT NULL,
+    counter INT NOT NULL DEFAULT 1
 );
 
-create table if not exists Items(
-	id_items int primary key not null,
-	media_id int not null,
-	name varchar(30) not null,
-	description text not null
+-- Tabla Items
+CREATE TABLE IF NOT EXISTS Items(
+    id_items INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    media_id INT NOT NULL,
+    name VARCHAR(30) NOT NULL,
+    description TEXT NOT NULL
 );
 
-create table if not exists ItemTags(
-	id_tag int primary key not null,
-	item_id int not null,
-	tag_name varchar(30) not null
+-- Tabla ItemTags
+CREATE TABLE IF NOT EXISTS ItemTags(
+    id_tag INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    items_id INT NOT NULL,
+    tag_name VARCHAR(30) NOT NULL
 );
