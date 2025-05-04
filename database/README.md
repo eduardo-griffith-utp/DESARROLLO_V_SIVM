@@ -73,57 +73,77 @@ ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE
 ### Configuración Inicial
 
 ```bash
+# primero debemos crear la base de datos
 
--- desarrollov_app.usuario definition
+create database desarrollov_app;
 
-CREATE TABLE `usuario` (
-  `id_user` int(11) NOT NULL,
-  `name_user` varchar(20) NOT NULL,
-  PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+# una vez creada la base de datos procedemos a crear la estructura de las tablas
 
--- desarrollov_app.queryhistory definition
+create table if not exists Session(
+	id_session int primary key not null,
+	name_session varchar(20)
+);
 
-CREATE TABLE `queryhistory` (
-  `id_querys` int(11) NOT NULL,
-  `imagen_id` int(11) NOT NULL,
-  `date_consultation` datetime NOT NULL,
-  `counter` int(11) NOT NULL,
-  PRIMARY KEY (`id_querys`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
--- desarrollov_app.analisisresults definition
+create table if not exists MediaContent(
+	id_media int primary key not null,
+	user_id int not null,
+	route_path varchar(64),
+	type_content varchar(30),
+	description varchar(50),
+	date_uploaded datetime not null
+);
 
-CREATE TABLE `analisisresults` (
-  `id_results` int(11) NOT NULL,
-  `imagen_id` int(11) NOT NULL,
-  `detected_labels` varchar(50) NOT NULL,
-  `date_analisys` datetime NOT NULL,
-  PRIMARY KEY (`id_results`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+create table if not exists AnalysisResult(
+	id_results int primary key not null,
+	media_is int not null,
+	detected_labes varchar(50),
+	date_analysis datetime not null
+);
 
--- desarrollov_app.multimedia definition
+create table if not exists QueryHistory(
+	id_query int primary key not null,
+	media_id int not null,
+	date_consultation datetime not null,
+	counter int not null
+);
 
-CREATE TABLE `multimedia` (
-  `id_multimedia` int(11) NOT NULL,
-  `imagen_id` int(11) NOT NULL,
-  `type_content` varchar(30) NOT NULL,
-  `description` varchar(50) NOT NULL,
-  `file_path` varchar(64) NOT NULL,
-  PRIMARY KEY (`id_multimedia`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+create table if not exists Items(
+	id_items int primary key not null,
+	media_id int not null,
+	name varchar(30) not null,
+	description text not null
+);
 
--- desarrollov_app.images definition
+create table if not exists ItemTags(
+	id_tag int primary key not null,
+	item_id int not null,
+	tag_name varchar(30) not null
+);
 
-CREATE TABLE `images` (
-  `id_imagen` int(11) NOT NULL AUTO_INCREMENT,
-  `route_imagen` varchar(50) NOT NULL,
-  `date_uploaded` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_imagen`),
-  CONSTRAINT `images_analisisresults_FK` FOREIGN KEY (`id_imagen`) REFERENCES `analisisresults` (`id_results`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `images_multimedia_FK` FOREIGN KEY (`id_imagen`) REFERENCES `multimedia` (`id_multimedia`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `images_queryhistory_FK` FOREIGN KEY (`id_imagen`) REFERENCES `queryhistory` (`id_querys`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+# una vez creada la estructura procedemos a crear las llaves foraneas
+
+alter table mediacontent 
+add constraint fk_mediacontent_session
+foreign key (user_id) references Session(id_session); 
+
+alter table analysisresult  
+add constraint fk_analisysresults_mediacontent
+foreign key (media_is) references MediaContent(id_media); 
+
+alter table queryhistory  
+add constraint fk_queryhistory_mediacontent
+foreign key (media_id) references MediaContent(id_media) ;
+
+alter table items 
+add constraint fk_items_mediacontent
+foreign key (media_id) references MediaContent(id_media);
+
+alter table ItemTags 
+add constraint fk_itemtags_items
+foreign key (item_id) references items(id_items) ;
+
 
 ```
 
@@ -206,7 +226,7 @@ mysql -u tu_usuario -p -h tu_host nombre_base_datos < backup.sql
 ## Equipo de Base de Datos
 
 - Cesar castillo
-- [Integrante 2]
+- 
 - [Integrante 3]
 - [Integrante 4]
 
