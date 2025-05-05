@@ -30,7 +30,7 @@ ion-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   
     #scan-button {
       --background: #ffffff; /* Fondo blanco para el botón */
@@ -56,14 +56,14 @@ ion-content {
     color: #717171;
     font-size: 0.9em;
     line-height: 1.4;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
   }
   
   #history-button {
     --color: #1e88e5; /* Un color azul */
     font-weight: bold;
     position: absolute;
-    bottom: 20px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
   }
