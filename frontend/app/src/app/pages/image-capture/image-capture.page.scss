@@ -1,0 +1,44 @@
+ion-content {
+    --background: #1e1e1e; /* Fondo oscuro */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos hijos horizontalmente */
+  }
+  
+  .top-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 40px;
+    margin-bottom: 30px;
+  
+    .logo-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+  
+    .camera-preview {
+      background-color: #333;
+      width: 80%; /* Mantén un ancho para que se vea el centrado */
+      aspect-ratio: 1 / 1.3; /* Simula una proporción vertical */
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      display: flex; /* Añade flex para centrar contenido interno si es necesario */
+      justify-content: center; /* Centra el video/imagen horizontalmente */
+      align-items: center; /* Centra el video/imagen verticalmente */
+    }
+  
+    /* ... otros estilos ... */
+  }
+  
+  ion-footer {
+    ion-toolbar {
+      --background: #2c2c2c;
+      --color: white;
+      display: flex;
+      justify-content: center; /* Centra el botón en el footer */
+    }
+  }

@@ -16,10 +16,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: 'image-capture',
     loadChildren: () => import('./pages/image-capture/image-capture.module').then( m => m.ImageCapturePageModule)
   },
