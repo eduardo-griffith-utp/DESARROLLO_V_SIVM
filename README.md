@@ -123,6 +123,16 @@ cp .env.example .env
 # Iniciar servidor de desarrollo
 npm run dev
 ```
+#### Backend
+#Requisitos
+- Python 3.x
+- TensorFlow
+- Pillow (para trabajar con imágenes)
+- Tkinter (incluido en la mayoría de instalaciones de Python)
+
+```bash
+pip install tensorflow pillow
+
 
 ## Contribución
 
