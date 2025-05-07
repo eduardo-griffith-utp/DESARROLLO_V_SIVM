@@ -10,14 +10,10 @@ ion-content {
       max-width: 150px; /* Ajusta el tamaño del logo */
       height: auto;
       display: block; /* Para centrarlo correctamente */
-      margin: 0 auto 10px auto; /* Centrar horizontalmente y agregar margen inferior */
+      margin: 0 auto 0px auto; /* Centrar horizontalmente y agregar margen inferior */
     }
-  
-    h1 {
-      font-size: 2.5em;
-      font-weight: bold;
-      color: #383a3e; /* Un color de texto oscuro */
-      margin-bottom: 5px;
+    h1{
+      margin: 0rem;
     }
   
     p {
