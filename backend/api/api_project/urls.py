@@ -1,10 +1,13 @@
 from django.contrib import admin
-from django.urls import path
-from core.views import HelloWorldView
-from core.views import home  # Importa la nueva vista
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', home),  # Ruta raiz
     path('admin/', admin.site.urls),
-    path('api/hello/', HelloWorldView.as_view()),
+    # Incluir rutas de recognition
+    path('', include('recognition.urls')),
 ]
+
+# Servir media en desarrollo
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

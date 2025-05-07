@@ -1,8 +1,8 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import ExampleViewSet
-router = DefaultRouter()
-router.register(r'examples', ExampleViewSet)
-urlpatterns = [
- path('', include(router.urls)),
-]
+from rest_framework.routers import SimpleRouter
+from .views import CapturedImageViewSet
+
+router = SimpleRouter()
+# Ruta: POST /api/v1/images/capture/
+router.register(r'api/v1/images', CapturedImageViewSet, basename='capturedimage')
+
+urlpatterns = router.urls
