@@ -45,7 +45,8 @@ La documentación debe actualizarse:
 
 ### Diagramas y Diseño
 
-- [A completar por el equipo]
+- [Ver Diagrama General (PDF)](architecture/api-routes/Diagrama%20%General.pdf)
+
 
 ### Documentación de API
 
@@ -59,8 +60,10 @@ La documentación debe actualizarse:
 
 - Manuel Rodriguez
 - Diego Caballero
-- [Integrante 3]
-- [Integrante 4]
+- Arquimedes Garcia
+- Allan De Roux
+-
+-
 
 ## Recursos Adicionales
 

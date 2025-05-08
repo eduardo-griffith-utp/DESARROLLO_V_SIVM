@@ -59,11 +59,20 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
      ```bash
      npm install -g @angular/cli@19.2.6
      ```
+5. **Carpeta www**
+     Si no se te genero la build web de angular, generalmente una carpeta www. Ejecuta
+     ```bash
+     npm run build
+     ```
 5. **Camera Plugin** 
      ```bash
      npm install @capacitor/camera
      ```
-
+6. **SplashScreen plugin**
+     ```bash
+     npm install @capacitor/splash-screen
+     npx cap sync
+     ```
 ### Ejecución
 * Dirigirse a la carpeta frontend 
   ```bash
@@ -104,13 +113,21 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
 
 - [A completar por el equipo de Diseño UX/UI]
 
-## Equipo de Frontend
+## Equipo de Diseño UX/UI
 
+- Cristian Andrade
+- Manuel Lopez
+- Ismael MCCLymont
+- Cesar Florez
+- Alexis Jaen
+
+## Equipo de Frontend
 - Jonathan Page
 - Daniel Pimentel
+- Arturo Phillips
 - Isaac Pomares
 - Sharline Payne
-- Arturo Pillips
+
 ## Recursos Adicionales
 
 - Documentación de Ionic: https://ionicframework.com/docs

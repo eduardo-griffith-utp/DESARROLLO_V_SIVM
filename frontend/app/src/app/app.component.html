@@ -1,9 +1,16 @@
+<!-- demostracion ejecutable en la web del Splash Screen -->
+<div *ngIf="showSplash" class="web-splash">
+  <img src="assets/splash.png" alt="Splash" />
+  <h1>Visio AI</h1>
+  <ion-progress-bar [value]="progress"></ion-progress-bar>
+</div>
+
 <ion-app>
   <ion-split-pane contentId="main-content">
     
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
-
+  
   <ion-header>
     <ion-toolbar>
       <ion-title>VisioAi</ion-title>

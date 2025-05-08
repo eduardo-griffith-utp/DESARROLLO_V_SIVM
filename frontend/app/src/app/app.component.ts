@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { SplashScreen } from '@capacitor/splash-screen';
+import { Platform } from '@ionic/angular';
+import { IonProgressBar } from '@ionic/angular/standalone';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -7,17 +12,33 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public progress = 0;
+  splash =true;
 
-  constructor() {
+  showSplash = true;
+  constructor(){
+    setTimeout(() => {
+      this.showSplash = false;
+    }, 5000);
+
+
     setInterval(() => {
-      this.progress += 0.01;
+      this.progress += 0.011;
 
-      /*if (this.progress > 1) {
-        setTimeout(() => {
-          this.progress = 0;
-        }, 1000);
-      }*/
     }, 50);
   }
+
   
+  
+  /*constructor(private platform: Platform) {
+     this.initializeApp();
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      setTimeout(() => {
+        SplashScreen.hide();
+      }, 3000);
+    });
+  }*/
 }
+
