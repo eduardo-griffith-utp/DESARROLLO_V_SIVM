@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { NavController } from '@ionic/angular';  // Importa NavController para navegar
 
 @Component({
   selector: 'app-image-capture', // Selector actualizado
@@ -7,12 +8,12 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   styleUrls: ['./image-capture.page.scss'], // Referencia al nuevo nombre del SCSS
   standalone: false,
 })
-export class ImageCapturePage implements OnInit, OnDestroy { // Clase renombrada a ImageCapturePage
+export class ImageCapturePage implements OnInit, OnDestroy {
   imageUrl: string | undefined;
   isCameraActive = false;
   videoStream: MediaStream | undefined;
 
-  constructor() {}
+  constructor(private navController: NavController) {}  // Inyecta NavController
 
   async ngOnInit() {
     this.startCameraPreview();
@@ -25,7 +26,7 @@ export class ImageCapturePage implements OnInit, OnDestroy { // Clase renombrada
   async startCameraPreview() {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: 'environment' }, // 'user' para la cámara frontal
+        video: { facingMode: 'environment' }, // Cámara trasera
         audio: false,
       });
       this.videoStream = stream;
@@ -34,7 +35,6 @@ export class ImageCapturePage implements OnInit, OnDestroy { // Clase renombrada
     } catch (error) {
       console.error('Error al acceder a la cámara:', error);
       this.isCameraActive = false;
-      // Aquí puedes mostrar un mensaje de error al usuario
     }
   }
 
@@ -64,15 +64,20 @@ export class ImageCapturePage implements OnInit, OnDestroy { // Clase renombrada
 
       this.imageUrl = image.webPath;
       console.log('Imagen capturada:', this.imageUrl);
-      // Aquí puedes procesar la imagen capturada
+
+      // Redirigir a la página de resultados, pasando la URL de la imagen
+      this.navController.navigateForward('/recognition-results', {
+        queryParams: {
+          imageUrl: this.imageUrl,  // Pasa la URL de la imagen
+        },
+      });
+
     } catch (error) {
       console.error('Error al tomar la foto:', error);
-      // Aquí puedes manejar el error
     }
   }
 
   async uploadImage() {
-    // Implementa la lógica para subir la imagen
     console.log('Subir imagen seleccionado');
   }
 }
