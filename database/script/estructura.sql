@@ -1,4 +1,4 @@
-
+use desarrollov_app;
 
 -- Tabla MediaContent
 CREATE TABLE IF NOT EXISTS MediaContent(
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS MediaContent(
 CREATE TABLE IF NOT EXISTS AnalysisResult(
     id_analysis_result INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     item_id INT NOT NULL,
-    analisys_id int NOT NULL,
+    analysis_id int NOT NULL,
     detected_labels VARCHAR(50) NOT NULL,
     date_analysis DATETIME NOT null,
     status varchar(10)
