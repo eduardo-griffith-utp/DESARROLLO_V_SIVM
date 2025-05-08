@@ -1,0 +1,48 @@
+.settings-content {
+    --background: var(--ion-color-light);
+  
+    ion-list {
+      background: transparent;
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+  
+    ion-item {
+      --background: var(--ion-color-light);
+      --padding-start: 16px;
+      --padding-end: 16px;
+      --min-height: 56px;
+      --border-color: var(--ion-color-light-shade);
+  
+      ion-icon {
+        font-size: 1.4rem;
+        margin-right: 16px;
+      }
+  
+      ion-note {
+        color: var(--ion-color-medium);
+        font-size: 0.9rem;
+      }
+    }
+  
+    .version-info {
+      text-align: center;
+      color: var(--ion-color-medium);
+      font-size: 0.8rem;
+      margin-top: 32px;
+      padding-bottom: 16px;
+    }
+  }
+  
+  /* Estilos para modo oscuro */
+  @media (prefers-color-scheme: dark) {
+    .settings-content {
+      --background: var(--ion-color-dark);
+  
+      ion-item {
+        --background: var(--ion-color-dark);
+        --border-color: var(--ion-color-dark-shade);
+        --color: var(--ion-color-light);
+      }
+    }
+  }

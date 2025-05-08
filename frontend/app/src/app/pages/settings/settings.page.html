@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Configuración</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="settings-content">
+  <ion-list lines="full">
+    <!-- Opción de Idioma -->
+    <ion-item button detail="true" >
+      <ion-icon slot="start" name="language-outline" color="primary"></ion-icon>
+      <ion-label>Idioma</ion-label>
+      <ion-note slot="end">Español</ion-note>
+    </ion-item>
+
+    <!-- Opción de Notificaciones -->
+    <ion-item>
+      <ion-icon slot="start" name="notifications-outline" color="primary"></ion-icon>
+      <ion-label>Notificaciones</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="notificationsEnabled" color="primary"></ion-toggle>
+    </ion-item>
+
+    <!-- Opción de Escaneo automático -->
+    <ion-item>
+      <ion-icon slot="start" name="scan-outline" color="primary"></ion-icon>
+      <ion-label>Escaneo automático</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="autoScanEnabled" color="primary"></ion-toggle>
+    </ion-item>
+
+    <!-- Opción de Tema oscuro -->
+    <ion-item>
+      <ion-icon slot="start" name="moon-outline" color="primary"></ion-icon>
+      <ion-label>Tema oscuro</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="darkModeEnabled" (ionChange)="toggleDarkMode()" color="primary"></ion-toggle>
+    </ion-item>
+
+    <!-- Opción de Privacidad -->
+    <ion-item button detail="true" [routerLink]="['/privacy']">
+      <ion-icon slot="start" name="lock-closed-outline" color="primary"></ion-icon>
+      <ion-label>Privacidad</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Versión de la app -->
+  <div class="version-info">
+    Versión {{appVersion}}
+  </div>
+</ion-content>
