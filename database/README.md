@@ -19,54 +19,73 @@ Esta carpeta contiene los scripts, migraciones y documentación relacionada con 
 
 ### Entidades Principales
 
-#### Sesion
-ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
-- Id_session , int , Primary key  
-- name_session , varchar   
-
-#### Contenido Multimedia
-ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
-- Id_media, int, Primary key
-- session_id, int, Foreing key
+#### MediaContent
+- Id_media_content, int, Primary key
+- item_id, int, Foreign key
 - route_path, varchar
-- type_content, varchar
+- type, varchar
 - description, varchar
 - date_uploaded, datetime
 
-#### Resultados Analisis
-ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
-- Id_results, int, Primary key
-- media_id, int, Foreing key
+#### AnalysisResult
+- Id_analysis_result, int, Primary key
+- item_id, int, Foreign key
+- analysis_id, int, Foreign key
 - detected_labes, varchar
 - date_analysis, datetime
+- status, varchar
 
-### Historial de Consultas
-ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
-- Id_querys , int , Primary key 
-- media_id , int , Foreing Key  
-- date_consultation , datetime ,   
-- counter , int ,   
+### Analysis
+- Id_analysis , int , Primary key 
+- imput_image_path, varchar
+- timpestamp datetime
+- status, varchar 
+- processing_time, datetime
 
-### Items
-ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE
-- Id_items, int, Primary key
-- media_id, int, Foreing key
+### Item
+- Id_item, int, Primary key
+- item_tag_id, int, Foreing key
 - name, varchar
 - description, text
 
-### Item Tags
-ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE
+### ItemTag
 - Id_tag, int, Primary key
-- items_id, int, Foreing key
 - tag_name, varchar
+
 
 ### Relaciones
 
-- Una sesión puede contener múltiples contenidos multimedia.
-- Un contenido multimedia puede tener múltiples resultados de análisis.
-- Un contenido multimedia puede ser consultado múltiples veces.
-- Un contenido multimedia puede contener múltiples ítems.
-- Un ítem puede tener múltiples etiquetas asociadas.
+**1. Item → ItemTag**
+Relación: Muchos a Uno
+
+Clave foránea: item_tag_id en Item
+
+Descripción: Cada ítem pertenece a una etiqueta (ItemTag), pero una etiqueta puede estar asociada a múltiples ítems.
+
+**2. MediaContent → Item**
+Relación: Muchos a Uno
+
+Clave foránea: item_id en MediaContent
+
+Descripción: Cada contenido multimedia pertenece a un ítem específico. Un ítem puede tener múltiples contenidos multimedia asociados.
+
+**3. AnalysisResult → Item**
+Relación: Muchos a Uno
+
+Clave foránea: item_id en AnalysisResult
+
+Descripción: Cada resultado de análisis está asociado a un ítem. Un ítem puede tener varios análisis realizados.
+
+**4. AnalysisResult → Analysis**
+Relación: Muchos a Uno
+
+Clave foránea: analysis_id en AnalysisResult
+
+Descripción: Un resultado de análisis proviene de una ejecución de análisis (Analysis). Un análisis puede generar múltiples resultados (aunque usualmente es uno a uno).
+
+**5. Analysis → (ninguna relación directa en otras tablas como FK saliente)**
+
+Relación implícita: Se usa en AnalysisResult pero no apunta directamente a otra tabla (excepto la ruta de imagen como valor de referencia).
 
 ## Configuración del Entorno
 
