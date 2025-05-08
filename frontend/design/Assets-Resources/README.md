@@ -2,7 +2,7 @@
 
 - Pantalla de inicio/splash( imagen de carga) 
 
-Imagen 890256484, Imagen 
+[ 1. Pantalla de Inicio splash ](https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Pantallas%20de%20alta%20fidelidad/1.%20Pantalla%20de%20Inicio%20splash.pdf)
 
 Elementos de interfaz con diseño finalizado 
 
@@ -54,7 +54,7 @@ Margen y paddings: Suficientes para evitar saturación en pantallas pequeñas, y
 
 - Pantalla principal/dashboard 
 
-Imagen 1612720304, Imagen 
+[ 2. Pantalla principal ](https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Pantallas%20de%20alta%20fidelidad/2.%20Pantalla%20principal.pdf)
 
  
 
@@ -165,7 +165,7 @@ Componentes táctiles grandes: botón principal y navegación inferior optimizad
 
 - Pantalla de captura de imagen (para identificación) 
 
-Imagen 1, Imagen 
+[ 3. Pantalla de captura de imagen (para identificacion) ](https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Pantallas%20de%20alta%20fidelidad/3.%20Pantalla%20de%20captura%20de%20imagen%20(para%20identificacion).pdf)
 
 Todos los elementos de interfaz con diseño finalizado: 
 
@@ -227,7 +227,7 @@ Texto y botones: escalables según el tamaño del dispositivo sin perder legibil
 
 - Pantalla de resultados de identificación 
 
-
+[4. Pantalla de Resultados de identificacion](https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Pantallas%20de%20alta%20fidelidad/4.%20Pantalla%20de%20Resultados%20de%20identificacion.pdf)
 
 Todos los elementos de interfaz con diseño finalizado: 
 
@@ -341,7 +341,7 @@ Touch targets grandes para accesibilidad
 
 - Pantalla: Resultado (post-escaneo) 
 
-Imagen 912142626, Imagen 
+[5. Pantalla de detalle del elemento identificado ](https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Pantallas%20de%20alta%20fidelidad/5.%20Pantalla%20de%20detalle%20del%20elemento%20identificado.pdf) 
 
 Fondo: 
 
@@ -444,7 +444,7 @@ Diseño optimizado para usabilidad móvil
 
 - Pantalla de historial de identificaciones 
 
-Imagen 114204285, Imagen 
+[6.1. Pantalla de historial de identificaciones ](https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Pantallas%20de%20alta%20fidelidad/6.1.%20Pantalla%20de%20historial%20de%20identificaciones.pdf)
 
 Imagen 1105881656, Imagen 
 
@@ -582,9 +582,7 @@ Etiquetas pequeñas debajo de cada ícono
 
 - Pantalla de Configuración  
 
- 
-
-Imagen 1007278565, ImagenImagen 994450479, Imagen 
+[7.1. Pantalla de Configuración ](https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Pantallas%20de%20alta%20fidelidad/7.1.%20Pantalla%20de%20Configuraci%C3%B3n.pdf)
 
 Imagen 1336012860, Imagen 
 
@@ -732,27 +730,22 @@ Interactividad clara con zonas táctiles amplias
 
  
 
- 
-
- 
-
 ## La estructura de navegación 
 
 https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/features/laboratorio-4-ui/frontend/design/Assets-Resources/Estructura%20de%20Navegacion/Flujo%20Visual%20de%20la%20estructura%20de%20navegacion.png 
 
+
 ## Decisiones de diseño importantes 
 
-Decisiones de diseño importantes para las pantallas de VisioAI 
+- Decisiones de diseño importantes para las pantallas de VisioAI 
 
- 
 
-Diseño simple y fácil de usar: 
+- Diseño simple y fácil de usar: 
 
 Queríamos que la aplicación fuera clara desde el primer momento. Por eso, cada pantalla muestra solo lo necesario, con un estilo limpio, sin cosas que distraigan. Así, el usuario puede enfocarse en lo que realmente importa: identificar elementos con la cámara. 
 
  
-
-Colores que guían al usuario 
+- Colores que guían al usuario 
 
 Usamos colores bien pensados: 
 
@@ -762,19 +755,13 @@ El morado (#9C27B0) acompaña sin quitar protagonismo.
 
 Grises para los textos, con buen contraste para que se lean bien. 
 
- 
-
 Esto ayuda a que el usuario sepa rápidamente qué puede tocar y qué está viendo. 
 
- 
-
-Navegación que se entiende sola: 
+- Navegación que se entiende sola: 
 
 Agregamos una barra con íconos y nombres en la parte de abajo, para que el usuario sepa dónde está y cómo moverse sin perderse. El icono que esté activo cambia de color para que sea muy evidente en qué parte de la app está. 
 
- 
-
-Cada pantalla tiene un propósito 
+- Cada pantalla tiene un propósito 
 
 No quisimos hacer pantallas confusas. Cada una tiene una función clara: 
 
@@ -786,30 +773,17 @@ Revisar detalles
 
 Ver historial, etc. 
 
- 
-
- 
-
 Esto evita confusión y ayuda a que la persona complete lo que vino a hacer sin dar vueltas innecesarias. 
 
- 
-
-Botones grandes y fáciles de tocar: 
+- Botones grandes y fáciles de tocar: 
 
 Todos los botones son cómodos para usar con el dedo. Además, cambian de apariencia cuando están activos, deshabilitados o presionados, para que el usuario siempre sepa si están disponibles o no. 
 
- 
-
-Se adapta a diferentes pantallas: 
+- Se adapta a diferentes pantallas: 
 
 La app está pensada para que funcione bien tanto en celulares como en tablets. Todo se ajusta para que no se vea apretado ni desordenado, sin importar el tamaño de la pantalla. 
 
- 
-
 Flujo natural entre pantallas: Después de tomar una foto, se ve el resultado. Si no es lo que se esperaba, se puede volver a capturar fácilmente. Todo fluye sin interrupciones, para que el usuario no se pierda y pueda usar la app sin complicaciones. 
-
-
- 
 
 ## Enlaces al prototipo interactivo 
 
