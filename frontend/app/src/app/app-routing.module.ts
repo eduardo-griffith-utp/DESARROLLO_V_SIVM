@@ -26,7 +26,15 @@ const routes: Routes = [
   {
     path: 'item-details',
     loadChildren: () => import('./pages/item-details/item-details.module').then( m => m.ItemDetailsPageModule)
+  },  {
+    path: 'history',
+    loadChildren: () => import('./pages/history/history.module').then( m => m.HistoryPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
   }
+
 
 ];
 
