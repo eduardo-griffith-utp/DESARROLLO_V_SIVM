@@ -1,7 +1,6 @@
 <ion-content class="ion-padding ion-text-center">
   <div class="logo-container">
     <img src="assets/images/Logo.jpg" alt="VisioAI Logo">
-    <h1>VisioAI</h1>
     <p>Scan Image</p>
   </div>
 
@@ -14,7 +13,8 @@
 
   <p class="instruction-text">Point the camera at an object<br>to learn more about it.</p>
 
-  <ion-button id="history-button" fill="clear">
+  <!-- Botón de History con otro ID único -->
+  <ion-button [routerLink]="['/history']" id="history-button2" fill="clear">
     <ion-icon slot="start" name="time-outline"></ion-icon>
     History
   </ion-button>
