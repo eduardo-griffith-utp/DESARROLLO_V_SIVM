@@ -209,6 +209,8 @@ mysql -u tu_usuario -p -h tu_host nombre_base_datos < backup.sql
 - Javett Pineda C.
 - [Integrante 3]
 - [Integrante 4]
+  Ricardo Abrego
+
 
 ## Recursos Adicionales
 
