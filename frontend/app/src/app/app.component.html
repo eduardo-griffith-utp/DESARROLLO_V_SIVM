@@ -7,28 +7,21 @@
 
 <ion-app>
   <ion-split-pane contentId="main-content">
-    
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
-  
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>VisioAi</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <ion-tab-bar>
     <ion-tab-button tab="1" [routerLink]="['/home']">
-      <ion-icon name="home"></ion-icon>
+      <img src="assets/icon/Home-icon.png" style="width: auto; height: auto;">
     </ion-tab-button>
     <ion-tab-button tab="2" [routerLink]="['/image-capture']">
-      <ion-icon name="camera"></ion-icon>
+      <img src="assets/icon/Camera-icon.png" style="width: auto; height: auto;">
     </ion-tab-button>
-    <ion-tab-button tab="3" [routerLink]="['/recognition-results']">
-      <ion-icon name="time-outline"></ion-icon>
+    <ion-tab-button tab="3" [routerLink]="['/history']">
+      <img src="assets/icon/History-icon.png" style="width: auto; height: auto;">
     </ion-tab-button>    
     <ion-tab-button tab="3" [routerLink]="['/settings']">
-      <ion-icon name="settings"></ion-icon>
+      <img src="assets/icon/Settings-icon.png" style="width: auto; height: auto;">
     </ion-tab-button>
   </ion-tab-bar>
 </ion-app>
