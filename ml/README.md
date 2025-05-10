@@ -7,19 +7,24 @@ Esta carpeta contiene los modelos de aprendizaje automático, algoritmos y servi
 - **Frameworks de ML:** [A completar por el equipo]
 - **APIs de Visión:** [A completar por el equipo]
 - **Procesamiento de Imágenes:** [A completar por el equipo]
-- **Lenguajes:** [A completar por el equipo]
+- **Lenguajes:** Python
 - **Infraestructura:** [A completar por el equipo]
 - **Herramientas de Experimentación:** [A completar por el equipo]
 
 ## Configuración del Entorno
+cp .env.example .env
 
 ### Requisitos Previos
-- [A completar por el equipo]
+- Python 3.x
+- TensorFlow
+- Pillow (para trabajar con imÃ¡genes)
+- Tkinter (incluido en la mayorÃ­a de instalaciones de Python)
+
 
 ### Instalación
 
 ```bash
-# A completar por el equipo
+pip install tensorflow pillow
 ```
 
 ### Ejecución del Servicio
