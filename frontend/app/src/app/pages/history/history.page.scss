@@ -45,3 +45,20 @@
       object-fit: cover;   // Asegura que la imagen cubra todo el espacio
     }
   }
+  #buttons{
+
+
+    display: flex;
+    overflow: hidden;
+  }
+  #butto1{
+    margin-left: 5%;
+    margin-top: 5%;
+    
+  }
+  #butto2{
+    margin-top: 5%;
+  }
+  ul li{
+    list-style: none;
+  }
