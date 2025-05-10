@@ -3,11 +3,17 @@
     <ion-title>item-details</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-button slot="icon-only" size="large" fill="outline" color="dark"  [routerLink]="['/history']"><ion-icon name="arrow-back-circle-outline"></ion-icon></ion-button>
+<ion-content>
+<ion-card>
+  <img src="assets/images/dog.webp">
+  <ion-card-header>
+    <ion-card-title>perro</ion-card-title>
+    <ion-card-subtitle>animal</ion-card-subtitle>
+    </ion-card-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">item-details</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card-content>
+    El perro (Canis familiaris o Canis lupus familiaris, dependiendo de si se lo considera una especie o una subespecie del lobo),​ llamado perro doméstico,es un mamífero carnívoro de la familia de los cánidos, que constituye una especie del género Canis.
+  </ion-card-content>
+</ion-card>
 </ion-content>

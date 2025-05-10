@@ -1,0 +1,29 @@
+ion-button{
+padding: 4%;
+width: 20%;
+height: 15%;
+    display: flex;
+    overflow: hidden;
+}
+
+ion-card{
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+height: fit-content;
+in-card-title{
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+ion-card-content{
+    font-size: 14px;
+    color: var(--ion-color-medium);
+    align-self: flex-start;
+    margin-top: 12px;
+}
+ion-card-subtitle{
+    color: var(--ion-color-medium);
+    font-size: 14px;
+}
+}
