@@ -1,0 +1,44 @@
+# ───────────────────────────────
+# 🐍 Python/Django
+# ───────────────────────────────
+__pycache__/  # Caché de Python
+*.py[cod]     # Archivos compilados
+*.pyc
+*.pyo
+*.pyd
+*.so
+
+# Base de datos SQLite (local)
+db.sqlite3
+db.sqlite3-journal
+
+# Entornos virtuales
+venv/
+.venv/
+env/
+.env/
+.env.local/
+
+# Archivos de configuración sensible
+secrets.json
+*.key
+*.pem
+
+# Media y archivos estáticos (generados)
+media/
+staticfiles/
+
+# ───────────────────────────────
+# 🛠 Herramientas de desarrollo
+# ───────────────────────────────
+.idea/       # Config de JetBrains (PyCharm)
+.vscode/     # Config de VS Code
+.DS_Store    # Metadata de macOS
+Thumbs.db    # Metadata de Windows
+
+# ───────────────────────────────
+# 📦 Logs y archivos temporales
+# ───────────────────────────────
+*.log
+*.pot
+*.pid
