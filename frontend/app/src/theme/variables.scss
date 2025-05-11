@@ -1,21 +1,21 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
 :root {
-  --ion-item-border-color: var(--ion-background-color-step-200);
+  --ion-item-border-color: var(--ion-background-color-step-200); 
 }
 
 /* This sets a different background and item background for the default theme on ios */
 :root.ios {
-  --ion-background-color: var(--ion-background-color-step-50, #FAFAFA);
+  --ion-background-color: var(--ion-background-color-step-50, #ffffff);
   --ion-toolbar-background: var(--ion-background-color);
-  --ion-item-background: #FAFAFA;
+  --ion-item-background: #ffffff; 
 }
 
 /* This sets a different background and item background for the default theme on md */
 :root.md {
-  --ion-background-color: var(--ion-background-color-step-100, #FAFAFA);
+  --ion-background-color: var(--ion-background-color-step-100, #ffffff);
   --ion-toolbar-background: var(--ion-background-color);
-  --ion-item-background: #FAFAFA;
+  --ion-item-background: #ffffff;
 }
 
 /* This sets a different item background when dark mode is enabled on ios and md */

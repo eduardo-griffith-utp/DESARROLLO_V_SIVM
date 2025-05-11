@@ -1,19 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button color="medium" text="" defaultHref="/home"></ion-back-button>
-    </ion-buttons>
+<ion-header color="light" class="ion-no-border">
+  <ion-toolbar color="light">
+    <img src="assets/icon/Settings-icon.png">
     <ion-title>Configuración</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="settings-content">
-  <ion-list lines="full">
+<ion-content color="light" class="settings-content">
+  <ion-list color="dark" lines="full">
     <!-- Opción de Idioma -->
-    <ion-item button detail="true" >
+    <ion-item button detail="true" [routerLink]="['/settings-lenguage']">
       <img src="assets/icon/Lenguage-icon.png" >
-      <ion-label> Lenguaje</ion-label>
-      <ion-note slot="end">Español</ion-note>
+      <ion-label>Lenguaje</ion-label>
+      <ion-note slot="end">Seleccione el tipo de lenguaje</ion-note>
     </ion-item>
 
     <!-- Opción de Notificaciones -->
@@ -38,14 +36,14 @@
     </ion-item>
 
     <!-- Opción de Privacidad -->
-    <ion-item button detail="true" [routerLink]="['/privacy']">
+    <ion-item button detail ="true" [routerLink]="['/settings-privacy']">
       <img src="assets/icon/privacity-icon.png" >
       <ion-label>Privacidad</ion-label>
     </ion-item>
   </ion-list>
 
-  <!-- Versión de la app -->
-  <div class="version-info">
+  <!-- Versión de la app 
+   <div class="version-info">
     Versión {{appVersion}}
-  </div>
+  </div>-->
 </ion-content>

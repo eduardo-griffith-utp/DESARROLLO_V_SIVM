@@ -1,0 +1,25 @@
+.lenguaje{
+    font-size: 20px;
+    text-align: center;
+}
+ion-list {
+    background: transparent;
+    padding-bottom: 25px;
+    --color: #000000; 
+}
+ion-toolbar{
+    padding-bottom: 25px;
+    padding-left: 20px;
+}
+ion-item {
+  --background: var(--ion-color-light);
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --min-height: 56px;
+  --border-color: var(--ion-color-light-shade);
+}
+
+
+.settings-lenguage-content{
+    --background: var(--ion-color-light);
+}

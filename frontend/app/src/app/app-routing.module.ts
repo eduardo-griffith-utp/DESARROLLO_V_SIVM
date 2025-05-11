@@ -30,7 +30,18 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
-  }
+  },
+  
+  {
+    path: 'settings-privacy',
+    loadChildren: () => import('./pages/settings-privacy/settings-privacy.module').then( m => m.SettingsPrivacyPageModule)
+  },
+  
+  {
+    path: 'settings-lenguage',
+    loadChildren: () => import('./pages/settings-lenguage/settings-lenguage.module').then( m => m.SettingsLenguagePageModule)
+  },
+
 
 
 ];
