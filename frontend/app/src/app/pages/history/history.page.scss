@@ -1,8 +1,13 @@
+*{
+  font-family:Roboto}
+
 .history-item {
     --padding-start: 16px;
     --inner-padding-end: 16px;
     --min-height: 72px;
-  
+    border: solid 2px #EFEEEE;
+    border-radius: 1.23rem;
+
     ion-avatar {
       width: 48px;
       height: 48px;
@@ -11,18 +16,20 @@
   
     h2 {
       font-weight: 500;
-      font-size: 16px;
+      font-size: 1.25rem;
       margin-bottom: 4px;
     }
   
     p {
-      color: var(--ion-color-medium);
-      font-size: 14px;
+      color: #757575 ;
+      font-size: 1rem;
+      white-space: nowrap;
+      width: 12px;
     }
   
     ion-note {
-      font-size: 14px;
-      color: var(--ion-color-medium);
+      font-size: 1rem;
+      color: #757575;
       align-self: flex-start;
       margin-top: 12px;
     }
@@ -46,19 +53,28 @@
     }
   }
   #buttons{
-
-
     display: flex;
     overflow: hidden;
   }
   #butto1{
     margin-left: 5%;
     margin-top: 5%;
-    
+    border-radius: 1.11rem, solid, black;
+    font-family: Poppins;
+    font-size: 0.85rem;
   }
   #butto2{
     margin-top: 5%;
+    border-radius: 1.11rem;
+    border-radius: 1.11rem, solid, black;
+    font-family: Poppins;
+    font-size: 0.85rem;
   }
   ul li{
     list-style: none;
+  }
+  ion-title{
+    color: #212121;
+    margin: 35px,25px;
+    padding: 10px,9px;
   }
