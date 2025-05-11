@@ -1,741 +1,278 @@
-## El sistema de diseño (con enlaces a los archivos) 
+# El sistema de diseño (con enlaces a los archivos) 
 
-- Pantalla de inicio/splash( imagen de carga) 
+## Sistema de Diseño VisioAI
 
-[ 1. Pantalla de Inicio splash ](https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Pantallas%20de%20alta%20fidelidad/1.%20Pantalla%20de%20Inicio%20splash.pdf)
+Esta documentacion describe las pantallas y componentes clave del sistema de diseño de la aplicación **VisioAI**, incluyendo colores, tipografías, navegación, estados de los componentes y adaptaciones responsivas.
 
-Elementos de interfaz con diseño finalizado 
+---
+## Índice
 
-Fondo: #FAFAFA (blanco suave), según guía de color. 
+1. [Pantalla de inicio / Splash](#pantalla-de-inicio--splash)
+2. [Pantalla principal / Dashboard](#pantalla-principal--dashboard)
+3. [Pantalla de captura de imagen](#pantalla-de-captura-de-imagen)
+4. [Pantalla de resultados de identificación](#pantalla-de-resultados-de-identificación)
+5. [Pantalla de resultado detallado (post-escaneo)](#pantalla-de-resultado-detallado-post-escaneo)
+6. [Pantalla de historial](#pantalla-de-historial)
+7. [Pantalla de configuración](#pantalla-de-configuración)
 
-Logotipo: Logotipo oficial de VisioAI centrado, como elemento principal de identidad visual. 
 
-Texto del nombre: “VisioAI” en fuente Poppins Bold, color #212121 (texto principal). 
+## Pantalla de inicio / Splash
 
-Subtítulo: “Identificación Visual de Materiales” en Poppins Regular, color #757575 (texto secundario). 
+**Imagen:** `frontend\design\Assets-Resources\Pantallas de alta fidelidad\1. Pantalla de Inicio splash.pdf`
+**Imagen:** `frontend\design\Assets-Resources\Pantallas de alta fidelidad\1.1. Pantalla de Inicio splash barra carga.pdf`
 
-Indicador de carga: Barra horizontal en la parte inferior de color gris claro, simulando el proceso de carga. 
 
-Distribución centrada verticalmente: todo el contenido está alineado al centro de la pantalla para claridad visual. 
+### Elementos de interfaz finalizados:
 
- 
+* **Fondo:** `#FAFAFA` (blanco suave)
+* **Logotipo:** Centrado
+* **Texto del nombre:** `VisioAI` en Poppins Bold, `#212121`
+* **Subtítulo:** “Identificación Visual de Materiales”, Poppins Regular, `#757575`
+* **Indicador de carga:** barra horizontal inferior en gris claro
+* **Distribución centrada verticalmente**
 
-Navegación clara entre pantallas 
+### Navegación:
 
-Esta pantalla es de presentación (splash): 
+* Pantalla no interactiva
+* Redirige automáticamente al dashboard tras unos segundos
 
-No tiene navegación interactiva. 
+### Estados de componentes:
 
-Su única función es presentar la marca mientras la app carga. 
+* Barra de carga: estática en wireframe, animada en diseño funcional
 
-Tras unos segundos (controlado por la lógica de la app), navegará automáticamente a la pantalla principal (dashboard). 
+### Responsive Design:
 
- 
+* Optimizada para móviles y tablets
+* Elementos centrados, con márgenes adaptados
 
-Estados de componentes (donde sea relevante) 
+---
 
-Barra de carga: aunque es estática en el wireframe, representa un estado animado que indica al usuario que la app está iniciando. 
+## Pantalla principal / Dashboard
 
-(En diseño funcional, esta barra puede tener un efecto de progreso o animación de carga suave). 
+**Imagen:** `frontend\design\Assets-Resources\Pantallas de alta fidelidad\2. Pantalla principal.pdf`
 
- 
+### Elementos de interfaz finalizados:
 
- 
+* **Fondo:** `#FAFAFA`
+* **Logo VisioAI:** centrado en la parte superior, texto 'VisioAI' (Poppins Bold, #212121)
+* **Texto de bienvenida:**
 
-Adaptaciones para diferentes tamaños de pantalla (responsive design) 
+  * Título: “¡Bienvenido!”, Poppins Bold, `#212121`
+  * Subtítulo: “Identifica materiales mediante imágenes”, Poppins Regular, `#757575`
+* **Botón principal "ESCANEAR":**
 
-Versión móvil (vertical): Diseño optimizado para centrado en pantallas pequeñas. 
+  * Fondo: `#000000`, texto blanco, ícono blanco
+  * Border-radius: `1.23rem`, sombra suave
+* **Navegación inferior:**
 
-Versión tablet: El logo y los textos escalan proporcionalmente y mantienen el alineamiento vertical. 
+  * Íconos: Inicio, Escanear (activo), Historial, Ajustes
+  * Ícono activo: `#E91E63`, inactivos: `#757575`
 
-Margen y paddings: Suficientes para evitar saturación en pantallas pequeñas, y bien distribuidos para pantallas más amplias. 
+### Navegación:
 
- 
+* Botón “ESCANEAR” lleva a la pantalla de captura
+* Menú inferior permite navegar a otras secciones
 
-- Pantalla principal/dashboard 
+### Estados de componentes:
 
-[ 2. Pantalla principal ](https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Pantallas%20de%20alta%20fidelidad/2.%20Pantalla%20principal.pdf)
+* Botón con estados: normal, presionado (`#1a1a1a`), deshabilitado (`#333333`)
+* botón tiene ícono integrado
 
- 
+### Responsive Design:
 
-Todos los elementos de interfaz con diseño finalizado 
+* Layout adaptable a móviles y tablets
+* Componentes táctiles accesibles
 
-Fondo: Color #FAFAFA (blanco suave), según la guía visual. 
+---
 
-Logo VisioAI: Centrado en la parte superior para mantener identidad visual consistente. 
+## Pantalla de captura de imagen
 
- 
+**Imagen:** `frontend\design\Assets-Resources\Pantallas de alta fidelidad\3. Pantalla de captura de imagen (para identificacion).pdf`
 
-Texto de bienvenida: 
+### Elementos de interfaz finalizados:
 
-Título: “¡Bienvenido!” – fuente Poppins Bold, tamaño H1 (1.6rem – 2rem), color #212121. 
+* Encabezado con ícono de cámara y título
+* Vista previa de cámara
+* Botón de captura (negro con borde magenta, ícono blanco)
+* Botones: cambiar cámara (esquina superior derecha), ayuda (superior izquierda)
+* Guías visuales para centrado
+* Feedback de carga posterior a la captura
 
-Subtítulo: “Identifica materiales mediante imágenes” – fuente Poppins Regular, tamaño texto normal (1rem – 1.23rem), color #757575. 
+### Navegación:
 
- 
+* Tras capturar, redirige a pantalla de resultados
+* Flecha para volver al dashboard
 
-Botón principal ("ESCANEAR"): 
+### Estados de componentes:
 
- 
+* Botón de captura: normal, presionado, deshabilitado
+* Mensajes si la cámara no está disponible
+* Animaciones suaves al cambiar de cámara
 
-Color de fondo: negro sólido #000000 
+### Responsive Design:
 
- 
+* Diseño vertical para móviles
+* En tablets: elementos redimensionados, márgenes amplios
 
-Texto blanco y en mayúsculas (fuente Poppins 0.85rem) 
+---
 
-Ícono integrado de cámara en blanco 
+## Pantalla de resultados de identificación
+**Imagen:** `frontend\design\Assets-Resources\Pantallas de alta fidelidad\4. Pantalla de Resultados de identificacion.pdf`
 
-Bordes redondeados: border-radius: 1.23rem 
+### Elementos de interfaz finalizados:
 
-Sombra suave (representa estado normal) 
+* Encabezado: título y botón de retroceso
+* Lista de resultados: miniatura, nombre, descripción, botón “Ver más”
+* Botón "Capturar otra vez": negro con texto blanco, centrado
+* Cards con sombra sutil y buen espaciado
 
- 
+### Navegación:
 
-Navegación inferior (Bottom Nav Bar): 
+* "Capturar otra vez": redirige a captura
+* Botón “Ver más”: muestra detalles adicionales
 
-Íconos: Inicio, Escanear (activo), Historial, Ajustes 
+### Estados de componentes:
 
-Etiquetas debajo de cada ícono 
+* Botón con estados: normal, hover, presionado, deshabilitado
+* Estado vacío: mensaje informativo con botón para intentar nuevamente
 
-Ícono activo: color magenta #E91E63 
+### Responsive Design:
 
-Íconos inactivos: gris medio #757575 
+* Móviles: scroll vertical
+* Tablets: grilla de 2 columnas
 
- 
+---
 
- 
+## Pantalla de resultado detallado (post-escaneo)
 
-Navegación clara entre pantallas 
+**Imagen:** `frontend\design\Assets-Resources\Pantallas de alta fidelidad\5. Pantalla de detalle del elemento identificado.pdf`
 
-Menú inferior: navegación intuitiva entre las 4 secciones: 
+### Elementos de interfaz finalizados:
 
-Inicio 
+* Fondo: `#FAFAFA`
+* Imagen centrada con fondo gris claro (`#F5F5F5`) y bordes redondeados suaves
+* **Título:** “Mochila”, Poppins Bold, `#212121`
+* **Descripción:** Texto justificado, `#424242`
+* **Botón "Realizar otra vez":**
 
-Escáner (pantalla activa actual) 
+  * Fondo negro, texto blanco, border-radius `1.23rem`, sombra suave
+* **Navegación inferior:** ícono de escanear activo
 
-Historial 
+### Responsive Design:
 
-Ajustes 
+* Todos los elementos escalables y con touch targets adecuados
 
- 
+---
 
-Botón "ESCANEAR": lleva a la pantalla de captura de imagen 
+## Pantalla de historial
 
-Iconos + etiquetas: apoyan el entendimiento visual del destino de cada sección 
+**Imágenes:** `frontend\design\Assets-Resources\Pantallas de alta fidelidad\6.1. Pantalla de historial de identificaciones.pdf`
+**Imágenes:** `frontend\design\Assets-Resources\Pantallas de alta fidelidad\6.2. Pantalla de historial de no identificaciones.pdf`
 
- 
+### Elementos de interfaz finalizados:
 
-Estados de componentes (donde sea relevante): 
+* Fondo: `#FAFAFA`
+* Encabezado: “Historial”, Poppins Bold, `#212121`, alineado a la izquierda
+* Filtros tipo “pill”:
 
- 
+  * Activo: fondo negro, texto blanco
+  * Inactivo: borde gris claro, texto gris
+* Lista: miniatura circular, título, fecha, descripción, separador
+* Indicador de “no identificado”: punto rojo
 
-Botón "ESCANEAR": 
+### Navegación inferior:
 
-Estado normal: fondo negro, ícono blanco, sombra leve 
+* Ícono “Historial” activo (`#E91E63`)
 
-Estado presionado (interacción): puede aplicar un fondo #1a1a1a con sombra interna 
+---
 
-Estado deshabilitado (si aplica en lógica): fondo gris oscuro #333333, texto gris claro, opacidad reducida 
+## Pantalla de configuración
 
- 
-Icono de navegación activo: color magenta (#E91E63) 
+**Imágenes:** `frontend\design\Assets-Resources\Pantallas de alta fidelidad\7.1. Pantalla de Configuración.pdf`
 
-Iconos inactivos: gris (#757575) 
 
- 
+**Imágenes:** `frontend\design\Assets-Resources\Pantallas de alta fidelidad\7.2. Pantalla de lenguajes.pdf`
 
-Adaptaciones para diferentes tamaños de pantalla (responsive design): 
+**Imágenes:** `frontend\design\Assets-Resources\Pantallas de alta fidelidad\7.3. Pantalla de privacidad.pdf`
 
- 
+### Elementos de interfaz finalizados:
 
-Diseño vertical (móvil): todos los elementos se alinean al centro, con márgenes adecuados. 
+* Fondo: `#FAFAFA`
+* Encabezado: “Configuración”, centrado, Poppins Bold
+* Botón de regreso (ícono flecha a la izquierda)
+* **Opciones de configuración:**
 
- 
+  * Fila individual con fondo blanco
+  * Divisiones finas (`#E0E0E0`), íconos y textos alineados
+  * Altura mínima: `3.5rem` para accesibilidad
+  * los switches usan estilo verde brillante
+---
 
-Diseño para tablet: el logo, botones y textos escalan proporcionalmente y se conserva el espaciado entre elementos. 
 
- 
+### Elementos Visuales
 
-Componentes táctiles grandes: botón principal y navegación inferior optimizados para accesibilidad en pantallas táctiles. 
+Colores:
 
- 
+* Primarios: #E91E63 (magenta), #000000 (negro), #FAFAFA (fondo)
 
- 
+* Secundarios: #757575, #424242, #E0E0E0, #F5F5F5
 
-- Pantalla de captura de imagen (para identificación) 
+* Estados:
 
-[ 3. Pantalla de captura de imagen (para identificacion) ](https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Pantallas%20de%20alta%20fidelidad/3.%20Pantalla%20de%20captura%20de%20imagen%20(para%20identificacion).pdf)
+  * Éxito: #4CAF50
+  * Error: #F44336
+  * Advertencia: #FF9800
+  * Info: #2196F3
 
-Todos los elementos de interfaz con diseño finalizado: 
+### Tipografía:
 
-Encabezado con ícono de cámara y título "Capturar Imagen" 
+* Fuente: Poppins (Regular, Bold, Semibold)
 
-Vista previa de la cámara ocupando la mayor parte de la pantalla 
+* Tamaños:
 
-Botón central de captura (color negro con borde magenta #E91E63, ícono de cámara blanca) 
+  *  H1: 1.6–2rem
 
-Botón para cambiar cámara (frontal/trasera), ícono en la esquina superior derecha 
+  * H2: 1.4–1.6rem
 
-Botón de ayuda/información, ícono "?" en la parte superior izquierda 
+  * Párrafo: 1rem–1.23rem
 
-Indicadores visuales de guía para centrar el objeto (líneas guía o marco) 
+  * Botón: 0.85–1rem
 
-Feedback visual de carga o procesamiento posterior a la captura (círculo de progreso con animación suave) 
+  * Interlineado: 1.4–1.6x
 
- 
+  * Tracking: 0.25–0.5 px
 
- 
+### Componentes UI:
 
-Navegación clara entre pantallas: 
+* Botones: primarios (negro), secundarios (borde magenta)
 
-Tras capturar la imagen, se navega automáticamente a la pantalla de resultados 
+* Inputs: idioma, switches, ayuda
 
-Flecha para regresar al dashboard desde el encabezado 
+* Tarjetas: resultados con imagen, sombra y padding
 
-Barra de navegación inferior activa (ícono de escáner en color #E91E63, los demás en #757575) 
+* Indicadores: barra de carga, feedback post-captura
 
- 
+* Navegación inferior: íconos con etiquetas
 
-Estados de componentes: 
+### Espaciado y Dimensiones:
 
-Botón de captura: 
+* Espaciado base: múltiplos de 4px (4, 8, 16, 24, 32)
 
-Normal: ícono blanco, fondo negro 
+* Margen general: 16–24px
 
-Presionado: fondo más oscuro (#1a1a1a), sombra interna 
+* Padding interno: 12–16px
 
-Deshabilitado: opacidad reducida, sin interacción 
+* Botón mínimo: 48px altura
 
-Cámara no disponible o sin permisos: mensaje en texto secundario (#757575) con botón para reintentar 
+* Miniaturas: 40–50px
+---
 
-Cambio de cámara: animación suave al invertir entre cámaras 
+# La estructura de navegación 
 
- 
+https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Estructura%20de%20Navegacion/Flujo%20Visual%20de%20la%20estructura%20de%20navegacion.png
 
-Adaptaciones para diferentes tamaños de pantalla (responsive design): 
-
-En móviles: disposición vertical, botones centrados en la parte inferior 
-
-En tablets: elementos redimensionados, mayor margen lateral, botones más separados 
-
-Usabilidad táctil: áreas de toque grandes (>48px), botones centrados para fácil acceso con una mano 
-
-Texto y botones: escalables según el tamaño del dispositivo sin perder legibilidad 
-
- 
-
-- Pantalla de resultados de identificación 
-
-[4. Pantalla de Resultados de identificacion](https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Pantallas%20de%20alta%20fidelidad/4.%20Pantalla%20de%20Resultados%20de%20identificacion.pdf)
-
-Todos los elementos de interfaz con diseño finalizado: 
-
-Encabezado con título "Resultados de Identificación" y botón de retroceso (flecha) 
-
-Lista de resultados identificados: 
-
-Cada ítem tiene: 
-
-Imagen miniatura del objeto identificado 
-
-Nombre o etiqueta del objeto (texto principal, color #212121) 
-
-Descripción breve o categoría (texto secundario, color #757575) 
-
-Botón "Ver más" (botón pequeño con fondo blanco, borde magenta y texto negro) 
-
- 
-
- 
-
- 
-
-Botón principal "Capturar otra vez": 
-
-Fondo negro #000000, texto blanco, bordes redondeados 
-
-Alineado al centro inferior de la pantalla 
-
- 
-
-Separadores o tarjetas para cada resultado con sombra sutil y padding para claridad visual 
-
- 
-
-Navegación clara entre pantallas: 
-
- 
-
-Botón "Capturar otra vez" redirige a la Pantalla 3 (Captura de Imagen) 
-
-Botón de retroceso (encabezado) regresa al dashboard o pantalla anterior 
-
-Botón "Ver más" podría expandir la información del resultado o mostrar una nueva pantalla con detalles 
-
-Navegación inferior visible, con ícono de escáner activo (#E91E63), los demás inactivos (#757575) 
-
- 
-
-Estados de componentes: 
-
- 
-
-Botón "Capturar otra vez": 
-
-Normal: fondo negro, texto blanco 
-
-Hover: sombra más pronunciada 
-
-Presionado: tono más oscuro (#1a1a1a), sombra interna 
-
-Deshabilitado (si aún no ha terminado la identificación): opacidad reducida 
-
- 
-
-Botones "Ver más": 
-
-Activo: borde magenta (#E91E63), texto oscuro 
-
-Presionado: leve oscurecimiento o sombra interna 
-
-Estado vacío o sin resultados: 
-
-Mensaje amigable con ícono informativo y botón para intentar nuevamente 
-
- 
-
- 
-
-Adaptaciones para diferentes tamaños de pantalla (responsive design): 
-
-Móviles: 
-
-Lista de resultados en columna, scroll vertical fluido 
-
-Botón "Capturar otra vez" fijo o flotante al fondo con suficiente separación 
-
- 
-
- 
-
-Tablets: 
-
-Resultados en grilla de 2 columnas (si el espacio lo permite) 
-
-Botones de acción más grandes, mejor aprovechamiento del ancho 
-
- 
-
- 
-
-General: 
-
-Textos escalables según el tamaño de pantalla 
-
-Cards ajustables con padding proporcional 
-
-Touch targets grandes para accesibilidad 
-
- 
-
-- Pantalla: Resultado (post-escaneo) 
-
-[5. Pantalla de detalle del elemento identificado ](https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Pantallas%20de%20alta%20fidelidad/5.%20Pantalla%20de%20detalle%20del%20elemento%20identificado.pdf) 
-
-Fondo: 
-
-Color: #FAFAFA (blanco suave) 
-
- 
-
-Imagen del objeto 
-
-Imagen centrada en un recuadro con bordes redondeados suaves y fondo gris muy claro (probablemente #F5F5F5) 
-
-Espaciado adecuado alrededor de la imagen 
-
-La imagen muestra el resultado de identificación (en este caso, una mochila azul con detalles marrones) 
-
- 
-
-Título del resultado 
-
-Texto: “Mochila” 
-
-Fuente: Poppins Bold 
-
-Tamaño: Aproximadamente H2 (1.4rem – 1.6rem) 
-
-Color: #212121 
-
-Centrado debajo de la imagen 
-
- 
-
-Descripción del objeto 
-
-Texto: 
- “una mochila de color azul con toques marrones, diseño clásico que cuenta con un compartimiento principal y un bolsillo frontal adicional” 
-
-Fuente: Poppins Regular 
-
-Tamaño: texto normal (1rem – 1.23rem) 
-
-Color: #424242 o #212121 (tonalidad oscura para buena legibilidad) 
-
-Justificado o centrado, ubicado dentro del mismo recuadro que la imagen 
-
- 
-
-Botón "Realizar otra vez" 
-
-Texto: “Realizar otra vez” 
-
-Fuente: Poppins Semibold o Medium 
-
-Tamaño: 0.95rem – 1rem 
-
-Texto en blanco 
-
-Fondo: negro sólido #000000 
-
-Bordes redondeados: border-radius: 1.23rem 
-
-Padding amplio para accesibilidad táctil 
-
-Centrado horizontalmente debajo del contenido 
-
-Sombra leve para destacar el botón 
-
-Estado presionado esperado: fondo #1a1a1a 
-
- 
-
-Barra de navegación inferior (Bottom Navigation) 
-
-Fondo: blanco 
-
-Íconos: 
-
-Inicio (izquierda) 
-
-Escanear (centro, activo) 
-
-Historial 
-
-Ajustes 
-
-Ícono activo: Escanear 
-
-Color: magenta #E91E63 
-
-Íconos inactivos: gris medio #757575 
-
-Etiquetas pequeñas debajo de cada ícono 
-
-Íconos tocables con área amplia para interacción 
-
-Diseño optimizado para usabilidad móvil 
-
- 
-
- 
-
-- Pantalla de historial de identificaciones 
-
-[6.1. Pantalla de historial de identificaciones ](https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Pantallas%20de%20alta%20fidelidad/6.1.%20Pantalla%20de%20historial%20de%20identificaciones.pdf)
-
-Imagen 1105881656, Imagen 
-
- 
-
-Pantalla: Historial 
-
-Fondo: 
-
-Color: #FAFAFA (blanco suave) 
-
- 
-
-Encabezado 
-
-Texto: “Historial” 
-
-Fuente: Poppins Bold 
-
-Tamaño: H1 (aproximadamente 1.6rem – 2rem) 
-
-Color: #212121 
-
-Alineado a la izquierda 
-
-Margen superior e inferior adecuados 
-
- 
-
-Filtros superiores 
-
-Botones tipo “pill” (pastilla) para filtrado 
-
-Opción activa: Todos 
-
-Fondo: negro sólido #000000 
-
-Texto: blanco, fuente Poppins Regular 
-
-Opción inactiva: No identificados 
-
-Fondo: blanco o transparente 
-
-Borde fino gris claro 
-
-Texto: color gris oscuro #757575 
-
-Bordes redondeados (border-radius alto) 
-
-Espaciado horizontal entre botones 
-
- 
-
-Lista de resultados históricos 
-
-Cada ítem contiene: 
-
-Imagen de miniatura 
-
-A la izquierda, forma circular 
-
-Tamaño uniforme (aproximadamente 40–50px) 
-
-Imágenes recortadas al centro para mantener proporción 
-
-Texto principal (título del objeto) 
-
-Fuente: Poppins Semibold o Medium 
-
-Tamaño: 1rem – 1.1rem 
-
-Color: #212121 
-
-Texto truncado si excede una línea 
-
-Fecha relativa (por ejemplo: “1d”, “2d”) 
-
-Tamaño pequeño (aprox. 0.85rem) 
-
-Color: gris oscuro #757575 
-
-Ubicado junto al título 
-
-Descripción previa 
-
-Fuente: Poppins Regular 
-
-Tamaño: 0.95rem – 1rem 
-
-Color: gris medio #757575 
-
-Texto truncado con puntos suspensivos (…) 
-
-Separador de ítems 
-
-Línea divisoria muy delgada (probablemente #E0E0E0) entre cada resultado 
-
-Indicador de no identificado 
-
-Punto rojo pequeño al lado izquierdo del ítem correspondiente 
-
-Se usa para destacar elementos con estado “no identificado” 
-
- 
-
-Barra de navegación inferior (Bottom Navigation) 
-
-Fondo: blanco 
-
-Íconos: 
-
-Inicio 
-
-Escanear 
-
-Historial (activo) 
-
-Ajustes 
-
-Ícono activo: Historial 
-
-Color: magenta #E91E63 
-
-Íconos inactivos: gris medio #757575 
-
-Etiquetas pequeñas debajo de cada ícono 
-
-Íconos centrados y fácilmente tocables 
-
- 
-
- 
-
- 
-
-- Pantalla de Configuración  
-
-[7.1. Pantalla de Configuración ](https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/b5abdbe5c404bd75f74fd48f28136752b4a4773c/frontend/design/Assets-Resources/Pantallas%20de%20alta%20fidelidad/7.1.%20Pantalla%20de%20Configuraci%C3%B3n.pdf)
-
-Imagen 1336012860, Imagen 
-
-Pantalla: Configuración 
-
-Fondo: 
-
-Color: #FAFAFA (blanco suave) 
-
- 
-
-Encabezado 
-
-Texto: “Configuración” 
-
-Fuente: Poppins Bold 
-
-Tamaño: H1 (aproximadamente 1.6rem – 2rem) 
-
-Color: #212121 
-
-Centrado horizontalmente 
-
-Icono de flecha hacia atrás alineado a la izquierda para navegación 
-
- 
-
-Opciones de configuración 
-
-Cada fila tiene los siguientes elementos: 
-
-Estructura general 
-
-Contenedor con altura estándar para accesibilidad (mínimo 56px) 
-
-Fondo blanco individual por fila 
-
-División sutil entre elementos (líneas divisorias finas en color #E0E0E0) 
-
-Íconos alineados a la izquierda 
-
-Texto principal y texto auxiliar alineados verticalmente 
-
- 
-
-Opción: Lenguaje 
-
-Ícono: globo (idioma) 
-
-Título: Lenguaje 
-
-Texto secundario: “seleccionar el tipo de lenguaje” 
-
-Fuente: Poppins Regular 
-
-Tamaño: aproximadamente 1rem 
-
-Color: texto principal #212121, texto auxiliar #757575 
-
-Indicador de navegación: flecha hacia la derecha (>) 
-
- 
-
-Opción: Notificaciones 
-
-Ícono: campana 
-
-Título: Notificaciones 
-
-Componente: interruptor (switch) 
-
-Switch activado: color verde brillante (iOS-style) 
-
-Texto y diseño alineados a la izquierda, switch a la derecha 
-
- 
-
-Opción: Escaneo automático 
-
-Ícono: cámara o escáner 
-
-Título: Escaneo automático 
-
-Switch activado: color verde brillante 
-
-Misma disposición que la opción anterior 
-
- 
-
-Opción: Tema oscuro 
-
-Ícono: sol/luna 
-
-Título: Tema oscuro 
-
-Switch desactivado: fondo gris claro 
-
-El texto permanece en color oscuro para mantener visibilidad en modo claro 
-
- 
-
-Opción: Privacidad 
-
-Ícono: candado 
-
-Título: Privacidad 
-
-Texto auxiliar: “ajustes de privacidad” 
-
-Flecha hacia la derecha para indicar navegación 
-
-Estilo igual a la fila de “Lenguaje” 
-
- 
-
-Accesibilidad y diseño adaptable 
-
-Tamaño y separación de los ítems optimizados para interacción táctil 
-
-Texto legible con contraste suficiente 
-
-Compatible con navegación por voz o lectores de pantalla 
-
-Adaptado a pantallas móviles (diseño vertical) 
-
-Preparado para escalar a pantalla de tablet manteniendo márgenes y disposición 
-
- 
-
-Navegación inferior (Bottom Navigation) 
-
-Visible y fija en la parte inferior 
-
-Ícono activo: Ajustes 
-
-Color: magenta #E91E63 
-
-Íconos inactivos: gris medio #757575 
-
-Etiquetas debajo de cada ícono 
-
-Fondo blanco 
-
-Interactividad clara con zonas táctiles amplias 
-
- 
-
-## La estructura de navegación 
-
-https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/features/laboratorio-4-ui/frontend/design/Assets-Resources/Estructura%20de%20Navegacion/Flujo%20Visual%20de%20la%20estructura%20de%20navegacion.png 
-
-
-## Decisiones de diseño importantes 
+---
+# Decisiones de diseño importantes 
 
 - Decisiones de diseño importantes para las pantallas de VisioAI 
 
@@ -785,6 +322,7 @@ La app está pensada para que funcione bien tanto en celulares como en tablets. 
 
 Flujo natural entre pantallas: Después de tomar una foto, se ve el resultado. Si no es lo que se esperaba, se puede volver a capturar fácilmente. Todo fluye sin interrupciones, para que el usuario no se pierda y pueda usar la app sin complicaciones. 
 
-## Enlaces al prototipo interactivo 
+---
+# Enlaces al prototipo interactivo 
 
-https://www.figma.com/proto/uWHAEIvNdkl8BlV4baSFiU/Untitled--Copia-?node-id=2003-2&p=f&t=4q9JrNOjQZJt4OE8-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2003%3A2  
+https://www.figma.com/proto/uWHAEIvNdkl8BlV4baSFiU/Untitled--Copia-?page-id=2081%3A6&node-id=2081-616&p=f&viewport=295%2C192%2C0.62&t=kFbBVrV403VuWTNe-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2081%3A616
