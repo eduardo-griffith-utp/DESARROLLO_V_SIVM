@@ -130,6 +130,112 @@ Content-Type: application/json
 1. Generar app:
 ```bash
 python manage.py startapp nueva_funcion
+
+## 🧪 Pruebas con Postman
+```
+## 📤 Autenticación
+Obtener token:
+
+POST http://127.0.0.1:8000/api/token/
+Content-Type: application/json
+
+{
+  "username": "tu_usuario",
+  "password": "tu_contraseña"
+}
+Usar token:
+
+En los headers de las peticiones protegidas, agrega:
+
+Authorization: Bearer TU_ACCESS_TOKEN
+## 📸 Endpoint: Captura de Imagen
+
+POST http://127.0.0.1:8000/api/v1/reconocimiento/imagenes/capturar/
+Authorization: Bearer <token>
+# Respuesta esperada:
+
+{
+  "estado": "éxito",
+  "datos": {
+    "id_imagen": "img_xxxx",
+    "fecha": "2025-05-12T..."
+  }
+}
+## 🔍 Endpoint: Análisis de Imagen
+
+GET http://127.0.0.1:8000/api/v1/reconocimiento/imagenes/<id_imagen>/analisis/
+Authorization: Bearer <token>
+Devuelve análisis de la imagen capturada.
+
+## 🎥 Endpoint: Multimedia por Etiqueta
+
+GET http://127.0.0.1:8000/api/v1/reconocimiento/multimedia/por-etiqueta/<etiqueta>/
+Ejemplo:
+
+GET /api/v1/reconocimiento/multimedia/por-etiqueta/tecnologia/
+No requiere autenticación
+
+# Respuesta esperada:
+
+{
+  "estado": "éxito",
+  "etiqueta": "tecnologia",
+  "cantidad": 2,
+  "resultados": [
+    {
+      "id": 1,
+      "nombre": "foto_tecnologia.jpg",
+      "url": "/media/items/foto_tecnologia.jpg"
+    }
+  ]
+}
+## 🧾 Endpoint: Listado de Items
+
+GET http://127.0.0.1:8000/api/v1/items/
+Authorization: Bearer <token>
+# Respuesta esperada:
+
+{
+  "estado": "éxito",
+  "cantidad": 3,
+  "resultados": [
+    {
+      "id": 1,
+      "nombre": "Fruta",
+      "descripcion": "Frutas comestibles",
+      "ejemplos": ["manzana", "banana", "naranja"],
+      "tags_relacionados": ["comida", "saludable"],
+      "fecha_creacion": "2025-01-10"
+    },
+    {
+      "id": 2,
+      "nombre": "Electrónica",
+      "descripcion": "Dispositivos electrónicos",
+      "ejemplos": ["televisor", "celular", "laptop"],
+      "tags_relacionados": ["tecnología", "gadgets"],
+      "fecha_creacion": "2025-01-15"
+    },
+    {
+      "id": 3,
+      "nombre": "Vehículos",
+      "descripcion": "Medios de transporte",
+      "ejemplos": ["automóvil", "motocicleta", "bicicleta"],
+      "tags_relacionados": ["transporte", "movilidad"],
+      "fecha_creacion": "2025-02-01"
+    }
+  ]
+}
+## 🕓 Endpoint: Historial de Imágenes
+
+GET http://127.0.0.1:8000/api/v1/reconocimiento/imagenes/historial/
+Authorization: Bearer <token>
+# Respuesta esperada (vacía):
+
+{
+  "estado": "éxito",
+  "datos": []
+}
+```
 ```
 
 2. Modelo básico:
