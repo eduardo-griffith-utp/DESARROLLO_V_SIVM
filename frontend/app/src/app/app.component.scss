@@ -37,10 +37,7 @@ ion-progress-bar{
   align-items: center;
   justify-content: center;
 
-  img {
-    width: 200px;
-    max-width: 100%;
-  }
+  
 }
 .web-splash-container {
   background-color: #fafafa;
@@ -73,7 +70,6 @@ ion-progress-bar{
 .web-splash-desc {
   display: flex;
   width: 80%;
-  padding-top: 30px;
   color: #717171; /* Un color de texto más claro */
   font-size: 1.1em;
   text-align: center;

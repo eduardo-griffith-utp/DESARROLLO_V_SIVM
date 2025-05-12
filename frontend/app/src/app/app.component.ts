@@ -18,7 +18,7 @@ export class AppComponent {
   constructor(){
     setTimeout(() => {
       this.showSplash = false;
-    }, 5000);
+    }, 0);
 
 
     setInterval(() => {
