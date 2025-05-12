@@ -1,50 +1,45 @@
--- Creación de la base de datos
-CREATE DATABASE IF NOT EXISTS desarrollov_app;
-USE desarrollov_app;
-
--- Tabla Session
-CREATE TABLE IF NOT EXISTS Session(
-    id_session INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    name_session VARCHAR(20) NOT NULL
-);
+use desarrollov_app;
 
 -- Tabla MediaContent
 CREATE TABLE IF NOT EXISTS MediaContent(
-    id_media INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    session_id INT NOT NULL,
-    route_path VARCHAR(64) NOT NULL,
-    type_content VARCHAR(30) NOT NULL,
+    id_media_content INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    item_id INT NOT NULL,
+    route_path VARCHAR(255) NOT NULL,
+    type VARCHAR(30) NOT NULL,
     description VARCHAR(50),
     date_uploaded DATETIME NOT NULL
 );
 
 -- Tabla AnalysisResult
 CREATE TABLE IF NOT EXISTS AnalysisResult(
-    id_results INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    media_id INT NOT NULL,
+    id_analysis_result INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    item_id INT NOT NULL,
+    analysis_id int NOT NULL,
     detected_labels VARCHAR(50) NOT NULL,
-    date_analysis DATETIME NOT NULL
+    date_analysis DATETIME NOT null,
+    status varchar(10)
 );
 
--- Tabla QueryHistory
-CREATE TABLE IF NOT EXISTS QueryHistory(
-    id_query INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    media_id INT NOT NULL,
-    date_consultation DATETIME NOT NULL,
-    counter INT NOT NULL DEFAULT 1
+-- Tabla Analysis
+CREATE TABLE IF NOT EXISTS Analysis(
+    id_analysis INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    imput_image_path varchar(255) NOT NULL,
+    timestamp datetime,
+    status varchar(15),
+    processing_time datetime,
+    source varchar(255)
 );
 
 -- Tabla Items
-CREATE TABLE IF NOT EXISTS Items(
-    id_items INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    media_id INT NOT NULL,
-    name VARCHAR(30) NOT NULL,
+CREATE TABLE IF NOT EXISTS Item(
+    id_item INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    item_tag_id int not null,
+    name varchar(30) not null,
     description TEXT NOT NULL
 );
 
 -- Tabla ItemTags
-CREATE TABLE IF NOT EXISTS ItemTags(
+CREATE TABLE IF NOT EXISTS ItemTag(
     id_tag INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    items_id INT NOT NULL,
     tag_name VARCHAR(30) NOT NULL
 );
