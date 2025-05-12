@@ -1,0 +1,49 @@
+<ion-header color="light" class="ion-no-border">
+  <ion-toolbar color="light">
+    <img src="assets/icon/Settings-icon.png">
+    <ion-title>Configuración</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light" class="settings-content">
+  <ion-list color="dark" lines="full">
+    <!-- Opción de Idioma -->
+    <ion-item button detail="true" [routerLink]="['/settings-lenguage']">
+      <img src="assets/icon/Lenguage-icon.png" >
+      <ion-label>Lenguaje</ion-label>
+      <ion-note slot="end">Seleccione el tipo de lenguaje</ion-note>
+    </ion-item>
+
+    <!-- Opción de Notificaciones -->
+    <ion-item>
+      <img src="assets/icon/Notification-icon.png">
+      <ion-label>Notificaciones</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="notificationsEnabled" color="success"></ion-toggle>
+    </ion-item>
+
+    <!-- Opción de Escaneo automático -->
+    <ion-item>
+      <img src="assets/icon/Scanner-icon.png" >
+      <ion-label>Escaneo automático</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="autoScanEnabled" color="success"></ion-toggle>
+    </ion-item>
+
+    <!-- Opción de Tema oscuro -->
+    <ion-item>
+      <img src="assets/icon/Theme-icon.png" >
+      <ion-label>Tema oscuro</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="paletteToggle" (ionChange)="toggleChange($event)" color="success"></ion-toggle>
+    </ion-item>
+
+    <!-- Opción de Privacidad -->
+    <ion-item button detail ="true" [routerLink]="['/settings-privacy']">
+      <img src="assets/icon/privacity-icon.png" >
+      <ion-label>Privacidad</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Versión de la app 
+   <div class="version-info">
+    Versión {{appVersion}}
+  </div>-->
+</ion-content>

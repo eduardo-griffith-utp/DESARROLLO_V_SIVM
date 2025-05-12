@@ -4,12 +4,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/inbox',
+    redirectTo: 'home',
     pathMatch: 'full'
-  },
-  {
-    path: 'folder/:id',
-    loadChildren: () => import('./pages/folder/folder.module').then( m => m.FolderPageModule)
   },
   {
     path: 'home',
@@ -26,7 +22,27 @@ const routes: Routes = [
   {
     path: 'item-details',
     loadChildren: () => import('./pages/item-details/item-details.module').then( m => m.ItemDetailsPageModule)
-  }
+  },
+  {
+    path: 'history',
+    loadChildren: () => import('./pages/history/history.module').then( m => m.HistoryPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  
+  {
+    path: 'settings-privacy',
+    loadChildren: () => import('./pages/settings-privacy/settings-privacy.module').then( m => m.SettingsPrivacyPageModule)
+  },
+  
+  {
+    path: 'settings-lenguage',
+    loadChildren: () => import('./pages/settings-lenguage/settings-lenguage.module').then( m => m.SettingsLenguagePageModule)
+  },
+
+
 
 ];
 

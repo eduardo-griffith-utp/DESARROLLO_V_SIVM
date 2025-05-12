@@ -25,28 +25,37 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+/* @import '@ionic/angular/css/palettes/dark.always.css'; */
+@import '@ionic/angular/css/palettes/dark.class.css';
+/* @import '@ionic/angular/css/palettes/dark.system.css'; */
 
-
-:root {
-    --ion-background-color: #fafafa;
+  ion-toolbar{
+    text-align: left;
   }
-
-
-
+  ion-title {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    text-align: left;
+    color: #212121;
+    font-size: 30px;
+    font-weight: 600;
+  }
+  ion-label {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    color: #212121;
+  }
   h1 {
-    font: 2rem;
-    font-family: Century-Gothic;
+    color: #212121;
+    
+    font-size: 3rem;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500;
   }
   h2, h3{
-    font-family: Didact-Gothic;
+    font-family: "Poppins", sans-serif;
   }
+  

@@ -1,69 +1,73 @@
 ion-content {
+    justify-content: center;
     --background: #f4f5f8; /* Un fondo gris claro */
-  }
-  
-  .logo-container {
-    margin-top: 60px;
-    margin-bottom: 40px;
-  
+    --height: 100%;
+
+    .logo-container {
+      height: 30%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
     img {
-      max-width: 150px; /* Ajusta el tamaño del logo */
-      height: auto;
-      display: block; /* Para centrarlo correctamente */
-      margin: 0 auto 10px auto; /* Centrar horizontalmente y agregar margen inferior */
+      
+      height: 50%;
+      width: 40%;
+    }
+    .title{
+      height: 30%;
+      
+    }
+    
+    ion-icon{
+      width: 100px;
+      height: 100px;
+    }
+    #scan-button {
+      --color: #383a3e; /* Color del icono */
+    }
+    .capture-button-container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      height: 30%;
+    }
+    #Capture-button{
+    
+      border-radius: 50px;
+      width: 90%;
+      color: #FAFAFA;
+      background-color: #212121;
     }
   
-    h1 {
-      font-size: 2.5em;
-      font-weight: bold;
-      color: #383a3e; /* Un color de texto oscuro */
-      margin-bottom: 5px;
-    }
   
-    p {
-      color: #717171; /* Un color de texto más claro */
-      font-size: 1.1em;
-    }
+  .instruction-text {
+    color: #212121;
+    line-height: 1.4;
+    font-size: 1.4rem;
+    text-align: center;
+    width: 70%;
+    
   }
-  
   .scan-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40%;
+    width: 100%;
+  }
+  .scan-button-card{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 10px;
-  
-    #scan-button {
-      --background: #ffffff; /* Fondo blanco para el botón */
-      --color: #383a3e; /* Color del icono */
-      width: 100px; /* Ajusta el tamaño del botón */
-      height: 100px;
-      border-radius: 50%; /* Para hacerlo circular */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-      margin-bottom: 10px;
-  
-      ion-icon {
-        font-size: 2.5em;
-      }
-    }
-  
-    .scan-text {
-      color: #383a3e;
-      font-size: 1.2em;
-    }
+    
+    width: 90%;
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 10px;
+    background-color: rgb(197, 250, 243);
   }
-  
-  .instruction-text {
-    color: #717171;
-    font-size: 0.9em;
-    line-height: 1.4;
-    margin-bottom: 10px;
-  }
-  
-  #history-button {
-    --color: #1e88e5; /* Un color azul */
-    font-weight: bold;
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+
+}

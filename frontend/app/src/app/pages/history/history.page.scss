@@ -1,0 +1,80 @@
+*{
+  font-family: "Poppins", sans-serif;}
+
+.history-item {
+    --padding-start: 16px;
+    --inner-padding-end: 16px;
+    --min-height: 72px;
+    border: solid 2px #EFEEEE;
+    border-radius: 1.23rem;
+
+    ion-avatar {
+      width: 48px;
+      height: 48px;
+      margin-right: 16px;
+    }
+  
+    h2 {
+      font-weight: 500;
+      font-size: 1.25rem;
+      margin-bottom: 4px;
+    }
+  
+    p {
+      color: #757575 ;
+      font-size: 1rem;
+      white-space: nowrap;
+      width: 12px;
+    }
+  
+    ion-note {
+      font-size: 1rem;
+      color: #757575;
+      align-self: flex-start;
+      margin-top: 12px;
+    }
+  }
+
+  .square-avatar {
+    width: 48px;
+    height: 48px;
+    margin-right: 16px;
+    border-radius: 12px;  // Ajusta este valor para cambiar el redondeo
+    overflow: hidden;     // Importante para que la imagen no sobresalga
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f4f4;  // Color de fondo si la imagen no carga
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;   // Asegura que la imagen cubra todo el espacio
+    }
+  }
+  #buttons{
+    display: flex;
+    overflow: hidden;
+  }
+  #butto1{
+    margin-left: 5%;
+    margin-top: 5%;
+    border-radius: 1.11rem, solid, black;
+    font-family: Poppins;
+    font-size: 0.85rem;
+  }
+  #butto2{
+    margin-top: 5%;
+    border-radius: 1.11rem;
+    border-radius: 1.11rem, solid, black;
+    font-family: Poppins;
+    font-size: 0.85rem;
+  }
+  ul li{
+    list-style: none;
+  }
+  ion-title{
+    color: #212121;
+    margin: 35px,25px;
+    padding: 10px,9px;
+  }

@@ -1,0 +1,61 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <img src="assets/icon/History-icon.png">
+    <ion-title>Historial</ion-title>
+  </ion-toolbar>
+</ion-header>
+<!--botones de opciones -->
+  <ul>
+     <li>
+        <ion-button color="dark" id="butto1" shape="round">Todos</ion-button>
+        <ion-button color="light" id="butto2" shape="round" [routerLink]="['/history-nid']">no Identificados</ion-button>
+    </li> 
+  </ul>
+
+<ion-content>
+  <ion-list lines="none">
+    <!-- Elemento 1 -->
+    <ion-item class="history-item" button [routerLink]="['/item-details']">
+      <div class="square-avatar">
+        <img src="assets/images/dog.webp"> 
+      </div>
+      <ion-label>
+        <h2>Perro</h2>
+        <p>El perro (Canis familiaris o Canis lupus familiaris, dependiendo de si se lo considera una especie o una subespecie del lobo),​ llamado perro doméstico</p>
+      </ion-label>
+      <ion-note slot="end">00:00 AM</ion-note>
+    </ion-item>
+
+    <!-- Elemento 2 -->
+    <ion-item class="history-item" button [routerLink]="">
+      <div class="square-avatar">
+        <img src="assets/images/car.webp"> 
+      </div>
+      <ion-label>
+        <h2>Carro</h2>
+      </ion-label>
+      <ion-note slot="end">00:00 AM</ion-note>
+    </ion-item>
+
+    <!-- Elemento 3 -->
+    <ion-item class="history-item" button [routerLink]="">
+      <div class="square-avatar">
+        <img src="assets/images/food.jpg"> 
+      </div>
+      <ion-label>
+        <h2>Comida</h2>
+      </ion-label>
+      <ion-note slot="end">00:00 AM</ion-note>
+    </ion-item>
+        <!-- Elemento 4 -->
+    <ion-item class="history-item" button [routerLink]="['/item-details']">
+      <div class="square-avatar">
+        <img src="assets/shapes.svg"> 
+      </div>
+      <ion-label>
+        <h2>no identificado</h2>
+      </ion-label>
+      <ion-note slot="end">00:00 AM</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

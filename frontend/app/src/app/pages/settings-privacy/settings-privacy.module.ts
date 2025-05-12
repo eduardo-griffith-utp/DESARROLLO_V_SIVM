@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FolderPageRoutingModule } from './folder-routing.module';
+import { SettingsPrivacyPageRoutingModule } from './settings-privacy-routing.module';
 
-import { FolderPage } from './folder.page';
+import { SettingsPrivacyPage } from './settings-privacy.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FolderPageRoutingModule
+    SettingsPrivacyPageRoutingModule
   ],
-  declarations: [FolderPage]
+  declarations: [SettingsPrivacyPage]
 })
-export class FolderPageModule {}
+export class SettingsPrivacyPageModule {}
