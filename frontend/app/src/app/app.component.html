@@ -1,8 +1,15 @@
 <!-- demostracion ejecutable en la web del Splash Screen -->
 <div *ngIf="showSplash" class="web-splash">
-  <img src="assets/splash.png" alt="Splash" />
-  <h1>Visio AI</h1>
-  <ion-progress-bar [value]="progress"></ion-progress-bar>
+  <div class="web-splash-container">
+    <div class="web-splash-card">
+      <div class="web-splash-img"><img src="assets/splash.png" alt="Splash"/></div>
+      <div class="web-splash-title"><h1>VisioAI</h1></div>
+      <div class="web-splash-desc"><h2>Identificación Visual de Materiales</h2></div>
+    </div>
+    <div class="web-splash-bar">
+      <ion-progress-bar [value]="progress"></ion-progress-bar>
+    </div>
+  </div>
 </div>
 
 <ion-app>
