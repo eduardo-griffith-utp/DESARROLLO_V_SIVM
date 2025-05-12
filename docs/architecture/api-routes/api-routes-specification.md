@@ -247,4 +247,4 @@ Respuesta en Proceso – 202 Accepted
  
 - **Versiones**
  
-  - Para las versiones de la api se recomienda utilizar v como la variable de version e ir incrementando en 1 para las difernetes versiones v1, v2, v3, v4, etc... un ejemplo seria: /api/v1//images.
+  - Para las versiones de la api se recomienda utilizar v como la variable de version e ir incrementando en 1 para las difernetes versiones v1, v2, v3, v4, etc... un ejemplo seria: /api/v1//images
