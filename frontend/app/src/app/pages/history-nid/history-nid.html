@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <img src="assets/icon/History-icon.png">
+    <ion-title>Historial</ion-title>
+  </ion-toolbar>
+</ion-header>
+<!--botones de opciones -->
+  <ul>
+     <li>
+        <ion-button color="light" id="butto1" shape="round" [routerLink]="['/history']" >Todos</ion-button>
+        <ion-button color="dark" id="butto2" shape="round">no Identificados</ion-button>
+    </li> 
+  </ul>
+
+<ion-content>
+  <ion-list lines="none">
+    <!-- Elemento 1 -->
+    <ion-item class="history-item" button>
+      <div class="square-avatar">
+        <img src="assets/shapes.svg"> 
+      </div>
+      <ion-label>
+        <h2>no identificado</h2>
+      </ion-label>
+      <ion-note slot="end">00:00 AM</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'settings',
     loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
   },
+  {
+    path: 'history-nid',
+    loadChildren: () => import('./pages/history-nid/history-nid.module').then(m => m.historyNidPageModule) 
+  },
   
   {
     path: 'settings-privacy',
