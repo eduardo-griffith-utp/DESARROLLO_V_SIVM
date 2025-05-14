@@ -3,21 +3,46 @@
     <div class="logo-container">
       <h1>VisioAI</h1>
     </div>
+
     <div class="camera-preview">
       <video autoplay playsinline width="100%" height="100%" *ngIf="!imageUrl"></video>
       <img [src]="imageUrl" *ngIf="imageUrl" style="width: 100%; height: 100%; object-fit: cover;">
       <div class="camera-icon-overlay" *ngIf="!isCameraActive && !imageUrl">
         <ion-icon name="camera-outline" size="large"></ion-icon>
       </div>
+
+      <div class="zoom-control">
+        <button (click)="zoomIn()">+</button>
+        <span>{{zoomLevel}}x</span>
+        <button (click)="zoomOut()">-</button>
+      </div>
+
+      <div class="lock-control">
+        <ion-icon name="lock-closed" size="small"></ion-icon>
+      </div>
+
+      <div class="settings-control">
+        <ion-icon name="settings-outline" size="small"></ion-icon>
+      </div>
     </div>
   </div>
 
-  <ion-footer class="ion-no-border">
-    <ion-toolbar style="justify-content: center;">
-      <ion-button id="upload-button" (click)="takePicture()">
-        <ion-icon slot="start" name="image-outline"></ion-icon>
-        Subir imagen
+  <ion-footer>
+  <ion-toolbar class="camera-toolbar">
+    <div class="button-container">
+      <ion-button class="circle-button" (click)="uploadImage()">
+        <ion-icon name="camera-reverse-outline" size="large"></ion-icon>
       </ion-button>
-    </ion-toolbar>
-  </ion-footer>
+
+      <ion-button class="circle-button capture-button" (click)="captureNow()">
+        <ion-icon name="ellipse" size="large"></ion-icon>
+      </ion-button>
+
+      <ion-button class="circle-button" (click)="takePicture()">
+        <ion-icon name="images-outline" size="large"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+
 </ion-content>
