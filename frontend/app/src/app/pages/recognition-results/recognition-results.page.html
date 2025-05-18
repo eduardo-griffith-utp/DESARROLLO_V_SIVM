@@ -12,12 +12,12 @@
   </ion-header>
   <div class="container">
     <div class="image">
-      <ion-img src="assets/images/Logo.png"></ion-img>
+      <ion-img *ngIf="imageUrl" [src]="imageUrl"></ion-img>
     </div>
     <div class="name">
-      <ion-text>
-        <h1>Nombre</h1>
-      </ion-text>
+      <ion-item *ngFor="let item of items">
+        <ion-label>{{item}}</ion-label>
+      </ion-item>
     </div>
     <div class="description">
       <ion-text>
