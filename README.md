@@ -18,7 +18,7 @@ El SIVM está compuesto por los siguientes componentes principales:
 
 1. **Aplicación Frontend**: Interfaz de usuario, captura/carga de imágenes
 2. **Backend API**: Procesamiento de solicitudes, lógica de negocio
-3. **Servicio de Reconocimiento**: Análisis e identificación de imágenes
+3. **Servicio de recognition**: Análisis e identificación de imágenes
 4. **Base de Datos**: Almacenamiento de información y multimedia
 5. **Sistema de Almacenamiento**: Gestión de archivos multimedia
 6. **Seguridad y Autenticación**: Gestión de usuarios y permisos
@@ -44,7 +44,7 @@ El desarrollo del SIVM está organizado en los siguientes equipos:
 2. **Desarrollo Frontend**: Implementación de interfaces, interactividad, consumo de API
 3. **Desarrollo Backend**: API REST, lógica de negocio, integración de servicios
 4. **Base de Datos**: Diseño de esquemas, queries, optimización, migración
-5. **IA y Reconocimiento**: Algoritmos de análisis de imágenes, integración con servicios de ML
+5. **IA y recognition**: Algoritmos de análisis de imágenes, integración con servicios de ML
 6. **Arquitectura**: Diseño técnico, integración de componentes, despliegue
 7. **Contenido Multimedia**: Creación y edición de assets multimedia (imágenes, audio, video)
 
@@ -65,7 +65,7 @@ El desarrollo del SIVM está organizado en los siguientes equipos:
 - [ORM/ODM seleccionado]
 - [Sistema de almacenamiento]
 
-### IA y Reconocimiento
+### IA y recognition
 - [Biblioteca de ML seleccionada]
 - [APIs de servicios utilizadas]
 - [Herramientas de preprocesamiento]

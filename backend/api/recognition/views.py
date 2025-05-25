@@ -99,7 +99,7 @@ HISTORIAL_DB = [
 @permission_classes([IsAuthenticated])
 def capturar_imagen(request):
     """
-    [POST] /api/v1/reconocimiento/imagenes/capturar/
+    [POST] /api/v1/recognition/imagenes/capturar/
     Captura y valida imágenes con autenticación JWT.
     """
     try:
@@ -130,7 +130,7 @@ def capturar_imagen(request):
 @permission_classes([IsAuthenticated])
 def obtener_analisis_imagen(request, id_imagen):
     """
-    [GET] /api/v1/reconocimiento/imagenes/<id_imagen>/analisis/
+    [GET] /api/v1/recognition/imagenes/<id_imagen>/analisis/
     Obtiene el análisis de una imagen específica.
     """
     try:
@@ -164,7 +164,7 @@ def obtener_analisis_imagen(request, id_imagen):
 @api_view(['GET'])
 def obtener_multimedia_por_etiqueta(request, etiqueta):
     """
-    [GET] /api/v1/reconocimiento/multimedia/por-etiqueta/<etiqueta>/
+    [GET] /api/v1/recognition/multimedia/por-etiqueta/<etiqueta>/
     Obtiene recursos multimedia filtrados por etiqueta.
     
     Parámetros:
@@ -211,7 +211,7 @@ def obtener_multimedia_por_etiqueta(request, etiqueta):
 @api_view(['GET'])
 def obtener_items(request):
     """
-    [GET] /api/v1/reconocimiento/items/
+    [GET] /api/v1/recognition/items/
     
     Obtiene el listado completo de categorías/ítems reconocibles.
     
@@ -246,7 +246,7 @@ def obtener_items(request):
 @api_view(['GET'])
 def obtener_detalle_item(request, item_id):
     """
-    [GET] /api/v1/reconocimiento/items/<int:item_id>/
+    [GET] /api/v1/recognition/items/<int:item_id>/
     
     Obtiene detalles específicos de un ítem/categoría.
     """
@@ -284,9 +284,9 @@ def obtener_detalle_item(request, item_id):
 @permission_classes([IsAuthenticated])
 def obtener_historial(request):
     """
-    [GET] /api/v1/reconocimiento/historial/
+    [GET] /api/v1/recognition/historial/
     
-    Obtiene el historial de reconocimientos del usuario.
+    Obtiene el historial de recognitions del usuario.
     Parámetros opcionales:
         ?limite=int (default: 10, max: 50)
         ?desde=YYYY-MM-DD (filtrar por fecha)

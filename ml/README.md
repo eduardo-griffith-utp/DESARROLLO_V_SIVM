@@ -1,6 +1,6 @@
-# Reconocimiento de Imágenes IA (ML) del Sistema SIVM
+# recognition de Imágenes IA (ML) del Sistema SIVM
 
-Esta carpeta contiene los modelos de aprendizaje automático, algoritmos y servicios de inteligencia artificial utilizados para el reconocimiento y análisis de imágenes en el proyecto SIVM.
+Esta carpeta contiene los modelos de aprendizaje automático, algoritmos y servicios de inteligencia artificial utilizados para el recognition y análisis de imágenes en el proyecto SIVM.
 
 ## Tecnologías Utilizadas
 
@@ -83,7 +83,7 @@ El pipeline de preprocesamiento incluye:
 
 - [A completar por el equipo]
 
-## Equipo de IA y Reconocimiento
+## Equipo de IA y recognition
 
 - JOSE ARIANO
 - [Integrante 2]

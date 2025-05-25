@@ -43,7 +43,7 @@ ________________________________________________________________________________
 
 ### **Imágenes de Entrenamiento** 
 
-Este directorio será utilizado exclusivamente por el equipo de IA para entrenar el modelo de reconocimiento. 
+Este directorio será utilizado exclusivamente por el equipo de IA para entrenar el modelo de recognition. 
 
 
 - Directorio base: `training_data/` 

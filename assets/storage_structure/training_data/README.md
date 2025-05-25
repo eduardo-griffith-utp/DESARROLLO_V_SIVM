@@ -1,7 +1,7 @@
-# Proyecto de Selección de Imágenes para Reconocimiento Visual
+# Proyecto de Selección de Imágenes para recognition Visual
 
 ## Descripción
-Este proyecto tiene como objetivo recopilar, organizar y preparar imágenes que serán utilizadas en el entrenamiento de un modelo de reconocimiento visual. Las imágenes se organizan según categorías e ítems, siguiendo criterios establecidos para garantizar calidad y consistencia.
+Este proyecto tiene como objetivo recopilar, organizar y preparar imágenes que serán utilizadas en el entrenamiento de un modelo de recognition visual. Las imágenes se organizan según categorías e ítems, siguiendo criterios establecidos para garantizar calidad y consistencia.
 
 ## Criterios de Selección de Imágenes
 1. **Calidad y Resolución**:

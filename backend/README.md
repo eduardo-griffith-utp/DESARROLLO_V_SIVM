@@ -150,7 +150,7 @@ En los headers de las peticiones protegidas, agrega:
 Authorization: Bearer TU_ACCESS_TOKEN
 ## 📸 Endpoint: Captura de Imagen
 
-POST http://127.0.0.1:8000/api/v1/reconocimiento/imagenes/capturar/
+POST http://127.0.0.1:8000/api/v1/recognition/imagenes/capturar/
 Authorization: Bearer <token>
 # Respuesta esperada:
 
@@ -163,16 +163,16 @@ Authorization: Bearer <token>
 }
 ## 🔍 Endpoint: Análisis de Imagen
 
-GET http://127.0.0.1:8000/api/v1/reconocimiento/imagenes/<id_imagen>/analisis/
+GET http://127.0.0.1:8000/api/v1/recognition/imagenes/<id_imagen>/analisis/
 Authorization: Bearer <token>
 Devuelve análisis de la imagen capturada.
 
 ## 🎥 Endpoint: Multimedia por Etiqueta
 
-GET http://127.0.0.1:8000/api/v1/reconocimiento/multimedia/por-etiqueta/<etiqueta>/
+GET http://127.0.0.1:8000/api/v1/recognition/multimedia/por-etiqueta/<etiqueta>/
 Ejemplo:
 
-GET /api/v1/reconocimiento/multimedia/por-etiqueta/tecnologia/
+GET /api/v1/recognition/multimedia/por-etiqueta/tecnologia/
 No requiere autenticación
 
 # Respuesta esperada:
@@ -227,7 +227,7 @@ Authorization: Bearer <token>
 }
 ## 🕓 Endpoint: Historial de Imágenes
 
-GET http://127.0.0.1:8000/api/v1/reconocimiento/imagenes/historial/
+GET http://127.0.0.1:8000/api/v1/recognition/imagenes/historial/
 Authorization: Bearer <token>
 # Respuesta esperada (vacía):
 
