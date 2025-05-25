@@ -19,45 +19,73 @@ Esta carpeta contiene los scripts, migraciones y documentación relacionada con 
 
 ### Entidades Principales
 
-#### Imágenes
-ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
--Id_image , int , Primary key  
-- route_imagen , varchar ,   
-- date_uploaded , datetime ,   
+#### MediaContent
+- Id_media_content, int, Primary key
+- item_id, int, Foreign key
+- route_path, varchar
+- type, varchar
+- description, varchar
+- date_uploaded, datetime
 
-#### Resultados de Análisis
-ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
-- Id_image , int , Primary key  
-- route_imagen , varchar ,   
-- date_uploaded , datetime ,   
+#### AnalysisResult
+- Id_analysis_result, int, Primary key
+- item_id, int, Foreign key
+- analysis_id, int, Foreign key
+- detected_labes, varchar
+- date_analysis, datetime
+- status, varchar
 
-#### Contenido Multimedia
-ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
-- Id_multimedia , int , Primary key  
-- Imagen_ID , int , Foreing key  
-- type_content  , varchar ,   
-- description , varchar ,   
-- file_path , varchar ,   - id_contenido (PK)
+### Analysis
+- Id_analysis , int , Primary key 
+- imput_image_path, varchar
+- timpestamp datetime
+- status, varchar 
+- processing_time, datetime
 
-#### Usuarios 
-ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
-- Id_User , int , Primary key  
-- name_user , varchart ,   
+### Item
+- Id_item, int, Primary key
+- item_tag_id, int, Foreing key
+- name, varchar
+- description, text
 
-### Historial de Consultas
-ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE  
-- Id_querys , int , Primary key 
-- Image_ID , int , Foreing Key  
-- date_consultation , datetime ,   
-- counter , int ,   
+### ItemTag
+- Id_tag, int, Primary key
+- tag_name, varchar
+
 
 ### Relaciones
 
-- Cada imagen puede tener varios resultados de análisis y consultas.
-- Cada consulta está asociada a una imagen.
-- El historial de consultas permite contar y registrar cuándo se hace cada consulta.
-- Cada contenido multimedia se asocia a una imagen o directo al resultado.
-- Todas las acciones podrían relacionarse con un usuario genérico.
+**1. Item → ItemTag**
+Relación: Muchos a Uno
+
+Clave foránea: item_tag_id en Item
+
+Descripción: Cada ítem pertenece a una etiqueta (ItemTag), pero una etiqueta puede estar asociada a múltiples ítems.
+
+**2. MediaContent → Item**
+Relación: Muchos a Uno
+
+Clave foránea: item_id en MediaContent
+
+Descripción: Cada contenido multimedia pertenece a un ítem específico. Un ítem puede tener múltiples contenidos multimedia asociados.
+
+**3. AnalysisResult → Item**
+Relación: Muchos a Uno
+
+Clave foránea: item_id en AnalysisResult
+
+Descripción: Cada resultado de análisis está asociado a un ítem. Un ítem puede tener varios análisis realizados.
+
+**4. AnalysisResult → Analysis**
+Relación: Muchos a Uno
+
+Clave foránea: analysis_id en AnalysisResult
+
+Descripción: Un resultado de análisis proviene de una ejecución de análisis (Analysis). Un análisis puede generar múltiples resultados (aunque usualmente es uno a uno).
+
+**5. Analysis → (ninguna relación directa en otras tablas como FK saliente)**
+
+Relación implícita: Se usa en AnalysisResult pero no apunta directamente a otra tabla (excepto la ruta de imagen como valor de referencia).
 
 ## Configuración del Entorno
 
@@ -73,57 +101,71 @@ ATRIBUTO , TIPO DE DATOS , TIPO DE LLAVE
 ### Configuración Inicial
 
 ```bash
+# Creación de la base de datos
+CREATE DATABASE IF NOT EXISTS desarrollov_app;
+USE desarrollov_app;
 
--- desarrollov_app.usuario definition
+# Tabla MediaContent
+CREATE TABLE IF NOT EXISTS MediaContent(
+    id_media_content INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    item_id INT NOT NULL,
+    route_path VARCHAR(255) NOT NULL,
+    type VARCHAR(30) NOT NULL,
+    description VARCHAR(50),
+    date_uploaded DATETIME NOT NULL
+);
 
-CREATE TABLE `usuario` (
-  `id_user` int(11) NOT NULL,
-  `name_user` varchar(20) NOT NULL,
-  PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+# Tabla AnalysisResult
+CREATE TABLE IF NOT EXISTS AnalysisResult(
+    id_analysis_result INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    item_id INT NOT NULL,
+    analysis_id int NOT NULL,
+    detected_labels VARCHAR(50) NOT NULL,
+    date_analysis DATETIME NOT null,
+    status varchar(10)
+);
 
--- desarrollov_app.queryhistory definition
+# Tabla Analysis
+CREATE TABLE IF NOT EXISTS Analysis(
+    id_analysis INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    imput_image_path varchar(255) NOT NULL,
+    timestamp datetime,
+    status varchar(15),
+    processing_time datetime,
+    source varchar(255)
+);
 
-CREATE TABLE `queryhistory` (
-  `id_querys` int(11) NOT NULL,
-  `imagen_id` int(11) NOT NULL,
-  `date_consultation` datetime NOT NULL,
-  `counter` int(11) NOT NULL,
-  PRIMARY KEY (`id_querys`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+# Tabla Items
+CREATE TABLE IF NOT EXISTS Item(
+    id_item INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    item_tag_id int not null,
+    name varchar(30) not null,
+    description TEXT NOT NULL
+);
 
--- desarrollov_app.analisisresults definition
+# Tabla ItemTags
+CREATE TABLE IF NOT EXISTS ItemTag(
+    id_tag INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    tag_name VARCHAR(30) NOT NULL
+);
 
-CREATE TABLE `analisisresults` (
-  `id_results` int(11) NOT NULL,
-  `imagen_id` int(11) NOT NULL,
-  `detected_labels` varchar(50) NOT NULL,
-  `date_analisys` datetime NOT NULL,
-  PRIMARY KEY (`id_results`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+# Creacion de llaves foreanas
 
--- desarrollov_app.multimedia definition
+ALTER TABLE MediaContent  
+ADD CONSTRAINT fk_mediacontent_item
+FOREIGN KEY (item_id) REFERENCES Item(id_item);
 
-CREATE TABLE `multimedia` (
-  `id_multimedia` int(11) NOT NULL,
-  `imagen_id` int(11) NOT NULL,
-  `type_content` varchar(30) NOT NULL,
-  `description` varchar(50) NOT NULL,
-  `file_path` varchar(64) NOT NULL,
-  PRIMARY KEY (`id_multimedia`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+ALTER TABLE item
+ADD CONSTRAINT fk_item_item_tag
+FOREIGN KEY (item_tag_id) REFERENCES itemtag(id_tag);
 
--- desarrollov_app.images definition
+ALTER TABLE analysisresult 
+ADD CONSTRAINT fk_analysisresult_item
+FOREIGN KEY (item_id) REFERENCES item(id_item);
 
-CREATE TABLE `images` (
-  `id_imagen` int(11) NOT NULL AUTO_INCREMENT,
-  `route_imagen` varchar(50) NOT NULL,
-  `date_uploaded` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_imagen`),
-  CONSTRAINT `images_analisisresults_FK` FOREIGN KEY (`id_imagen`) REFERENCES `analisisresults` (`id_results`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `images_multimedia_FK` FOREIGN KEY (`id_imagen`) REFERENCES `multimedia` (`id_multimedia`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `images_queryhistory_FK` FOREIGN KEY (`id_imagen`) REFERENCES `queryhistory` (`id_querys`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+ALTER TABLE analysisresult  
+ADD CONSTRAINT fk_analysisresult_analysis
+FOREIGN KEY (analysis_id) REFERENCES analysis(id_analysis);
 
 ```
 
@@ -205,12 +247,12 @@ mysql -u tu_usuario -p -h tu_host nombre_base_datos < backup.sql
 
 ## Equipo de Base de Datos
 
-- Cesar castillo
+- Cesar Castillo
 - Javett Pineda C.
-- [Integrante 3]
-- [Integrante 4]
-  Ricardo Abrego
-
+- Ricardo Copriz
+- Enedina Ortega
+- Ricardo Abrego
+- Luis Gómez
 
 ## Recursos Adicionales
 
