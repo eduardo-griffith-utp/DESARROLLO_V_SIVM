@@ -1,5 +1,3 @@
-use desarrollov_app;
-
 -- Tabla MediaContent
 CREATE TABLE IF NOT EXISTS MediaContent(
     id_media_content INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
