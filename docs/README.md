@@ -62,7 +62,7 @@ La documentación debe actualizarse:
 - Diego Caballero
 - Arquimedes Garcia
 - Allan De Roux
--
+- Bernardo Rodriguez
 -
 
 ## Recursos Adicionales
