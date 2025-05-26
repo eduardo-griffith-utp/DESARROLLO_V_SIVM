@@ -1,5 +1,3 @@
-use desarrollov_app;
-
 ALTER TABLE MediaContent  
 ADD CONSTRAINT fk_mediacontent_item
 FOREIGN KEY (item_id) REFERENCES Item(id_item);
