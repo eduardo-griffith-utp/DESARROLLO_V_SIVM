@@ -108,6 +108,14 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
     2. **Terceros**: Luego, importar las bibliotecas de terceros como **NgRx**, **Ionic**, etc.
     3. **Componentes, servicios y módulos internos**: Finalmente, los módulos, servicios y componentes personalizados del proyecto.
 
+## Mock Api 
+- **Creacion de archivos Json** Se crearon archivos json con las respuestas simuladas tomando en cuenta el equipo de arquitectura 
+- **Instalacion de JsonServer** 
+*  ´´bash 
+     npm install -g json-server
+- **Ubicar el Json server en el archivo .json
+-  ´´bash
+     json-server --watch db.json
 
 ## Guías de Estilo UI/UX
 
