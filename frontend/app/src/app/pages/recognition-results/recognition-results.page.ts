@@ -13,7 +13,8 @@ export class RecognitionResultsPage implements OnInit {
   imageUrl: string | undefined;  // Variable para almacenar la URL de la imagen
   items = []
 
-
+  public getJsonValue: any;
+  public postJsonValue: any;
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient) {}  // Inyecta ActivatedRoute
 
   ngOnInit() {
