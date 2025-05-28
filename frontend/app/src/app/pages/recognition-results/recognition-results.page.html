@@ -15,13 +15,13 @@
       <ion-img *ngIf="imageUrl" [src]="imageUrl"></ion-img>
     </div>
     <div class="name">
-      <ion-item *ngFor="let item of items">
-        <ion-label>{{item}}</ion-label>
+      <ion-item>
+        <ion-label>{{getJsonValue.data.name}}</ion-label>
       </ion-item>
     </div>
     <div class="description">
       <ion-text>
-        <h2>Descripccion del objeto encontrado</h2>
+        <h2>{{getJsonValue.data.description}}</h2>
       </ion-text>
     </div>
     <div class="try_again">

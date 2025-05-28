@@ -1,7 +1,7 @@
 {
-  "api/v1/images/capture": { 
+  "api": { 
     "status": "success",
-      "data": { "image_id": "img_001", "timestamp": "2025-04-16T10:15:00Z" },
+    "data": { "image_id": "img_001", "timestamp": "2025-04-16T10:15:00Z" },
     "message": "Imagen recibida y procesada correctamente" },
 
   "api/v1/images/{image_id}/analysis": { 
@@ -21,9 +21,9 @@
     "data": { "Fruta": [ { "image_id": "img_001", "timestamp": "2025-04-16T10:15:00Z", "description": "Una banana amarilla sobre una mesa de madera." } ] }, 
     "message": "Historial del usuario agrupado por categoría" },
 
-  "api/v1/items": { 
+  "items": { 
     "status": "success", 
-    "data": [ { "id": 1, "name": "Fruta", "description": "Categoría, incluye frutas como manzanas, peras y plátanos." } ], 
+    "data": { "id": 1, "name": "Fruta", "description": "Categoría, incluye frutas como manzanas, peras y plátanos." } , 
     "message": "Ítems listados exitosamente" },
 
   "api/v1/items/{item_id}": { 

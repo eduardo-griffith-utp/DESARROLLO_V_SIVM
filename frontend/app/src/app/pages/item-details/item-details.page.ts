@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';  // Importa ActivatedRoute para acceder a los parámetros
+import { NavController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-item-details',
@@ -7,25 +10,29 @@ import { Component, OnInit } from '@angular/core';
   standalone: false,
 })
 export class ItemDetailsPage implements OnInit {
+  imageUrl: string | undefined;  // Variable para almacenar la URL de la imagen
+  items = []
 
-  itemTitle: string = '';
-  itemImage: string = '';
-  itemDescription: string = '';
-
-  constructor() { }
+  public getJsonValue: any;
+  public postJsonValue: any;
+  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient) {}  // Inyecta ActivatedRoute
 
   ngOnInit() {
-    // Simulación de datos cargados desde un JSON
-    const data = {
-      title: 'Perro',
-      image: 'assets/images/dog.webp',
-      description: 'El perro (Canis familiaris o Canis lupus familiaris, dependiendo de si se lo considera una especie o una subespecie del lobo)...'
-    };
+    this.getMethod();
+    
 
-    this.itemTitle = data.title;
-    this.itemImage = data.image;
-    this.itemDescription = data.description;
+    // Recupera el parámetro 'imageUrl' de la URL de la página
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.imageUrl = params['imageUrl'] || null;  // Asigna la URL de la imagen
+    });
+
+    // Toma los datos desde el servidor json
+
+  }
+  public getMethod() {
+    this.http.get('http://localhost:3000/items"').subscribe((res:any)=> {
+      console.log(res);
+      this.getJsonValue = res;
+    })
   }
 }
-
-

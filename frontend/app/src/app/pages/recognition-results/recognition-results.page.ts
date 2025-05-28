@@ -18,12 +18,8 @@ export class RecognitionResultsPage implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient) {}  // Inyecta ActivatedRoute
 
   ngOnInit() {
-
-    this.http.get<any>('http://localhost:3000/data')
-      .subscribe(res => {
-        console.log(res);
-        this.items =res.results;
-      })
+    this.getMethod();
+    
 
     // Recupera el parámetro 'imageUrl' de la URL de la página
     this.activatedRoute.queryParams.subscribe(params => {
@@ -34,6 +30,9 @@ export class RecognitionResultsPage implements OnInit {
 
   }
   public getMethod() {
-    
+    this.http.get('http://localhost:3000/items').subscribe((res:any)=> {
+      console.log(res);
+      this.getJsonValue = res;
+    })
   }
 }

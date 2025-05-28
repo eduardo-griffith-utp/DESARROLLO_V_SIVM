@@ -4,19 +4,19 @@
       <ion-back-button defaultHref="/home" size="large" fill="outline" color="dark"><ion-icon name="arrow-back-circle-outline"></ion-icon></ion-back-button>
     </ion-buttons>
     <ion-title>
-      <img id="title-icon" src="assets/icon/Capture-icon.png"> {{ itemTitle }}
+      <img id="title-icon" src="assets/icon/Capture-icon.png">
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-card>
-          <img [src]= "itemImage">
-      <ion-card-header>
-      <ion-card-title>{{ itemTitle }}</ion-card-title>
-      </ion-card-header>
+  <ion-card>
+    <ion-img *ngIf="imageUrl" [src]="imageUrl"></ion-img>
+    <ion-card-header>
+      <ion-card-title>{{getJsonValue.data.name}}</ion-card-title>
+    </ion-card-header>
     <ion-card-content>
-    {{ itemDescription }}
+      {{getJsonValue.data.description}}
     </ion-card-content>
     <ion-button id="resultcontrol" color="dark" fill="outline" shape="round"><ion-icon name="chevron-back-outline"></ion-icon></ion-button>
     <ion-button id="resultcontrol" color="dark" fill="outline" shape="round"><ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
