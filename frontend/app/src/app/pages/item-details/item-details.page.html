@@ -1,17 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title><img id="title-icon" src="assets/icon/Capture-icon.png"> Resultados</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" size="large" fill="outline" color="dark"><ion-icon name="arrow-back-circle-outline"></ion-icon></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <img id="title-icon" src="assets/icon/Capture-icon.png"> {{ itemTitle }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-back-button slot="icon-only" size="large" fill="outline" color="dark"><ion-icon name="arrow-back-circle-outline"></ion-icon></ion-back-button>
+
 <ion-content>
     <ion-card>
-          <img src="assets/images/dog.webp">
+          <img [src]= "itemImage">
       <ion-card-header>
-      <ion-card-title>perro</ion-card-title>
+      <ion-card-title>{{ itemTitle }}</ion-card-title>
       </ion-card-header>
     <ion-card-content>
-     El perro (Canis familiaris o Canis lupus familiaris, dependiendo de si se lo considera una especie o una subespecie del lobo),​ llamado perro doméstico,es un mamífero carnívoro de la familia de los cánidos, que constituye una especie del género Canis.
+    {{ itemDescription }}
     </ion-card-content>
     <ion-button id="resultcontrol" color="dark" fill="outline" shape="round"><ion-icon name="chevron-back-outline"></ion-icon></ion-button>
     <ion-button id="resultcontrol" color="dark" fill="outline" shape="round"><ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
@@ -27,3 +32,4 @@
 </div>
 
 </ion-content>
+
