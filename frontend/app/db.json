@@ -1,143 +1,45 @@
 {
-  "status": "success",
-  "data": {
+  "api/v1/images/capture": { 
+    "status": "success",
+      "data": { "image_id": "img_001", "timestamp": "2025-04-16T10:15:00Z" },
+    "message": "Imagen recibida y procesada correctamente" },
+
+  "api/v1/images/{image_id}/analysis": { 
+    "status": "success", 
+      "data": { "image_id": "img_001", 
+      "tags": ["fruta", "banana", "comida"], 
+      "confidence_scores": { "fruta": 0.95, "banana": 0.88 } }, 
+    "message": "Análisis completado" },
+
+  "api/v1/multimedia/by-tag/{tag}": { 
+    "status": "success", 
+    "data": [ { "type": "image", "url": "https://example.com/images/banana.jpg" }, { "type": "video", "url": "https://example.com/videos/banana.mp4" } ], 
+    "message": "Multimedia encontrado para la etiqueta" },
+
+  "api/v1/history": { 
+    "status": "success", 
+    "data": { "Fruta": [ { "image_id": "img_001", "timestamp": "2025-04-16T10:15:00Z", "description": "Una banana amarilla sobre una mesa de madera." } ] }, 
+    "message": "Historial del usuario agrupado por categoría" },
+
+  "api/v1/items": { 
+    "status": "success", 
+    "data": [ { "id": 1, "name": "Fruta", "description": "Categoría, incluye frutas como manzanas, peras y plátanos." } ], 
+    "message": "Ítems listados exitosamente" },
+
+  "api/v1/items/{item_id}": { 
+    "status": "success", 
+    "data": { "id": 1, "name": "Fruta", "description": "Incluye frutas comestibles como manzanas, plátanos, peras, etc.", "related_tags": ["manzana", "banana", "pera"] }, 
+    "message": "Ítem recuperado correctamente" },
+
+
+  
+   "data": {
     "imagenes": [
       {
         "img_id": "img_001",
         "tags": ["Canguro-1", "Canguro-2", "Canguro-3", "Canguro-4", "Canguro-5", "Canguro-6", "Canguro-7", "Canguro-8", "Canguro-9", "Canguro-10"],
         "confidence_scores": { "Canguro": 0.93 }
-      },
-      {
-        "img_id": "img_002",
-        "tags": ["Cristo-Redentor-1", "Cristo-Redentor-2", "Cristo-Redentor-3", "Cristo-Redentor-4", "Cristo-Redentor-5", "Cristo-Redentor-6", "Cristo-Redentor-7", "Cristo-Redentor-8", "Cristo-Redentor-9", "Cristo-Redentor-10"],
-        "confidence_scores": { "Cristo-Redentor": 0.96 }
-      },
-      {
-        "img_id": "img_003",
-        "tags": ["Cubierto-1", "Cubierto-2", "Cubierto-3", "Cubierto-4", "Cubierto-5", "Cubierto-6", "Cubierto-7", "Cubierto-8", "Cubierto-9", "Cubierto-10"],
-        "confidence_scores": { "Cubierto": 0.89 }
-      },
-      {
-        "img_id": "img_004",
-        "tags": ["Delfin-1", "Delfin-2", "Delfin-3", "Delfin-4", "Delfin-5", "Delfin-6", "Delfin-7", "Delfin-8", "Delfin-9", "Delfin-10"],
-        "confidence_scores": { "Delfin": 0.92 }
-      },
-      {
-        "img_id": "img_005",
-        "tags": ["Elefante-1", "Elefante-2", "Elefante-3", "Elefante-4", "Elefante-5", "Elefante-6", "Elefante-7", "Elefante-8", "Elefante-9", "Elefante-10"],
-        "confidence_scores": { "Elefante": 0.91 }
-      },
-      {
-        "img_id": "img_006",
-        "tags": ["Estatua-de-la-Libertad-1", "Estatua-de-la-Libertad-2", "Estatua-de-la-Libertad-3", "Estatua-de-la-Libertad-4", "Estatua-de-la-Libertad-5", "Estatua-de-la-Libertad-6", "Estatua-de-la-Libertad-7", "Estatua-de-la-Libertad-8", "Estatua-de-la-Libertad-9", "Estatua-de-la-Libertad-10"],
-        "confidence_scores": { "Estatua-de-la-Libertad": 0.97 }
-      },
-      {
-        "img_id": "img_007",
-        "tags": ["Jirafa-1", "Jirafa-2", "Jirafa-3", "Jirafa-4", "Jirafa-5", "Jirafa-6", "Jirafa-7", "Jirafa-8", "Jirafa-9", "Jirafa-10"],
-        "confidence_scores": { "Jirafa": 0.88 }
-      },
-      {
-        "img_id": "img_008",
-        "tags": ["Koala-1", "Koala-2", "Koala-3", "Koala-4", "Koala-5", "Koala-6", "Koala-7", "Koala-8", "Koala-9", "Koala-10"],
-        "confidence_scores": { "Koala": 0.94 }
-      },
-      {
-        "img_id": "img_009",
-        "tags": ["Laptop-1", "Laptop-2", "Laptop-3", "Laptop-4", "Laptop-5", "Laptop-6", "Laptop-7", "Laptop-8", "Laptop-9", "Laptop-10"],
-        "confidence_scores": { "Laptop": 0.87 }
-      },
-      {
-        "img_id": "img_010",
-        "tags": ["Lentes-1", "Lentes-2", "Lentes-3", "Lentes-4", "Lentes-5", "Lentes-6", "Lentes-7", "Lentes-8", "Lentes-9", "Lentes-10"],
-        "confidence_scores": { "Lentes": 0.86 }
-      },
-      {
-        "img_id": "img_011",
-        "tags": ["Leon-1", "Leon-2", "Leon-3", "Leon-4", "Leon-5", "Leon-6", "Leon-7", "Leon-8", "Leon-9", "Leon-10"],
-        "confidence_scores": { "Leon": 0.90 }
-      },
-      {
-        "img_id": "img_012",
-        "tags": ["Libro-1", "Libro-2", "Libro-3", "Libro-4", "Libro-5", "Libro-6", "Libro-7", "Libro-8", "Libro-9", "Libro-10"],
-        "confidence_scores": { "Libro": 0.85 }
-      },
-      {
-        "img_id": "img_013",
-        "tags": ["Llave-1", "Llave-2", "Llave-3", "Llave-4", "Llave-5", "Llave-6", "Llave-7", "Llave-8", "Llave-9", "Llave-10"],
-        "confidence_scores": { "Llave": 0.84 }
-      },
-      {
-        "img_id": "img_014",
-        "tags": ["Mouse-1", "Mouse-2", "Mouse-3", "Mouse-4", "Mouse-5", "Mouse-6", "Mouse-7", "Mouse-8", "Mouse-9", "Mouse-10"],
-        "confidence_scores": { "Mouse": 0.83 }
-      },
-      {
-        "img_id": "img_015",
-        "tags": ["Oso-Polar-1", "Oso-Polar-2", "Oso-Polar-3", "Oso-Polar-4", "Oso-Polar-5", "Oso-Polar-6", "Oso-Polar-7", "Oso-Polar-8", "Oso-Polar-9", "Oso-Polar-10"],
-        "confidence_scores": { "Oso-Polar": 0.95 }
-      },
-      {
-        "img_id": "img_016",
-        "tags": ["Panda-1", "Panda-2", "Panda-3", "Panda-4", "Panda-5", "Panda-6", "Panda-7", "Panda-8", "Panda-9", "Panda-10"],
-        "confidence_scores": { "Panda": 0.94 }
-      },
-      {
-        "img_id": "img_017",
-        "tags": ["Paragua-1", "Paragua-2", "Paragua-3", "Paragua-4", "Paragua-5", "Paragua-6", "Paragua-7", "Paragua-8", "Paragua-9", "Paragua-10"],
-        "confidence_scores": { "Paragua": 0.82 }
-      },
-      {
-        "img_id": "img_018",
-        "tags": ["Pez-Payaso-1", "Pez-Payaso-2", "Pez-Payaso-3", "Pez-Payaso-4", "Pez-Payaso-5", "Pez-Payaso-6", "Pez-Payaso-7", "Pez-Payaso-8", "Pez-Payaso-9", "Pez-Payaso-10"],
-        "confidence_scores": { "Pez-Payaso": 0.91 }
-      },
-      {
-        "img_id": "img_019",
-        "tags": ["Puente-Centenario-1", "Puente-Centenario-2", "Puente-Centenario-3", "Puente-Centenario-4"],
-        "confidence_scores": { "Puente-Centenario": 0.89 }
-      },
-      {
-        "img_id": "img_020",
-        "tags": ["Rinoceronte-1", "Rinoceronte-2", "Rinoceronte-3", "Rinoceronte-4"],
-        "confidence_scores": { "Rinoceronte": 0.90 }
-      },
-      {
-        "img_id": "img_021",
-        "tags": ["Rod-Carew-Estadio-1", "Rod-Carew-Estadio-2", "Rod-Carew-Estadio-3"],
-        "confidence_scores": { "Rod-Carew-Estadio": 0.93 }
-      },
-      {
-        "img_id": "img_022",
-        "tags": ["Smartphone-1", "Smartphone-2", "Smartphone-3", "Smartphone-4"],
-        "confidence_scores": { "Smartphone": 0.88 }
-      },
-      {
-        "img_id": "img_023",
-        "tags": ["Taza-1", "Taza-2", "Taza-3", "Taza-4", "Taza-5", "Taza-6", "Taza-7", "Taza-8", "Taza-9", "Taza-10"],
-        "confidence_scores": { "Taza": 0.86 }
-      },
-      {
-        "img_id": "img_024",
-        "tags": ["Tigre-1", "Tigre-2", "Tigre-3", "Tigre-4", "Tigre-5", "Tigre-6", "Tigre-7", "Tigre-8", "Tigre-9", "Tigre-10"],
-        "confidence_scores": { "Tigre": 0.92 }
-      },
-      {
-        "img_id": "img_025",
-        "tags": ["Torre-Eifel-1", "Torre-Eifel-2", "Torre-Eifel-3"],
-        "confidence_scores": { "Torre-Eifel": 0.95 }
-      },
-      {
-        "img_id": "img_026",
-        "tags": ["Ventilador-1", "Ventilador-2", "Ventilador-3", "Ventilador-4", "Ventilador-5", "Ventilador-6", "Ventilador-7", "Ventilador-8", "Ventilador-9", "Ventilador-10"],
-        "confidence_scores": { "Ventilador": 0.85 }
-      },
-      {
-        "img_id": "img_027",
-        "tags": ["Volcan-Baru-1", "Volcan-Baru-2", "Volcan-Baru-3"],
-        "confidence_scores": { "Volcan-Baru": 0.96 }
       }
     ]
-  },
-  "message": "Análisis completado"
+  }
 }

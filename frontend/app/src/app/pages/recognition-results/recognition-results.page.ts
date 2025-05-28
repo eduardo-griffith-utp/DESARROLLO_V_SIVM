@@ -33,4 +33,7 @@ export class RecognitionResultsPage implements OnInit {
     // Toma los datos desde el servidor json
 
   }
+  public getMethod() {
+    
+  }
 }
