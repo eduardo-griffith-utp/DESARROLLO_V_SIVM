@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';  // Importa ActivatedRoute para acceder a los parámetros
 import { NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/app/core/services/api-service.service';
 
 @Component({
   selector: 'app-recognition-results',
@@ -15,10 +16,10 @@ export class RecognitionResultsPage implements OnInit {
 
   public getJsonValue: any;
   public postJsonValue: any;
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient) {}  // Inyecta ActivatedRoute
+  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private api: ApiService) {}  // Inyecta ActivatedRoute
 
-  ngOnInit() {
-    this.getMethod();
+  async ngOnInit() {
+    await this.getMethod();
     
 
     // Recupera el parámetro 'imageUrl' de la URL de la página
@@ -29,10 +30,7 @@ export class RecognitionResultsPage implements OnInit {
     // Toma los datos desde el servidor json
 
   }
-  public getMethod() {
-    this.http.get('http://localhost:3000/items').subscribe((res:any)=> {
-      console.log(res);
-      this.getJsonValue = res;
-    })
+  public async getMethod() {
+    this.getJsonValue = await this.api.getItem(1);
   }
 }

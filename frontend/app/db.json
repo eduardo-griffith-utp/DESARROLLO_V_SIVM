@@ -1,45 +1,176 @@
 {
-  "api": { 
-    "status": "success",
-    "data": { "image_id": "img_001", "timestamp": "2025-04-16T10:15:00Z" },
-    "message": "Imagen recibida y procesada correctamente" },
-
-  "api/v1/images/{image_id}/analysis": { 
-    "status": "success", 
-      "data": { "image_id": "img_001", 
-      "tags": ["fruta", "banana", "comida"], 
-      "confidence_scores": { "fruta": 0.95, "banana": 0.88 } }, 
-    "message": "Análisis completado" },
-
-  "api/v1/multimedia/by-tag/{tag}": { 
-    "status": "success", 
-    "data": [ { "type": "image", "url": "https://example.com/images/banana.jpg" }, { "type": "video", "url": "https://example.com/videos/banana.mp4" } ], 
-    "message": "Multimedia encontrado para la etiqueta" },
-
-  "api/v1/history": { 
-    "status": "success", 
-    "data": { "Fruta": [ { "image_id": "img_001", "timestamp": "2025-04-16T10:15:00Z", "description": "Una banana amarilla sobre una mesa de madera." } ] }, 
-    "message": "Historial del usuario agrupado por categoría" },
-
-  "items": { 
-    "status": "success", 
-    "data": { "id": 1, "name": "Fruta", "description": "Categoría, incluye frutas como manzanas, peras y plátanos." } , 
-    "message": "Ítems listados exitosamente" },
-
-  "api/v1/items/{item_id}": { 
-    "status": "success", 
-    "data": { "id": 1, "name": "Fruta", "description": "Incluye frutas comestibles como manzanas, plátanos, peras, etc.", "related_tags": ["manzana", "banana", "pera"] }, 
-    "message": "Ítem recuperado correctamente" },
-
-
-  
-   "data": {
-    "imagenes": [
-      {
-        "img_id": "img_001",
-        "tags": ["Canguro-1", "Canguro-2", "Canguro-3", "Canguro-4", "Canguro-5", "Canguro-6", "Canguro-7", "Canguro-8", "Canguro-9", "Canguro-10"],
-        "confidence_scores": { "Canguro": 0.93 }
-      }
-    ]
-  }
+  "images": [
+    {
+      "id": "img_001",
+      "status": "success",
+      "data": {
+        "image_id": "img_001",
+        "tags": ["fruta", "banana", "comida"],
+        "confidence_scores": {
+          "fruta": 0.95,
+          "banana": 0.88
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_002",
+      "status": "success",
+      "data": {
+        "image_id": "img_002",
+        "tags": ["electronica", "television"],
+        "confidence_scores": {
+          "electronica": 0.93,
+          "television": 0.89
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_003",
+      "status": "success",
+      "data": {
+        "image_id": "img_003",
+        "tags": ["fruta", "manzana", "comida"],
+        "confidence_scores": {
+          "fruta": 0.97,
+          "manzana": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_processing",
+      "status": "processing",
+      "data": {
+        "image_id": "img_processing"
+      },
+      "message": "El análisis de la imagen está en proceso. Intente nuevamente más tarde."
+    }
+  ],
+  "multimedia": [
+    {
+      "id": "banana",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://example.com/images/banana.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/banana.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "television",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://example.com/images/tv.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "manzana",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://example.com/images/apple.jpg"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    }
+  ],
+  "history": [
+    {
+      "id": 1,
+      "status": "success",
+      "data": {
+        "Fruta": [
+          {
+            "image_id": "img_001",
+            "timestamp": "2025-04-16T10:15:00Z",
+            "description": "Una banana amarilla sobre una mesa de madera."
+          },
+          {
+            "image_id": "img_003",
+            "timestamp": "2025-04-14T14:20:00Z",
+            "description": "Una manzana roja."
+          }
+        ],
+        "Electrónica": [
+          {
+            "image_id": "img_002",
+            "timestamp": "2025-04-15T09:45:00Z",
+            "description": "Un televisor en una sala de estar."
+          }
+        ]
+      },
+      "message": "Historial del usuario agrupado por categoría"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "status": "success",
+      "data": [
+        {
+          "id": 1,
+          "name": "Fruta",
+          "description": "Categoría, incluye frutas como manzanas, peras y plátanos."
+        },
+        {
+          "id": 2,
+          "name": "Electrónica",
+          "description": "Dispositivos electrónicos, celulares, computadoras y televisores."
+        }
+      ],
+      "message": "Ítems listados exitosamente"
+    }
+  ],
+  "itemDetails": [
+    {
+      "id": 1,
+      "status": "success",
+      "data": {
+        "id": 1,
+        "name": "Fruta",
+        "description": "Incluye frutas comestibles como manzanas, plátanos, peras, etc.",
+        "related_tags": ["manzana", "banana", "pera"]
+      },
+      "message": "Ítem recuperado correctamente"
+    },
+    {
+      "id": 2,
+      "status": "success",
+      "data": {
+        "id": 2,
+        "name": "Electrónica",
+        "description": "Dispositivos electrónicos como celulares, computadoras y televisores.",
+        "related_tags": ["television", "celular", "computadora"]
+      },
+      "message": "Ítem recuperado correctamente"
+    }
+  ],
+  "capture": [
+    {
+      "id": 1,
+      "status": "success",
+      "data": {
+        "image_id": "img_001",
+        "timestamp": "2025-04-16T10:15:00Z"
+      },
+      "message": "Imagen recibida y procesada correctamente"
+    }
+  ]
 }

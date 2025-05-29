@@ -7,12 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { RecognitionResultsPageRoutingModule } from './recognition-results-routing.module';
 
 import { RecognitionResultsPage } from './recognition-results.page';
+import { ApiService } from 'src/app/core/services/api-service.service';
 
 @NgModule({
+  providers: [ApiService],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    
     RecognitionResultsPageRoutingModule
   ],
   declarations: [RecognitionResultsPage]
