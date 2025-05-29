@@ -10,7 +10,7 @@ import { Observable, of } from 'rxjs';
 
 
 export class ServicesService implements HttpInterceptor {
-  private apiUrl = 'http://localhost:3000/data'
+  private apiUrl = 'http://localhost:3000/api'
   constructor() { }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
