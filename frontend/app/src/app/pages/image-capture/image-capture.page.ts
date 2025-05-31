@@ -2,12 +2,18 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { NavController } from '@ionic/angular';  // Importa NavController para navegar
 
+
 @Component({
   selector: 'app-image-capture', // Selector actualizado
   templateUrl: './image-capture.page.html', // Referencia al nuevo nombre del HTML
   styleUrls: ['./image-capture.page.scss'], // Referencia al nuevo nombre del SCSS
   standalone: false,
 })
+
+
+
+
+
 export class ImageCapturePage implements OnInit, OnDestroy {
   imageUrl: string | undefined;
   isCameraActive = false;

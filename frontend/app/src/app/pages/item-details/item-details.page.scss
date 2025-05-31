@@ -1,4 +1,9 @@
 *{    font-family: Roboto;}
+
+ion-buttons{
+  margin: auto;
+}
+
 ion-back-button{
 padding: 4%;
 width: 20%;
@@ -8,12 +13,15 @@ height: 15%;
 
 ion-card{
     margin: auto;
-    width: 70%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    //width: 70%;
+    width: 90%;
     padding: 10px;
 height: fit-content;
 overflow: hidden;
     background-color: #E9E9E9;
-img{
+ion-img{
     background: linear-gradient(to right, #e91e63, #9c27b0);
 }
 
@@ -35,12 +43,17 @@ ion-card-content{
   ion-title{
     color: #212121 ;
     font-size:2rem;
-    margin: 35px,25px;
-    padding: 10px,9px;
+    margin: 35px,25px; //revisar
+    padding: 10px,9px; //revisar
+    padding-left: 0px;
   }
   #resultcontrol{
-    width: 49%;
-    padding: 1px 20px;
+    //width: 49%;
+    width: 40%;
+    //padding: 1px 20px;
+    padding: 1px 10px;
+    margin-left: 12px;
+    margin-right: 12px;
   }
   #player{
     margin: 25px;
@@ -50,9 +63,11 @@ ion-card-content{
     border-radius: 10px;
   }
   #player ion-card ion-button{
-    padding: 16px;
-  margin-left: auto;
-  margin-right: auto;
+    //padding: 16px;
+    padding: 2px 2px;
+    //margin-left: auto;
+    //margin-right: auto;
+    margin: auto;
     width: 33%;
     color: white;
   }
@@ -61,3 +76,4 @@ ion-card-content{
     --progress-background: gray;
     margin-top: 22px;
   }
+
