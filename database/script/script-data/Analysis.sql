@@ -2,7 +2,7 @@
 
 -- CREATE
 INSERT INTO Analysis (id_analysis, input_image_path, timestamp, status, processing_time)
-VALUES (1, 'training_data/CANGURO/img_001.jpg', GETDATE(), 'COMPLETADO', GETDATE());
+VALUES ('training_data/CANGURO/img_001.jpg', GETDATE(), 'COMPLETADO', GETDATE());
 
 -- READ
 SELECT * FROM Analysis;

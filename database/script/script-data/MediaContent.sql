@@ -1,8 +1,8 @@
 -- CRUD para la tabla MediaContent
 
 -- CREATE
-INSERT INTO MediaContent (id_media_content, item_id, route_path, type, description, date_uploaded)
-VALUES (1, 1, 'training_data/CANGURO/img_001.jpg', 'image/jpeg', 'Imagen de canguro', GETDATE());
+INSERT INTO MediaContent (item_id, route_path, type, description, date_uploaded)
+VALUES (1, 'training_data/CANGURO/img_001.jpg', 'image/jpeg', 'Imagen de canguro', GETDATE());
 
 -- READ
 SELECT * FROM MediaContent;
