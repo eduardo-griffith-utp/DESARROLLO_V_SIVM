@@ -31,6 +31,7 @@ export class RecognitionResultsPage implements OnInit {
 
   }
   public async getMethod() {
-    this.getJsonValue = await this.api.getItem(1);
+    this.getJsonValue = await this.api.getItemDetails(1);
+    console.log(this.getJsonValue);
   }
 }
