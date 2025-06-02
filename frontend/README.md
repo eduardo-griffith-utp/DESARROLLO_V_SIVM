@@ -110,12 +110,18 @@ Antes de empezar a trabajar con este proyecto, asegúrate de tener instalados lo
 
 ## Mock Api 
 - **Creacion de archivos Json** Se crearon archivos json con las respuestas simuladas tomando en cuenta el equipo de arquitectura 
+En este caso en especifico para su correcto funcionamiento debe ser la version
+0.17.4
 - **Instalacion de JsonServer** 
 *  ´´bash 
-     npm install -g json-server
-- **Ubicar el Json server en el archivo .json
+     npm install -g json-server@0.17.4
+- **Ubicar el Json server en el archivo .json**
 -  ´´bash
      json-server --watch db.json
+ 
+     **Rastear el servidor json en los servicios**
+- * En este caso la apiur = http://localhost:3000/data
+
 
 ## Guías de Estilo UI/UX
 
