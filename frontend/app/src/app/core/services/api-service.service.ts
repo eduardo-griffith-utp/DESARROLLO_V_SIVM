@@ -8,68 +8,85 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient) {}
 
   async postItem(): Promise<any> {
     const timestamp = new Date().toISOString();
+    const uniqueId = 'img_' + Math.random().toString(36).substring(2, 8);
+
+    const payload = {
+      id: uniqueId,
+      timestamp: timestamp,
+      description: "Descripción",
+      status: "processing"
+    };
 
     try {
-      const uniqueId = 'img_' + Math.random().toString(36).substring(2, 8);
-    } catch (error){
-      console.error("Error posting items")
-    }
-  }
-
-  async getimages(): Promise <any> {
-    try {
-      const res = await firstValueFrom(this.http.get(environment.baseUrl + "/appi/v1/images"));
+      const res = await firstValueFrom(this.http.post(environment.baseUrl + "/api/v1/items", payload));
       return res;
     } catch (error) {
-      console.error('Error fetching items:', error);
+      console.error('Error posting item:', error);
       throw error;
     }
   }
 
-  async getItemDetails(item_id: number): Promise<any> {
+  async getImages(imageId: number): Promise<any> {
     try {
-      const res = await firstValueFrom(this.http.get(environment.baseUrl + "/api/v1/items/" + item_id));
+      const res = await firstValueFrom(
+        this.http.get(`${environment.baseUrl}/api/v1/images/${imageId}/analysis`)
+      );
       return res;
     } catch (error) {
-      console.error('Error fetching items:', error);
+      console.error('Error fetching image analysis:', error);
+      throw error;
+    }
+  }
+
+  async getItemDetails(itemId: number): Promise<any> {
+    try {
+      const res = await firstValueFrom(
+        this.http.get(`${environment.baseUrl}/api/v1/items/${itemId}`)
+      );
+      return res;
+    } catch (error) {
+      console.error('Error fetching item details:', error);
       throw error;
     }
   }
 
   async getItem(): Promise<any> {
     try {
-      const res = await firstValueFrom(this.http.get(environment.baseUrl +"/appi/v1/items"));
-      return res;
-    } catch (error) {
-      console.error('Error fetching items', error);
-      throw error;
-    }
-  }
-
-  async getMultumedia(multimedia_tag: number): Promise <any> {
-    try {
-      const res = await firstValueFrom(this.http.get(environment.baseUrl + "/appi/v1/multimedia/by-tag/" + multimedia_tag));
+      const res = await firstValueFrom(
+        this.http.get(`${environment.baseUrl}/api/v1/items`)
+      );
       return res;
     } catch (error) {
       console.error('Error fetching items:', error);
       throw error;
     }
   }
-  async getHistory(): Promise <any> {
+
+  async getMultimedia(multimediaTag: number): Promise<any> {
     try {
-      const res = await firstValueFrom(this.http.get(environment.baseUrl + "/appi/v1/history"));
+      const res = await firstValueFrom(
+        this.http.get(`${environment.baseUrl}/api/v1/multimedia/by-tag/${multimediaTag}`)
+      );
       return res;
     } catch (error) {
-      console.error('Error fetching items:', error);
+      console.error('Error fetching multimedia:', error);
       throw error;
     }
   }
-  
-  
 
+  async getHistory(): Promise<any> {
+    try {
+      const res = await firstValueFrom(
+        this.http.get(`${environment.baseUrl}/api/v1/history`)
+      );
+      return res;
+    } catch (error) {
+      console.error('Error fetching history:', error);
+      throw error;
+    }
+  }
 }

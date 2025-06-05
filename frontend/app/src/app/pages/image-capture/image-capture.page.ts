@@ -2,22 +2,18 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { NavController } from '@ionic/angular';  // Importa NavController para navegar
 
-
 @Component({
   selector: 'app-image-capture', // Selector actualizado
   templateUrl: './image-capture.page.html', // Referencia al nuevo nombre del HTML
   styleUrls: ['./image-capture.page.scss'], // Referencia al nuevo nombre del SCSS
   standalone: false,
 })
-
-
-
-
-
 export class ImageCapturePage implements OnInit, OnDestroy {
   imageUrl: string | undefined;
   isCameraActive = false;
   videoStream: MediaStream | undefined;
+
+    zoomLevel = 1.0;
 
   constructor(private navController: NavController) {}  // Inyecta NavController
 
@@ -83,7 +79,51 @@ export class ImageCapturePage implements OnInit, OnDestroy {
     }
   }
 
+  async captureNow() {
+    try {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Camera,
+      });
+
+      this.imageUrl = image.webPath;
+      console.log('Imagen capturada al instante:', this.imageUrl);
+
+      // Redirigir a la página de resultados, pasando la URL de la imagen
+      this.navController.navigateForward('/recognition-results', {
+        queryParams: {
+          imageUrl: this.imageUrl,  // Pasa la URL de la imagen
+        },
+      });
+
+    } catch (error) {
+      console.error('Error al tomar la foto al instante:', error);
+    }
+  }
+
   async uploadImage() {
     console.log('Subir imagen seleccionado');
+  }
+  zoomIn() {
+    if (this.zoomLevel < 3) { // máximo zoom 3x
+      this.zoomLevel += 1;
+      this.applyZoom();
+    }
+  }
+
+  zoomOut() {
+    if (this.zoomLevel > 1) {
+      this.zoomLevel -= 1;
+      this.applyZoom();
+    }
+  }
+
+  applyZoom() {
+    const videoElement = document.querySelector('video');
+    if (videoElement) {
+      videoElement.style.transform = `scale(${this.zoomLevel.toFixed(2)})`;
+    }
   }
 }
