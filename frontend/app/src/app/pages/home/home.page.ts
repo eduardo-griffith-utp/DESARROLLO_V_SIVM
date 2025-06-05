@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit { // La clase ahora se llama 'HomePage'
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit() {
+    
   }
 
   scanear() { // El nombre de la función se mantiene igual, asumiendo que su lógica sigue siendo relevante en la página de inicio

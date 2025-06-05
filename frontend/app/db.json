@@ -1,0 +1,1047 @@
+{
+  "images": [
+    {
+      "id": "img_001",
+      "status": "success",
+      "data": {
+        "image_id": "img_001",
+        "tags": ["fruta", "banana", "comida"],
+        "confidence_scores": {
+          "fruta": 0.95,
+          "banana": 0.88
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_002",
+      "status": "success",
+      "data": {
+        "image_id": "img_002",
+        "tags": ["electronica", "television"],
+        "confidence_scores": {
+          "electronica": 0.93,
+          "television": 0.89
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_003",
+      "status": "success",
+      "data": {
+        "image_id": "img_003",
+        "tags": ["fruta", "manzana", "comida"],
+        "confidence_scores": {
+          "fruta": 0.97,
+          "manzana": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_004",
+      "status": "success",
+      "data": {
+        "image_id": "img_004",
+        "tags": ["Animal", "Canguro", "Mamifero Terrestre"],
+        "confidence_scores": {
+          "Animal": 0.97,
+          "Canguro": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_005",
+      "status": "success",
+      "data": {
+        "image_id": "img_005",
+        "tags": ["Punto Turistico", "Cristo Redentor", "Monumento"],
+        "confidence_scores": {
+          "Punto Turistico": 0.97,
+          "Cristo Redentor": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_006",
+      "status": "success",
+      "data": {
+        "image_id": "img_006",
+        "tags": ["Vajilla", "Cubierto"],
+        "confidence_scores": {
+          "Vajilla": 0.97,
+          "Cubierto": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_007",
+      "status": "success",
+      "data": {
+        "image_id": "img_007",
+        "tags": ["Animal", "Delfin", "Mamifero Acuatico"],
+        "confidence_scores": {
+          "Animal": 0.97,
+          "Delfin": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_008",
+      "status": "success",
+      "data": {
+        "image_id": "img_008",
+        "tags": ["Animal", "Elefante", "Mamifero Terrestre"],
+        "confidence_scores": {
+          "Animal": 0.97,
+          "Elefante": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_009",
+      "status": "success",
+      "data": {
+        "image_id": "img_009",
+        "tags": ["Punto Turistico", "Estatua De La Libertad", "Monumento"],
+        "confidence_scores": {
+          "Punto Turistico": 0.97,
+          "Estatua De La Libertad": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_010",
+      "status": "success",
+      "data": {
+        "image_id": "img_010",
+        "tags": ["Animal", "Jirafa", "Mamifero Terrestre"],
+        "confidence_scores": {
+          "Animal": 0.97,
+          "Jirafa": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_011",
+      "status": "success",
+      "data": {
+        "image_id": "img_011",
+        "tags": ["Animal", "Koala", "Mamifero Terrestre"],
+        "confidence_scores": {
+          "Animal": 0.97,
+          "Koala": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_012",
+      "status": "success",
+      "data": {
+        "image_id": "img_012",
+        "tags": ["electronica", "Laptop"],
+        "confidence_scores": {
+          "electronica": 0.97,
+          "Laptop": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_013",
+      "status": "success",
+      "data": {
+        "image_id": "img_013",
+        "tags": ["Accesorio", "Lentes"],
+        "confidence_scores": {
+          "Accesorio": 0.97,
+          "Lentes": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_014",
+      "status": "success",
+      "data": {
+        "image_id": "img_014",
+        "tags": ["Obra Impresa", "Libro"],
+        "confidence_scores": {
+          "Obra Impresa": 0.97,
+          "Libro": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_015",
+      "status": "success",
+      "data": {
+        "image_id": "img_015",
+        "tags": ["Instrumento de Utilidad", "Llave"],
+        "confidence_scores": {
+          "Instrumento de Utilidad": 0.97,
+          "Llave": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_016",
+      "status": "success",
+      "data": {
+        "image_id": "img_016",
+        "tags": ["electronica", "Mouse"],
+        "confidence_scores": {
+          "electronica": 0.97,
+          "Mouse": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_017",
+      "status": "success",
+      "data": {
+        "image_id": "img_017",
+        "tags": ["Animal", "Oso Polar", "Mamifero Marinos"],
+        "confidence_scores": {
+          "Animal": 0.97,
+          "Oso Polar": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_018",
+      "status": "success",
+      "data": {
+        "image_id": "img_018",
+        "tags": ["Animal", "Panda", "Mamifero Terrestre"],
+        "confidence_scores": {
+          "Animal": 0.97,
+          "Panda": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_019",
+      "status": "success",
+      "data": {
+        "image_id": "img_019",
+        "tags": ["Instrumento de Utilidad", "Paragua"],
+        "confidence_scores": {
+          "Instrumento de Utilidad": 0.97,
+          "Paragua": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_020",
+      "status": "success",
+      "data": {
+        "image_id": "img_020",
+        "tags": ["Animal", "Pez Payaso", "Pez"],
+        "confidence_scores": {
+          "Animal": 0.97,
+          "Pez Payaso": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_021",
+      "status": "success",
+      "data": {
+        "image_id": "img_021",
+        "tags": ["Puente", "Puente Centenario", "Obra Publica"],
+        "confidence_scores": {
+          "Puente": 0.97,
+          "Puente Centenario": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_022",
+      "status": "success",
+      "data": {
+        "image_id": "img_022",
+        "tags": ["Animal", "Rinoceronte", "Mamifero Terrestre"],
+        "confidence_scores": {
+          "Animal": 0.97,
+          "Rinoceronte": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_023",
+      "status": "success",
+      "data": {
+        "image_id": "img_023",
+        "tags": ["Estadio", "Rod Carew Estadio"],
+        "confidence_scores": {
+          "Estadio": 0.97,
+          "Rod Carew Estadio": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_024",
+      "status": "success",
+      "data": {
+        "image_id": "img_024",
+        "tags": ["electronica", "Smartphone"],
+        "confidence_scores": {
+          "electronica": 0.97,
+          "Smartphone": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_025",
+      "status": "success",
+      "data": {
+        "image_id": "img_025",
+        "tags": ["Vajilla", "Taza"],
+        "confidence_scores": {
+          "Vajilla": 0.97,
+          "Taza": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_026",
+      "status": "success",
+      "data": {
+        "image_id": "img_026",
+        "tags": ["Animal", "Tigre", "Felino"],
+        "confidence_scores": {
+          "Animal": 0.97,
+          "Tigre": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_027",
+      "status": "success",
+      "data": {
+        "image_id": "img_027",
+        "tags": ["Punto Turistico", "Torre Eiffel", "Monumento"],
+        "confidence_scores": {
+          "Punto Turistico": 0.97,
+          "Torre Eiffel": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_028",
+      "status": "success",
+      "data": {
+        "image_id": "img_028",
+        "tags": ["electronica", "Ventilador", "maquina hidraulica"],
+        "confidence_scores": {
+          "electronica": 0.97,
+          "Ventilador": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_029",
+      "status": "success",
+      "data": {
+        "image_id": "img_029",
+        "tags": ["Punto Turistico", "Volcan Baru", "Volcan"],
+        "confidence_scores": {
+          "Punto Turistico": 0.97,
+          "Volcan Baru": 0.92
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_processing",
+      "status": "processing",
+      "data": {
+        "image_id": "img_processing"
+      },
+      "message": "El análisis de la imagen está en proceso. Intente nuevamente más tarde."
+    }
+  ],
+  "multimedia": [
+    {
+      "id": "banana",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://example.com/images/banana.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/banana.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "television",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://example.com/images/tv.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "manzana",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://example.com/images/apple.jpg"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Canguro",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/CANGURO/wildlife-4493868_1280.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Cristo Redentor",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/CRISTO%20REDENTOR/Cristo-Redentor-10.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Cubierto",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/CUBIERTO/cubierto_1.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Delfin",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/aa16aa7821c6db5d83295b4c0cf50e73f285bbd0/assets/storage_structure/training_data/DELFIN/Delfin-2.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Elefante",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/aa16aa7821c6db5d83295b4c0cf50e73f285bbd0/assets/storage_structure/training_data/ELEFANTE/Elefante-1.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Estatua De La Libertad",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/ESTATUA%20DE%20LA%20LIBERTAD/Estatua-de-la-Libertad-5.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Jirafa",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/aa16aa7821c6db5d83295b4c0cf50e73f285bbd0/assets/storage_structure/training_data/JIRAFA/jirafa-1.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Koala",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/KOALA/Koala-8.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Laptop",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/LAPTOP/Laptop-4.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Lentes",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/LENTES/lentes_7.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Leon",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/LEON/leon_10.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Libro",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/LIBRO/Libro-8.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Llave",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/LLAVE/Llave-4.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Mouse",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/MOUSE/mouse-6.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Oso Polar",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/73db46fa3370b3220b2cf8634ea8adfd76fccce6/assets/storage_structure/training_data/OSO%20POLAR/Oso-Polar-3.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Panda",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/PANDA/panda_3.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Paragua",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/PARAGUA/Paragua-6.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Pez Payaso",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/73db46fa3370b3220b2cf8634ea8adfd76fccce6/assets/storage_structure/training_data/PEZ%20PAYASO/Pez-payaso-2.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Puente Centenario",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/73db46fa3370b3220b2cf8634ea8adfd76fccce6/assets/storage_structure/training_data/PUENTE%20CENTENARIO/Puente-centenario-2.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Rinoceronte",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/73db46fa3370b3220b2cf8634ea8adfd76fccce6/assets/storage_structure/training_data/RINOCERONTE/Rinoceronte-3.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Rod Carew Estadio",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/aa16aa7821c6db5d83295b4c0cf50e73f285bbd0/assets/storage_structure/training_data/ROD%20CAREW%20ESTADIO/ROD-CAREW-2.jpeg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Smartphone",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/aa16aa7821c6db5d83295b4c0cf50e73f285bbd0/assets/storage_structure/training_data/SMARTPHONE/Smartphone-1.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Taza",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/TAZA/taza_6.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Tigre",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/TIGRE/tigre_3.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Torre Eiffel",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/aa16aa7821c6db5d83295b4c0cf50e73f285bbd0/assets/storage_structure/training_data/TORRE%20EIFFEL/Torre-Eiffel-3.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Ventilador",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/abbd8cf4f58dc15a79c4f5b6388ac5ca47f62077/assets/storage_structure/training_data/VENTILADOR/ventilador_8.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    },
+    {
+      "id": "Volcan Baru",
+      "status": "success",
+      "data": [
+        {
+          "type": "image",
+          "url": "https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/blob/73db46fa3370b3220b2cf8634ea8adfd76fccce6/assets/storage_structure/training_data/VOLCAN%20BARU/volcan-baru-1.jpg"
+        },
+        {
+          "type": "video",
+          "url": "https://example.com/videos/tv.mp4"
+        }
+      ],
+      "message": "Multimedia encontrado para la etiqueta"
+    }
+  ],
+  "history": [
+    {
+      "id": 1,
+      "status": "success",
+      "data": {
+        "Fruta": [
+          {
+            "image_id": "img_001",
+            "timestamp": "2025-04-16T10:15:00Z",
+            "description": "Una banana amarilla sobre una mesa de madera."
+          },
+          {
+            "image_id": "img_003",
+            "timestamp": "2025-04-14T14:20:00Z",
+            "description": "Una manzana roja."
+          }
+        ],
+        "Electrónica": [
+          {
+            "image_id": "img_002",
+            "timestamp": "2025-04-15T09:45:00Z",
+            "description": "Un televisor en una sala de estar."
+          }
+        ]
+      },
+      "message": "Historial del usuario agrupado por categoría"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "status": "success",
+      "data": [
+        {
+          "id": 1,
+          "name": "Fruta",
+          "description": "Categoría, incluye frutas como manzanas, peras y plátanos."
+        },
+        {
+          "id": 2,
+          "name": "Electrónica",
+          "description": "Dispositivos electrónicos, celulares, computadoras y televisores."
+        },
+        {
+          "id": 3,
+          "name": "Animal",
+          "description": "Categoría que agrupa animales domésticos y salvajes como perros, gatos y leones."
+        },
+        {
+          "id": 4,
+          "name": "Punto Turistico",
+          "description": "Lugares de interés turístico como playas, monumentos históricos y parques nacionales."
+        },
+        {
+          "id": 5,
+          "name": "Vajilla",
+          "description": "Objetos utilizados para servir y consumir alimentos, como platos, vasos y cubiertos."
+        },
+        {
+          "id": 6,
+          "name": "Accesorio",
+          "description": "Complementos personales como relojes, bolsos, gafas y joyería."
+        },
+        {
+          "id": 7,
+          "name": "Obra Impresa",
+          "description": "Materiales impresos como libros, revistas, periódicos y folletos."
+        },
+        {
+          "id": 8,
+          "name": "Instrumento de Utilidad",
+          "description": "Herramientas y objetos prácticos para realizar tareas, como tijeras, destornilladores y llaves."
+        },
+        {
+          "id": 9,
+          "name": "Puente",
+          "description": "Estructuras construidas para cruzar obstáculos físicos como ríos o valles, utilizadas por vehículos o peatones."
+        },
+        {
+          "id": 10,
+          "name": "Estadio",
+          "description": "Instalaciones deportivas o de espectáculos donde se realizan eventos masivos como partidos o conciertos."
+        }
+      ],
+      "message": "Ítems listados exitosamente"
+    }
+  ],
+  "itemDetails": [
+    {
+      "id": 1,
+      "status": "success",
+      "data": {
+        "id": 1,
+        "name": "Fruta",
+        "description": "Incluye frutas comestibles como manzanas, plátanos, peras, etc.",
+        "related_tags": ["manzana", "banana", "pera"]
+      },
+      "message": "Ítem recuperado correctamente"
+    },
+    {
+      "id": 2,
+      "status": "success",
+      "data": {
+        "id": 2,
+        "name": "Electrónica",
+        "description": "Dispositivos electrónicos como celulares, computadoras y televisores.",
+        "related_tags": ["television", "celular", "computadora", "Smatphone", "Mouse", "Ventilador"]
+      },
+      "message": "Ítem recuperado correctamente"
+    },
+    {
+      "id": 3,
+      "status": "success",
+      "data": {
+        "id": 3,
+        "name": "Animal",
+        "description": "Incluye una variedad de animales tanto domésticos como salvajes presentes en diferentes hábitats.",
+        "related_tags": ["Canguro", "Delfin", "Elefante", "Jirafa", "Koala", "Oso Polar", "Panda", "Pez Payaso", "Rinoceronte", "Tigre"]
+      },
+      "message": "Ítem recuperado correctamente"
+    },
+    {
+      "id": 4,
+      "status": "success",
+      "data": {
+        "id": 4,
+        "name": "Punto Turistico",
+        "description": "Lugares emblemáticos o naturales visitados por su atractivo cultural, histórico o geográfico.",
+        "related_tags": ["Cristo Redentor", "Estatua De La Libertad", "Torre Eiffel", "Volcan Baru"]
+      },
+      "message": "Ítem recuperado correctamente"
+    },
+    {
+      "id": 5,
+      "status": "success",
+      "data": {
+        "id": 5,
+        "name": "Vajilla",
+        "description": "Conjunto de utensilios utilizados para servir alimentos y bebidas en la mesa.",
+        "related_tags": ["Cubierto", "Taza"]
+      },
+      "message": "Ítem recuperado correctamente"
+    },
+    {
+      "id": 6,
+      "status": "success",
+      "data": {
+        "id": 6,
+        "name": "Accesorio",
+        "description": "Artículos complementarios que acompañan la vestimenta o cumplen funciones específicas.",
+        "related_tags": ["Lentes"]
+      },
+      "message": "Ítem recuperado correctamente"
+    },
+    {
+      "id": 7,
+      "status": "success",
+      "data": {
+        "id": 7,
+        "name": "Obra Impresa",
+        "description": "Publicaciones impresas que transmiten conocimiento o entretenimiento.",
+        "related_tags": ["Libro"]
+      },
+      "message": "Ítem recuperado correctamente"
+    },
+    {
+      "id": 8,
+      "status": "success",
+      "data": {
+        "id": 8,
+        "name": "Instrumento de Utilidad",
+        "description": "Objetos funcionales usados en la vida cotidiana para facilitar tareas específicas.",
+        "related_tags": ["Llave", "Paragua"]
+      },
+      "message": "Ítem recuperado correctamente"
+    },
+    {
+      "id": 9,
+      "status": "success",
+      "data": {
+        "id": 9,
+        "name": "Puente",
+        "description": "Estructura construida para permitir el paso sobre obstáculos como ríos o caminos.",
+        "related_tags": ["Puente Centenario"]
+      },
+      "message": "Ítem recuperado correctamente"
+    },
+    {
+      "id": 10,
+      "status": "success",
+      "data": {
+        "id": 10,
+        "name": "Estadio",
+        "description": "Recinto de grandes dimensiones destinado a eventos deportivos o espectáculos.",
+        "related_tags": ["Rod Carew Estadio"]
+      },
+      "message": "Ítem recuperado correctamente"
+    }
+  ],
+  "capture": [
+    {
+      "id": 1,
+      "status": "success",
+      "data": {
+        "image_id": "img_001",
+        "timestamp": "2025-04-16T10:15:00Z"
+      },
+      "message": "Imagen recibida y procesada correctamente"
+    }
+  ]
+}

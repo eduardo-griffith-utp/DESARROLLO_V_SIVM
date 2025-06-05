@@ -1,0 +1,81 @@
+* {
+  font-family: Roboto;
+}
+
+ion-buttons {
+  margin: auto;
+}
+
+ion-back-button {
+  padding: 4%;
+  width: 20%;
+  height: 15%;
+  display: block;
+}
+
+ion-card {
+  margin: auto;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  width: 90%;
+  padding: 10px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  overflow: hidden;
+  background-color: #E9E9E9;
+}
+ion-card img {
+  background: linear-gradient(to right, #e91e63, #9c27b0);
+}
+ion-card ion-card-title {
+  font-size: 2rem;
+  margin-bottom: 4px;
+  text-align: center;
+}
+ion-card ion-card-content {
+  color: #757575;
+  font-size: 14px;
+  color: var(--ion-color-medium);
+  align-self: flex-start;
+  margin-top: 12px;
+  overflow: scroll;
+}
+
+ion-title {
+  color: #212121;
+  font-size: 2rem;
+  margin: 35px, 25px;
+  padding: 10px, 9px;
+  padding-left: 0px;
+}
+
+#resultcontrol {
+  width: 40%;
+  padding: 1px 10px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+#player {
+  margin: 25px;
+}
+
+#player ion-card {
+  background-color: black;
+  border-radius: 10px;
+}
+
+#player ion-card ion-button {
+  padding: 2px 2px;
+  margin: auto;
+  width: 33%;
+  color: white;
+}
+
+#player ion-card ion-progress-bar {
+  --background: white;
+  --progress-background: gray;
+  margin-top: 22px;
+}
+/*# sourceMappingURL=item-details.page.css.map */
