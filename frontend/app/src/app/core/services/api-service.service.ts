@@ -21,9 +21,9 @@ export class ApiService {
     }
   }
 
-  async getimages(Images_id: number): Promise <any> {
+  async getimages(): Promise <any> {
     try {
-      const res = await firstValueFrom(this.http.get(environment.baseUrl + "/appi/v1/images/:id/analysis" + Images_id));
+      const res = await firstValueFrom(this.http.get(environment.baseUrl + "/appi/v1/images"));
       return res;
     } catch (error) {
       console.error('Error fetching items:', error);
@@ -33,7 +33,6 @@ export class ApiService {
 
   async getItemDetails(item_id: number): Promise<any> {
     try {
-      item_id = 3;
       const res = await firstValueFrom(this.http.get(environment.baseUrl + "/api/v1/items/" + item_id));
       return res;
     } catch (error) {

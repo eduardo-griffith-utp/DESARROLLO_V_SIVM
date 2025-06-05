@@ -13,10 +13,21 @@ import { ApiService } from 'src/app/core/services/api-service.service';
 export class HistoryPage implements OnInit {
 
   public getJsonValue: any;
+  public getJsonImage: any;
 
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private api: ApiService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.getMethod();
+    await this.getImage();
   }
 
+  public async getMethod() {
+    this.getJsonValue = await this.api.getHistory();
+    console.log(this.getJsonValue);
+  }
+  public async getImage() {
+    this.getJsonImage = await this.api.getimages();
+    console.log(this.getJsonImage);
+  }
 }

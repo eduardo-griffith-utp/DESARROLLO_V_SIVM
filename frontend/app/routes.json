@@ -1,6 +1,6 @@
 {
   "/api/v1/images/capture": "/capture",
-  "/api/v1/images/:id/analysis": "/images/:id",
+  "/api/v1/images/": "/images",
   "/api/v1/multimedia/by-tag/:tag": "/multimedia/:tag",
   "/api/v1/history": "/history",
   "/api/v1/items": "/items",
