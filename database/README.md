@@ -173,7 +173,7 @@ FOREIGN KEY (analysis_id) REFERENCES analysis(id_analysis);
 
 ```bash
 # Crear nuevo archivo SQL con la estructura de tablas
-nano crear_tablas.sql
+nano estructura_tablas.sql
 ```
 
 ### Ejecutar Migraciones
