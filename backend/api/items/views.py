@@ -4,3 +4,4 @@ from .serializers import ExampleSerializer
 class ExampleViewSet(viewsets.ModelViewSet):
  queryset = Example.objects.all()
  serializer_class = ExampleSerializer
+ 
