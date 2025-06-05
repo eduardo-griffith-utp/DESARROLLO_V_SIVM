@@ -27,7 +27,7 @@ export class HistoryPage implements OnInit {
     console.log(this.getJsonValue);
   }
   public async getImage() {
-    this.getJsonImage = await this.api.getimages();
+    this.getJsonImage = await this.api.getImages(2);
     console.log(this.getJsonImage);
   }
 }
