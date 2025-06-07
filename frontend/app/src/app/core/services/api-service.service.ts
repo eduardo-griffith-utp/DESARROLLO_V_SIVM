@@ -10,24 +10,35 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  async postItem(): Promise<any> {
-    const timestamp = new Date().toISOString();
-    const uniqueId = 'img_' + Math.random().toString(36).substring(2, 8);
-
+  async postItem(base64Image: string): Promise<any> {
     const payload = {
-      id: uniqueId,
-      timestamp: timestamp,
-      description: "Descripción",
-      status: "processing"
+      image: base64Image //this.apiService.postItem(base64DataFromCamera);
+
     };
 
     try {
-      const res = await firstValueFrom(this.http.post(environment.baseUrl + "/api/v1/items", payload));
+      const res: any = await firstValueFrom(this.http.post(environment.baseUrl + "/api/v1/images/capture", payload));
+      if (res.status === 'success') {
+        console.log('Imagen recibida y procesada correctamente');
+        console.log('ID de imagen:', res.data.image_id);
+        console.log('Timestamp:', res.data.timestamp);
+      }
+
       return res;
-    } catch (error) {
-      console.error('Error posting item:', error);
+
+    } catch (error: any) {
+      if (error.status === 400) {
+        console.error('Error 400 - Solicitud mal formada');
+      } else if (error.status === 404) {
+        console.error('Error 404 - Recurso no encontrado');
+      } else if (error.status === 500) {
+        console.error('Error 500 - Error interno del servidor');
+      } else {
+        console.error('Error desconocido:', error);
+      }
+
       throw error;
-    }
+      }
   }
 
   async getImages(imageId: number): Promise<any> {
