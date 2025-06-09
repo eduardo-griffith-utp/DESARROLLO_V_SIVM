@@ -1,31 +1,33 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>recognition-results</ion-title>
+<ion-content [fullscreen]="true">
+  <ion-header color="light">
+  <ion-toolbar color="light">
+    <img src="assets/icon/Capture-icon.png">
+    <ion-title>Resultado</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Resultado</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  
   <div class="container">
-    <div class="image">
-      <ion-img *ngIf="imageUrl" [src]="imageUrl"></ion-img>
+
+    <div class="card-container">
+      <div class="card">
+        <div class="image">
+          <ion-img *ngIf="imageUrl" [src]="imageUrl"></ion-img>
+        </div>
+        <div class="nombre">
+          <h1>{{getJsonValue?.data?.name}}</h1>
+        </div>
+        <div class="descripcion">
+          <h2>{{getJsonValue?.data?.description}}</h2>
+        </div>
+      </div>
     </div>
-    <div class="name">
-      <ion-item>
-        <h1>{{getJsonValue?.data?.name}}</h1>
-      </ion-item>
-    </div>
-    <div class="description">
-      <ion-text>
-        <h2>{{getJsonValue?.data?.description}}</h2>
-      </ion-text>
-    </div>
-    <div class="try_again">
-      <ion-button [routerLink]="['/image-capture']">Realizar otra vez</ion-button>
+    <div class="audio">
+      <ion-button size="large" fill="clear" id="back"><ion-icon name="play-back"></ion-icon></ion-button>
+      <ion-button size="large" fill="clear" id="play/pause"><ion-icon name="play"></ion-icon></ion-button>
+      <ion-button size="large" fill="clear" id="advance"><ion-icon name="play-forward"></ion-icon></ion-button>
     </div>
   </div>
 </ion-content>

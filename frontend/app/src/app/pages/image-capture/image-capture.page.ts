@@ -1,6 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { NavController } from '@ionic/angular';  // Importa NavController para navegar
+import { HttpClient } from '@angular/common/http';
+import { ApiService } from 'src/app/core/services/api-service.service';
+import { ActivatedRoute } from '@angular/router';
+import { Capacitor } from '@capacitor/core';
 
 @Component({
   selector: 'app-image-capture', // Selector actualizado
@@ -14,8 +18,8 @@ export class ImageCapturePage implements OnInit, OnDestroy {
   videoStream: MediaStream | undefined;
 
     zoomLevel = 1.0;
-
-  constructor(private navController: NavController) {}  // Inyecta NavController
+  
+  constructor(private navController: NavController, private activatedRoute: ActivatedRoute, private http: HttpClient, private api: ApiService) {}  // Inyecta NavController
 
   async ngOnInit() {
     this.startCameraPreview();
@@ -60,7 +64,7 @@ export class ImageCapturePage implements OnInit, OnDestroy {
       const image = await Camera.getPhoto({
         quality: 90,
         allowEditing: false,
-        resultType: CameraResultType.Uri,
+        resultType: CameraResultType.Base64,
         source: CameraSource.Camera,
       });
 
@@ -80,14 +84,24 @@ export class ImageCapturePage implements OnInit, OnDestroy {
   }
 
   async captureNow() {
+    console.log('Botón presionado');
     try {
       const image = await Camera.getPhoto({
         quality: 90,
         allowEditing: false,
-        resultType: CameraResultType.Uri,
-        source: CameraSource.Camera,
+        resultType: CameraResultType.Base64,
+        //source: CameraSource.Camera, de esta forma se declara si ejecutamos en un dispositivo real
+        //Ejecucion modo developer 
+        source: Capacitor.getPlatform() === 'web' ? CameraSource.Prompt : CameraSource.Camera
       });
+      const base64Data = image.base64String;
 
+      if (base64Data) {
+        this.api.postItem(base64Data);
+      } else {
+        console.error('Error: la imagen no tiene datos base64.');
+      }
+      
       this.imageUrl = image.webPath;
       console.log('Imagen capturada al instante:', this.imageUrl);
 
