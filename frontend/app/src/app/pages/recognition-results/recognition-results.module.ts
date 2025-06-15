@@ -9,14 +9,17 @@ import { RecognitionResultsPageRoutingModule } from './recognition-results-routi
 import { RecognitionResultsPage } from './recognition-results.page';
 import { ApiService } from 'src/app/core/services/api-service.service';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
   providers: [ApiService],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    
-    RecognitionResultsPageRoutingModule
+
+    RecognitionResultsPageRoutingModule,
+        TranslateModule
   ],
   declarations: [RecognitionResultsPage]
 })

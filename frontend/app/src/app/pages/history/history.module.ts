@@ -8,12 +8,15 @@ import { HistoryPageRoutingModule } from './history-routing.module';
 
 import { HistoryPage } from './history.page';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HistoryPageRoutingModule
+    HistoryPageRoutingModule,
+    TranslateModule
   ],
   declarations: [HistoryPage]
 })

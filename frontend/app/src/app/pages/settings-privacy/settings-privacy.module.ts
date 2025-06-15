@@ -8,12 +8,15 @@ import { SettingsPrivacyPageRoutingModule } from './settings-privacy-routing.mod
 
 import { SettingsPrivacyPage } from './settings-privacy.page';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SettingsPrivacyPageRoutingModule
+    SettingsPrivacyPageRoutingModule,
+    TranslateModule
   ],
   declarations: [SettingsPrivacyPage]
 })
