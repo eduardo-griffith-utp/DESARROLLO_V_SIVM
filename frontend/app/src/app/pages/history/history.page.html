@@ -1,15 +1,15 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <img src="assets/icon/History-icon.png">
-    <ion-title>Historial</ion-title>
+    <ion-title>{{ 'historial' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <!--botones de opciones -->
   <ul>
      <li>
-        <ion-button color="dark" id="butto1" shape="round">Todos</ion-button>
-        <ion-button color="light" id="butto2" shape="round" [routerLink]="['/history-nid']">no Identificados</ion-button>
-    </li> 
+        <ion-button color="dark" id="butto1" shape="round">{{ 'todos' | translate }}</ion-button>
+        <ion-button color="light" id="butto2" shape="round" [routerLink]="['/history-nid']">{{ 'no identificados' | translate }}</ion-button>
+    </li>
   </ul>
 
 <ion-content>
@@ -17,7 +17,7 @@
     <!-- Elemento 1 -->
     <ion-item class="history-item" button [routerLink]="['/item-details']">
       <div class="square-avatar">
-        <img src="assets/images/dog.webp"> 
+        <img src="assets/images/dog.webp">
       </div>
       <ion-label>
         <h2>Perro</h2>
@@ -29,7 +29,7 @@
     <!-- Elemento 2 -->
     <ion-item class="history-item" button [routerLink]="">
       <div class="square-avatar">
-        <img src="assets/images/car.webp"> 
+        <img src="assets/images/car.webp">
       </div>
       <ion-label>
         <h2>Carro</h2>
@@ -40,7 +40,7 @@
     <!-- Elemento 3 -->
     <ion-item class="history-item" button [routerLink]="">
       <div class="square-avatar">
-        <img src="assets/images/food.jpg"> 
+        <img src="assets/images/food.jpg">
       </div>
       <ion-label>
         <h2>Comida</h2>
@@ -50,7 +50,7 @@
         <!-- Elemento 4 -->
     <ion-item class="history-item" button [routerLink]="['/item-details']">
       <div class="square-avatar">
-        <img src="assets/shapes.svg"> 
+        <img src="assets/shapes.svg">
       </div>
       <ion-label>
         <h2>no identificado</h2>

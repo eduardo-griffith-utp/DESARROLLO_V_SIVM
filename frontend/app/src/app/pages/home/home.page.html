@@ -1,7 +1,7 @@
 <ion-header color="light">
   <ion-toolbar color="light">
     <img src="assets/icon/Home-icon.png">
-    <ion-title>Home</ion-title>
+    <ion-title>{{ 'home' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,22 +9,22 @@
   <div class="logo-container">
     <img src="assets/icon/Logo.png">
     <div class="title">
-      <h1>VisioAI</h1>
+      <h1>{{ 'visioai' | translate }}</h1>
     </div>
   </div>
 
   <div class="scan-button-container">
     <div class="scan-button-card">
-      <h2>Para escanear la imagen</h2>
+      <h2>{{ 'para escanear la imagen' | translate }}</h2>
       <ion-button id="scan-button" fill="clear" (click)="scanear()" [routerLink]="['/image-capture']">
         <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
       </ion-button>
-      <h3 class="instruction-text">Apunta la camara a un objeto para obtener más información sobre el</h3>
+      <h3 class="instruction-text">{{ 'apunta la camara a un objeto para obtener más información sobre el' | translate }}</h3>
     </div>
   </div>
 
   <!-- Botón de History con otro ID único -->
   <div class="capture-button-container">
-    <ion-button [routerLink]="['/image-capture']" id="Capture-button" fill="clear">capturar imagen</ion-button>
+    <ion-button [routerLink]="['/image-capture']" id="Capture-button" fill="clear">{{ 'capturar imagen' | translate }}</ion-button>
   </div>
 </ion-content>
