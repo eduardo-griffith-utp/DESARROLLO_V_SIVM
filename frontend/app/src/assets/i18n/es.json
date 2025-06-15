@@ -1,0 +1,33 @@
+{
+  "visioai": "VisioAI",
+  "home": "Inicio",
+  "configuración": "Configuración",
+  "notificaciones": "Notificaciones",
+  "lenguaje": "Lenguaje",
+  "privacidad": "Privacidad",
+  "camara": "Cámara",
+  "microfono": "Micrófono",
+  "imagenes": "Imágenes",
+  "historial": "Historial",
+  "resultado": "Resultado",
+
+
+  "no identificados": "No identificados",
+  "todos": "Todos",
+  "capturar imagen": "Capturar imagen",
+  "para escanear la imagen": "Para escanear la imagen",
+  "apunta la camara a un objeto para obtener más información sobre el":"Apunta la camara a un objeto para obtener más información sobre el",
+  "lenguaje en uso": "Lenguaje en uso",
+  "selecciona el idioma": "Selecciona el idioma",
+  "selecciona el tipo de lenguaje": "Selecciona el tipo de lenguaje",
+  "escaneo automático": "Escaneo automático",
+  "tema oscuro": "Tema oscuro",
+  "politica de privacidad": "Política de privacidad",
+  "terminos y condiciones": "Términos y condiciones",
+
+
+  "español (pa)": "Español (PA)",
+  "inglés (us)": "Inglés (US)",
+  "francés (fr)": "Francés (FR)",
+  "portugués (br)": "Portugués (BR)"
+}
