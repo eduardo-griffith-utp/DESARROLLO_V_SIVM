@@ -1,0 +1,31 @@
+{
+  "visioai": "VisioAI",
+  "home": "Início",
+  "configuración": "Configurações",
+  "notificaciones": "Notificações",
+  "lenguaje": "Idioma",
+  "privacidad": "Privacidade",
+  "camara": "Câmera",
+  "microfono": "Microfone",
+  "imagenes": "Imagens",
+  "historial": "Histórico",
+  "resultado": "Resultado",
+
+  "no identificados": "Não identificados",
+  "todos": "Todos",
+  "capturar imagen": "Capturar imagem",
+  "para escanear la imagen": "Para escanear a imagem",
+  "apunta la camara a un objeto para obtener más información sobre el": "Aponte a câmera para um objeto para saber mais",
+  "lenguaje en uso": "Idioma em uso",
+  "selecciona el idioma": "Selecione o idioma",
+  "selecciona el tipo de lenguaje": "Selecione o tipo de linguagem",
+  "escaneo automático": "Escaneamento automático",
+  "tema oscuro": "Tema escuro",
+  "politica de privacidad": "Política de privacidade",
+  "terminos y condiciones": "Termos e condições",
+
+  "español (pa)": "Espanhol (PA)",
+  "inglés (us)": "Inglês (US)",
+  "francés (fr)": "Francês (FR)",
+  "portugués (br)": "Português (BR)"
+}
