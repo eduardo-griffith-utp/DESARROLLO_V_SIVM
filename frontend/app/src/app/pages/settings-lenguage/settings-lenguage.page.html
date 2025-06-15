@@ -3,27 +3,38 @@
     <ion-buttons slot="start">
       <ion-back-button color="medium" text="" defaultHref="/settings"></ion-back-button>
     </ion-buttons>
-    <ion-title class="lenguaje"><img src="assets/icon/Lenguage-icon.png">Lenguaje</ion-title>
+    <ion-title class="lenguaje"><img src="assets/icon/Lenguage-icon.png">{{ 'lenguaje' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="settings-lenguage-content">
-    <ion-list lines="full">
-      <ion-item button detail="true" >
-        <ion-label>Español (PA)</ion-label>
-        <ion-note>Lenguaje en uso</ion-note>
-      </ion-item>
-      <ion-note>Otros lenguajes</ion-note>
-      <ion-item button detail="true" >
-        <ion-label>English(US)</ion-label>
-      </ion-item>
-      <ion-item button detail="true" >
-        <ion-label>Francais(FR)</ion-label>
-      </ion-item>
-      <ion-item button detail="true" >
-        <ion-label>Portugues(BR)</ion-label>
-      </ion-item>
+<ion-content class="settings-language-content">
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label>{{ 'selecciona el idioma' | translate }}</ion-label>
+    </ion-item>
 
+    <ion-radio-group [(ngModel)]="lang" (ionChange)="ChangeLang($event)">
+      <ion-item>
+        <ion-label>{{ 'español (pa)' | translate }}</ion-label>
+        <ion-radio slot="start" value="es"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'inglés (us)' | translate }}</ion-label>
+        <ion-radio slot="start" value="en"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'francés (fr)' | translate }}</ion-label>
+        <ion-radio slot="start" value="fr"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'portugués (br)' | translate }}</ion-label>
+        <ion-radio slot="start" value="pt"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
 
-    </ion-list>
+    <ion-note *ngIf="lang">
+      {{ 'lenguaje en uso' | translate }}: {{ lang }}
+    </ion-note>
+  </ion-list>
 </ion-content>
+
