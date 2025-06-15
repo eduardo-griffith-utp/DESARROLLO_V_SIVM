@@ -8,12 +8,15 @@ import { SettingsLenguagePageRoutingModule } from './settings-lenguage-routing.m
 
 import { SettingsLenguagePage } from './settings-lenguage.page';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SettingsLenguagePageRoutingModule
+    SettingsLenguagePageRoutingModule,
+    TranslateModule
   ],
   declarations: [SettingsLenguagePage]
 })
