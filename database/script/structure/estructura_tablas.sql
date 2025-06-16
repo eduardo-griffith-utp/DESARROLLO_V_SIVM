@@ -1,3 +1,5 @@
+CREATE database IF NOT EXISTS desarrollov_app;
+-- Seleccionamos la base de datos
 use desarrollov_app;
 
 -- Tabla MediaContent
@@ -23,7 +25,7 @@ CREATE TABLE IF NOT EXISTS AnalysisResult(
 -- Tabla Analysis
 CREATE TABLE IF NOT EXISTS Analysis(
     id_analysis INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    imput_image_path varchar(255) NOT NULL,
+    input_image_path varchar(255) NOT NULL,
     timestamp datetime,
     status varchar(15),
     processing_time datetime,

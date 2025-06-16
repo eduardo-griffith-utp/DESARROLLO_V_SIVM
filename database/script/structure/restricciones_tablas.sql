@@ -16,7 +16,7 @@ ADD CONSTRAINT uq_analysisresult_item_date UNIQUE (item_id, date_analysis);
 
 -- Evita que se repita la ruta de imagen de entrada en análisis
 ALTER TABLE Analysis
-ADD CONSTRAINT uq_analysis_input_image_path UNIQUE (imput_image_path);
+ADD CONSTRAINT uq_analysis_input_image_path UNIQUE (input_image_path);
 
 -- Evita que se repita el análisis para el mismo ítem y análisis
 ALTER TABLE AnalysisResult

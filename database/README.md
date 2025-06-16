@@ -37,7 +37,7 @@ Esta carpeta contiene los scripts, migraciones y documentación relacionada con 
 
 ### Analysis
 - Id_analysis , int , Primary key 
-- imput_image_path, varchar
+- input_image_path, varchar
 - timpestamp datetime
 - status, varchar 
 - processing_time, datetime
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS AnalysisResult(
 # Tabla Analysis
 CREATE TABLE IF NOT EXISTS Analysis(
     id_analysis INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    imput_image_path varchar(255) NOT NULL,
+    input_image_path varchar(255) NOT NULL,
     timestamp datetime,
     status varchar(15),
     processing_time datetime,
@@ -153,19 +153,43 @@ CREATE TABLE IF NOT EXISTS ItemTag(
 
 ALTER TABLE MediaContent  
 ADD CONSTRAINT fk_mediacontent_item
-FOREIGN KEY (item_id) REFERENCES Item(id_item);
+FOREIGN KEY (item_id) REFERENCES Item(id_item)
+ON DELETE CASCADE;
 
-ALTER TABLE item
+ALTER TABLE Item
 ADD CONSTRAINT fk_item_item_tag
-FOREIGN KEY (item_tag_id) REFERENCES itemtag(id_tag);
+FOREIGN KEY (item_tag_id) REFERENCES ItemTag(id_tag)
+ON DELETE CASCADE;
 
-ALTER TABLE analysisresult 
+ALTER TABLE AnalysisResult 
 ADD CONSTRAINT fk_analysisresult_item
-FOREIGN KEY (item_id) REFERENCES item(id_item);
+FOREIGN KEY (item_id) REFERENCES Item(id_item)
+ON DELETE CASCADE;
 
-ALTER TABLE analysisresult  
+ALTER TABLE AnalysisResult  
 ADD CONSTRAINT fk_analysisresult_analysis
-FOREIGN KEY (analysis_id) REFERENCES analysis(id_analysis);
+FOREIGN KEY (analysis_id) REFERENCES Analysis(id_analysis)
+ON DELETE CASCADE;
+
+# Restricciones para evitar duplicidad
+
+ALTER TABLE ItemTag
+ADD CONSTRAINT uq_itemtag_tag_name UNIQUE (tag_name);
+
+ALTER TABLE Item
+ADD CONSTRAINT uq_item_name_per_tag UNIQUE (item_tag_id, name);
+
+ALTER TABLE MediaContent
+ADD CONSTRAINT uq_media_route_per_item UNIQUE (item_id, route_path);
+
+ALTER TABLE AnalysisResult
+ADD CONSTRAINT uq_analysisresult_item_date UNIQUE (item_id, date_analysis);
+
+ALTER TABLE Analysis
+ADD CONSTRAINT uq_analysis_input_image_path UNIQUE (input_image_path);
+
+ALTER TABLE AnalysisResult
+ADD CONSTRAINT uq_analysisresult_item_analysis UNIQUE (item_id, analysis_id);
 
 ```
 
@@ -189,12 +213,13 @@ mysql -u tu_usuario -p -h tu_host -D nombre_base_datos < crear_tablas.sql
 # Puedes crear un archivo para eliminar las tablas
 nano revertir_tablas.sql
 
-#Ejemplo:
+# Orden correcto: primero las más dependientes, luego las raíces
 
-DROP TABLE IF EXISTS historial_consultas;
-DROP TABLE IF EXISTS contenido_multimedia;
-DROP TABLE IF EXISTS resultados;
-DROP TABLE IF EXISTS imagenes;
+DROP TABLE IF EXISTS AnalysisResult;
+DROP TABLE IF EXISTS MediaContent;
+DROP TABLE IF EXISTS Analysis;
+DROP TABLE IF EXISTS Item;
+DROP TABLE IF EXISTS ItemTag;
 ```
 
 ## Datos de Prueba
