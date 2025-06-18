@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-BASE_PATH = "C:/Users/CESAR/Documents/Desarrollo V/DESARROLLO_V_SIVM/assets/storage_structure/training_data"
+BASE_PATH = "assets/storage_structure/training_data"
 
 ITEM_MAPPING = {
     'CANGURO': 1, 'CRISTO_REDENTOR': 2, 'DELFIN': 3, 'ELEFANTE': 4,
