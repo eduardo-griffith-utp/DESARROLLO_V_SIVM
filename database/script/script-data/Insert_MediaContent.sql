@@ -154,3 +154,83 @@ VALUES
 (20, 'assets/storage_structure/training_data/VOLCAN BARU/volcan-baru-1.jpg', 'image', 'VOLCAN BARU - volcan-baru-1.jpg', '2025-06-16 16:23:58'),
 (20, 'assets/storage_structure/training_data/VOLCAN BARU/volcan-baru-2.jpg', 'image', 'VOLCAN BARU - volcan-baru-2.jpg', '2025-06-16 16:23:58'),
 (20, 'assets/storage_structure/training_data/VOLCAN BARU/volcan-baru-3.jpg', 'image', 'VOLCAN BARU - volcan-baru-3.jpg', '2025-06-16 16:23:58');
+
+
+-- Datos para categoría: BICICLETA
+INSERT INTO MediaContent (item_id, route_path, type, description, date_uploaded)
+VALUES
+(21, 'assets/storage_structure/training_data/BICICLETA/BICICLETA-1.jpg', 'image', 'BICICLETA - BICICLETA-1.jpg', '2025-06-16 17:00:00'),
+(21, 'assets/storage_structure/training_data/BICICLETA/BICICLETA-2.jpg', 'image', 'BICICLETA - BICICLETA-2.jpg', '2025-06-16 17:00:00'),
+(21, 'assets/storage_structure/training_data/BICICLETA/BICICLETA-3.jpg', 'image', 'BICICLETA - BICICLETA-3.jpg', '2025-06-16 17:00:00'),
+(21, 'assets/storage_structure/training_data/BICICLETA/BICICLETA-4.jpg', 'image', 'BICICLETA - BICICLETA-4.jpg', '2025-06-16 17:00:00');
+
+-- Datos para categoría: CAMARA
+INSERT INTO MediaContent (item_id, route_path, type, description, date_uploaded)
+VALUES
+(22, 'assets/storage_structure/training_data/CAMARA/CAMARA-1.jpg', 'image', 'CAMARA - CAMARA-1.jpg', '2025-06-16 17:00:00'),
+(22, 'assets/storage_structure/training_data/CAMARA/CAMARA-2.jpg', 'image', 'CAMARA - CAMARA-2.jpg', '2025-06-16 17:00:00'),
+(22, 'assets/storage_structure/training_data/CAMARA/CAMARA-3.jpg', 'image', 'CAMARA - CAMARA-3.jpg', '2025-06-16 17:00:00'),
+(22, 'assets/storage_structure/training_data/CAMARA/CAMARA-4.jpg', 'image', 'CAMARA - CAMARA-4.jpg', '2025-06-16 17:00:00');
+
+-- Datos para categoría: ZAPATILLA
+INSERT INTO MediaContent (item_id, route_path, type, description, date_uploaded)
+VALUES
+(23, 'assets/storage_structure/training_data/ZAPATILLA/ZAPATILLA-1.jpg', 'image', 'ZAPATILLA - ZAPATILLA-1.jpg', '2025-06-16 17:00:00'),
+(23, 'assets/storage_structure/training_data/ZAPATILLA/ZAPATILLA-2.jpg', 'image', 'ZAPATILLA - ZAPATILLA-2.jpg', '2025-06-16 17:00:00'),
+(23, 'assets/storage_structure/training_data/ZAPATILLA/ZAPATILLA-3.jpg', 'image', 'ZAPATILLA - ZAPATILLA-3.jpg', '2025-06-16 17:00:00'),
+(23, 'assets/storage_structure/training_data/ZAPATILLA/ZAPATILLA-4.jpg', 'image', 'ZAPATILLA - ZAPATILLA-4.jpg', '2025-06-16 17:00:00');
+
+-- Datos para categoría: CAFETERA
+INSERT INTO MediaContent (item_id, route_path, type, description, date_uploaded)
+VALUES
+(24, 'assets/storage_structure/training_data/CAFETERA/CAFETERA-1.jpg', 'image', 'CAFETERA - CAFETERA-1.jpg', '2025-06-16 17:00:00'),
+(24, 'assets/storage_structure/training_data/CAFETERA/CAFETERA-2.jpg', 'image', 'CAFETERA - CAFETERA-2.jpg', '2025-06-16 17:00:00'),
+(24, 'assets/storage_structure/training_data/CAFETERA/CAFETERA-3.jpg', 'image', 'CAFETERA - CAFETERA-3.jpg', '2025-06-16 17:00:00');
+
+-- Datos para categoría: PIANO
+INSERT INTO MediaContent (item_id, route_path, type, description, date_uploaded)
+VALUES
+(25, 'assets/storage_structure/training_data/PIANO/PIANO-1.jpg', 'image', 'PIANO - PIANO-1.jpg', '2025-06-16 17:00:00'),
+(25, 'assets/storage_structure/training_data/PIANO/PIANO-2.jpg', 'image', 'PIANO - PIANO-2.jpg', '2025-06-16 17:00:00'),
+(25, 'assets/storage_structure/training_data/PIANO/PIANO-3.jpg', 'image', 'PIANO - PIANO-3.jpg', '2025-06-16 17:00:00');
+
+-- Datos para categoría: MARTILLO
+INSERT INTO MediaContent (item_id, route_path, type, description, date_uploaded)
+VALUES
+(26, 'assets/storage_structure/training_data/MARTILLO/MARTILLO-1.jpg', 'image', 'MARTILLO - MARTILLO-1.jpg', '2025-06-16 17:00:00'),
+(26, 'assets/storage_structure/training_data/MARTILLO/MARTILLO-2.jpg', 'image', 'MARTILLO - MARTILLO-2.jpg', '2025-06-16 17:00:00'),
+(26, 'assets/storage_structure/training_data/MARTILLO/MARTILLO-3.jpg', 'image', 'MARTILLO - MARTILLO-3.jpg', '2025-06-16 17:00:00'),
+(26, 'assets/storage_structure/training_data/MARTILLO/MARTILLO-4.jpg', 'image', 'MARTILLO - MARTILLO-4.jpg', '2025-06-16 17:00:00');
+
+-- Datos para categoría: LAGO
+INSERT INTO MediaContent (item_id, route_path, type, description, date_uploaded)
+VALUES
+(27, 'assets/storage_structure/training_data/LAGO/LAGO-1.jpg', 'image', 'LAGO - LAGO-1.jpg', '2025-06-16 17:00:00'),
+(27, 'assets/storage_structure/training_data/LAGO/LAGO-2.jpg', 'image', 'LAGO - LAGO-2.jpg', '2025-06-16 17:00:00'),
+(27, 'assets/storage_structure/training_data/LAGO/LAGO-3.jpg', 'image', 'LAGO - LAGO-3.jpg', '2025-06-16 17:00:00'),
+(27, 'assets/storage_structure/training_data/LAGO/LAGO-4.jpg', 'image', 'LAGO - LAGO-4.jpg', '2025-06-16 17:00:00');
+
+-- Datos para categoría: CAMISETA
+INSERT INTO MediaContent (item_id, route_path, type, description, date_uploaded)
+VALUES
+(28, 'assets/storage_structure/training_data/CAMISETA/CAMISETA-1.jpg', 'image', 'CAMISETA - CAMISETA-1.jpg', '2025-06-16 17:00:00'),
+(28, 'assets/storage_structure/training_data/CAMISETA/CAMISETA-2.jpg', 'image', 'CAMISETA - CAMISETA-2.jpg', '2025-06-16 17:00:00'),
+(28, 'assets/storage_structure/training_data/CAMISETA/CAMISETA-3.jpg', 'image', 'CAMISETA - CAMISETA-3.jpg', '2025-06-16 17:00:00');
+
+-- Datos para categoría: BANANA
+INSERT INTO MediaContent (item_id, route_path, type, description, date_uploaded)
+VALUES
+(29, 'assets/storage_structure/training_data/BANANA/BANANA-1.jpg', 'image', 'BANANA - BANANA-1.jpg', '2025-06-16 17:00:00'),
+(29, 'assets/storage_structure/training_data/BANANA/BANANA-2.jpg', 'image', 'BANANA - BANANA-2.jpg', '2025-06-16 17:00:00'),
+(29, 'assets/storage_structure/training_data/BANANA/BANANA-3.jpg', 'image', 'BANANA - BANANA-3.jpg', '2025-06-16 17:00:00'),
+(29, 'assets/storage_structure/training_data/BANANA/BANANA-4.jpg', 'image', 'BANANA - BANANA-4.jpg', '2025-06-16 17:00:00');
+
+-- Datos para categoría: TELEVISOR
+INSERT INTO MediaContent (item_id, route_path, type, description, date_uploaded)
+VALUES
+(30, 'assets/storage_structure/training_data/TELEVISOR/TELEVISOR-1.jpg', 'image', 'TELEVISOR - TELEVISOR-1.jpg', '2025-06-16 17:00:00'),
+(30, 'assets/storage_structure/training_data/TELEVISOR/TELEVISOR-2.jpg', 'image', 'TELEVISOR - TELEVISOR-2.jpg', '2025-06-16 17:00:00'),
+(30, 'assets/storage_structure/training_data/TELEVISOR/TELEVISOR-3.jpg', 'image', 'TELEVISOR - TELEVISOR-3.jpg', '2025-06-16 17:00:00'),
+(30, 'assets/storage_structure/training_data/TELEVISOR/TELEVISOR-4.jpg', 'image', 'TELEVISOR - TELEVISOR-4.jpg', '2025-06-16 17:00:00'),
+(30, 'assets/storage_structure/training_data/TELEVISOR/TELEVISOR-5.jpg', 'image', 'TELEVISOR - TELEVISOR-5.jpg', '2025-06-16 17:00:00');
+
