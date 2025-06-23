@@ -2,7 +2,8 @@
 
 -- CREATE
 INSERT INTO Analysis (id_analysis, input_image_path, timestamp, status, processing_time)
-VALUES
+VALUES 
+ 
  
 INSERT INTO Analysis (id_analysis, timestamp, status, processing_time) VALUES
 ('training_data/CANGURO/img_001.jpg', GETDATE(), 'COMPLETADO', GETDATE()),
