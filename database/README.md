@@ -2,10 +2,9 @@
 
 Esta carpeta contiene los scripts, migraciones y documentación relacionada con la base de datos del proyecto SIVM, responsable del almacenamiento persistente de información y referencias a contenido multimedia.
 
-
 ## ⚠️ Nota importante:
 
-*Este esquema no es definitivo. Es solo un ejemplo base que servirá como punto de partida, y será modificado y adaptado a medida que el desarrollo del proyecto avance.*
+_Este esquema no es definitivo. Es solo un ejemplo base que servirá como punto de partida, y será modificado y adaptado a medida que el desarrollo del proyecto avance._
 
 ## Tecnologías Utilizadas
 
@@ -20,7 +19,8 @@ Esta carpeta contiene los scripts, migraciones y documentación relacionada con 
 ### Entidades Principales
 
 #### MediaContent
-- Id_media_content, int, Primary key
+
+- id_media_content, int, Primary key
 - item_id, int, Foreign key
 - route_path, varchar
 - type, varchar
@@ -28,34 +28,39 @@ Esta carpeta contiene los scripts, migraciones y documentación relacionada con 
 - date_uploaded, datetime
 
 #### AnalysisResult
-- Id_analysis_result, int, Primary key
+
+- id_analysis_result, int, Primary key
 - item_id, int, Foreign key
 - analysis_id, int, Foreign key
-- detected_labes, varchar
+- detected_labels, varchar
 - date_analysis, datetime
 - status, varchar
 
-### Analysis
-- Id_analysis , int , Primary key 
-- imput_image_path, varchar
-- timpestamp datetime
-- status, varchar 
-- processing_time, datetime
+#### Analysis
 
-### Item
-- Id_item, int, Primary key
-- item_tag_id, int, Foreing key
+- id_analysis , int , Primary key
+- input_image_path, varchar
+- timestamp datetime
+- status, varchar
+- processing_time, datetime
+- source, varchar
+
+#### Item
+
+- id_item, int, Primary key
+- item_tag_id, int, Foreign key
 - name, varchar
 - description, text
 
-### ItemTag
-- Id_tag, int, Primary key
-- tag_name, varchar
+#### ItemTag
 
+- id_tag, int, Primary key
+- tag_name, varchar
 
 ### Relaciones
 
 **1. Item → ItemTag**
+
 Relación: Muchos a Uno
 
 Clave foránea: item_tag_id en Item
@@ -63,13 +68,15 @@ Clave foránea: item_tag_id en Item
 Descripción: Cada ítem pertenece a una etiqueta (ItemTag), pero una etiqueta puede estar asociada a múltiples ítems.
 
 **2. MediaContent → Item**
+
 Relación: Muchos a Uno
 
-Clave foránea: item_id en MediaContent
+Clave foránea: item_id en
 
 Descripción: Cada contenido multimedia pertenece a un ítem específico. Un ítem puede tener múltiples contenidos multimedia asociados.
 
 **3. AnalysisResult → Item**
+
 Relación: Muchos a Uno
 
 Clave foránea: item_id en AnalysisResult
@@ -83,20 +90,22 @@ Clave foránea: analysis_id en AnalysisResult
 
 Descripción: Un resultado de análisis proviene de una ejecución de análisis (Analysis). Un análisis puede generar múltiples resultados (aunque usualmente es uno a uno).
 
-**5. Analysis → (ninguna relación directa en otras tablas como FK saliente)**
+**5. Analysis**
 
-Relación implícita: Se usa en AnalysisResult pero no apunta directamente a otra tabla (excepto la ruta de imagen como valor de referencia).
+No tiene claves foráneas salientes, pero sí recibe referencias desde
+
+AnalysisResult. Se puede considerar que se relaciona indirectamente con Item a través de la ruta de imagen.
 
 ## Configuración del Entorno
 
 ### Requisitos Previos
+
 - Python 3.10 o superior
 - MariaDB instalado localmente o acceso a instancia remota (por ejemplo, en Digital Ocean)
 - DBeaver (opcional, para diseño y ejecución visual de consultas SQL)
 - Entorno virtual Python (recomendado)
 - Conexión a la base de datos mediante mysql-connector-python o SQLAlchemy
 - Acceso a variables de entorno para proteger las credenciales de la base de datos
-
 
 ### Configuración Inicial
 
@@ -105,74 +114,91 @@ Relación implícita: Se usa en AnalysisResult pero no apunta directamente a otr
 CREATE DATABASE IF NOT EXISTS desarrollov_app;
 USE desarrollov_app;
 
-# Tabla Session
-CREATE TABLE IF NOT EXISTS Session(
-    id_session INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    name_session VARCHAR(20) NOT NULL
-);
-
 # Tabla MediaContent
 CREATE TABLE IF NOT EXISTS MediaContent(
-    id_media INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    session_id INT NOT NULL,
-    route_path VARCHAR(64) NOT NULL,
-    type_content VARCHAR(30) NOT NULL,
+    id_media_content INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    item_id INT NOT NULL,
+    route_path VARCHAR(255) NOT NULL,
+    type VARCHAR(30) NOT NULL,
     description VARCHAR(50),
     date_uploaded DATETIME NOT NULL
 );
 
 # Tabla AnalysisResult
 CREATE TABLE IF NOT EXISTS AnalysisResult(
-    id_results INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    media_id INT NOT NULL,
+    id_analysis_result INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    item_id INT NOT NULL,
+    analysis_id int NOT NULL,
     detected_labels VARCHAR(50) NOT NULL,
-    date_analysis DATETIME NOT NULL
+    date_analysis DATETIME NOT null,
+    status varchar(10)
 );
 
-# Tabla QueryHistory
-CREATE TABLE IF NOT EXISTS QueryHistory(
-    id_query INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    media_id INT NOT NULL,
-    date_consultation DATETIME NOT NULL,
-    counter INT NOT NULL DEFAULT 1
+# Tabla Analysis
+CREATE TABLE IF NOT EXISTS Analysis(
+    id_analysis INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    input_image_path varchar(255) NOT NULL,
+    timestamp datetime,
+    status varchar(15),
+    processing_time datetime,
+    source varchar(255)
 );
 
 # Tabla Items
-CREATE TABLE IF NOT EXISTS Items(
-    id_items INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    media_id INT NOT NULL,
-    name VARCHAR(30) NOT NULL,
+CREATE TABLE IF NOT EXISTS Item(
+    id_item INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    item_tag_id int not null,
+    name varchar(30) not null,
     description TEXT NOT NULL
 );
 
 # Tabla ItemTags
-CREATE TABLE IF NOT EXISTS ItemTags(
+CREATE TABLE IF NOT EXISTS ItemTag(
     id_tag INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    items_id INT NOT NULL,
     tag_name VARCHAR(30) NOT NULL
 );
 
-# Llaves foráneas corregidas
-ALTER TABLE MediaContent 
-ADD CONSTRAINT fk_mediacontent_session
-FOREIGN KEY (session_id) REFERENCES Session(id_session);
+# Creacion de llaves foreanas
 
-ALTER TABLE AnalysisResult  
-ADD CONSTRAINT fk_analysisresult_mediacontent
-FOREIGN KEY (media_id) REFERENCES MediaContent(id_media);
+ALTER TABLE MediaContent
+ADD CONSTRAINT fk_mediacontent_item
+FOREIGN KEY (item_id) REFERENCES Item(id_item)
+ON DELETE CASCADE;
 
-ALTER TABLE QueryHistory  
-ADD CONSTRAINT fk_queryhistory_mediacontent
-FOREIGN KEY (media_id) REFERENCES MediaContent(id_media);
+ALTER TABLE Item
+ADD CONSTRAINT fk_item_item_tag
+FOREIGN KEY (item_tag_id) REFERENCES ItemTag(id_tag)
+ON DELETE CASCADE;
 
-ALTER TABLE Items 
-ADD CONSTRAINT fk_items_mediacontent
-FOREIGN KEY (media_id) REFERENCES MediaContent(id_media);
+ALTER TABLE AnalysisResult
+ADD CONSTRAINT fk_analysisresult_item
+FOREIGN KEY (item_id) REFERENCES Item(id_item)
+ON DELETE CASCADE;
 
-ALTER TABLE ItemTags 
-ADD CONSTRAINT fk_itemtags_items
-FOREIGN KEY (items_id) REFERENCES Items(id_items);
+ALTER TABLE AnalysisResult
+ADD CONSTRAINT fk_analysisresult_analysis
+FOREIGN KEY (analysis_id) REFERENCES Analysis(id_analysis)
+ON DELETE CASCADE;
 
+# Restricciones para evitar duplicidad
+
+ALTER TABLE ItemTag
+ADD CONSTRAINT uq_itemtag_tag_name UNIQUE (tag_name);
+
+ALTER TABLE Item
+ADD CONSTRAINT uq_item_name_per_tag UNIQUE (item_tag_id, name);
+
+ALTER TABLE MediaContent
+ADD CONSTRAINT uq_media_route_per_item UNIQUE (item_id, route_path);
+
+ALTER TABLE AnalysisResult
+ADD CONSTRAINT uq_analysisresult_item_date UNIQUE (item_id, date_analysis);
+
+ALTER TABLE Analysis
+ADD CONSTRAINT uq_analysis_input_image_path UNIQUE (input_image_path);
+
+ALTER TABLE AnalysisResult
+ADD CONSTRAINT uq_analysisresult_item_analysis UNIQUE (item_id, analysis_id);
 
 ```
 
@@ -180,7 +206,7 @@ FOREIGN KEY (items_id) REFERENCES Items(id_items);
 
 ```bash
 # Crear nuevo archivo SQL con la estructura de tablas
-nano crear_tablas.sql
+nano estructura_tablas.sql
 ```
 
 ### Ejecutar Migraciones
@@ -196,12 +222,13 @@ mysql -u tu_usuario -p -h tu_host -D nombre_base_datos < crear_tablas.sql
 # Puedes crear un archivo para eliminar las tablas
 nano revertir_tablas.sql
 
-#Ejemplo:
+# Orden correcto: primero las más dependientes, luego las raíces
 
-DROP TABLE IF EXISTS historial_consultas;
-DROP TABLE IF EXISTS contenido_multimedia;
-DROP TABLE IF EXISTS resultados;
-DROP TABLE IF EXISTS imagenes;
+DROP TABLE IF EXISTS AnalysisResult;
+DROP TABLE IF EXISTS MediaContent;
+DROP TABLE IF EXISTS Analysis;
+DROP TABLE IF EXISTS Item;
+DROP TABLE IF EXISTS ItemTag;
 ```
 
 ## Datos de Prueba
@@ -238,9 +265,9 @@ mysql -u tu_usuario -p -h tu_host nombre_base_datos < backup.sql
 
 ## Optimización y Rendimiento
 
-- Uso de índices en columnas como id_imagen, fecha_subida, y fecha_consulta.
+- Uso de índices en columnas como id_item, date_uploaded, date_analysis.
 - Evitar redundancias y normalizar los datos (por ejemplo, etiquetas como campo JSON para evitar múltiples tablas si no hay clasificación compleja).
-- Evitar SELECT *, usar solo los campos necesarios.
+- Evitar SELECT \*, usar solo los campos necesarios.
 - Eliminar imágenes y resultados no utilizados después de cierto tiempo para reducir espacio.
 - Considerar almacenamiento externo (como S3) para archivos multimedia pesados y solo guardar las rutas en la base de datos.
 
