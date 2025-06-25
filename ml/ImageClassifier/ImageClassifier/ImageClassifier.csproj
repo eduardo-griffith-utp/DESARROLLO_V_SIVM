@@ -1,0 +1,168 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+    <None Remove="assets\training_data\CRISTO REDENTOR\Cristo-Redentor-1.jpg" />
+    <None Remove="assets\training_data\CRISTO REDENTOR\Cristo-Redentor-2.jpg" />
+    <None Remove="assets\training_data\CRISTO REDENTOR\Cristo-Redentor-3.jpg" />
+    <None Remove="assets\training_data\CRISTO REDENTOR\Cristo-Redentor-4.jpg" />
+    <None Remove="assets\training_data\DELFIN\Delfin-1.jpg" />
+    <None Remove="assets\training_data\DELFIN\Delfin-2.jpg" />
+    <None Remove="assets\training_data\DELFIN\Delfin-3.jpg" />
+    <None Remove="assets\training_data\ELEFANTE\Elefante-1.jpg" />
+    <None Remove="assets\training_data\ELEFANTE\Elefante-2.jpg" />
+    <None Remove="assets\training_data\ELEFANTE\Elefante-3.jpg" />
+    <None Remove="assets\training_data\ESTATUA DE LA LIBERTAD\Estatua-de-la-Libertad-1.jpg" />
+    <None Remove="assets\training_data\ESTATUA DE LA LIBERTAD\Estatua-de-la-Libertad-2.jpg" />
+    <None Remove="assets\training_data\ESTATUA DE LA LIBERTAD\Estatua-de-la-Libertad-3.jpg" />
+    <None Remove="assets\training_data\ESTATUA DE LA LIBERTAD\Estatua-de-la-Libertad-4.jpg" />
+    <None Remove="assets\training_data\JIRAFA\jirafa-1.jpg" />
+    <None Remove="assets\training_data\JIRAFA\Jirafa-2.jpg" />
+    <None Remove="assets\training_data\JIRAFA\Jirafa-3.jpg" />
+    <None Remove="assets\training_data\LAPTOP\Laptop-1.png" />
+    <None Remove="assets\training_data\LAPTOP\Laptop-2.jpg" />
+    <None Remove="assets\training_data\LAPTOP\Laptop-3.png" />
+    <None Remove="assets\training_data\MOUSE\mouse-1.png" />
+    <None Remove="assets\training_data\MOUSE\mouse-2.png" />
+    <None Remove="assets\training_data\MOUSE\mouse-3.png" />
+    <None Remove="assets\training_data\MOUSE\mouse-4.jpg" />
+    <None Remove="assets\training_data\MOUSE\mouse-5.jpg" />
+    <None Remove="assets\training_data\ROD CAREW ESTADIO\ROD-CAREW-1.jpg" />
+    <None Remove="assets\training_data\ROD CAREW ESTADIO\ROD-CAREW-2.jpeg" />
+    <None Remove="assets\training_data\ROD CAREW ESTADIO\ROD-CAREW-3.jpg" />
+    <None Remove="assets\training_data\SMARTPHONE\Smartphone-1.jpg" />
+    <None Remove="assets\training_data\SMARTPHONE\Smartphone-2.png" />
+    <None Remove="assets\training_data\SMARTPHONE\Smartphone-3.jpg" />
+    <None Remove="assets\training_data\SMARTPHONE\Smartphone-4.jpg" />
+    <None Remove="assets\training_data\TORRE EIFFEL\Torre-Eiffel-1.jpg" />
+    <None Remove="assets\training_data\TORRE EIFFEL\Torre-Eiffel-2.jpg" />
+    <None Remove="assets\training_data\TORRE EIFFEL\Torre-Eiffel-3.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\CRISTO REDENTOR\Cristo-Redentor-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\CRISTO REDENTOR\Cristo-Redentor-2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\CRISTO REDENTOR\Cristo-Redentor-3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\CRISTO REDENTOR\Cristo-Redentor-4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\DELFIN\Delfin-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\DELFIN\Delfin-2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\DELFIN\Delfin-3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\ELEFANTE\Elefante-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\ELEFANTE\Elefante-2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\ELEFANTE\Elefante-3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\ESTATUA DE LA LIBERTAD\Estatua-de-la-Libertad-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\ESTATUA DE LA LIBERTAD\Estatua-de-la-Libertad-2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\ESTATUA DE LA LIBERTAD\Estatua-de-la-Libertad-3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\ESTATUA DE LA LIBERTAD\Estatua-de-la-Libertad-4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\JIRAFA\jirafa-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\JIRAFA\Jirafa-2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\JIRAFA\Jirafa-3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\LAPTOP\Laptop-1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\LAPTOP\Laptop-2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\LAPTOP\Laptop-3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\MOUSE\mouse-1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\MOUSE\mouse-2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\MOUSE\mouse-3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\MOUSE\mouse-4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\MOUSE\mouse-5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\ROD CAREW ESTADIO\ROD-CAREW-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\ROD CAREW ESTADIO\ROD-CAREW-2.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\ROD CAREW ESTADIO\ROD-CAREW-3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\SMARTPHONE\Smartphone-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\SMARTPHONE\Smartphone-2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\SMARTPHONE\Smartphone-3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\SMARTPHONE\Smartphone-4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\TORRE EIFFEL\Torre-Eiffel-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\TORRE EIFFEL\Torre-Eiffel-2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\training_data\TORRE EIFFEL\Torre-Eiffel-3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.ML" Version="4.0.2" />
+    <PackageReference Include="Microsoft.ML.Vision" Version="4.0.2" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.4" />
+  </ItemGroup>
+
+</Project>
