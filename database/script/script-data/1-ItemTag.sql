@@ -7,7 +7,7 @@ VALUES
 ('CRISTO REDENTOR'),
 ('DELFIN'),
 ('ELEFANTE'),
-('ESTATUA DE LA LIBERTAD', 4),
+('ESTATUA DE LA LIBERTAD'),
 ('JIRAFA'),
 ('KOALA'),
 ('LAPTOP'),
@@ -38,6 +38,7 @@ VALUES
 SELECT * FROM ItemTag;
 SELECT * FROM ItemTag WHERE id_tag = ?;
 
+/*
 -- UPDATE
 UPDATE ItemTag
 SET tag_name = 'Colocar Nuevo'
@@ -45,3 +46,4 @@ WHERE id_tag = ?;
 
 -- DELETE
 DELETE FROM ItemTag WHERE id_tag = ?;
+/*

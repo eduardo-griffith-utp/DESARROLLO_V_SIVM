@@ -38,6 +38,7 @@ VALUES
 SELECT * FROM Item;
 SELECT * FROM Item WHERE id_item = ?;
 
+/*
 -- UPDATE
 UPDATE Item
 SET name = 'Imagen modificada', description = 'Descripción nueva'
@@ -45,3 +46,4 @@ WHERE id_item = ?;
 
 -- DELETE
 DELETE FROM Item WHERE id_item = ?;
+/*
