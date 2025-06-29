@@ -1,0 +1,49 @@
+-- CRUD para la tabla ItemTag
+
+-- CREATE
+INSERT INTO ItemTag (tag_name)
+VALUES 
+('CANGURO'),
+('CRISTO REDENTOR'),
+('DELFIN'),
+('ELEFANTE'),
+('ESTATUA DE LA LIBERTAD'),
+('JIRAFA'),
+('KOALA'),
+('LAPTOP'),
+('LIBRO'),
+('LLAVE'),
+('MOUSE'),
+('OSO POLAR'),
+('PARAGUA'),
+('PEZ PAYASO'),
+('PUENTE CENTENARIO'),
+('RINOCERONTE'),
+('ROD CAREW ESTADIO'),
+('SMARTPHONE'),
+('TORRE EIFFEL'),
+('VOLCAN BARU'),
+('BICICLETA'),
+('CAMARA'),
+('ZAPATILLA'),
+('CAFETERA'),
+('PIANO'),
+('MARTILLO'),
+('LAGO'),
+('CAMISETA'),
+('BANANA'),
+('TELEVISOR');
+
+-- READ
+SELECT * FROM ItemTag;
+SELECT * FROM ItemTag WHERE id_tag = ?;
+
+/*
+-- UPDATE
+UPDATE ItemTag
+SET tag_name = 'Colocar Nuevo'
+WHERE id_tag = ?;
+
+-- DELETE
+DELETE FROM ItemTag WHERE id_tag = ?;
+/*
