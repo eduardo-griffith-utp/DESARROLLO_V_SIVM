@@ -93,16 +93,19 @@ export class ImageCapturePage implements OnInit, OnDestroy {
     console.log('Botón presionado');
 
     try {
-      const image = await Camera.getPhoto({
-        quality: 90,
-        allowEditing: false,
-        resultType: CameraResultType.Base64,
-        //source: CameraSource.Camera, de esta forma se declara si ejecutamos en un dispositivo real
-        //Ejecucion modo developer 
-        source: Capacitor.getPlatform() === 'web' ? CameraSource.Prompt : CameraSource.Camera
-      });
-      this.imageUrl = image.webPath;
-      const base64Data = image.base64String;
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: Capacitor.getPlatform() === 'web' ? CameraResultType.DataUrl : CameraResultType.Base64,
+      source: Capacitor.getPlatform() === 'web' ? CameraSource.Prompt : CameraSource.Camera
+    });
+
+    this.imageUrl = image.webPath;
+    const base64Data = Capacitor.getPlatform() === 'web' ? image.dataUrl : image.base64String;
+
+    console.log('Resultado de imagen:', image);
+
+
 
       if(base64Data){
         let result = await this.api.postImage(base64Data);
