@@ -1,7 +1,7 @@
 -- CRUD para la tabla AnalysisResult
 
 -- CREATE
-INSERT INTO AnalysisResult (item_id, analysis_id, detected_labes, date_analysis, status)
+INSERT INTO AnalysisResult (item_id, analysis_id, detected_labels, date_analysis, status)
 VALUES
 (1, 1, 'canguro, marsupial, animal', '2025-06-20 10:00:00', 'VALIDO'),
 (2, 1, 'cristo redentor, estatua, monumento', '2025-06-20 10:10:00', 'VALIDO'),
@@ -38,6 +38,7 @@ VALUES
 SELECT * FROM AnalysisResult;
 SELECT * FROM AnalysisResult WHERE id_analysis_result = 1;
 
+/*
 -- UPDATE
 UPDATE AnalysisResult
 SET detected_labes = 'canguro, animal', status = 'REVISADO'
@@ -45,3 +46,4 @@ WHERE id_analysis_result = 1;
 
 -- DELETE
 DELETE FROM AnalysisResult WHERE id_analysis_result = 1;
+/*
