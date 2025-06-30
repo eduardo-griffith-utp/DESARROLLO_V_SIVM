@@ -34,10 +34,10 @@ class MariaDBConnection:
         VALUES ('{image_path}',NOW(),'PROCESSING',NOW());"""
         self.execute_sql(insert, image_path)
 
-    def insert_into_analysis_result(self,analysis_result):
+    def insert_into_analysis_result(self,image_path):
         insert = f"""INSERT INTO Analysis (input_image_path, timestamp, status, processing_time)
         VALUES ('{image_path}',NOW(),'PROCESSING',NOW());"""
-        self.execute_sql(insert,analysis_result)
+        self.execute_sql(insert,image_path)
 
     def insert_into_item(self, item_tag_id, item_name, item_description):
         insert = f"INSERT INTO Item (item_tag_id, name, description) VALUES ({item_tag_id}, '{item_name}', '{item_description}')"
