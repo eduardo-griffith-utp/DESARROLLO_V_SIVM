@@ -10,9 +10,9 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  async postImage(base64Image: string): Promise<any> {
+  async postImage(base64: string): Promise<any> {
     const payload = {
-      image: base64Image //this.apiService.postItem(base64DataFromCamera);
+      image: base64 //this.apiService.postItem(base64DataFromCamera);
 
     };
 
@@ -26,8 +26,9 @@ export class ApiService {
         console.log('Imagen procesandose');
       }
 
+      return res;
+      //return this.http.post<any> ("/api/v1/images/capture", payload).toPromise();
       
-      return this.http.post("/api/v1/images/capture", payload);  
 
     } catch (error: any) {
       if (error.status === 400) {

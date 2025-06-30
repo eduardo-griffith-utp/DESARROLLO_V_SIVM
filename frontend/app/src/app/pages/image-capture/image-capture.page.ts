@@ -105,20 +105,44 @@ export class ImageCapturePage implements OnInit, OnDestroy {
 
     console.log('Resultado de imagen:', image);
 
+    if (base64Data) {
+      try {
+      const result = await this.api.postImage(base64Data);
+      console.log('Respuesta completa de la API :', result);
 
+      if (result?.id && result?.image) {
+        this.imageId = result.id;
+        console.log('Imagen fue enviada correctamente. ID:', this.imageId);
+      } else {
+      console.warn('La respuesta no contiene los datos esperados:', result);
+      }
 
-      if(base64Data){
+    } catch (error) {
+    console.error('Error al hacer el POST a la API:', error);
+    }
+  } else {
+  console.warn('No se obtuvo la imagen en base64');
+  }
+
+      /*if(base64Data){
         let result = await this.api.postImage(base64Data);
+        console.log('Respuesta completa de la API (POST):', result);
+        const imageResult = result.images?.[0]; //Acceder al objeto en la api
 
-        if (result.status === 'success') {
-          this.imageId = result.data?.image_id;
-          console.log('Imagen fue enviada correctamente');
+
+        if (imageResult.status === 'success') {
+          this.imageId = imageResult.data?.image_id;
+          
+          console.log('Imagen fue enviada correctamente', this.imageId);
         } else{
           console.warn('La api no respondio correctamente', result);
         }
+
+        
       } else  {
         console.warn('no se obtuvo la imagen base64');
-      }
+      }*/
+     
      } 
     catch (error) {
       console.error('Error al tomar o enviar la imagen:', error);
@@ -132,41 +156,52 @@ export class ImageCapturePage implements OnInit, OnDestroy {
 
 
   async uploadImage() {
+  const maxRetries = 10;// Número de intentos
+  const delayMs = 3000;// Espera entre intentos en milisegundos
+  let retries = 0;
 
+  const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+  while (retries < maxRetries) {
     try {
-      const statusResult = await this.api.getImage(this.imageId);  // Hacer GET a /status/:id
-      console.log('caputado', this.imageId);
-      
-      if (statusResult.data?.status === 'success') {
-        console.log('Get completado');
+      const statusResult = await this.api.getImage(this.imageId);
+      console.log(`Intento numero ${retries + 1}:`, statusResult);
+
+      if (statusResult?.status === 'success') {
+        const data = statusResult.data;
         this.navController.navigateForward('/recognition-results', {
           queryParams: {
             imageId: this.imageId,
-            tags: JSON.stringify(statusResult.data.tags),
-            confidence: JSON.stringify(statusResult.data.confidence_scores),
+            tags: JSON.stringify(data.tags),
+            confidence: JSON.stringify(data.confidence_scores),
           }
         });
-        console.log('imageId');
+
         console.log('Resultados obtenidos y navegación completada');
+        return; // Stop de intentos
+
+
+
+
+
       } else {
-        console.warn('Error al obtener el estado de la imagen', statusResult);
+        console.log('Imagen aún procesándose, reintentando...');
+        await wait(delayMs);
+        retries++;
       }
 
-      }catch (error) {
-        console.error('Error al consultar el estado de la imagen:', error);
-      }
-
-
-
-
-
-
-    
-    
-
-
-      console.log('Imagen cargada');
+    } catch (error) {
+      console.error('Error al consultar el estado de la imagen:', error);
+      return; // Detener
+    }
   }
+
+
+
+  
+
+  console.warn('Se alcanzó el número máximo de reintentos sin obtener resultados.');
+}
   
   zoomIn() {
     if (this.zoomLevel < 3) { // máximo zoom 3x
