@@ -13,7 +13,11 @@ import { Capacitor } from '@capacitor/core';
   standalone: false,
 })
 export class ImageCapturePage implements OnInit, OnDestroy {
-  imageUrl: string | undefined;
+  //imageUrl: string | undefined;
+  public imageUrl:  any;
+  public imageId: any; 
+
+
   isCameraActive = false;
   videoStream: MediaStream | undefined;
 
@@ -72,19 +76,22 @@ export class ImageCapturePage implements OnInit, OnDestroy {
       console.log('Imagen capturada:', this.imageUrl);
 
       // Redirigir a la página de resultados, pasando la URL de la imagen
-      this.navController.navigateForward('/recognition-results', {
-        queryParams: {
-          imageUrl: this.imageUrl,  // Pasa la URL de la imagen
-        },
-      });
+      this.uploadImage();
 
     } catch (error) {
       console.error('Error al tomar la foto:', error);
     }
   }
 
-  async captureNow() {
+
+
+
+
+
+
+  public async captureNow() {
     console.log('Botón presionado');
+
     try {
       const image = await Camera.getPhoto({
         quality: 90,
@@ -94,32 +101,70 @@ export class ImageCapturePage implements OnInit, OnDestroy {
         //Ejecucion modo developer 
         source: Capacitor.getPlatform() === 'web' ? CameraSource.Prompt : CameraSource.Camera
       });
+      this.imageUrl = image.webPath;
       const base64Data = image.base64String;
 
-      if (base64Data) {
-        this.api.postItem(base64Data);
-      } else {
-        console.error('Error: la imagen no tiene datos base64.');
+      if(base64Data){
+        let result = await this.api.postImage(base64Data);
+
+        if (result.status === 'success') {
+          this.imageId = result.data?.image_id;
+          console.log('Imagen fue enviada correctamente');
+        } else{
+          console.warn('La api no respondio correctamente', result);
+        }
+      } else  {
+        console.warn('no se obtuvo la imagen base64');
       }
-      
-      this.imageUrl = image.webPath;
-      console.log('Imagen capturada al instante:', this.imageUrl);
-
-      // Redirigir a la página de resultados, pasando la URL de la imagen
-      this.navController.navigateForward('/recognition-results', {
-        queryParams: {
-          imageUrl: this.imageUrl,  // Pasa la URL de la imagen
-        },
-      });
-
-    } catch (error) {
-      console.error('Error al tomar la foto al instante:', error);
+     } 
+    catch (error) {
+      console.error('Error al tomar o enviar la imagen:', error);
     }
+
+    await this.uploadImage();
   }
+
+
+
+
 
   async uploadImage() {
-    console.log('Subir imagen seleccionado');
+
+    try {
+      const statusResult = await this.api.getImage(this.imageId);  // Hacer GET a /status/:id
+      console.log('caputado', this.imageId);
+      
+      if (statusResult.data?.status === 'success') {
+        console.log('Get completado');
+        this.navController.navigateForward('/recognition-results', {
+          queryParams: {
+            imageId: this.imageId,
+            tags: JSON.stringify(statusResult.data.tags),
+            confidence: JSON.stringify(statusResult.data.confidence_scores),
+          }
+        });
+        console.log('imageId');
+        console.log('Resultados obtenidos y navegación completada');
+      } else {
+        console.warn('Error al obtener el estado de la imagen', statusResult);
+      }
+
+      }catch (error) {
+        console.error('Error al consultar el estado de la imagen:', error);
+      }
+
+
+
+
+
+
+    
+    
+
+
+      console.log('Imagen cargada');
   }
+  
   zoomIn() {
     if (this.zoomLevel < 3) { // máximo zoom 3x
       this.zoomLevel += 1;

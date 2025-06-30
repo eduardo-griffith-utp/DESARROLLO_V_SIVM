@@ -6,7 +6,7 @@
 
     <div class="camera-preview">
       <video autoplay playsinline width="100%" height="100%" *ngIf="!imageUrl"></video>
-      <img [src]="imageUrl" *ngIf="imageUrl" style="width: 100%; height: 100%; object-fit: cover;">
+    <img [src]="this.imageUrl" *ngIf="this.imageUrl" style="width: 100%; height: 100%; object-fit: cover;">
       <div class="camera-icon-overlay" *ngIf="!isCameraActive && !imageUrl">
         <ion-icon name="camera-outline" size="large"></ion-icon>
       </div>

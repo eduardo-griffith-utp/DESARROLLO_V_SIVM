@@ -10,7 +10,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  async postItem(base64Image: string): Promise<any> {
+  async postImage(base64Image: string): Promise<any> {
     const payload = {
       image: base64Image //this.apiService.postItem(base64DataFromCamera);
 
@@ -22,9 +22,12 @@ export class ApiService {
         console.log('Imagen recibida y procesada correctamente');
         console.log('ID de imagen:', res.data.image_id);
         console.log('Timestamp:', res.data.timestamp);
+      } else if(res.status === 'processing'){
+        console.log('Imagen procesandose');
       }
 
-      return res;
+      
+      return this.http.post("/api/v1/images/capture", payload);  
 
     } catch (error: any) {
       if (error.status === 400) {
@@ -38,10 +41,10 @@ export class ApiService {
       }
 
       throw error;
-      }
+    }
   }
 
-  async getImages(imageId: number): Promise<any> {
+  async getImage(imageId: string): Promise<any> {
     try {
       const res = await firstValueFrom(
         this.http.get(`${environment.baseUrl}/api/v1/images/${imageId}/analysis`)
@@ -53,7 +56,7 @@ export class ApiService {
     }
   }
 
-  async getItemDetails(itemId: number): Promise<any> {
+  async getItemDetails(itemId: string): Promise<any> {
     try {
       const res = await firstValueFrom(
         this.http.get(`${environment.baseUrl}/api/v1/items/${itemId}`)
@@ -77,7 +80,7 @@ export class ApiService {
     }
   }
 
-  async getMultimedia(multimediaTag: number): Promise<any> {
+  async getMultimedia(multimediaTag: string): Promise<any> {
     try {
       const res = await firstValueFrom(
         this.http.get(`${environment.baseUrl}/api/v1/multimedia/by-tag/${multimediaTag}`)

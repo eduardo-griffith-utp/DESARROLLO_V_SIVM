@@ -19,15 +19,15 @@ export class HistoryPage implements OnInit {
 
   async ngOnInit() {
     await this.getMethod();
-    await this.getImage();
+    //await this.getImage();
   }
 
   public async getMethod() {
     this.getJsonValue = await this.api.getHistory();
     console.log(this.getJsonValue);
   }
-  public async getImage() {
+  /*public async getImage() {
     this.getJsonImage = await this.api.getImages(1);
     console.log(this.getJsonImage);
-  }
+  }*/
 }
