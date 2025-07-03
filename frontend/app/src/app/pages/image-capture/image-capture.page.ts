@@ -113,6 +113,14 @@ export class ImageCapturePage implements OnInit, OnDestroy {
       if (result?.id && result?.image) {
         this.imageId = result.id;
         console.log('Imagen fue enviada correctamente. ID:', this.imageId);
+        /*this.navController.navigateForward('/recognition-results', {
+          queryParams: {
+            imageId: this.imageId
+          }
+        });*/
+
+        sessionStorage.setItem('image_id', this.imageId);
+        location.href = "/recognition-results";
       } else {
       console.warn('La respuesta no contiene los datos esperados:', result);
       }
