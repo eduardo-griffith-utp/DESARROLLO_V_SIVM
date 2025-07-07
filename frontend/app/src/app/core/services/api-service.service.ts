@@ -26,6 +26,18 @@ export class ApiService {
         console.log('Imagen procesandose');
       }
 
+
+      
+      return {
+        "status": "success",
+        "data": {
+          "image_id": 2,
+          "timestamp": "2025-04-16T10:15:00Z"
+        }
+      }
+
+
+
       return res;
       //return this.http.post<any> ("/api/v1/images/capture", payload).toPromise();
       
@@ -45,7 +57,7 @@ export class ApiService {
     }
   }
 
-  async getImage(imageId: string): Promise<any> {
+  async getAnalysis(imageId: string): Promise<any> {
     try {
       //const res = await firstValueFrom(this.http.get(`${environment.baseUrl}/api/v1/images/${imageId}/analysis`));
 

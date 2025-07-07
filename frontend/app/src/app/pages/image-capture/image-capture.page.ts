@@ -110,9 +110,9 @@ export class ImageCapturePage implements OnInit, OnDestroy {
       const result = await this.api.postImage(base64Data);
       console.log('Respuesta completa de la API :', result);
 
-      if (result?.id && result?.image) {
+      if (result?.status == 'success') {
         
-        this.imageId = `img_${String(result.id).padStart(3, '0')}`;
+        this.imageId = result?.data?.image_id; // `img_${String(result.id).padStart(3, '0')}`;
         // De esta forma el id de la imagen queda guardada de la forma img_001, como esta en la api
         
         //prueba de mock para almacenar la imagen
@@ -181,7 +181,7 @@ export class ImageCapturePage implements OnInit, OnDestroy {
 
   while (retries < maxRetries) {
     try {
-      const statusResult = await this.api.getImage(this.imageId);
+      const statusResult = await this.api.getAnalysis(this.imageId);
       console.log(`Intento numero ${retries + 1}:`, statusResult);
 
       if (statusResult?.status === 'success') {

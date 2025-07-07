@@ -72,10 +72,10 @@ export class RecognitionResultsPage implements OnInit {
     await this.loading.present();
     console.log("Cargando informacion");
 
-    this.activatedRoute.queryParams.subscribe (params => {
+    this.activatedRoute.queryParams.subscribe (async params => {
       this.imageId = params['imageId'];
       console.log('Se recibio el id de la imagen', this.imageId);
-      this.showResults();
+      await this.showResults();
     });
     
   }
@@ -142,27 +142,19 @@ export class RecognitionResultsPage implements OnInit {
       //this.getJsonValue =await this.api.getImage(this.imageId);
       //De esta forma evitamos conflictos con el mock en el imageId
 
-      
-      //Decalro el id manualmente para que coincida con el de db.json
-      const imgMock = 'img_002';
-      console.log(imgMock);
-
-      
       //Get 
-      this.StatusValue = await this.api.getImage(imgMock);
-
-
+      this.StatusValue = await this.api.getAnalysis(this.imageId);
 
       console.log("Get completado almacenando", this.StatusValue);
       console.log('carga terminada');
       console.log(`Intento numero ${retries + 1}:`, this.StatusValue);
 
       if(this.StatusValue.status == "success"){
-      this.tag = this.StatusValue.data.tags;
-      console.log('tag tipo', this.tag);
+        this.tag = this.StatusValue.data.tags;
+        console.log('tag tipo', this.tag);
       
       //termino la carga
-      await this.loading.dismiss();
+        await this.loading.dismiss();
       return; //termino el repetidor de intentos
       
     }else {
