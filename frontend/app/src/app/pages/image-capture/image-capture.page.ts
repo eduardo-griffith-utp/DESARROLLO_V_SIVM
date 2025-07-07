@@ -111,25 +111,34 @@ export class ImageCapturePage implements OnInit, OnDestroy {
       console.log('Respuesta completa de la API :', result);
 
       if (result?.id && result?.image) {
-        this.imageId = result.id;
-        console.log('Imagen fue enviada correctamente. ID:', this.imageId);
-        /*this.navController.navigateForward('/recognition-results', {
-          queryParams: {
-            imageId: this.imageId
-          }
-        });*/
+        
+        this.imageId = `img_${String(result.id).padStart(3, '0')}`;
+        // De esta forma el id de la imagen queda guardada de la forma img_001, como esta en la api
+        
+        //prueba de mock para almacenar la imagen
+        sessionStorage.setItem('ImagenCapturada', base64Data);
 
+
+        console.log('Imagen fue enviada correctamente. ID:', this.imageId);
+        this.navController.navigateForward('/recognition-results', {
+          queryParams: {
+            imageId: this.imageId,
+          }
+        });
+/*
         sessionStorage.setItem('image_id', this.imageId);
-        location.href = "/recognition-results";
+        location.href = "/recognition-results";*/
+
+
       } else {
-      console.warn('La respuesta no contiene los datos esperados:', result);
+        console.warn('La respuesta no contiene los datos esperados:', result);
       }
 
     } catch (error) {
-    console.error('Error al hacer el POST a la API:', error);
+      console.error('Error al hacer el POST a la API:', error);
     }
   } else {
-  console.warn('No se obtuvo la imagen en base64');
+    console.warn('No se obtuvo la imagen en base64');
   }
 
       /*if(base64Data){
@@ -156,7 +165,7 @@ export class ImageCapturePage implements OnInit, OnDestroy {
       console.error('Error al tomar o enviar la imagen:', error);
     }
 
-    await this.uploadImage();
+    //await this.uploadImage();
   }
 
 
