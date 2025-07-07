@@ -45,16 +45,20 @@ export class ApiService {
     }
   }
 
-  async getImage(imageId?: string): Promise<any> {
+  async getImage(imageId: string): Promise<any> {
     try {
-      const res = await firstValueFrom(
-        this.http.get(`${environment.baseUrl}/api/v1/images/${imageId}/analysis`)
-      );
-      const status = this.getRandomIntegerInclusive(0,1) == 0 ? "processing" : "finished";
-      return {"id":"img_processing","status":status ,"data":{"image_id":"img_processing"},"message":"El análisis de la imagen está en proceso. Intente nuevamente más tarde."};
-      return res;
+      //const res = await firstValueFrom(this.http.get(`${environment.baseUrl}/api/v1/images/${imageId}/analysis`));
+
+      //De esta forma se filtra el id manualmente
+      const url = `${environment.baseUrl}/api/v1/images/${imageId}/analysis`;
+      const res = await firstValueFrom(this.http.get<any[]>(url));
+      
+      if (!res.length) {
+        throw new Error(`Imagen con ID ${imageId} no encontrada`);
+      }
+      return res[0];
     } catch (error) {
-      console.error('Error fetching image analysis:', error);
+      console.error('Error analizando el id:', error);
       throw error;
     }
   }
@@ -106,11 +110,4 @@ export class ApiService {
       throw error;
     }
   }
-getRandomIntegerInclusive(min:number, max:number) {
-  min = Math.ceil(min)
-  max = Math.floor(max)
-
-  return Math.floor(Math.random() * (max - min + 1)) + min
-}
-
 }
