@@ -65,8 +65,12 @@ export class RecognitionResultsPage implements OnInit {
   async showLoading() {
     this.loading = await this.loadingCtrl.create({
       message: 'Cargando resultados...',
+      spinner: 'circles',
+      backdropDismiss: false,
     });
-    console.log("Loading");
+
+    await this.loading.present();
+    console.log("Cargando informacion");
 
     this.activatedRoute.queryParams.subscribe (params => {
       this.imageId = params['imageId'];
@@ -78,33 +82,102 @@ export class RecognitionResultsPage implements OnInit {
 
   async showResults() {
     console.log("Resultados");
-    try {
+
+
+    const maxRetries = 10;// Número de intentos
+    const delayMs = 3000; //tiempo 
+    let retries = 0;
+
+    //Almacenar la imagen para probar que se capturo correctamente
+    this.imageUrl = sessionStorage.getItem('ImagenCapturada');
+
+    /*try { Try sin el repetidor
+      
+
+      //Almacenar la imagen para probar que se capturo correctamente
       this.imageUrl = sessionStorage.getItem('ImagenCapturada');
 
       //this.getJsonValue =await this.api.getImage(this.imageId);
+      //De esta forma evitamos conflictos con el mock en el imageId
 
+      
       //Decalro el id manualmente para que coincida con el de db.json
       const imgMock = 'img_002';
       console.log(imgMock);
+
+      
+
       this.StatusValue = await this.api.getImage(imgMock);
+
+
 
       console.log("Get completado almacenando", this.StatusValue);
       console.log('carga terminada');
-      this.loading.remove();
+    
     }catch(error: any){
       console.log("No se pudo compeltar el get");
-    }
+    }*/
 
-  
-    
-    if(this.StatusValue.status == "success"){
+
+    //Se hace el llamado al array para obtener el tag de la imagen
+    /*if(this.StatusValue.status == "success"){
       this.tag = this.StatusValue.data.tags;
-      console.log('tag numero', this.tag);
+      console.log('tag tipo', this.tag);
+
+
+      //
+      await this.loading.dismiss();
     }else {
       console.log("Error leyendo el status");
+    }*/
+
+
+    const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+  while (retries < maxRetries) {
+    try {
+      console.log('Comenzando');
+
+      //const statusResult = await this.api.getImage(this.imageId);
+      //this.getJsonValue =await this.api.getImage(this.imageId);
+      //De esta forma evitamos conflictos con el mock en el imageId
+
+      
+      //Decalro el id manualmente para que coincida con el de db.json
+      const imgMock = 'img_002';
+      console.log(imgMock);
+
+      
+      //Get 
+      this.StatusValue = await this.api.getImage(imgMock);
+
+
+
+      console.log("Get completado almacenando", this.StatusValue);
+      console.log('carga terminada');
+      console.log(`Intento numero ${retries + 1}:`, this.StatusValue);
+
+      if(this.StatusValue.status == "success"){
+      this.tag = this.StatusValue.data.tags;
+      console.log('tag tipo', this.tag);
+      
+      //termino la carga
+      await this.loading.dismiss();
+      return; //termino el repetidor de intentos
+      
+    }else {
+      console.log("Error leyendo el status");
+      await wait(delayMs);
+      retries++;
     }
 
-    this.loading.present();
+    }catch (error) {
+      console.error('Error al consultar el estado de la imagen:', error);
+      return; // Detener
+    }
+  }
+  console.warn('Se alcanzó el número máximo de reintentos sin obtener resultados.');
+
   }
 }
 
