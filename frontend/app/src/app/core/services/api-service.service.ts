@@ -2,13 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AbstractApiService } from './abstract-api.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class ApiService extends AbstractApiService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    super();
+  }
 
   async postImage(base64: string): Promise<any> {
     const payload = {
@@ -28,7 +31,7 @@ export class ApiService {
 
       return res;
       //return this.http.post<any> ("/api/v1/images/capture", payload).toPromise();
-      
+
 
     } catch (error: any) {
       if (error.status === 400) {

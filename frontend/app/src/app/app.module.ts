@@ -10,7 +10,10 @@ import { ServicesService } from './core/services/services.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import { ApiService } from 'src/app/core/services/api-service.service';
+import { MockApiService } from 'src/app/core/services/mock-api.service';
+import { AbstractApiService } from 'src/app/core/services/abstract-api.service';
+import { environment } from 'src/environments/environment';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -30,7 +33,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }
     )
   ],
-  providers: [HttpClient, ServicesService,{  provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
+  providers: [HttpClient, ServicesService,{  provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, { provide: AbstractApiService, useClass: environment.useMock ? MockApiService : ApiService }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

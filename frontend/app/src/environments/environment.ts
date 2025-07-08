@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://localhost:3000"
+  baseUrl: 'https://api.mi-backend.com',
+  mockBaseUrl: 'http://localhost:3000',
+  useMock: true // cambia a false para usar el real
 };
 
 /*
