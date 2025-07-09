@@ -25,7 +25,7 @@ ion-card {
   overflow: hidden;
   background-color: #E9E9E9;
 }
-ion-card img {
+ion-card ion-img {
   background: linear-gradient(to right, #e91e63, #9c27b0);
 }
 ion-card ion-card-title {
@@ -77,5 +77,13 @@ ion-title {
   --background: white;
   --progress-background: gray;
   margin-top: 22px;
+}
+
+#player-timer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 10px;
 }
 /*# sourceMappingURL=item-details.page.css.map */
