@@ -23,8 +23,9 @@
         <img [src]="item.imageUrl" alt="Imagen">
       </ion-thumbnail>
       <ion-label>
-        <h2>{{ item.category }}</h2>
-        <p>{{ item.description }}</p>
+        <h2>{{ item.category | translate }}</h2>
+        <h1>{{ item.name | translate }}</h1>
+        <p>{{ item.description | translate }}</p>
       </ion-label>
     </ion-item>
   </ion-list>

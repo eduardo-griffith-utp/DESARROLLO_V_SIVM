@@ -24,6 +24,18 @@
   "politica de privacidad": "Privacy policy",
   "terminos y condiciones": "Terms and conditions",
 
+
+  "fruta": "Fruit",
+  "fruta_desc": "Category that includes edible fruits such as apples, bananas, pears, etc.",
+  "electronica": "Electronics",
+  "electronica_desc": "Category that includes everyday and specialized electronic devices such as computers, phones, and televisions.",
+  "banana": "Banana",
+  "banana_desc": "A yellow banana on a wooden table.",
+  "laptop": "Laptop",
+  "laptop_desc": "An open laptop displaying a spreadsheet.",
+  "smartphone": "Smartphone",
+  "smartphone_desc": "A modern smartphone displaying a messaging app.",
+
   "español (pa)": "Spanish (PA)",
   "inglés (us)": "English (US)",
   "francés (fr)": "French (FR)",

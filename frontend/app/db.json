@@ -19,7 +19,7 @@
         "id": 1,
         "name": "Fruta",
         "description": "Incluye frutas comestibles como manzanas, plátanos, peras, etc.",
-        "related_tags": ["Banana", "manzana", "pera"]
+        "related_tags": ["Banana", "Manzana", "Pera"]
       },
       "message": "Ítem recuperado correctamente"
     },
@@ -30,7 +30,7 @@
         "id": 2,
         "name": "Electronica",
         "description": "Dispositivos electrónicos de uso cotidiano y especializado.",
-        "related_tags": ["laptop", "smartphone", "televisor"]
+        "related_tags": ["Laptop", "Smartphone", "televisor"]
       },
       "message": "Ítem recuperado correctamente"
     }
@@ -56,27 +56,27 @@
       "message": "Multimedia encontrado para la etiqueta"
     },
     {
-      "id": "laptop",
+      "id": "Laptop",
       "status": "success",
       "data": [
         {
           "type": "image",
-          "url": "assets/images/laptop.jpeg"
+          "url": "assets/images/car.webp"
         },
         {
           "type": "video",
-          "url": "assets/video/Que_es_una_Laptop.mp4"
+          "url": "assets/audio/Bear Sounds and Pictures for Teaching.mp3"
         }
       ],
       "message": "Multimedia encontrado para la etiqueta"
     },
     {
-      "id": "smartphone",
+      "id": "Smartphone",
       "status": "success",
       "data": [
         {
           "type": "image",
-          "url": "assets/images/smartphone.jpeg"
+          "url": "assets/images/Smartphone.jpeg"
         },
         {
           "type": "video",
@@ -105,10 +105,23 @@
       "status": "success",
       "data": {
         "image_id": "img_002",
-        "tags": ["laptop", "electronica"],
+        "tags": ["Laptop", "electronica"],
         "confidence_scores": {
-          "laptop": 0.97,
+          "Laptop": 0.97,
           "electronica": 0.93
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": "img_003",
+      "status": "success",
+      "data": {
+        "image_id": "img_003",
+        "tags": ["Smartphone", "electronica"],
+        "confidence_scores": {
+          "Smartphone": 0.96,
+          "electronica": 0.92
         }
       },
       "message": "Análisis completado"
@@ -137,9 +150,15 @@
         "Electronica": [
           {
             "image_id": "img_002",
-            "tag": "laptop",
+            "tag": "Laptop",
             "timestamp": "2025-05-10T14:45:00Z",
-            "description": "Una laptop abierta mostrando una hoja de cálculo."
+            "description": "Una Laptop abierta mostrando una hoja de cálculo."
+          },
+          {
+            "image_id": "img_003",
+            "tag": "Smartphone",
+            "timestamp": "2025-06-20T09:30:00Z",
+            "description": "Un Smartphone moderno mostrando una app de mensajería."
           }
         ]
       },

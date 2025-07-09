@@ -27,35 +27,41 @@ async loadData() {
   const historyRes = await this.api.getHistory();
   const multimediaRes = await this.api.getMultimedia(''); // Sin filtro
 
-  const historyData = historyRes[0].data;
-  const multimediaData = multimediaRes;
+    const multimediaData = multimediaRes;
 
-  const allItems: any[] = [];
+    const allItems: any[] = [];
 
-  for (const category in historyData) {
-    const entries = historyData[category];
+    for (const historyEntry of historyRes) {
+      const historyData = historyEntry.data;
 
-    for (const entry of entries) {
-      const imageId = entry.image_id;
-      const tag = entry.tag;
+      for (const category in historyData) {
+        const entries = historyData[category];
 
-      const multimediaItem = multimediaData.find((item: any) => item.id === tag);
-      const imageUrl = multimediaItem?.data?.find((m: any) => m.type === 'image')?.url || 'assets/images/default.jpg';
+        for (const entry of entries) {
+          const imageId = entry.image_id;
+          const tag = entry.tag;
 
-      allItems.push({
-        category,
-        imageId,
-        description: entry.description,
-        imageUrl,
-        tag,
-        name: tag
-      });
-    }
+          const multimediaItem = multimediaData.find((item: any) => item.id === tag);
+          const imageUrl = multimediaItem?.data?.find((m: any) => m.type === 'image')?.url || 'assets/images/default.jpg';
+          const videoUrl = multimediaItem?.data?.find((m: any) => m.type === 'video')?.url || 'assets/video/default-video.mp4';
+
+          const normalizedtag = tag.toLowerCase();
+
+          allItems.push({
+            category,
+            imageId,
+            //description: entry.description,
+            description: `${normalizedtag}_desc`,
+            imageUrl,
+            tag: normalizedtag,
+            name: tag
+          });
+        }
+      }
+
+    this.items = allItems;
+    console.log(this.items);
   }
-
-  this.items = allItems;
-  console.log(this.items);
-}
 
 
 
@@ -73,4 +79,4 @@ public async getImage() {
     this.getJsonImage = await this.api.getImages(1);
     console.log(this.getJsonImage);
   }*/
-}
+}}

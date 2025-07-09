@@ -26,6 +26,17 @@
   "terminos y condiciones": "Términos y condiciones",
 
 
+  "fruta": "Fruta",
+  "fruta_desc": "Categoría que incluye frutas comestibles como manzanas, plátanos, peras, etc.",
+  "electronica": "Electrónica",
+  "electronica_desc": "Categoría que incluye dispositivos electrónicos de uso cotidiano y especializado como computadoras, teléfonos y televisores.",
+  "banana": "Banana",
+  "banana_desc": "Una Banana amarilla sobre una mesa de madera.",
+  "laptop": "Laptop",
+  "laptop_desc": "Una Laptop abierta mostrando una hoja de cálculo.",
+  "smartphone": "Celular Inteligente",
+  "smartphone_desc": "Un Smartphone moderno mostrando una app de mensajería.",
+
   "español (pa)": "Español (PA)",
   "inglés (us)": "Inglés (US)",
   "francés (fr)": "Francés (FR)",

@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="/history" size="large" fill="outline" color="dark"><ion-icon name="arrow-back-circle-outline"></ion-icon></ion-back-button>
     </ion-buttons>
     <ion-title>
-      <img id="title-icon" src="assets/icon/Capture-icon.png"> {{ itemTitle }}
+      <img id="title-icon" src="assets/icon/Capture-icon.png"> {{ itemTitle | translate }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,7 +16,7 @@
       <ion-card-title>{{ itemTitle | translate }}</ion-card-title>
       </ion-card-header>
     <ion-card-content>
-      {{ itemDescription }}
+      {{ itemDescription | translate }}
     </ion-card-content>
     <ion-button id="resultcontrol" color="dark" fill="outline" shape="round"><ion-icon name="chevron-back-outline"></ion-icon></ion-button>
     <ion-button id="resultcontrol" color="dark" fill="outline" shape="round"><ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
@@ -27,7 +27,7 @@
     <audio #audioPlayer (timeupdate)="updateProgress()" (loadedmetadata)="setDuration()">
       <source [src]= "audioSrc" type="audio/mpeg" />
     </audio>
-    
+
     <div class="time-display" id="player-timer">
 
     <span>{{ formatTime(currentTime) }}</span>
