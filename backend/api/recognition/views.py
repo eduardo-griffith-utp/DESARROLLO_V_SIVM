@@ -5,6 +5,7 @@ from rest_framework import status
 # IMPORTANTE: Cambiamos MultiPartParser y FormParser a JSONParser
 from rest_framework.parsers import JSONParser 
 
+
 from django.utils import timezone
 import uuid
 import re
@@ -15,17 +16,19 @@ from django.forms import ValidationError as DjangoValidationError
 # Import your model and serializer
 from .models import ImagenReconocida # Assuming this model name is retained
 from .serializers import CapturedImageSerializer # Ensure the path is correct
+from .database_connection import MariaDBConnection
+
 
 # ======================
 # CLASSES AND HELPERS
 # ======================
 class SecurityValidationError(Exception):
     """Custom exception for validation errors"""
+
     def __init__(self, code, message, details=""):
         self.code = code
         self.message = message
-        self.details = details
-
+        self.details = details       
 def error_response(code, message, details="", status_code=status.HTTP_400_BAD_REQUEST):
     """Standardized format for error responses"""
     return Response(
@@ -61,6 +64,8 @@ HISTORY_DB = [
     { "id": "hist_001", "image_id": "img_001", "user": "default_user", "date": "2025-04-16T10:15:00Z", "description": "Banana on table", "tags": ["fruit", "food"] }
 ]
 
+connection = MariaDBConnection()
+
 # ======================
 # IMAGE ENDPOINTS
 # ======================
@@ -75,12 +80,13 @@ def capture_images(request):
     """
     # INICIALIZACIÓN DE current_user antes del try
     current_user = request.user 
-    
+    #print("pasé la conexion a base de datos")
     try:
         # CAMBIO CLAVE: Obtener las imágenes Base64 del cuerpo JSON (request.data)
         # Esperamos una lista de cadenas Base64 bajo la clave 'images'
         base64_images = request.data.get('images', [])
-
+        #img_id = connection.insert_into_analysis("training_data/TELEVISOR/img_000000.jpg2")
+        #print("Valor de ImageId: ",img_id)
         if not base64_images:
             return error_response(
                 code="MISSING_IMAGE_DATA",
@@ -97,7 +103,7 @@ def capture_images(request):
             serializer_data = {'imagen': base64_image_string} 
             
             serializer = CapturedImageSerializer(data=serializer_data, context={'request': request})
-            
+            #print("\n\n\nvalor de request: ",request)
             if serializer.is_valid():
                 # Guardamos la imagen. Si 'current_user' es AnonymousUser,
                 # y el campo 'usuario' del modelo es null=True (como lo corregimos en models.py),
@@ -117,6 +123,7 @@ def capture_images(request):
                 "status": "success",
                 "data": uploaded_objects_data
             }
+            print("\n\n\n\nValor de response_data: ", response_data)
             if errors:
                 response_data["warnings"] = errors
                 response_data["message"] = "Some images were uploaded, but others had validation errors."
