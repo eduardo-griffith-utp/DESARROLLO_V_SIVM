@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 # IMPORTANTE: Cambiamos MultiPartParser y FormParser a JSONParser
 from rest_framework.parsers import JSONParser 
-from mls.src.predict_b64 import predict_imagen_api
+from ml.src.predict_b64 import predict_imagen_api
 
 from django.utils import timezone
 import uuid

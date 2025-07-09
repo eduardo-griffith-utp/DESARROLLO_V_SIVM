@@ -1,0 +1,12 @@
+tensorflow==2.13.0
+Pillow==10.0.0
+numpy==1.23.5
+matplotlib==3.7.1
+asgiref==3.8.1
+Django==5.2
+djangorestframework==3.16.0
+sqlparse==0.5.3
+tzdata==2025.2
+django-extensions
+djangorestframework
+djangorestframework-simplejwt
