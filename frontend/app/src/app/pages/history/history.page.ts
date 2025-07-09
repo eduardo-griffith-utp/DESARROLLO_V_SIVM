@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';  // Importa ActivatedRoute para acceder a los parámetros
 import { LoadingController, NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
-import { AbstractApiService } from 'src/app/core/services/abstract-api.service';
 import { ApiService } from 'src/app/core/services/api-service.service';
 
 @Component({
