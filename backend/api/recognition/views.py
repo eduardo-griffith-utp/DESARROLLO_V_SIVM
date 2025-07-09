@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 # IMPORTANTE: Cambiamos MultiPartParser y FormParser a JSONParser
 from rest_framework.parsers import JSONParser 
+from mls.src.predict_b64 import predict_imagen_api
 
 from django.utils import timezone
 import uuid
@@ -87,14 +88,37 @@ def capture_images(request):
                 message="The 'images' field (list of Base64 strings) is required in the JSON body.",
                 status_code=status.HTTP_400_BAD_REQUEST
             )
-        
-        uploaded_objects_data = []
+        ## cambio de nombre del arreglo
+        resultado = []
         errors = []
 
         # Iterar sobre cada cadena Base64 recibida
         for base64_image_string in base64_images:
-            # Pasa la cadena Base64 directamente al serializador para el campo 'imagen'
-            serializer_data = {'imagen': base64_image_string} 
+            ''' 
+            9/7/25 adicion del metodo importado para predecir con el modelo generado con tensorflow, A.S.
+            '''
+            prediccion = predict_imagen_api(base64_image_string)
+            resultado.append({
+                "prediction": prediccion,
+                "status": "success"
+            })
+    except Exception as e:
+           errors.apend({
+               "image_prefix": base64_image_string[:50],
+               "error": str(e)
+           })
+
+           return Response({
+               "resultado": resultado,
+               "error":errors
+           },status=status.HTTP_200_OK)
+    
+    except Exception as e:
+           return Response({
+               "errro": str(e)
+           },status=status.HTTP_500_INTERNAL_SERVER_ERROR
+           )
+           ''' serializer_data = {'imagen': base64_image_string} 
             
             serializer = CapturedImageSerializer(data=serializer_data, context={'request': request})
             
@@ -142,7 +166,7 @@ def capture_images(request):
             details=str(e) if settings.DEBUG else "",
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
-        
+        '''
 @api_view(['GET'])
 @permission_classes([]) # Explícitamente pública
 def get_image_analysis(request, image_id):
