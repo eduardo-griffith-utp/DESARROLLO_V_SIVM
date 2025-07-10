@@ -51,12 +51,29 @@ h1{
 h2 {
     text-align: center;
 }
-.audio {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 10%;
-    width: 80%;
+
+  #player ion-card{
     background-color: black;
-    border-radius: 2rem;
+    border-radius: 10px;
+  }
+  #player ion-card ion-button{
+    padding: 16px;
+    //margin-left: auto;
+    //margin-right: auto;
+    margin: auto;
+    width: 33%;
+    color: white;
+  }
+    #player ion-card ion-progress-bar{
+    --background: white;
+    --progress-background: gray;
+    margin-top: 22px;
+  }
+
+  #player-timer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 10px;
 }

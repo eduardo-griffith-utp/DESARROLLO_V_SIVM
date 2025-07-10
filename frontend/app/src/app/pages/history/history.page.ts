@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';  // Importa ActivatedRoute para acceder a los parámetros
-import { LoadingController, NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/core/services/api-service.service';
 
@@ -20,7 +19,7 @@ export class HistoryPage implements OnInit {
   public image: any;
 
 
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private api: ApiService, private loadingCtrl: LoadingController) { }
+  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private api: ApiService) { }
 
   async ngOnInit() {
     await this.loadData();
@@ -79,11 +78,11 @@ public async getImage() {
     console.log(this.getJsonImage);
   }*/
 
-   async showLoading() {
+   /*async showLoading() {
     const loading = await this.loadingCtrl.create({
       message: 'Dismissing after 3 seconds...',    });
 
     loading.present();
     loading.remove();
-  }
+  }*/
 }

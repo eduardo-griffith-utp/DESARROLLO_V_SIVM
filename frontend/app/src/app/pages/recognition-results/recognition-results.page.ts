@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';  // Importa ActivatedRoute para acceder a los parámetros
 import { LoadingController, NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
@@ -19,6 +19,15 @@ export class RecognitionResultsPage implements OnInit {
   public getJsonValue: any;
   public StatusValue: any;
   public loading: any;
+
+    // Audio player logic
+  @ViewChild('audioPlayer', { static: false }) audioPlayerRef!: ElementRef<HTMLAudioElement>;
+    audioSrc: string = '';
+    isPlaying = false;
+    duration = 0;
+    progress = 0;
+    currentTime = 0;
+
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private api: ApiService, private loadingCtrl: LoadingController) {}  // Inyecta ActivatedRoute
 
   async ngOnInit() {
@@ -171,5 +180,85 @@ export class RecognitionResultsPage implements OnInit {
   console.warn('Se alcanzó el número máximo de reintentos sin obtener resultados.');
 
   }
+    async loadMultimedia(tag: string) {
+    try {
+        const multimedia = await this.api.getMultimedia(tag);
+        const audio = multimedia.data.find((item: any) => item.type === 'audio');
+        const video = multimedia.data.find((item: any) => item.type === 'video');
+
+        const cleanUrl = (url: string) => {
+          return url.replace(/^.*assets\//, 'assets/'); // limpia hasta "assets/"
+        };
+
+        if (audio && audio.url) {
+          this.audioSrc = cleanUrl(audio.url);
+          console.log('Audio cargado:', this.audioSrc);
+        } else if (video && video.url) {
+          this.audioSrc = cleanUrl(video.url);  // puedes usar otro nombre como `videoSrc`
+          console.log('Video cargado:', this.audioSrc);
+        } else {
+          console.warn('No se encontró video ni audio.');
+          this.audioSrc = '';
+        }
+      } catch (error) {
+        console.error('Error al cargar multimedia:', error);
+        this.audioSrc = '';
+      }
+      if (this.audioPlayerRef?.nativeElement) {
+        const audio = this.audioPlayerRef.nativeElement;
+        audio.load();  // <-- fuerza recarga de <source>
+      }
+
+  }
+  //audio en recognition
+  togglePlayPause() {
+    const audio = this.audioPlayerRef.nativeElement;
+    if (audio.paused) {
+      audio.play();
+      this.isPlaying = true;
+    } else {
+      audio.pause();
+      this.isPlaying = false;
+    }
+  }
+
+  rewind() {
+    const audio = this.audioPlayerRef.nativeElement;
+    audio.currentTime = Math.max(audio.currentTime - 10, 0);
+  }
+
+  forward() {
+    const audio = this.audioPlayerRef.nativeElement;
+    audio.currentTime = Math.min(audio.currentTime + 10, audio.duration);
+  }
+
+  updateProgress() {
+  const audio = this.audioPlayerRef.nativeElement;
+  this.currentTime = audio.currentTime;
+  this.progress = audio.duration ? audio.currentTime / audio.duration : 0;
+}
+
+
+  setDuration() {
+    const audio = this.audioPlayerRef.nativeElement;
+    this.duration = audio.duration;
+  }
+
+  seekAudio(event: any) {
+  const audio = this.audioPlayerRef.nativeElement;
+  const value = event.detail.value;
+  audio.currentTime = value;
+  this.currentTime = value;
+  }
+
+  formatTime(time: number): string {
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60);
+  return `${this.pad(minutes)}:${this.pad(seconds)}`;
+}
+
+  pad(value: number): string {
+  return value < 10 ? '0' + value : '' + value;
+}
 }
 
