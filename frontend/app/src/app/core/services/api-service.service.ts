@@ -38,7 +38,7 @@ export class ApiService {
 
 
 
-      return res;
+      //return res;
       //return this.http.post<any> ("/api/v1/images/capture", payload).toPromise();
       
 

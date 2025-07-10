@@ -15,7 +15,7 @@ export class RecognitionResultsPage implements OnInit {
   items = []
   imageId: any;
   tag: any;
-  
+
 
 
 
@@ -26,18 +26,18 @@ export class RecognitionResultsPage implements OnInit {
 
 
 
-    // Audio player logic
+  // Audio player logic
   @ViewChild('audioPlayer', { static: false }) audioPlayerRef!: ElementRef<HTMLAudioElement>;
-    audioSrc: string = '';
-    isPlaying = false;
-    duration = 0;
-    progress = 0;
-    currentTime = 0;
+  audioSrc: string = '';
+  isPlaying = false;
+  duration = 0;
+  progress = 0;
+  currentTime = 0;
 
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private api: ApiService, private loadingCtrl: LoadingController) {}  // Inyecta ActivatedRoute
+  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private api: ApiService, private loadingCtrl: LoadingController) { }  // Inyecta ActivatedRoute
 
   async ngOnInit() {
-    
+
 
     //De esta forma recibimos el id de Image capture y lo pasamos a una variable en RecResults
 
@@ -50,7 +50,7 @@ export class RecognitionResultsPage implements OnInit {
         console.log('Se recibio el id de la imagen', this.imageId);
       });
       this.imageUrl = sessionStorage.getItem('ImagenCapturada');*/
-    }catch (error: any) {
+    } catch (error: any) {
       console.log('error al cargar el id');
     }
 
@@ -61,7 +61,7 @@ export class RecognitionResultsPage implements OnInit {
     this.imageUrl = sessionStorage.getItem('image_id');
     console.log("comenzando",this.imageUrl);
     */
-  
+
 
     // Toma los datos desde el servidor json
 
@@ -75,7 +75,7 @@ export class RecognitionResultsPage implements OnInit {
     else
       this.getMethod();
     }*/
-  
+
 
   async showLoading() {
     this.loading = await this.loadingCtrl.create({
@@ -87,12 +87,12 @@ export class RecognitionResultsPage implements OnInit {
     await this.loading.present();
     console.log("Cargando informacion");
 
-    this.activatedRoute.queryParams.subscribe (async params => {
+    this.activatedRoute.queryParams.subscribe(async params => {
       this.imageId = params['imageId'];
       console.log('Se recibio el id de la imagen', this.imageId);
       await this.showResults();
     });
-    
+
   }
 
   async showResults() {
@@ -149,72 +149,71 @@ export class RecognitionResultsPage implements OnInit {
 
     const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-  while (retries < maxRetries) {
-    try {
-      console.log('Comenzando');
+    while (retries < maxRetries) {
+      try {
+        console.log('Comenzando');
 
-      //const statusResult = await this.api.getImage(this.imageId);
-      //this.getJsonValue =await this.api.getImage(this.imageId);
-      //De esta forma evitamos conflictos con el mock en el imageId
+        //const statusResult = await this.api.getImage(this.imageId);
+        //this.getJsonValue =await this.api.getImage(this.imageId);
+        //De esta forma evitamos conflictos con el mock en el imageId
 
-      //Get 
-      this.StatusValue = await this.api.getAnalysis(this.imageId);
+        //Get 
+        this.StatusValue = await this.api.getAnalysis(this.imageId);
 
-      console.log("Get completado almacenando", this.StatusValue);
-      console.log('carga terminada');
-      console.log(`Intento numero ${retries + 1}:`, this.StatusValue);
+        console.log("Get completado almacenando", this.StatusValue);
+        console.log('carga terminada');
+        console.log(`Intento numero ${retries + 1}:`, this.StatusValue);
 
-      if(this.StatusValue.status == "success"){
-        this.tag = this.StatusValue.data.tags;
-        console.log('tag tipo', this.tag);
-      
-      //termino la carga
-        await this.loading.dismiss();
+        if (this.StatusValue.status == "success") {
+          this.tag = this.StatusValue.data.tags;
+          console.log('tag tipo', this.tag);
 
-        this.showMultimedia();
-        return; //termino el repetidor de intentos
-    }else {
-      console.log("Error leyendo el status");
-      await wait(delayMs);
-      retries++;
-    }
+          //termino la carga
+          await this.loading.dismiss();
 
-    }catch (error) {
-      console.error('Error al consultar el estado de la imagen:', error);
-      return; // Detener
-    }
-  }
-  console.warn('Se alcanzó el número máximo de reintentos sin obtener resultados.');
-
-  }
-    async loadMultimedia(tag: string) {
-    try {
-        const multimedia = await this.api.getMultimedia(tag);
-        const audio = multimedia.data.find((item: any) => item.type === 'audio');
-        const video = multimedia.data.find((item: any) => item.type === 'video');
-
-        const cleanUrl = (url: string) => {
-          return url.replace(/^.*assets\//, 'assets/'); // limpia hasta "assets/"
-        };
-
-        if (audio && audio.url) {
-          this.audioSrc = cleanUrl(audio.url);
-          console.log('Audio cargado:', this.audioSrc);
-        } else if (video && video.url) {
-          this.audioSrc = cleanUrl(video.url);  // puedes usar otro nombre como `videoSrc`
-          console.log('Video cargado:', this.audioSrc);
+          this.showMultimedia();
+          return; //termino el repetidor de intentos
         } else {
-          console.warn('No se encontró video ni audio.');
-          this.audioSrc = '';
+          console.log("Error leyendo el status");
+          await wait(delayMs);
+          retries++;
         }
+
       } catch (error) {
-        console.error('Error al cargar multimedia:', error);
+        console.error('Error al consultar el estado de la imagen:', error);
+        return; // Detener
+      }
+    }
+    console.warn('Se alcanzó el número máximo de reintentos sin obtener resultados.');
+  }
+  async loadMultimedia(tag: string) {
+    try {
+      const multimedia = await this.api.getMultimedia(tag);
+      const audio = multimedia.data.find((item: any) => item.type === 'audio');
+      const video = multimedia.data.find((item: any) => item.type === 'video');
+
+      const cleanUrl = (url: string) => {
+        return url.replace(/^.*assets\//, 'assets/'); // limpia hasta "assets/"
+      };
+
+      if (audio && audio.url) {
+        this.audioSrc = cleanUrl(audio.url);
+        console.log('Audio cargado:', this.audioSrc);
+      } else if (video && video.url) {
+        this.audioSrc = cleanUrl(video.url);  // puedes usar otro nombre como `videoSrc`
+        console.log('Video cargado:', this.audioSrc);
+      } else {
+        console.warn('No se encontró video ni audio.');
         this.audioSrc = '';
       }
-      if (this.audioPlayerRef?.nativeElement) {
-        const audio = this.audioPlayerRef.nativeElement;
-        audio.load();  // <-- fuerza recarga de <source>
-      }
+    } catch (error) {
+      console.error('Error al cargar multimedia:', error);
+      this.audioSrc = '';
+    }
+    if (this.audioPlayerRef?.nativeElement) {
+      const audio = this.audioPlayerRef.nativeElement;
+      audio.load();  // <-- fuerza recarga de <source>
+    }
 
   }
   //audio en recognition
@@ -240,10 +239,10 @@ export class RecognitionResultsPage implements OnInit {
   }
 
   updateProgress() {
-  const audio = this.audioPlayerRef.nativeElement;
-  this.currentTime = audio.currentTime;
-  this.progress = audio.duration ? audio.currentTime / audio.duration : 0;
-}
+    const audio = this.audioPlayerRef.nativeElement;
+    this.currentTime = audio.currentTime;
+    this.progress = audio.duration ? audio.currentTime / audio.duration : 0;
+  }
 
 
   setDuration() {
@@ -252,23 +251,23 @@ export class RecognitionResultsPage implements OnInit {
   }
 
   seekAudio(event: any) {
-  const audio = this.audioPlayerRef.nativeElement;
-  const value = event.detail.value;
-  audio.currentTime = value;
-  this.currentTime = value;
+    const audio = this.audioPlayerRef.nativeElement;
+    const value = event.detail.value;
+    audio.currentTime = value;
+    this.currentTime = value;
   }
 
   formatTime(time: number): string {
-  const minutes = Math.floor(time / 60);
-  const seconds = Math.floor(time % 60);
-  return `${this.pad(minutes)}:${this.pad(seconds)}`;
-}
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${this.pad(minutes)}:${this.pad(seconds)}`;
+  }
 
   pad(value: number): string {
-  return value < 10 ? '0' + value : '' + value;
-}
+    return value < 10 ? '0' + value : '' + value;
+  }
 
-  async showMultimedia(){
+  async showMultimedia() {
     this.ItemValue = await this.api.getItemDetails(this.imageId);
     console.log('Detalles', this.ItemValue);
   }
