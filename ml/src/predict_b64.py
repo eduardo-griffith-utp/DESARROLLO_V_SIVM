@@ -1,6 +1,19 @@
-from prediccion import predict_from_base64, load_saved_model
+from ml.src.prediccion import predict_from_base64, load_saved_model
 import json
 import os
+
+''' 
+09/07/2025 Funcion agregada para hacer su llamado por medio del api y que retorne el
+    resultado en la memoria del hilo, sin necesidad de escribir el archivo json,
+    en teoria el api convierte el resultado en formato json, A.S.
+'''
+def predict_imagen_api(base64_string):
+    model, class_names = load_saved_model()
+    if base64_string.startswith("data:image"):
+        base64_string = base64_string.split(",")[1]
+    result = predict_from_base64(model, class_names,base64_string)
+    ##json.sumps(result, direct, ensure_ascii=False, indent=4)
+    return result
 
 if __name__ == "__main__":
     try:
@@ -23,3 +36,5 @@ if __name__ == "__main__":
             
     except Exception as e:
         print(f"\nError general: {str(e)}")
+
+ 

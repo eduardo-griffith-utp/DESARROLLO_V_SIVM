@@ -7,8 +7,10 @@ import json
 import base64
 from io import BytesIO
 
-def load_saved_model(model_dir="models"):
+def load_saved_model(model_dir=None):
     """Carga el modelo y los nombres de clases"""
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    model_dir = os.path.join(base_dir, 'models')
     model_path = os.path.join(model_dir, "best_model.h5")
     metadata_path = os.path.join(model_dir, "class_mapping.json")
     
