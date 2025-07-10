@@ -15,10 +15,16 @@ export class RecognitionResultsPage implements OnInit {
   items = []
   imageId: any;
   tag: any;
+  
+
+
 
   public getJsonValue: any;
   public StatusValue: any;
   public loading: any;
+  public ItemValue: any;
+
+
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private api: ApiService, private loadingCtrl: LoadingController) {}  // Inyecta ActivatedRoute
 
   async ngOnInit() {
@@ -155,8 +161,9 @@ export class RecognitionResultsPage implements OnInit {
       
       //termino la carga
         await this.loading.dismiss();
-      return; //termino el repetidor de intentos
-      
+
+        this.showMultimedia();
+        return; //termino el repetidor de intentos
     }else {
       console.log("Error leyendo el status");
       await wait(delayMs);
@@ -171,5 +178,11 @@ export class RecognitionResultsPage implements OnInit {
   console.warn('Se alcanzó el número máximo de reintentos sin obtener resultados.');
 
   }
+
+  async showMultimedia(){
+    this.ItemValue = await this.api.getItemDetails(this.imageId);
+    console.log('Detalles', this.ItemValue);
+  }
+
 }
 
