@@ -1,9 +1,13 @@
+import sys, os
 from rest_framework.decorators import api_view, permission_classes, parser_classes
 from rest_framework.permissions import IsAuthenticated # Se mantiene el import por si se usa en otro lugar, aunque no se usará en estas vistas
 from rest_framework.response import Response
 from rest_framework import status
 # IMPORTANTE: Cambiamos MultiPartParser y FormParser a JSONParser
 from rest_framework.parsers import JSONParser 
+from pathlib import Path
+base_dir =Path(__file__).resolve().parent.parent.parent.parent
+sys.path.append(str(base_dir))
 from ml.src.predict_b64 import predict_imagen_api
 
 from django.utils import timezone
@@ -78,47 +82,66 @@ def capture_images(request):
     current_user = request.user 
     
     try:
-        # CAMBIO CLAVE: Obtener las imágenes Base64 del cuerpo JSON (request.data)
-        # Esperamos una lista de cadenas Base64 bajo la clave 'images'
+        # Validación de datos de entrada
         base64_images = request.data.get('images', [])
-
+        
         if not base64_images:
-            return error_response(
-                code="MISSING_IMAGE_DATA",
-                message="The 'images' field (list of Base64 strings) is required in the JSON body.",
-                status_code=status.HTTP_400_BAD_REQUEST
+            return Response(
+                {
+                    "code": "MISSING_IMAGE_DATA",
+                    "message": "The 'images' field (list of Base64 strings) is required in the JSON body."
+                },
+                status=status.HTTP_400_BAD_REQUEST
             )
-        ## cambio de nombre del arreglo
+
         resultado = []
         errors = []
 
-        # Iterar sobre cada cadena Base64 recibida
+        # Procesamiento de cada imagen
         for base64_image_string in base64_images:
-            ''' 
-            9/7/25 adicion del metodo importado para predecir con el modelo generado con tensorflow, A.S.
-            '''
-            prediccion = predict_imagen_api(base64_image_string)
-            resultado.append({
-                "prediction": prediccion,
-                "status": "success"
-            })
-    except Exception as e:
-           errors.apend({
-               "image_prefix": base64_image_string[:50],
-               "error": str(e)
-           })
+            try:
+                prediccion = predict_imagen_api(base64_image_string)
+                resultado.append({
+                    "prediction": prediccion,
+                    "status": "success",
+                    "image_prefix": base64_image_string[:50] + "..."
+                })
+            except Exception as e:
+                errors.append({
+                    "image_prefix": base64_image_string[:50] + "...",
+                    "error": str(e),
+                    "status": "failed"
+                })
 
-           return Response({
-               "resultado": resultado,
-               "error":errors
-           },status=status.HTTP_200_OK)
-    
+        # Construcción de la respuesta
+        response_data = {
+            "resultado": resultado,
+            "errors": errors,
+            "total_images": len(base64_images),
+            "success_count": len(resultado),
+            "failed_count": len(errors)
+        }
+
+        # Determinar el código de estado apropiado
+        if errors and not resultado:
+            status_code = status.HTTP_400_BAD_REQUEST
+        elif errors and resultado:
+            status_code = status.HTTP_207_MULTI_STATUS  # Para resultados mixtos
+        else:
+            status_code = status.HTTP_200_OK
+
+        return Response(response_data, status=status_code)
+
     except Exception as e:
-           return Response({
-               "errro": str(e)
-           },status=status.HTTP_500_INTERNAL_SERVER_ERROR
-           )
-           ''' serializer_data = {'imagen': base64_image_string} 
+        # Solo para errores globales inesperados
+        return Response(
+            {
+                "code": "SERVER_ERROR",
+                "message": str(e)
+            },
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+        ''' serializer_data = {'imagen': base64_image_string} 
             
             serializer = CapturedImageSerializer(data=serializer_data, context={'request': request})
             

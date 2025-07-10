@@ -1,4 +1,4 @@
-from prediccion import predict_from_base64, load_saved_model
+from ml.src.prediccion import predict_from_base64, load_saved_model
 import json
 import os
 
