@@ -5,7 +5,7 @@ from rest_framework import status
 # IMPORTANTE: Cambiamos MultiPartParser y FormParser a JSONParser
 from rest_framework.parsers import JSONParser 
 
-
+import json
 from django.utils import timezone
 import uuid
 import re
@@ -116,14 +116,17 @@ def capture_images(request):
                 errors.append({
                     "original_data_prefix": (base64_image_string[:50] + "...") if len(base64_image_string) > 50 else base64_image_string,
                     "errors": serializer.errors
-                })
-
+                })   
+        #print("Valor de uploaded_objects_data: ", uploaded_objects_data)
         if uploaded_objects_data:
             response_data = {
                 "status": "success",
                 "data": uploaded_objects_data
             }
-            print("\n\n\n\nValor de response_data: ", response_data)
+            file_path = uploaded_objects_data[0]['imagen']
+            img_id = connection.insert_into_analysis(file_path[file_path.find("/media")::])
+            print("\n\n\n\nValor de file_path: ", file_path[file_path.find("/media")::])
+            print("Valor de image_id: ", img_id)
             if errors:
                 response_data["warnings"] = errors
                 response_data["message"] = "Some images were uploaded, but others had validation errors."
