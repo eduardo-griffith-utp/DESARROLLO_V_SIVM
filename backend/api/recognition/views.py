@@ -1,9 +1,14 @@
+import sys, os
 from rest_framework.decorators import api_view, permission_classes, parser_classes
 from rest_framework.permissions import IsAuthenticated # Se mantiene el import por si se usa en otro lugar, aunque no se usará en estas vistas
 from rest_framework.response import Response
 from rest_framework import status
 # IMPORTANTE: Cambiamos MultiPartParser y FormParser a JSONParser
 from rest_framework.parsers import JSONParser 
+from pathlib import Path
+base_dir =Path(__file__).resolve().parent.parent.parent.parent
+sys.path.append(str(base_dir))
+from ml.src.predict_b64 import predict_imagen_api
 
 import json
 from django.utils import timezone
@@ -82,11 +87,8 @@ def capture_images(request):
     current_user = request.user 
     #print("pasé la conexion a base de datos")
     try:
-        # CAMBIO CLAVE: Obtener las imágenes Base64 del cuerpo JSON (request.data)
-        # Esperamos una lista de cadenas Base64 bajo la clave 'images'
+        # Validación de datos de entrada
         base64_images = request.data.get('images', [])
-        #img_id = connection.insert_into_analysis("training_data/TELEVISOR/img_000000.jpg2")
-        #print("Valor de ImageId: ",img_id)
         if not base64_images:
             return error_response(
                 code="MISSING_IMAGE_DATA",
@@ -94,13 +96,63 @@ def capture_images(request):
                 status_code=status.HTTP_400_BAD_REQUEST
             )
         
-        uploaded_objects_data = []
+        if not base64_images:
+            return Response(
+                {
+                    "code": "MISSING_IMAGE_DATA",
+                    "message": "The 'images' field (list of Base64 strings) is required in the JSON body."
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        resultado = []
         errors = []
 
-        # Iterar sobre cada cadena Base64 recibida
+        # Procesamiento de cada imagen
         for base64_image_string in base64_images:
-            # Pasa la cadena Base64 directamente al serializador para el campo 'imagen'
-            serializer_data = {'imagen': base64_image_string} 
+            try:
+                prediccion = predict_imagen_api(base64_image_string)
+                resultado.append({
+                    "prediction": prediccion,
+                    "status": "success",
+                    "image_prefix": base64_image_string[:50] + "..."
+                })
+            except Exception as e:
+                errors.append({
+                    "image_prefix": base64_image_string[:50] + "...",
+                    "error": str(e),
+                    "status": "failed"
+                })
+
+        # Construcción de la respuesta
+        response_data = {
+            "resultado": resultado,
+            "errors": errors,
+            "total_images": len(base64_images),
+            "success_count": len(resultado),
+            "failed_count": len(errors)
+        }
+
+        # Determinar el código de estado apropiado
+        if errors and not resultado:
+            status_code = status.HTTP_400_BAD_REQUEST
+        elif errors and resultado:
+            status_code = status.HTTP_207_MULTI_STATUS  # Para resultados mixtos
+        else:
+            status_code = status.HTTP_200_OK
+
+        return Response(response_data, status=status_code)
+
+    except Exception as e:
+        # Solo para errores globales inesperados
+        return Response(
+            {
+                "code": "SERVER_ERROR",
+                "message": str(e)
+            },
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+        ''' serializer_data = {'imagen': base64_image_string} 
             
             serializer = CapturedImageSerializer(data=serializer_data, context={'request': request})
             #print("\n\n\nvalor de request: ",request)
@@ -152,7 +204,7 @@ def capture_images(request):
             details=str(e) if settings.DEBUG else "",
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
-        
+        '''
 @api_view(['GET'])
 @permission_classes([]) # Explícitamente pública
 def get_image_analysis(request, image_id):
