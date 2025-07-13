@@ -140,7 +140,7 @@ def capture_images(request):
             status_code = status.HTTP_207_MULTI_STATUS  # Para resultados mixtos
         else:
             status_code = status.HTTP_200_OK
-
+        print(f"\n\nValor de Response: {Response(response_data, status=status_code)}\n\n\n")
         return Response(response_data, status=status_code)
 
     except Exception as e:
