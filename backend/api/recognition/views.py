@@ -77,6 +77,8 @@ connection = MariaDBConnection()
 @api_view(['POST'])
 @permission_classes([]) # Explícitamente pública
 # CAMBIO CLAVE: Usar JSONParser para aceptar cuerpos JSON
+# CAMBIO PARA ENPOINT FINAL POR TEMAS DE FORMATO CON LA SIGUIENTE LINEA SE AGREGA LA IMAGEN EN ANALISYS NECESITA LA RUTA DONDE SE VA A COLOCAR LA IMAGEN EN EL SERVIDOR
+# EL PARAMETRO ES UN STRING CON LA RUTA DEL ARCHIVO   img_id = connection.insert_into_analysis(RUTA_ARCHIVO)
 @parser_classes([JSONParser]) 
 def capture_images(request):
     """
