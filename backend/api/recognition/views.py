@@ -126,7 +126,22 @@ def capture_images(request):
                     "status": "failed"
                 })
 
-        # Construcción de la respuesta
+        # Aquí va el cambio para responder solo con el mensaje personalizado con la primera imagen exitosa
+        if resultado:
+            image_id = "img_001"  # Aquí puedes reemplazar por el ID real que tengas
+            timestamp = timezone.now().isoformat()
+
+            response_data = {
+                "status": "success",
+                "data": {
+                    "image_id": image_id,
+                    "timestamp": timestamp
+                },
+                "message": "imagen recibida y procesada exitosamente"
+            }
+            return Response(response_data, status=status.HTTP_200_OK)
+
+        # Construcción de la respuesta para errores
         response_data = {
             "resultado": resultado,
             "errors": errors,
@@ -135,13 +150,14 @@ def capture_images(request):
             "failed_count": len(errors)
         }
 
-        # Determinar el código de estado apropiado
+        # Determinar el código de estado apropiado si no hubo imágenes exitosas
         if errors and not resultado:
             status_code = status.HTTP_400_BAD_REQUEST
         elif errors and resultado:
             status_code = status.HTTP_207_MULTI_STATUS  # Para resultados mixtos
         else:
             status_code = status.HTTP_200_OK
+        
         print(f"\n\nValor de Response: {Response(response_data, status=status_code)}\n\n\n")
         return Response(response_data, status=status_code)
 
