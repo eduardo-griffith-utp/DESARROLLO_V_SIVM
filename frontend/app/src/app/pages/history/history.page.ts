@@ -43,7 +43,7 @@ async loadData() {
 
           const multimediaItem = multimediaData.find((item: any) => item.id === tag);
           const imageUrl = multimediaItem?.data?.find((m: any) => m.type === 'image')?.url || 'assets/images/default.jpg';
-          const videoUrl = multimediaItem?.data?.find((m: any) => m.type === 'video')?.url || 'assets/video/default-video.mp4';
+          //const videoUrl = multimediaItem?.data?.find((m: any) => m.type === 'video')?.url || 'assets/video/default-video.mp4';
 
           const normalizedtag = tag.toLowerCase();
 
@@ -53,7 +53,7 @@ async loadData() {
             //description: entry.description,
             description: `${normalizedtag}_desc`,
             imageUrl,
-            tag: normalizedtag,
+            tag, //: normalizedtag,
             name: tag
           });
         }
