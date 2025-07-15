@@ -12,12 +12,12 @@ export class ApiService {
 
   async postImage(base64: string): Promise<any> {
     const payload = {
-      image: base64 //this.apiService.postItem(base64DataFromCamera);
+      images: [base64] //this.apiService.postItem(base64DataFromCamera);
 
     };
 
     try {
-      const res: any = await firstValueFrom(this.http.post(environment.baseUrl + "/api/v1/images/capture", payload));
+      const res: any = await firstValueFrom(this.http.post(environment.baseUrl + "/api/v1/recognition/images/capture/", payload));
       if (res.status === 'success') {
         console.log('Imagen recibida y procesada correctamente');
         console.log('ID de imagen:', res.data.image_id);
@@ -28,17 +28,17 @@ export class ApiService {
 
 
       
-      return {
+      /*return {
         "status": "success",
         "data": {
           "image_id": 2,
           "timestamp": "2025-04-16T10:15:00Z"
         }
-      }
+      }*/
 
 
 
-      //return res;
+      return res;
       //return this.http.post<any> ("/api/v1/images/capture", payload).toPromise();
       
 
@@ -62,7 +62,7 @@ export class ApiService {
       //const res = await firstValueFrom(this.http.get(`${environment.baseUrl}/api/v1/images/${imageId}/analysis`));
 
       //De esta forma se filtra el id manualmente
-      const url = `${environment.baseUrl}/api/v1/images/${imageId}/analysis`;
+      const url = `${environment.baseUrl}/api/v1/recognition/images/${imageId}/analysis`;
       const res = await firstValueFrom(this.http.get<any[]>(url));
       
       if (!res.length) {
@@ -78,7 +78,7 @@ export class ApiService {
   async getItemDetails(itemId: string): Promise<any> {
     try {
       const res = await firstValueFrom(
-        this.http.get(`${environment.baseUrl}/api/v1/items/${itemId}`)
+        this.http.get(`${environment.baseUrl}/api/v1/recognition/items/${itemId}`)
       );
       return res;
     } catch (error) {
@@ -90,7 +90,7 @@ export class ApiService {
   async getItem(): Promise<any> {
     try {
       const res = await firstValueFrom(
-        this.http.get(`${environment.baseUrl}/api/v1/items`)
+        this.http.get(`${environment.baseUrl}/api/v1/recognition/items`)
       );
       return res;
     } catch (error) {
@@ -102,7 +102,7 @@ export class ApiService {
   async getMultimedia(multimediaTag: string): Promise<any> {
     try {
       const res = await firstValueFrom(
-        this.http.get(`${environment.baseUrl}/api/v1/multimedia/by-tag/${multimediaTag}`)
+        this.http.get(`${environment.baseUrl}/api/v1/recognition/multimedia/by-tag/${multimediaTag}`)
       );
       return res;
     } catch (error) {
@@ -114,7 +114,7 @@ export class ApiService {
   async getHistory(): Promise<any> {
     try {
       const res = await firstValueFrom(
-        this.http.get(`${environment.baseUrl}/api/v1/history`)
+        this.http.get(`${environment.baseUrl}/api/v1/recognition/history`)
       );
       return res;
     } catch (error) {
