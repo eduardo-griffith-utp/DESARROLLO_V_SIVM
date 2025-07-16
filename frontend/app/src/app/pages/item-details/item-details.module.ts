@@ -10,7 +10,9 @@ import { ItemDetailsPage } from './item-details.page';
 
 import { TranslateModule } from '@ngx-translate/core';
 
-import { AudioPlayerModule } from 'src/app/components/audio-player/audio-player.module';
+//import { AudioPlayerModule } from 'src/app/components/audio-player/audio-player.module';
+
+import { InfoCardModule } from 'src/app/components/info-card/info-card.module';
 
 @NgModule({
   imports: [
@@ -19,7 +21,8 @@ import { AudioPlayerModule } from 'src/app/components/audio-player/audio-player.
     TranslateModule,
     IonicModule,
     ItemDetailsPageRoutingModule,
-    AudioPlayerModule
+    //AudioPlayerModule,
+    InfoCardModule
   ],
   declarations: [ItemDetailsPage]
 })
