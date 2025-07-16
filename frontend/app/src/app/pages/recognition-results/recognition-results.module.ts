@@ -11,11 +11,14 @@ import { ApiService } from 'src/app/core/services/api-service.service';
 
 import { TranslateModule } from '@ngx-translate/core';
 
+import { InfoCardModule } from 'src/app/components/info-card/info-card.module';
+
 @NgModule({
   providers: [ApiService],
   imports: [
     CommonModule,
     FormsModule,
+    InfoCardModule,
     IonicModule,
 
     RecognitionResultsPageRoutingModule,
