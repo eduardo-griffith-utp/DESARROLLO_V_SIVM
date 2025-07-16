@@ -10,6 +10,9 @@ import { ServicesService } from './core/services/services.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
+import { AudioPlayerModule } from './components/audio-player/audio-player.module';
+
 import { ApiService } from 'src/app/core/services/api-service.service';
 import { MockApiService } from 'src/app/core/services/mock-api.service';
 import { AbstractApiService } from 'src/app/core/services/abstract-api.service';
@@ -22,7 +25,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AudioPlayerModule, HttpClientModule,
     TranslateModule.forRoot(
       {
       loader:{
