@@ -12,6 +12,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
 import { AudioPlayerModule } from './components/audio-player/audio-player.module';
+import { InfoCardModule } from './components/info-card/info-card.module';
 
 import { ApiService } from 'src/app/core/services/api-service.service';
 import { MockApiService } from 'src/app/core/services/mock-api.service';
@@ -25,7 +26,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AudioPlayerModule, HttpClientModule,
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AudioPlayerModule, InfoCardModule, HttpClientModule,
     TranslateModule.forRoot(
       {
       loader:{
