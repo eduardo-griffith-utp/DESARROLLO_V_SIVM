@@ -19,13 +19,13 @@ export class ItemDetailsPage implements OnInit {
   public getJsonValue: any;
 
 
-  // Audio player logic
-  @ViewChild('audioPlayer', { static: false }) audioPlayerRef!: ElementRef<HTMLAudioElement>;
+  /* Audio player logic
+  @ViewChild('audioPlayer', { static: false }) audioPlayerRef!: ElementRef<HTMLAudioElement>;*/
     audioSrc: string = '';
-    isPlaying = false;
+    /*isPlaying = false;
     duration = 0;
     progress = 0;
-    currentTime = 0;
+    currentTime = 0;*/
 
   constructor(
     private route: ActivatedRoute, private activatedRoute: ActivatedRoute, private http: HttpClient, private api: ApiService
@@ -59,15 +59,15 @@ export class ItemDetailsPage implements OnInit {
         const audio = multimedia.data.find((item: any) => item.type === 'audio');
         const video = multimedia.data.find((item: any) => item.type === 'video');
 
-        const cleanUrl = (url: string) => {
+        /*const cleanUrl = (url: string) => {
           return url.replace(/^.*assets\//, 'assets/'); // limpia hasta "assets/"
-        };
+        };*/
 
         if (audio && audio.url) {
-          this.audioSrc = cleanUrl(audio.url);
+          //this.audioSrc = cleanUrl(audio.url);
           console.log('Audio cargado:', this.audioSrc);
         } else if (video && video.url) {
-          this.audioSrc = cleanUrl(video.url);  // puedes usar otro nombre como `videoSrc`
+          //this.audioSrc = cleanUrl(video.url);  // puedes usar otro nombre como `videoSrc`
           console.log('Video cargado:', this.audioSrc);
         } else {
           console.warn('No se encontró video ni audio.');
@@ -77,14 +77,14 @@ export class ItemDetailsPage implements OnInit {
         console.error('Error al cargar multimedia:', error);
         this.audioSrc = '';
       }
-      if (this.audioPlayerRef?.nativeElement) {
+      /*if (this.audioPlayerRef?.nativeElement) {
         const audio = this.audioPlayerRef.nativeElement;
         audio.load();  // <-- fuerza recarga de <source>
-      }
+      }*/
 
   }
 
-  // audio
+  /*/ audio
   togglePlayPause() {
     const audio = this.audioPlayerRef.nativeElement;
     if (audio.paused) {
@@ -134,5 +134,5 @@ export class ItemDetailsPage implements OnInit {
   pad(value: number): string {
   return value < 10 ? '0' + value : '' + value;
 }
-
+*/
 }
