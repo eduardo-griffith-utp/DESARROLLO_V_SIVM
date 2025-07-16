@@ -22,10 +22,10 @@ export class ItemDetailsPage implements OnInit {
   // Audio player logic
   @ViewChild('audioPlayer', { static: false }) audioPlayerRef!: ElementRef<HTMLAudioElement>;
     audioSrc: string = '';
-    isPlaying = false;
+    /*isPlaying = false;
     duration = 0;
     progress = 0;
-    currentTime = 0;
+    currentTime = 0;*/
 
   constructor(
     private route: ActivatedRoute, private activatedRoute: ActivatedRoute, private http: HttpClient, private api: AbstractApiService
@@ -84,7 +84,7 @@ export class ItemDetailsPage implements OnInit {
 
   }
 
-  // audio
+  /*/ audio
   togglePlayPause() {
     const audio = this.audioPlayerRef.nativeElement;
     if (audio.paused) {
@@ -134,5 +134,5 @@ export class ItemDetailsPage implements OnInit {
   pad(value: number): string {
   return value < 10 ? '0' + value : '' + value;
 }
-
+*/
 }
