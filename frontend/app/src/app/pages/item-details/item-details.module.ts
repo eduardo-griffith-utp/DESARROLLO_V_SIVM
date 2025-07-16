@@ -10,13 +10,16 @@ import { ItemDetailsPage } from './item-details.page';
 
 import { TranslateModule } from '@ngx-translate/core';
 
+import { AudioPlayerModule } from 'src/app/components/audio-player/audio-player.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     TranslateModule,
     IonicModule,
-    ItemDetailsPageRoutingModule
+    ItemDetailsPageRoutingModule,
+    AudioPlayerModule
   ],
   declarations: [ItemDetailsPage]
 })
