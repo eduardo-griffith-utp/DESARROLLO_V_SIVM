@@ -4,49 +4,12 @@
       <ion-back-button defaultHref="/history" size="large" fill="outline" color="dark"><ion-icon name="arrow-back-circle-outline"></ion-icon></ion-back-button>
     </ion-buttons>
     <ion-title>
-      <img id="title-icon" src="assets/icon/Capture-icon.png"> {{ itemTitle }}
+      <img id="title-icon" src="assets/icon/Capture-icon.png"> {{ itemTitle | translate }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-card>
-        <ion-img [src]= "itemImage"></ion-img>
-    <ion-card-header>
-      <ion-card-title>{{ itemTitle | translate }}</ion-card-title>
-      </ion-card-header>
-    <ion-card-content>
-      {{ itemDescription }}
-    </ion-card-content>
-    <ion-button id="resultcontrol" color="dark" fill="outline" shape="round"><ion-icon name="chevron-back-outline"></ion-icon></ion-button>
-    <ion-button id="resultcontrol" color="dark" fill="outline" shape="round"><ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
-  </ion-card>
-<div id="player">
-  <ion-card>
-    <!-- Audio player -->
-    <audio #audioPlayer (timeupdate)="updateProgress()" (loadedmetadata)="setDuration()">
-      <source [src]= "audioSrc" type="audio/mpeg" />
-    </audio>
-    
-    <div class="time-display" id="player-timer">
-
-    <span>{{ formatTime(currentTime) }}</span>
-
-  <ion-range [value]="currentTime" [min]="0" [max]="duration" (ionChange)="seekAudio($event)" color="light" ></ion-range>
-    <span>{{ formatTime(duration) }}</span>
-  </div>
-    <!-- Playback controls -->
-    <ion-button size="large" fill="clear" (click)="rewind()">
-      <ion-icon name="play-back"></ion-icon>
-    </ion-button>
-    <ion-button size="large" fill="clear" (click)="togglePlayPause()">
-      <ion-icon [name]="isPlaying ? 'pause' : 'play'"></ion-icon>
-    </ion-button>
-    <ion-button size="large" fill="clear" (click)="forward()">
-      <ion-icon name="play-forward"></ion-icon>
-    </ion-button>
-  </ion-card>
-</div>
-
+  <app-info-card [title]= "itemTitle" [description]= "itemDescription" [imageUrl]= "itemImage" [audioSrc]= "audioSrc"></app-info-card>
 </ion-content>
 
