@@ -17,13 +17,21 @@
     <ion-item *ngFor="let item of items"
       class="history-item"
       [routerLink]="['/item-details']"
-      [queryParams]="{ imageId: item.imageId, description: item.description, imageUrl: item.imageUrl, category: item.category, tag: item.tag, name: item.name}"
+      [queryParams]="{
+  imageId: item.imageId,
+  name: item.name,
+  description: item.description,
+  imageUrl: item.imageUrl,
+  category: item.category,
+  tag: item.tag
+}"
       button>
       <ion-thumbnail slot="start">
-        <ion-img {{image}}></ion-img>
+        <img [src]="item.imageUrl" alt="Imagen" />
       </ion-thumbnail>
       <ion-label>
-        <h2>{{ item.category }}</h2>
+        <h2>{{ item.category | translate }}</h2>
+        <h1>{{ item.name | translate }}</h1>
         <p>{{ item.description }}</p>
       </ion-label>
     </ion-item>

@@ -26,33 +26,42 @@ export class HistoryPage implements OnInit {
   }
 
 async loadData() {
-  this.tag = 'banana';
   const historyRes = await this.api.getHistory();
-  const multimediaRes = await this.api.getMultimedia(this.tag); // Sin filtro
-  this.image = multimediaRes.data.find((item: any) => item.type === 'image')?.url || 'assets/images/default.jpg';
-  const historyData = historyRes[0].data;
-  const multimediaData = multimediaRes;
 
   const allItems: any[] = [];
 
-  for (const category in historyData) {
-    const entries = historyData[category];
+  for (const historyEntry of historyRes) {
+    const historyData = historyEntry.data;
 
-    for (const entry of entries) {
-      const imageId = entry.image_id;
-      const tag = entry.tag;
+    for (const category in historyData) {
+      const entries = historyData[category];
 
-      const multimediaItem = multimediaData.find((item: any) => item.id === tag);
-      const imageUrl = multimediaItem?.data?.find((m: any) => m.type === 'image')?.url || 'assets/images/default.jpg';
+      for (const entry of entries) {
+        const imageId = entry.image_id;
+        const description = entry.description;
 
-      allItems.push({
-        category,
-        imageId,
-        description: entry.description,
-        imageUrl,
-        tag,
-        name: tag
-      });
+
+        const imageAnalysis = await this.api.getAnalysis(imageId);
+        const tags: string[] = imageAnalysis.data.tags || [];
+        const mainTag = tags[1] || tags[0];
+
+
+        const multimediaItem = await this.api.getMultimedia(mainTag);
+        const imageUrl = multimediaItem?.data?.find((m: any) => m.type === 'image')?.url || 'assets/images/default.jpg';
+        const videoUrl = multimediaItem?.data?.find((m: any) => m.type === 'video')?.url || '';
+        const audioUrl = multimediaItem?.data?.find((m: any) => m.type === 'audio')?.url || '';
+
+        allItems.push({
+          category,
+          imageId,
+          imageUrl,
+          videoUrl,
+          audioUrl,
+          description,
+          tag: mainTag,
+          name: mainTag
+        });
+      }
     }
   }
 
