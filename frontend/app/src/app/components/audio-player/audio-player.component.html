@@ -1,0 +1,25 @@
+<div id="player">
+  <ion-card>
+    <!-- Audio player -->
+    <audio #audioPlayer (timeupdate)="updateProgress()" (loadedmetadata)="setDuration()">
+      <source [src]= "src" type="audio/mpeg" (loadedmetadata)="onLoadedMetadata()">
+    </audio>
+
+    <div class="time-display" id="player-timer">
+      <span>{{ formatTime(currentTime) }}</span>
+      <ion-range [value]="currentTime" [min]="0" [max]="duration" (ionChange)="seekAudio($event)" color="light" ></ion-range>
+      <span>{{ formatTime(duration) }}</span>
+    </div>
+
+    <!-- Playback controls -->
+    <ion-button size="large" fill="clear" (click)="rewind()">
+      <ion-icon name="play-back"></ion-icon>
+    </ion-button>
+    <ion-button size="large" fill="clear" (click)="togglePlayPause()">
+      <ion-icon [name]="isPlaying ? 'pause' : 'play'"></ion-icon>
+    </ion-button>
+    <ion-button size="large" fill="clear" (click)="forward()">
+      <ion-icon name="play-forward"></ion-icon>
+    </ion-button>
+  </ion-card>
+</div>
