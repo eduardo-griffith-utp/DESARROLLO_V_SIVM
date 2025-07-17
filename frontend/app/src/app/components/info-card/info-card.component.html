@@ -4,9 +4,17 @@
     <ion-card-header>
       <ion-card-title>{{ title  | translate }}</ion-card-title>
       </ion-card-header>
-    <ion-card-content>
-      {{ description  | translate }}
+<ion-card-content>
+      <p *ngIf="!showFullDescription && needsReadMore">
+        {{ truncatedDescription | translate }}
+        <a (click)="toggleDescription()" class="read-more-link">Read More</a>
+      </p>
+      <p *ngIf="showFullDescription || !needsReadMore">
+        {{ description | translate }}
+        <a *ngIf="needsReadMore" (click)="toggleDescription()" class="read-more-link">Show Less</a>
+      </p>
     </ion-card-content>
+
     <ion-button id="resultcontrol" color="dark" fill="outline" shape="round"><ion-icon name="chevron-back-outline"></ion-icon></ion-button>
     <ion-button id="resultcontrol" color="dark" fill="outline" shape="round"><ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
   </ion-card>
