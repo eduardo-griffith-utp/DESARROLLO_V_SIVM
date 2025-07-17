@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: "https://short-trains-retire.loca.lt",
-  //baseUrl: "http://localhost:3000",
+  //baseUrl: "https://short-trains-retire.loca.lt/api/v1/recognition/",
+  baseUrl: "http://localhost:3000/api/v1/",
   
 };
 

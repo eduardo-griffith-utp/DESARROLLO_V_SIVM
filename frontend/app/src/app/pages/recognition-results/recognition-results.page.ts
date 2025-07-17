@@ -189,6 +189,7 @@ export class RecognitionResultsPage implements OnInit {
   async loadMultimedia(tag: string) {
     try {
       const multimedia = await this.api.getMultimedia(tag);
+      console.log(multimedia);
       const audio = multimedia.data.find((item: any) => item.type === 'audio');
       const video = multimedia.data.find((item: any) => item.type === 'video');
 
@@ -197,7 +198,7 @@ export class RecognitionResultsPage implements OnInit {
       };
 
       if (audio && audio.url) {
-        this.audioSrc = cleanUrl(audio.url);
+        this.audioSrc = /*cleanUrl(*/audio.url//);
         console.log('Audio cargado:', this.audioSrc);
       } else if (video && video.url) {
         this.audioSrc = cleanUrl(video.url);  // puedes usar otro nombre como `videoSrc`
@@ -270,6 +271,7 @@ export class RecognitionResultsPage implements OnInit {
   async showMultimedia() {
     this.ItemValue = await this.api.getItemDetails(this.imageId);
     console.log('Detalles', this.ItemValue);
+    await this.loadMultimedia(this.tag);
   }
 
 }

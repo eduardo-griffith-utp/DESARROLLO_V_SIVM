@@ -11,7 +11,7 @@ import { Subscription, interval } from 'rxjs';
 export class AudioPlayerComponent implements OnDestroy {
 
   //Fuente de audio o video
-  @Input() src = '';
+  @Input() src = 'https://github.com/eduardo-griffith-utp/DESARROLLO_V_SIVM/raw/refs/heads/develop/assets/storage_structure/multimedia_resources/CAMARA/audio/CAMARA.mp3';
   @ViewChild('audioPlayer', { static: false }) audioPlayerRef!: ElementRef<HTMLAudioElement>;
 
   //audioSrc = '';
