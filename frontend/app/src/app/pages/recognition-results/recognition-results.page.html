@@ -7,48 +7,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-
-  <div class="container">
-
-    <div class="card-container">
-      <div class="card">
-        <div class="image">
-          <ion-img *ngIf="this.imageUrl" [src]="imageUrl"></ion-img>
-        </div>
-        <div class="nombre">
-          <h1>{{ItemValue?.data?.name}}</h1>
-        </div>
-        <div class="descripcion">
-          <h2>{{ItemValue?.data?.description}}</h2>
-        </div>
-      </div>
-    </div>
-<div id="player">
-  <ion-card>
-    <!-- Audio player -->
-    <audio #audioPlayer (timeupdate)="updateProgress()" (loadedmetadata)="setDuration()">
-      <source [src]= "audioSrc" type="audio/mpeg" />
-    </audio>
-    
-    <div class="time-display" id="player-timer">
-
-    <span>{{ formatTime(currentTime) }}</span>
-
-  <ion-range [value]="currentTime" [min]="0" [max]="duration" (ionChange)="seekAudio($event)" color="light" ></ion-range>
-    <span>{{ formatTime(duration) }}</span>
-  </div>
-    <!-- Playback controls -->
-    <ion-button size="large" fill="clear" (click)="rewind()">
-      <ion-icon name="play-back"></ion-icon>
-    </ion-button>
-    <ion-button size="large" fill="clear" (click)="togglePlayPause()">
-      <ion-icon [name]="isPlaying ? 'pause' : 'play'"></ion-icon>
-    </ion-button>
-    <ion-button size="large" fill="clear" (click)="forward()">
-      <ion-icon name="play-forward"></ion-icon>
-    </ion-button>
-  </ion-card>
-</div>
-  </div>
+<app-info-card
+  [title]="ItemValue?.data?.name"
+  [description]="ItemValue?.data?.description"
+  [imageUrl]="imageUrl"
+  [audioSrc]="audioSrc">
+</app-info-card>
 </ion-content>

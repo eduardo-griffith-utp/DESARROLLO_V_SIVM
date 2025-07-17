@@ -29,10 +29,10 @@ export class RecognitionResultsPage implements OnInit {
   // Audio player logic
   @ViewChild('audioPlayer', { static: false }) audioPlayerRef!: ElementRef<HTMLAudioElement>;
   audioSrc: string = '';
-  isPlaying = false;
+  /*isPlaying = false;
   duration = 0;
   progress = 0;
-  currentTime = 0;
+  currentTime = 0;*/
 
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private api: ApiService, private loadingCtrl: LoadingController) { }  // Inyecta ActivatedRoute
 
@@ -100,14 +100,14 @@ export class RecognitionResultsPage implements OnInit {
 
 
     const maxRetries = 10;// Número de intentos
-    const delayMs = 3000; //tiempo 
+    const delayMs = 3000; //tiempo
     let retries = 0;
 
     //Almacenar la imagen para probar que se capturo correctamente
     this.imageUrl = sessionStorage.getItem('ImagenCapturada');
 
     /*try { Try sin el repetidor
-      
+
 
       //Almacenar la imagen para probar que se capturo correctamente
       this.imageUrl = sessionStorage.getItem('ImagenCapturada');
@@ -115,12 +115,12 @@ export class RecognitionResultsPage implements OnInit {
       //this.getJsonValue =await this.api.getImage(this.imageId);
       //De esta forma evitamos conflictos con el mock en el imageId
 
-      
+
       //Decalro el id manualmente para que coincida con el de db.json
       const imgMock = 'img_002';
       console.log(imgMock);
 
-      
+
 
       this.StatusValue = await this.api.getImage(imgMock);
 
@@ -128,7 +128,7 @@ export class RecognitionResultsPage implements OnInit {
 
       console.log("Get completado almacenando", this.StatusValue);
       console.log('carga terminada');
-    
+
     }catch(error: any){
       console.log("No se pudo compeltar el get");
     }*/
@@ -157,7 +157,7 @@ export class RecognitionResultsPage implements OnInit {
         //this.getJsonValue =await this.api.getImage(this.imageId);
         //De esta forma evitamos conflictos con el mock en el imageId
 
-        //Get 
+        //Get
         this.StatusValue = await this.api.getAnalysis(this.imageId);
 
         console.log("Get completado almacenando", this.StatusValue);
@@ -217,7 +217,7 @@ export class RecognitionResultsPage implements OnInit {
     }
 
   }
-  //audio en recognition
+  /*/audio en recognition
   togglePlayPause() {
     const audio = this.audioPlayerRef.nativeElement;
     if (audio.paused) {
@@ -266,7 +266,7 @@ export class RecognitionResultsPage implements OnInit {
 
   pad(value: number): string {
     return value < 10 ? '0' + value : '' + value;
-  }
+  }*/
 
   async showMultimedia() {
     this.ItemValue = await this.api.getItemDetails(this.imageId);
