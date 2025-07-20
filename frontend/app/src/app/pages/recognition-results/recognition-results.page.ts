@@ -27,7 +27,7 @@ export class RecognitionResultsPage implements OnInit {
 
 
   // Audio player logic
-  @ViewChild('audioPlayer', { static: false }) audioPlayerRef!: ElementRef<HTMLAudioElement>;
+  //@ViewChild('audioPlayer', { static: false }) audioPlayerRef!: ElementRef<HTMLAudioElement>;
   audioSrc: string = '';
   /*isPlaying = false;
   duration = 0;
@@ -211,10 +211,10 @@ export class RecognitionResultsPage implements OnInit {
       console.error('Error al cargar multimedia:', error);
       this.audioSrc = '';
     }
-    if (this.audioPlayerRef?.nativeElement) {
+    /*if (this.audioPlayerRef?.nativeElement) {
       const audio = this.audioPlayerRef.nativeElement;
       audio.load();  // <-- fuerza recarga de <source>
-    }
+    }*/
 
   }
   /*/audio en recognition
