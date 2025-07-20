@@ -1,5 +1,18 @@
 {
   "images": [
+        {
+      "id": 1,
+      "status": "success",
+      "data": {
+        "image_id": "img_001",
+        "tags": ["fruta", "banana", "comida"],
+        "confidence_scores": {
+          "fruta": 0.95,
+          "banana": 0.88
+        }
+      },
+      "message": "Análisis completado"
+    },
     {
       "id": 2,
       "status": "success",
@@ -11,6 +24,19 @@
         "confidence_scores": {
           "electronica": 0.93,
           "television": 0.89
+        }
+      },
+      "message": "Análisis completado"
+    },
+    {
+      "id": 3,
+      "status": "success",
+      "data": {
+        "image_id": "img_003",
+        "tags": ["fruta", "manzana", "comida"],
+        "confidence_scores": {
+          "fruta": 0.97,
+          "manzana": 0.92
         }
       },
       "message": "Análisis completado"
