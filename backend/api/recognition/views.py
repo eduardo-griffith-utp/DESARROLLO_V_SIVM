@@ -22,7 +22,7 @@ from django.forms import ValidationError as DjangoValidationError
 from .models import ImagenReconocida # Assuming this model name is retained
 from .serializers import CapturedImageSerializer # Ensure the path is correct
 from .database_connection import MariaDBConnection
-
+from recognition.services.clarifai_service import analizar_imagen_nsfw
 
 # ======================
 # CLASSES AND HELPERS
@@ -98,6 +98,12 @@ def capture_images(request):
                 status_code=status.HTTP_400_BAD_REQUEST
             )
         
+        uploaded_objects_data = []
+        resultado = []
+        errors = []
+ 
+
+        
         if not base64_images:
             return Response(
                 {
@@ -106,19 +112,50 @@ def capture_images(request):
                 },
                 status=status.HTTP_400_BAD_REQUEST
             )
+        
 
-        resultado = []
-        errors = []
 
         # Procesamiento de cada imagen
         for base64_image_string in base64_images:
             try:
+                base64_image_string = base64_image_string.split(',', 1)[1]
+                #integramos clarifai
+                nsfw_result = analizar_imagen_nsfw(base64_image_string)
+                if not nsfw_result.get("exito"):
+                    raise SecurityValidationError(
+                        code="NSFW_ANALYSIS_FAILED",
+                        message="Clarifai failed to analyze the image.",
+                        details=nsfw_result.get("error", "Unknown error")
+                    )
+                nsfw_score = nsfw_result.get("nsfw_scores", {}).get("nsfw", 0)
+                if nsfw_score > 0.7:
+                    resultado.append({
+                        "prediction": "[NSFW] Imagen rechazada por contenido explícito.",
+                        "nsfw_score": nsfw_score,
+                        "rechazada": True,
+                        "status": "rejected"
+                        })
+                    continue
+
                 prediccion = predict_imagen_api(base64_image_string)
                 resultado.append({
                     "prediction": prediccion,
                     "status": "success",
                     "image_prefix": base64_image_string[:50] + "..."
                 })
+
+
+       
+            except SecurityValidationError as e:
+                errors.append({
+                    "image_prefix": base64_image_string[:50] + "...",
+                    "error": {
+                        "code": e.code,
+                        "message": e.message,
+                        "details": e.details
+                    },
+                    "status": "failed"
+                })       
             except Exception as e:
                 errors.append({
                     "image_prefix": base64_image_string[:50] + "...",
