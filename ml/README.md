@@ -1,95 +1,90 @@
-# Reconocimiento de Imágenes IA (ML) del Sistema SIVM
+# Creacion de modelo con Tensorflow, con un modelo base desde 0.
 
-Esta carpeta contiene los modelos de aprendizaje automático, algoritmos y servicios de inteligencia artificial utilizados para el reconocimiento y análisis de imágenes en el proyecto SIVM.
+01 de mayo, creando otro codigo desde 0 con python. A.S.
 
-## Tecnologías Utilizadas
+## OBJETIVOS ##
+Para empezar, siento que al generar un codigo desde 0 con documentacion de lo mas esecencial para entrenar 
+un modelo con tensorflow ( data_loading, model, train) me va a ayudar a comprender como funciona y darle un uso en la vida real(trabajo).
 
-- **Frameworks de ML:** [A completar por el equipo]
-- **APIs de Visión:** [A completar por el equipo]
-- **Procesamiento de Imágenes:** [A completar por el equipo]
-- **Lenguajes:** [A completar por el equipo]
-- **Infraestructura:** [A completar por el equipo]
-- **Herramientas de Experimentación:** [A completar por el equipo]
+## REQUERIMIENTOS##
+Version de python requerida 3.10.0 https://www.python.org/downloads/release/python-3100/
+Repositorio del codigo: https://github.com/gravitax7/clasificador-tensorflow
+(A la fecha de hoy, la rama main esta actualizada con los ultimos cambios, de igual forma siempre revisar la de "version-preliminar")
 
-## Configuración del Entorno
+##INSTRUCCIONES##
+(Ya esta el modelo creado y entrenado, por lo cual no es necesario ejecutar el proceso de entrenamiento, estas instrucciones son mas bien para darle uso a la prediccion
+en base a las clases de imagenes brindadas por el grupo de contenido)
 
-### Requisitos Previos
-- [A completar por el equipo]
 
-### Instalación
+        -- Crear y activar un entorno virtual (opcional pero recomendado) con los siguientes scripts
+        python -m venv venv
+        venv\Scripts\activate
 
-```bash
-# A completar por el equipo
-```
+        -- Instalar todas las dependencias del proyecto
+        pip install -r requirements.txt
 
-### Ejecución del Servicio
+        -- Preparar la imagen a procesar
+        Si no existe, crea el archivo imagen.txt dentro de la carpeta src/.
 
-```bash
-# A completar por el equipo
-```
+        -- Configurar la ruta del archivo imagen.txt
+        Abre el archivo src/predict_b64.py y verifica que la función with open() tenga la ruta correcta.
+        Convierte la imagen que quieres procesar a formato Base64
+        Copia el código Base64 generado y reemplaza su contenido dentro de src/imagen.txt.
 
-## Integración con el Backend
+        -- Ejecutar clase con el siguiente comando para obtener la predidccion:
+        python src/predict_b64.py
 
-### API Interna
+        -- Revisar el json generado en la carpeta output
 
-El servicio ML expone los siguientes endpoints:
 
-- [A completar por el equipo]
+## ESTRUCTURA ##
 
-### Uso desde el Backend
+Tensorf_desde0/
+│
+├── data/                # Directorio de imagenes para el entrenamiento del modelo
+│   └── raw/             # Subcarpetas con las distintas clases
+│   
+├── output/                # Directorio de salida donde se guarda el json del resultado
+│   └── resultado.json/             # respuesta de la prediccion con las clases y confianza
+|
+│
+├── src/                 # Código fuente
+│   ├── __init__.py
+│   ├── data_loading.py  # Clases/funciones para cargar datos
+│   ├── model.py         # Definición del modelo
+│   ├── prediccion.py    # Distintos metodos para mostrar la prediccion con el porcentaje de confianza
+│   ├── predict_b64.py   # *****Clase principal para el proyecto, devuelve la prediccion en formato json para imagenes base 64****
+│   ├── retrain.py       # Rentrena el modelo
+│   └── train.py         # Entrenamiento del modelo convolucional y creacion de diccionarios/metadata de las clases y del modelo
+│
+├── models/              # Modelos guardados
+│   └── best_model.h5    # Modelo CNN entrenado
+│
+├── resultado.json       # Contiene el resultado de la prediccion y confianza
+├── requirements.txt     # Dependencias del proyecto ( instalar en el entorno virtual)
+└── README.md            # Documentación
 
-```bash
-# A completar por el equipo
-```
+Texto de desmostracion del json "resultado.json":
+[
+    {
+        "PANDA": 0.9997
+    },
+    {
+        "OSO POLAR": 0.0002
+    },
+    {
+        "SILLA": 0.0001
+    },
+    {
+        "RELOJ": 0.0
+    },
+    {
+        "CRISTO REDENTOR": 0.0
+    }
+]
 
-## Modelos Disponibles
 
-### Modelo de Clasificación General
-- [A completar por el equipo]
 
-### Detector de Objetos
-- [A completar por el equipo]
-
-### [Otros modelos a implementar]
-
-## Entrenamiento de Modelos
-
-### Datasets Utilizados
-- [A completar por el equipo]
-
-### Procedimiento de Entrenamiento
-
-```bash
-# A completar por el equipo
-```
-
-## Evaluación de Modelos
-
-```bash
-# A completar por el equipo
-```
-
-## Preprocesamiento de Imágenes
-
-El pipeline de preprocesamiento incluye:
-
-1. [A completar por el equipo]
-
-```bash
-# A completar por el equipo
-```
-
-## Despliegue en Producción
-
-- [A completar por el equipo]
-
-## Equipo de IA y Reconocimiento
-
-- JOSE ARIANO
-- [Integrante 2]
-- [Integrante 3]
-- [Integrante 4]
-
-## Recursos Adicionales
-
-- [A completar por el equipo]
+## Integrantes del grupo de ML/ I.A.
+## Alvan Samudio
+## Jose Ariano
