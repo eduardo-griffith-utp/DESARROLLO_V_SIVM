@@ -118,7 +118,7 @@ def capture_images(request):
         # Procesamiento de cada imagen
         for base64_image_string in base64_images:
             try:
-                base64_image_string = base64_image_string.split(',', 1)[1]
+                base64_image_string = base64_image_string.split(',', 1)[1] #SPLIT QUE ELIMINA ENCABEZADO DE IMAGEN BASE 64 YA QUE CLARIFAI NO LO ACEPTA
                 #integramos clarifai
                 nsfw_result = analizar_imagen_nsfw(base64_image_string)
                 if not nsfw_result.get("exito"):
@@ -129,12 +129,18 @@ def capture_images(request):
                     )
                 nsfw_score = nsfw_result.get("nsfw_scores", {}).get("nsfw", 0)
                 if nsfw_score > 0.7:
-                    resultado.append({
-                        "prediction": "[NSFW] Imagen rechazada por contenido explícito.",
-                        "nsfw_score": nsfw_score,
-                        "rechazada": True,
-                        "status": "rejected"
-                        })
+                    #resultado.append({
+                     #   "prediction": "[NSFW] Imagen rechazada por contenido explícito.",
+                      #  "nsfw_score": nsfw_score,
+                       # "rechazada": True,
+                        #"status": "rejected"
+                        #})
+                    return Response ({
+                        "code": "NSFW_IMAGE_REJECTED",
+                        "message": "Imagen rechazada por contenido explícito.",
+                        "nsfw_score": nsfw_score
+
+                    }, status=status.HTTP_400_BAD_REQUEST)
                     continue
 
                 prediccion = predict_imagen_api(base64_image_string)
@@ -172,7 +178,8 @@ def capture_images(request):
                 "status": "success",
                 "data": {
                     "image_id": image_id,
-                    "timestamp": timestamp
+                    "timestamp": timestamp,
+                    "nsfw_score": nsfw_score
                 },
                 "message": "imagen recibida y procesada exitosamente"
             }
@@ -207,59 +214,60 @@ def capture_images(request):
             },
             status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
-        ''' serializer_data = {'imagen': base64_image_string} 
-            
-            serializer = CapturedImageSerializer(data=serializer_data, context={'request': request})
-            #print("\n\n\nvalor de request: ",request)
-            if serializer.is_valid():
-                # Guardamos la imagen. Si 'current_user' es AnonymousUser,
-                # y el campo 'usuario' del modelo es null=True (como lo corregimos en models.py),
-                # se guardará como NULL en la DB.
-                obj = serializer.save(usuario=current_user if current_user.is_authenticated else None)
-                uploaded_objects_data.append(serializer.data)
-            else:
-                # Capturar errores de validación para cada imagen.
-                # Mostrar un fragmento de la cadena Base64 para ayudar en la depuración.
-                errors.append({
-                    "original_data_prefix": (base64_image_string[:50] + "...") if len(base64_image_string) > 50 else base64_image_string,
-                    "errors": serializer.errors
-                })   
-        #print("Valor de uploaded_objects_data: ", uploaded_objects_data)
-        if uploaded_objects_data:
-            response_data = {
-                "status": "success",
-                "data": uploaded_objects_data
-            }
-            file_path = uploaded_objects_data[0]['imagen']
-            img_id = connection.insert_into_analysis(file_path[file_path.find("/media")::])
-            print("\n\n\n\nValor de file_path: ", file_path[file_path.find("/media")::])
-            print("Valor de image_id: ", img_id)
-            if errors:
-                response_data["warnings"] = errors
-                response_data["message"] = "Some images were uploaded, but others had validation errors."
-                return Response(response_data, status=status.HTTP_200_OK)
-            else:
-                response_data["message"] = "All images were uploaded and processed successfully."
-                return Response(response_data, status=status.HTTP_201_CREATED)
+    
+    ''' serializer_data = {'imagen': base64_image_string} #aqui
+        
+        serializer = CapturedImageSerializer(data=serializer_data, context={'request': request})
+        #print("\n\n\nvalor de request: ",request)
+        if serializer.is_valid():
+            # Guardamos la imagen. Si 'current_user' es AnonymousUser,
+            # y el campo 'usuario' del modelo es null=True (como lo corregimos en models.py),
+            # se guardará como NULL en la DB.
+            obj = serializer.save(usuario=current_user if current_user.is_authenticated else None)
+            uploaded_objects_data.append(serializer.data)
         else:
-            # Si no se subió ninguna imagen exitosamente (solo hubo errores de validación para todas)
-            return error_response(
-                code="IMAGE_VALIDATION_ERROR",
-                message="None of the provided images could be processed due to validation errors.",
-                details=errors,
-                status_code=status.HTTP_400_BAD_REQUEST
-            )
-
-    except Exception as e:
-        # Asegúrate de que current_user siempre esté definido antes de usarlo en detalles.
-        # En este punto, 'current_user' ya está definido fuera del try, por lo que no debería haber NameError.
+            # Capturar errores de validación para cada imagen.
+            # Mostrar un fragmento de la cadena Base64 para ayudar en la depuración.
+            errors.append({
+                "original_data_prefix": (base64_image_string[:50] + "...") if len(base64_image_string) > 50 else base64_image_string,
+                "errors": serializer.errors
+            })   
+    #print("Valor de uploaded_objects_data: ", uploaded_objects_data)
+    if uploaded_objects_data:
+        response_data = {
+            "status": "success",
+            "data": uploaded_objects_data
+        }
+        file_path = uploaded_objects_data[0]['imagen']
+        img_id = connection.insert_into_analysis(file_path[file_path.find("/media")::])
+        print("\n\n\n\nValor de file_path: ", file_path[file_path.find("/media")::])
+        print("Valor de image_id: ", img_id)
+        if errors:
+            response_data["warnings"] = errors
+            response_data["message"] = "Some images were uploaded, but others had validation errors."
+            return Response(response_data, status=status.HTTP_200_OK)
+        else:
+            response_data["message"] = "All images were uploaded and processed successfully."
+            return Response(response_data, status=status.HTTP_201_CREATED)
+    else:
+        # Si no se subió ninguna imagen exitosamente (solo hubo errores de validación para todas)
         return error_response(
-            code="GENERAL_CAPTURE_ERROR",
-            message="An unexpected error occurred while processing the images",
-            details=str(e) if settings.DEBUG else "",
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+            code="IMAGE_VALIDATION_ERROR",
+            message="None of the provided images could be processed due to validation errors.",
+            details=errors,
+            status_code=status.HTTP_400_BAD_REQUEST
         )
-        '''
+
+except Exception as e:
+    # Asegúrate de que current_user siempre esté definido antes de usarlo en detalles.
+    # En este punto, 'current_user' ya está definido fuera del try, por lo que no debería haber NameError.
+    return error_response(
+        code="GENERAL_CAPTURE_ERROR",
+        message="An unexpected error occurred while processing the images",
+        details=str(e) if settings.DEBUG else "",
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+    )
+    '''
 @api_view(['GET'])
 @permission_classes([]) # Explícitamente pública
 def get_image_analysis(request, image_id):

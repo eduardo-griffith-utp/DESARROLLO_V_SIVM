@@ -15,7 +15,8 @@ load_dotenv()
 MODEL_ID = "nsfw-recognition"
 USER_ID = "clarifai"
 APP_ID = "main"
-PAT = os.getenv("CLARIFAI_PAT")
+#PAT = os.getenv("CLARIFAI_PAT")
+PAT = "eaf0e0d143844590becc80fd27091fc4"
 
 def analizar_imagen_nsfw(image_base64):
     try:

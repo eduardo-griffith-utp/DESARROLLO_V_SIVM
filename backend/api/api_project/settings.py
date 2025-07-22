@@ -4,7 +4,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'tu-clave-secreta-aqui'
 DEBUG = True
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.1.100']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.1.100','free-chefs-show.loca.lt']
 
 # Aplicaciones
 INSTALLED_APPS = [
