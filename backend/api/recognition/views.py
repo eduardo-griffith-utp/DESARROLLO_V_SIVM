@@ -34,6 +34,7 @@ class SecurityValidationError(Exception):
         self.code = code
         self.message = message
         self.details = details       
+
 def error_response(code, message, details="", status_code=status.HTTP_400_BAD_REQUEST):
     """Standardized format for error responses"""
     return Response(
@@ -47,6 +48,16 @@ def error_response(code, message, details="", status_code=status.HTTP_400_BAD_RE
         },
         status=status_code
     )
+
+def numeric_id_to_image_id(numeric_id):
+    """Convierte ID numérico a formato img_xxxxxxxx"""
+    return f"img_{numeric_id:08x}"
+
+def image_id_to_numeric_id(image_id):
+    """Convierte formato img_xxxxxxxx a ID numérico"""
+    if image_id.startswith('img_'):
+        return int(image_id[4:], 16)
+    return None
 
 # ======================
 # DUMMY DATA (SIMULATES DB)
@@ -76,9 +87,6 @@ connection = MariaDBConnection()
 # ======================
 @api_view(['POST'])
 @permission_classes([]) # Explícitamente pública
-# CAMBIO CLAVE: Usar JSONParser para aceptar cuerpos JSON
-# CAMBIO PARA ENPOINT FINAL POR TEMAS DE FORMATO CON LA SIGUIENTE LINEA SE AGREGA LA IMAGEN EN ANALISYS NECESITA LA RUTA DONDE SE VA A COLOCAR LA IMAGEN EN EL SERVIDOR
-# EL PARAMETRO ES UN STRING CON LA RUTA DEL ARCHIVO   img_id = connection.insert_into_analysis(RUTA_ARCHIVO)
 @parser_classes([JSONParser]) 
 def capture_images(request):
     """
@@ -87,7 +95,7 @@ def capture_images(request):
     """
     # INICIALIZACIÓN DE current_user antes del try
     current_user = request.user 
-    #print("pasé la conexion a base de datos")
+    
     try:
         # Validación de datos de entrada
         base64_images = request.data.get('images', [])
@@ -101,60 +109,86 @@ def capture_images(request):
         uploaded_objects_data = []
         resultado = []
         errors = []
- 
-
-        
-        if not base64_images:
-            return Response(
-                {
-                    "code": "MISSING_IMAGE_DATA",
-                    "message": "The 'images' field (list of Base64 strings) is required in the JSON body."
-                },
-                status=status.HTTP_400_BAD_REQUEST
-            )
-        
-
 
         # Procesamiento de cada imagen
         for base64_image_string in base64_images:
             try:
-                base64_image_string = base64_image_string.split(',', 1)[1] #SPLIT QUE ELIMINA ENCABEZADO DE IMAGEN BASE 64 YA QUE CLARIFAI NO LO ACEPTA
-                #integramos clarifai
-                nsfw_result = analizar_imagen_nsfw(base64_image_string)
+                # SPLIT QUE ELIMINA ENCABEZADO DE IMAGEN BASE 64 YA QUE CLARIFAI NO LO ACEPTA
+                clean_base64 = base64_image_string.split(',', 1)[1] if ',' in base64_image_string else base64_image_string
+                
+                # ===== ANÁLISIS NSFW CON CLARIFAI =====
+                nsfw_result = analizar_imagen_nsfw(clean_base64)
                 if not nsfw_result.get("exito"):
                     raise SecurityValidationError(
                         code="NSFW_ANALYSIS_FAILED",
                         message="Clarifai failed to analyze the image.",
                         details=nsfw_result.get("error", "Unknown error")
                     )
+                
                 nsfw_score = nsfw_result.get("nsfw_scores", {}).get("nsfw", 0)
                 if nsfw_score > 0.7:
-                    #resultado.append({
-                     #   "prediction": "[NSFW] Imagen rechazada por contenido explícito.",
-                      #  "nsfw_score": nsfw_score,
-                       # "rechazada": True,
-                        #"status": "rejected"
-                        #})
-                    return Response ({
+                    return Response({
                         "code": "NSFW_IMAGE_REJECTED",
                         "message": "Imagen rechazada por contenido explícito.",
                         "nsfw_score": nsfw_score
-
                     }, status=status.HTTP_400_BAD_REQUEST)
-                    continue
 
-                prediccion = predict_imagen_api(base64_image_string)
-                resultado.append({
-                    "prediction": prediccion,
-                    "status": "success",
-                    "image_prefix": base64_image_string[:50] + "..."
-                })
-
-
+                # ===== CONEXIÓN CON BASE DE DATOS - SERIALIZACIÓN =====
+                serializer_data = {'imagen': base64_image_string}  # Usar la imagen original con header
+                serializer = CapturedImageSerializer(data=serializer_data, context={'request': request})
+                
+                if serializer.is_valid():
+                    # Guardamos la imagen en Django ORM
+                    obj = serializer.save(usuario=current_user if current_user.is_authenticated else None)
+                    uploaded_objects_data.append(serializer.data)
+                    
+                    # ===== INSERTAR EN TABLA ANALYSIS (MariaDB) =====
+                    file_path = serializer.data['imagen']
+                    # Extraer la ruta relativa que comienza con /media
+                    relative_path = file_path[file_path.find("/media"):] if "/media" in file_path else file_path
+                    
+                    # Insertar en base de datos analysis y obtener el ID numérico
+                    raw_img_id = connection.insert_into_analysis(relative_path)
+                    
+                    if raw_img_id and raw_img_id != -1:
+                        # Convertir a formato hexadecimal
+                        img_id = numeric_id_to_image_id(raw_img_id)
+                        
+                        print(f"\n\nValor de file_path: {relative_path}")
+                        print(f"Valor de raw_image_id: {raw_img_id}")
+                        print(f"Valor de formatted_image_id: {img_id}")
+                        
+                        # ===== PREDICCIÓN =====
+                        prediccion = predict_imagen_api(clean_base64)
+                        
+                        resultado.append({
+                            "prediction": prediccion,
+                            "status": "success",
+                            "image_id": img_id,  # Formato img_xxxxxxxx
+                            "database_id": raw_img_id,  # ID numérico original para referencia
+                            "file_path": relative_path,
+                            "nsfw_score": nsfw_score,
+                            "image_prefix": clean_base64[:50] + "...",
+                            "analysis_url": f"/api/v1/recognition/images/{img_id}/analysis/"
+                        })
+                    else:
+                        errors.append({
+                            "image_prefix": clean_base64[:50] + "...",
+                            "error": "Failed to insert image analysis into database",
+                            "status": "database_error"
+                        })
+                    
+                else:
+                    # Capturar errores de validación del serializer
+                    errors.append({
+                        "image_prefix": (clean_base64[:50] + "...") if len(clean_base64) > 50 else clean_base64,
+                        "errors": serializer.errors,
+                        "status": "validation_failed"
+                    })
        
             except SecurityValidationError as e:
                 errors.append({
-                    "image_prefix": base64_image_string[:50] + "...",
+                    "image_prefix": clean_base64[:50] + "...",
                     "error": {
                         "code": e.code,
                         "message": e.message,
@@ -164,132 +198,121 @@ def capture_images(request):
                 })       
             except Exception as e:
                 errors.append({
-                    "image_prefix": base64_image_string[:50] + "...",
+                    "image_prefix": clean_base64[:50] + "...",
                     "error": str(e),
                     "status": "failed"
                 })
 
-        # Aquí va el cambio para responder solo con el mensaje personalizado con la primera imagen exitosa
-        if resultado:
-            image_id = "img_001"  # Aquí puedes reemplazar por el ID real que tengas
-            timestamp = timezone.now().isoformat()
-
+        # ===== RESPUESTA BASADA EN UPLOADED_OBJECTS_DATA =====
+        if uploaded_objects_data:
             response_data = {
                 "status": "success",
-                "data": {
-                    "image_id": image_id,
-                    "timestamp": timestamp,
-                    "nsfw_score": nsfw_score
-                },
-                "message": "imagen recibida y procesada exitosamente"
+                "data": uploaded_objects_data,
+                "predictions": resultado
             }
-            return Response(response_data, status=status.HTTP_200_OK)
-
-        # Construcción de la respuesta para errores
-        response_data = {
-            "resultado": resultado,
-            "errors": errors,
-            "total_images": len(base64_images),
-            "success_count": len(resultado),
-            "failed_count": len(errors)
-        }
-
-        # Determinar el código de estado apropiado si no hubo imágenes exitosas
-        if errors and not resultado:
-            status_code = status.HTTP_400_BAD_REQUEST
-        elif errors and resultado:
-            status_code = status.HTTP_207_MULTI_STATUS  # Para resultados mixtos
+            
+            if errors:
+                response_data["warnings"] = errors
+                response_data["message"] = "Some images were uploaded, but others had validation errors."
+                return Response(response_data, status=status.HTTP_200_OK)
+            else:
+                response_data["message"] = "All images were uploaded and processed successfully."
+                return Response(response_data, status=status.HTTP_201_CREATED)
         else:
-            status_code = status.HTTP_200_OK
-        
-        print(f"\n\nValor de Response: {Response(response_data, status=status_code)}\n\n\n")
-        return Response(response_data, status=status_code)
+            # Si no se subió ninguna imagen exitosamente
+            return error_response(
+                code="IMAGE_VALIDATION_ERROR",
+                message="None of the provided images could be processed due to validation errors.",
+                details=errors,
+                status_code=status.HTTP_400_BAD_REQUEST
+            )
 
     except Exception as e:
-        # Solo para errores globales inesperados
-        return Response(
-            {
-                "code": "SERVER_ERROR",
-                "message": str(e)
-            },
-            status=status.HTTP_500_INTERNAL_SERVER_ERROR
-        )
-    
-    ''' serializer_data = {'imagen': base64_image_string} #aqui
-        
-        serializer = CapturedImageSerializer(data=serializer_data, context={'request': request})
-        #print("\n\n\nvalor de request: ",request)
-        if serializer.is_valid():
-            # Guardamos la imagen. Si 'current_user' es AnonymousUser,
-            # y el campo 'usuario' del modelo es null=True (como lo corregimos en models.py),
-            # se guardará como NULL en la DB.
-            obj = serializer.save(usuario=current_user if current_user.is_authenticated else None)
-            uploaded_objects_data.append(serializer.data)
-        else:
-            # Capturar errores de validación para cada imagen.
-            # Mostrar un fragmento de la cadena Base64 para ayudar en la depuración.
-            errors.append({
-                "original_data_prefix": (base64_image_string[:50] + "...") if len(base64_image_string) > 50 else base64_image_string,
-                "errors": serializer.errors
-            })   
-    #print("Valor de uploaded_objects_data: ", uploaded_objects_data)
-    if uploaded_objects_data:
-        response_data = {
-            "status": "success",
-            "data": uploaded_objects_data
-        }
-        file_path = uploaded_objects_data[0]['imagen']
-        img_id = connection.insert_into_analysis(file_path[file_path.find("/media")::])
-        print("\n\n\n\nValor de file_path: ", file_path[file_path.find("/media")::])
-        print("Valor de image_id: ", img_id)
-        if errors:
-            response_data["warnings"] = errors
-            response_data["message"] = "Some images were uploaded, but others had validation errors."
-            return Response(response_data, status=status.HTTP_200_OK)
-        else:
-            response_data["message"] = "All images were uploaded and processed successfully."
-            return Response(response_data, status=status.HTTP_201_CREATED)
-    else:
-        # Si no se subió ninguna imagen exitosamente (solo hubo errores de validación para todas)
+        # Para errores globales inesperados
         return error_response(
-            code="IMAGE_VALIDATION_ERROR",
-            message="None of the provided images could be processed due to validation errors.",
-            details=errors,
-            status_code=status.HTTP_400_BAD_REQUEST
+            code="GENERAL_CAPTURE_ERROR",
+            message="An unexpected error occurred while processing the images",
+            details=str(e) if settings.DEBUG else "",
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
 
-except Exception as e:
-    # Asegúrate de que current_user siempre esté definido antes de usarlo en detalles.
-    # En este punto, 'current_user' ya está definido fuera del try, por lo que no debería haber NameError.
-    return error_response(
-        code="GENERAL_CAPTURE_ERROR",
-        message="An unexpected error occurred while processing the images",
-        details=str(e) if settings.DEBUG else "",
-        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
-    )
-    '''
 @api_view(['GET'])
 @permission_classes([]) # Explícitamente pública
 def get_image_analysis(request, image_id):
     """
     [GET] /api/v1/recognition/images/<image_id>/analysis/
-    Gets the analysis of a specific image. No authentication required.
+    Gets the analysis of a specific image from the database. No authentication required.
     """
     try:
+        # Validación del formato del image_id
         if not re.match(r'^img_[a-f0-9]{8}$', image_id):
             return error_response(
                 code="INVALID_IMAGE_ID",
-                message="Invalid image ID format.",
+                message="Invalid image ID format. Expected format: img_xxxxxxxx (8 hexadecimal characters)",
                 status_code=status.HTTP_400_BAD_REQUEST
             )
-        return Response({
-            "status": "success", "image_id": image_id, "analysis": {
-                "objects": [{"label": "person", "confidence": 0.92}, {"label": "car", "confidence": 0.85}],
-                "generated_description": "A person next to a car in an urban setting."
+        
+        # Buscar la imagen en la base de datos usando MariaDB connection
+        try:
+            # Obtener análisis de la base de datos
+            analysis_data = connection.get_analysis_by_image_id(image_id)
+            
+            if not analysis_data:
+                return error_response(
+                    code="IMAGE_NOT_FOUND",
+                    message=f"No image found with ID: {image_id}",
+                    details=f"Make sure the image ID exists in the database. Format expected: img_xxxxxxxx",
+                    status_code=status.HTTP_404_NOT_FOUND
+                )
+            
+            # También buscar en el modelo Django si existe
+            django_data = None
+            try:
+                # Convertir image_id a ID numérico para buscar en Django
+                numeric_id = image_id_to_numeric_id(image_id)
+                
+                # Buscar por el ID numérico si tu modelo Django usa auto-increment ID
+                # O ajusta esta búsqueda según cómo almacenes el ID en tu modelo Django
+                django_image = ImagenReconocida.objects.filter(id=numeric_id).first()
+                
+                if django_image:
+                    serializer = CapturedImageSerializer(django_image)
+                    django_data = serializer.data
+                    
+            except Exception as django_error:
+                print(f"Error accessing Django model: {django_error}")
+                django_data = None
+            
+            # Construir la respuesta con datos reales
+            response_data = {
+                "status": "success",
+                "image_id": image_id,
+                "analysis": analysis_data,
+                "django_data": django_data,
+                "timestamp": timezone.now().isoformat(),
+                "conversion_info": {
+                    "numeric_id": image_id_to_numeric_id(image_id),
+                    "hex_format": image_id
+                }
             }
-        })
+            
+            return Response(response_data, status=status.HTTP_200_OK)
+            
+        except Exception as db_error:
+            return error_response(
+                code="DATABASE_ERROR",
+                message="Failed to retrieve image analysis from database",
+                details=str(db_error) if settings.DEBUG else "",
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+        
     except Exception as e:
-        return error_response(code="ANALYSIS_ERROR", message="Failed to analyze the image", details=str(e) if settings.DEBUG else "", status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return error_response(
+            code="ANALYSIS_ERROR", 
+            message="Failed to analyze the image", 
+            details=str(e) if settings.DEBUG else "", 
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
 
 # ======================
 # MULTIMEDIA ENDPOINTS
@@ -377,7 +400,7 @@ def get_history(request):
             try:
                 from_date = timezone.datetime.strptime(from_date_str, '%Y-%m-%d').isoformat() + 'Z'
             except ValueError:
-                return error_response(code="INVALID_DATE_FORMAT", message="The 'from_date' format must beンダー-MM-DD.", status_code=status.HTTP_400_BAD_REQUEST)
+                return error_response(code="INVALID_DATE_FORMAT", message="The 'from_date' format must be YYYY-MM-DD.", status_code=status.HTTP_400_BAD_REQUEST)
         
         if request.user.is_authenticated:
             current_username = request.user.username
@@ -389,4 +412,3 @@ def get_history(request):
         return Response({"status": "success", "count": len(sorted_history), "data": sorted_history})
     except Exception as e:
         return error_response(code="GET_HISTORY_ERROR", message="Failed to retrieve recognition history", details=str(e) if settings.DEBUG else "", status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
