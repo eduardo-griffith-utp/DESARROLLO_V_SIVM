@@ -12,16 +12,16 @@
   </ion-header>
   <div class="container">
     <div class="image">
-      <ion-img src="assets/images/Logo.png"></ion-img>
+      <ion-img *ngIf="imageUrl" [src]="imageUrl"></ion-img>
     </div>
     <div class="name">
-      <ion-text>
-        <h1>Nombre</h1>
-      </ion-text>
+      <ion-item>
+        <h1>{{getJsonValue?.data?.name}}</h1>
+      </ion-item>
     </div>
     <div class="description">
       <ion-text>
-        <h2>Descripccion del objeto encontrado</h2>
+        <h2>{{getJsonValue?.data?.description}}</h2>
       </ion-text>
     </div>
     <div class="try_again">

@@ -1,44 +1,120 @@
 ion-content {
-    --background: #1e1e1e; /* Fondo oscuro */
+  --background: #000; /* fondo negro */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.top-section {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+}
+
+.logo-container h1 {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.camera-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16; /* proporción vertical para cámara */
+  background-color: #111;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.camera-preview video,
+.camera-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Controles sobre la cámara */
+.zoom-control {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.5);
+  padding: 5px 15px;
+  border-radius: 25px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  user-select: none;
+}
+
+.zoom-control button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.lock-control {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+}
+
+.settings-control {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  color: white;
+}
+
+ion-footer {
+  ion-toolbar.camera-toolbar {
+    --background: #000000;
+    --color: white;
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra los elementos hijos horizontalmente */
+    justify-content: center; /* Center the button container */
   }
-  
-  .top-section {
+
+  .button-container {
+    display: flex; /* Arrange buttons in a row */
+    justify-content: space-around;
+    align-items: center; /* Vertically align buttons */
+    gap: 30px; /* Add space between buttons */
+  }
+
+  .circle-button {
+    --border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: 0; /* Remove default button margins */
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: 100%;
-    padding-top: 40px;
-    margin-bottom: 30px;
-  
-    .logo-container {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-  
-    .camera-preview {
-      background-color: #333;
-      width: 80%; /* Mantén un ancho para que se vea el centrado */
-      aspect-ratio: 1 / 1.3; /* Simula una proporción vertical */
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
-      display: flex; /* Añade flex para centrar contenido interno si es necesario */
-      justify-content: center; /* Centra el video/imagen horizontalmente */
-      align-items: center; /* Centra el video/imagen verticalmente */
-    }
-  
-    /* ... otros estilos ... */
-  }
-  
-  ion-footer {
-    ion-toolbar {
-      --background: #2c2c2c;
-      --color: white;
-      display: flex;
-      justify-content: center; /* Centra el botón en el footer */
+
+    ion-icon {
+      // Inherit color from the toolbar or set a specific color
     }
   }
+
+  .capture-button {
+    --background: red;
+    --color: white; // Ensure icon color is visible
+  }
+}
